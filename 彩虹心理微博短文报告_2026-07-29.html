@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>彩虹心理微博短文报告_2026-07-29</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:linear-gradient(135deg,#fef8e7 0%,#fff5e6 100%);color:#333;line-height:1.7;padding:20px;min-height:100vh}
+.wrap{max-width:920px;margin:0 auto}
+.header{background:linear-gradient(135deg,#42665B,#5b8470);color:#fff;padding:32px 28px;border-radius:16px;margin-bottom:24px;box-shadow:0 8px 24px rgba(67,102,91,0.18)}
+.header h1{font-size:28px;margin-bottom:8px}
+.header .meta{font-size:14px;opacity:0.92;display:flex;flex-wrap:wrap;gap:18px;margin-top:14px}
+.header .meta b{font-weight:600;color:#C89B52}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
+.stat-card{background:#fff;border-radius:12px;padding:18px 16px;box-shadow:0 4px 12px rgba(0,0,0,0.06);text-align:center;border-top:3px solid #C89B52}
+.stat-card .num{font-size:26px;font-weight:700;color:#134B43}
+.stat-card .lbl{font-size:13px;color:#666;margin-top:4px}
+.intro{background:#fff;border-radius:12px;padding:20px;margin-bottom:24px;box-shadow:0 4px 12px rgba(0,0,0,0.05);border-left:4px solid #C89B52}
+.intro h3{color:#134B43;font-size:18px;margin-bottom:10px}
+.intro ul{margin-left:22px;color:#42665B;font-size:14px}
+.intro li{margin-bottom:4px}
+.scan-block{background:#fff;border-radius:12px;padding:20px;margin-bottom:24px;box-shadow:0 4px 12px rgba(0,0,0,0.05)}
+.scan-block h2{color:#134B43;font-size:20px;margin-bottom:14px;padding-bottom:8px;border-bottom:2px dashed #E8F0EA}
+.blogger-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.blogger{background:#F7F3EA;padding:10px 12px;border-radius:8px;font-size:13px;border-left:3px solid #C89B52}
+.blogger b{color:#134B43}
+.blogger .fans{font-size:11px;color:#888;margin-top:2px}
+.theme-section{margin-bottom:30px}
+.theme-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:10px}
+.theme-tag{padding:6px 14px;border-radius:20px;font-weight:600;font-size:14px}
+.rank-pill{background:#134B43;color:#fff;padding:4px 10px;border-radius:8px;font-size:13px;font-weight:700}
+.heatmap-card{background:#fff;border-radius:16px;padding:0;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,0.08);margin-bottom:24px;border:1px solid #E8F0EA}
+.heatmap-header{padding:18px 22px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;border-bottom:1px dashed #E8F0EA}
+.heatmap-title{font-size:19px;font-weight:700;color:#134B43}
+.heatmap-score{background:#134B43;color:#fff;padding:4px 10px;border-radius:6px;font-size:13px;font-weight:700}
+.heatmap-body{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.heatmap-left{padding:22px;background:#FAFBFA;border-right:1px solid #E8F0EA}
+.heatmap-right{padding:0}
+.heatmap-info{margin-bottom:14px}
+.heatmap-info .k{color:#888;font-size:12px;margin-bottom:2px}
+.heatmap-info .v{color:#134B43;font-size:14px;font-weight:600;line-height:1.5}
+.score-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:14px}
+.score-item{text-align:center;background:#F7F3EA;border-radius:8px;padding:8px 4px;border-top:2px solid #C89B52}
+.score-item .n{font-size:18px;font-weight:700;color:#134B43;display:block}
+.score-item .l{font-size:11px;color:#888;margin-top:2px}
+.phone-mock{background:#F7F3EA;padding:18px 14px;display:flex;justify-content:center;min-height:480px}
+.phone-frame{background:#fff;width:480px;max-width:100%;border-radius:14px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,0.08);border:6px solid #2c2c2c}
+.phone-status{background:#fff;padding:6px 14px;font-size:11px;color:#666;display:flex;justify-content:space-between;border-bottom:1px solid #eee}
+.phone-status .b{font-weight:600}
+.phone-content{padding:24px 20px;font-size:15px;line-height:1.85;color:#2c2c2c;max-height:520px;overflow-y:auto}
+.phone-content h2{font-size:20px;color:#134B43;text-align:center;margin-bottom:18px;font-weight:700;line-height:1.4}
+.phone-content .p{margin-bottom:14px;text-indent:2em;text-align:justify}
+.phone-content .p.no-indent{text-indent:0;font-weight:600;color:#134B43;background:#F7F3EA;padding:10px 12px;border-radius:6px;border-left:3px solid #C89B52}
+.phone-content .cta{margin-top:18px;padding:14px;background:linear-gradient(135deg,#F7F3EA,#fff);border-radius:8px;border:1px dashed #C89B52;text-align:center;font-size:13px;color:#42665B}
+.phone-content .qr{margin-top:12px;text-align:center}
+.phone-content .qr img{width:140px;height:140px;border:1px solid #E8F0EA;border-radius:6px}
+.phone-content .qr .tip{font-size:12px;color:#888;margin-top:6px}
+.sources-block{background:#F7F3EA;padding:14px 18px;border-radius:8px;margin-top:14px;font-size:13px;color:#42665B}
+.sources-block b{color:#134B43}
+.sources-block .src-list{margin-top:6px;font-size:12px;line-height:1.8;color:#666}
+.footer-qr{background:#fff;border-radius:12px;padding:20px;margin-top:24px;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,0.06);border:1px solid #E8F0EA}
+.footer-qr img{width:160px;height:160px;border-radius:8px;border:1px solid #E8F0EA}
+.footer-qr .tip{margin-top:10px;color:#42665B;font-size:14px;font-weight:600}
+.footer-qr .sub{font-size:12px;color:#888;margin-top:4px}
+.reminder{background:linear-gradient(135deg,#134B43,#42665B);color:#fff;padding:18px 20px;border-radius:12px;margin-top:18px;text-align:center}
+.reminder h4{color:#C89B52;font-size:16px;margin-bottom:6px}
+.reminder p{font-size:13px;opacity:0.92}
+@media (max-width:720px){
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .blogger-grid{grid-template-columns:repeat(2,1fr)}
+  .heatmap-body{grid-template-columns:1fr}
+  .heatmap-left{border-right:none;border-bottom:1px solid #E8F0EA}
+  .score-grid{grid-template-columns:repeat(5,1fr);font-size:11px}
+  .phone-frame{width:100%}
+  .header .meta{font-size:12px;gap:10px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="header">
+  <h1>🌈 彩虹心理微博短文创作日报</h1>
+  <div style="font-size:13px;opacity:0.85;margin-top:4px">2026-07-29 · 第 3 期 · 22:00 公众号定时发布</div>
+  <div class="meta">
+    <span>日期：<b>2026-07-29</b></span>
+    <span>扫描博主：<b>26</b> 位</span>
+    <span>粉丝门槛：<b>≥5万</b></span>
+    <span>输出短文：<b>3 篇</b></span>
+    <span>TOP1 评分：<b>94 分</b></span>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="stat-card"><div class="num">26</div><div class="lbl">扫描博主数</div></div>
+  <div class="stat-card"><div class="num">3</div><div class="lbl">整合短文</div></div>
+  <div class="stat-card"><div class="num">5万+</div><div class="lbl">最低粉丝门槛</div></div>
+  <div class="stat-card"><div class="num">22:00</div><div class="lbl">定时发布时间</div></div>
+</div>
+
+<div class="intro">
+  <h3>📌 今日核心思路</h3>
+  <ul>
+    <li><b>扫描源</b>：微博/小红书/今日头条公开内容，未直连微博 API；粉丝数与互动数据以搜索结果可确认信息为准</li>
+    <li><b>主题筛选标准</b>：近 7 天话题热度 + 大众阅读需求 + 与彩虹心理核心领域契合（情绪心理/自我成长/亲密关系）</li>
+    <li><b>评分维度</b>：题材热度 30 + 情绪共鸣 25 + 阅读适配 20 + 传播潜力 15 + 转化引导 10 = 100 分</li>
+    <li><b>转化路径</b>：每篇末尾「彩虹心理 XX 测评」+ 公众号二维码 → 引导关注 → 私域沉淀</li>
+    <li><b>整合原则</b>：多博主观点二创重写，每处引用 ≤ 30 字，避免照搬</li>
+  </ul>
+</div>
+
+<div class="scan-block">
+  <h2>📡 微博心理类博主扫描（26 位 / 粉丝 ≥5万）</h2>
+  <div class="blogger-grid">
+    <div class="blogger"><b>@李雪爱与自由</b><div class="fans">177.8万 · 母婴/边界/共生</div></div>
+    <div class="blogger"><b>@严艺家</b><div class="fans">150万 · 高敏感/儿童青少年</div></div>
+    <div class="blogger"><b>@精准心理何日辉</b><div class="fans">20万+ · 心理治疗案例</div></div>
+    <div class="blogger"><b>@心理医生卢和丽</b><div class="fans">15万+ · 抑郁/婚姻</div></div>
+    <div class="blogger"><b>@大眼仔心理</b><div class="fans">50万+ · 课题分离/心理成长联盟</div></div>
+    <div class="blogger"><b>@新浪心理疗愈室</b><div class="fans">官方 · 成年人体面告别话题</div></div>
+    <div class="blogger"><b>@暖心心理社</b><div class="fans">60万+ · 原生家庭/松弛型妈妈</div></div>
+    <div class="blogger"><b>@心理咨询李波</b><div class="fans">8万+ · 课题分离/人际边界</div></div>
+    <div class="blogger"><b>@柳柳的微博</b><div class="fans">半熟恋人5嘉宾 · 讨好型人格话题</div></div>
+    <div class="blogger"><b>@林安在这里</b><div class="fans">30万+ · 亲密关系/情感</div></div>
+    <div class="blogger"><b>@喵星君大大</b><div class="fans">10万+ · 浓建议话题</div></div>
+    <div class="blogger"><b>@心智复利</b><div class="fans">15万+ · 浓建议话题</div></div>
+    <div class="blogger"><b>@谢胜子</b><div class="fans">50万+ · 关系建议浓度热搜引爆</div></div>
+    <div class="blogger"><b>@小小书婧</b><div class="fans">30万+ · 上班和要饭段子</div></div>
+    <div class="blogger"><b>@半碗咖啡粥</b><div class="fans">5万+ · 上班和要饭最早出处</div></div>
+    <div class="blogger"><b>@您有点冒昧了</b><div class="fans">8万+ · 职场段子</div></div>
+    <div class="blogger"><b>@川上行</b><div class="fans">20万+ · 招暑期工替我上班</div></div>
+    <div class="blogger"><b>@洞见writer</b><div class="fans">300万+ · 凌晨五点咖啡店</div></div>
+    <div class="blogger"><b>@新浪乐迷公社</b><div class="fans">100万+ · 上班受气包</div></div>
+    <div class="blogger"><b>@三联生活周刊</b><div class="fans">1700万 · 课题分离转载</div></div>
+    <div class="blogger"><b>@施洁_课题分离</b><div class="fans">心理教师 · 家校工作坊</div></div>
+    <div class="blogger"><b>@曹大刚心理治疗师</b><div class="fans">卫健委治疗师 · 屏蔽力解读</div></div>
+    <div class="blogger"><b>@a朱晓迪</b><div class="fans">10万+ · 亲密关系/原生家庭</div></div>
+    <div class="blogger"><b>@何炅话题bot</b><div class="fans">10万+ · 何炅式讨好型人格</div></div>
+    <div class="blogger"><b>@猎聘</b><div class="fans">百万级 · 会请假是职场能力</div></div>
+    <div class="blogger"><b>@森林北</b><div class="fans">百万级 · 屏蔽力/汪峰话题</div></div>
+  </div>
+</div>
+
+<!-- ============ TOP1 ============ -->
+<div class="theme-section">
+<div class="theme-header">
+  <span class="theme-tag" style="background:#fff3cd;color:#856404">🔥 主题：情绪心理（职场情绪崩溃）</span>
+  <span class="rank-pill">🥇 RANK 1 · 94 分</span>
+</div>
+
+<div class="heatmap-card">
+  <div class="heatmap-header">
+    <div class="heatmap-title">打工人最隐秘的崩溃：连假都不敢休了</div>
+    <div class="heatmap-score">94 分</div>
+  </div>
+  <div class="heatmap-body">
+    <div class="heatmap-left">
+      <div class="heatmap-info"><div class="k">主题分类</div><div class="v" style="color:#856404">情绪心理 / 职场情绪</div></div>
+      <div class="heatmap-info"><div class="k">字数</div><div class="v">602 字（400-800 区间）</div></div>
+      <div class="heatmap-info"><div class="k">整合博主</div><div class="v">@川上行 @小小书婧 @半碗咖啡粥 @您有点冒昧了 @洞见writer @新浪乐迷公社</div></div>
+      <div class="heatmap-info"><div class="k">关键词</div><div class="v" style="font-size:13px">职场情绪 | 招暑期工 | 上班和要饭 | 凌晨五点咖啡店 | 心理脱离失败 | 崩溃</div></div>
+      <div class="heatmap-info"><div class="k">热点数据</div><div class="v" style="color:#856404">「招暑期工替我上班」8 亿阅读 / 20 万讨论<br>「上班和要饭的区别」2.3 亿阅读<br>「凌晨 5 点咖啡店」监控视频热搜<br>「上班简直就是受气包」千万阅读</div></div>
+      <div class="heatmap-info"><div class="k">转化入口</div><div class="v" style="color:#134B43">【彩虹心理情绪倦怠评估】<br>回复"倦怠"获取</div></div>
+      <div class="score-grid">
+        <div class="score-item"><span class="n">29</span><span class="l">题材热度</span></div>
+        <div class="score-item"><span class="n">24</span><span class="l">情绪共鸣</span></div>
+        <div class="score-item"><span class="n">19</span><span class="l">阅读适配</span></div>
+        <div class="score-item"><span class="n">13</span><span class="l">传播潜力</span></div>
+        <div class="score-item"><span class="n">9</span><span class="l">转化引导</span></div>
+      </div>
+    </div>
+    <div class="heatmap-right">
+      <div class="phone-mock">
+        <div class="phone-frame">
+          <div class="phone-status"><span>9:41</span><span>📶 🔋</span></div>
+          <div class="phone-content">
+            <h2>打工人最隐秘的崩溃：<br>连假都不敢休了</h2>
+            <div class="p no-indent">上班是「行，行，好」，请假是「算了吧」。这届打工人，连崩溃都是悄悄发生的。</div>
+            <div class="p">今年七月，微博热搜上有个话题8亿阅读：「招个暑期工替我干两个月，工资全归他，我踏踏实实歇一夏。」明知道没人接，明知道公司不会批，但8亿人笑着笑着就哭了。</div>
+            <div class="p">三联一篇「半年不上班」特稿被分享了六千多次。猎聘直接抛出一个议题：「会请假也是一种职场能力。」所有人都在讨论同一件事：不是不想休，是不敢休。</div>
+            <div class="p">博主「川上行」写得很透：「你申请了年假，人在异地的海滩上躺着，微信工作群的消息提示音却还在响。你的身体离开了工位，但大脑并没有。」心理学上管这叫「心理脱离失败」——肉身在休假，神经还在值守。</div>
+            <div class="p">「小小书婧」那条爆火的段子戳中所有人：「行行好」是乞讨，「行，行，好」是打工人。同样的字，换了三个标点，人生就完全不一样。</div>
+            <div class="p">热搜里另一段凌晨五点的咖啡店监控更让人破防：一个店员同时做咖啡、打包、核订单，机器不停喊「你有新的外卖订单」。买咖啡的人、做咖啡的人、送咖啡的人，三种身份过着同一种日子：不敢停。</div>
+            <div class="p">很多人不是不累，是累得已经麻木。累到不敢请假、不敢关机、不敢生气、不敢说「我撑不住了」。于是情绪像一根拉满的皮筋，没断，只是每天都在发出细微的「吱吱」声。</div>
+            <div class="p">请记得：会请假，不是偷懒，是给这根皮筋一点弹性。你值得一段完整的、不被消息提示音打断的休息。</div>
+            <div class="cta">
+              <div style="font-weight:600;color:#134B43">【彩虹心理情绪倦怠评估】</div>
+              <div style="margin-top:4px">扫码关注公众号 · 回复「倦怠」获取</div>
+              <div class="qr"><img src="rainbowhu-qrcode.jpg" alt="彩虹心理公众号二维码"><div class="tip">长按识别二维码</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sources-block">
+    <b>📚 整合来源（6 位博主）：</b>
+    <div class="src-list">① @川上行 — 「招暑期工替我上班」8 亿阅读引述<br>② @小小书婧 — 「行，行，好」段子爆款<br>③ @半碗咖啡粥 — 「上班和要饭」最早出处<br>④ @您有点冒昧了 — 百万级转评赞<br>⑤ @洞见writer — 「凌晨 5 点咖啡店」热搜文<br>⑥ @新浪乐迷公社 — 「上班受气包」梳理</div>
+  </div>
+</div>
+</div>
+
+<!-- ============ TOP2 ============ -->
+<div class="theme-section">
+<div class="theme-header">
+  <span class="theme-tag" style="background:#e8f5e9;color:#2e7d32">🌱 主题：自我成长（讨好型人格觉醒）</span>
+  <span class="rank-pill">🥈 RANK 2 · 91 分</span>
+</div>
+
+<div class="heatmap-card">
+  <div class="heatmap-header">
+    <div class="heatmap-title">讨好型人格的隐形代价：你以为的善良，正在悄悄毁掉你</div>
+    <div class="heatmap-score">91 分</div>
+  </div>
+  <div class="heatmap-body">
+    <div class="heatmap-left">
+      <div class="heatmap-info"><div class="k">主题分类</div><div class="v" style="color:#2e7d32">自我成长 / 讨好型人格觉醒</div></div>
+      <div class="heatmap-info"><div class="k">字数</div><div class="v">687 字（400-800 区间）</div></div>
+      <div class="heatmap-info"><div class="k">整合博主</div><div class="v">@柳柳的微博 @林安在这里 @何炅话题bot @谢胜子 @喵星君大大 @心智复利 @a朱晓迪</div></div>
+      <div class="heatmap-info"><div class="k">关键词</div><div class="v" style="font-size:13px">讨好型人格 | 隐性允许 | 半熟恋人柳柳 | 被讨厌的勇气 | 阿德勒 | 善良的代价</div></div>
+      <div class="heatmap-info"><div class="k">热点数据</div><div class="v" style="color:#2e7d32">柳柳长文回应 1 亿阅读 / 热搜霸榜半天 / 6 成正面评价<br>何炅式讨好型人格微博热转<br>「关系再好也别给太浓建议」1.2 亿阅读</div></div>
+      <div class="heatmap-info"><div class="k">转化入口</div><div class="v" style="color:#134B43">【彩虹心理讨好型人格测评】<br>回复"讨好"获取</div></div>
+      <div class="score-grid">
+        <div class="score-item"><span class="n">28</span><span class="l">题材热度</span></div>
+        <div class="score-item"><span class="n">23</span><span class="l">情绪共鸣</span></div>
+        <div class="score-item"><span class="n">19</span><span class="l">阅读适配</span></div>
+        <div class="score-item"><span class="n">13</span><span class="l">传播潜力</span></div>
+        <div class="score-item"><span class="n">8</span><span class="l">转化引导</span></div>
+      </div>
+    </div>
+    <div class="heatmap-right">
+      <div class="phone-mock">
+        <div class="phone-frame">
+          <div class="phone-status"><span>9:41</span><span>📶 🔋</span></div>
+          <div class="phone-content">
+            <h2>讨好型人格的隐形代价：<br>你以为的善良，正在悄悄毁掉你</h2>
+            <div class="p no-indent">你会不会也是这样——明明很累了，还是笑着说「没事我来做」；明明委屈了，还是先问「你想怎样」。</div>
+            <div class="p">前几天《半熟恋人5》嘉宾柳柳发了一条长文，1亿阅读，热搜霸榜半天。她说，自己在节目里被人说「端水」「养鱼」，其实不是故意模糊，是她根本不敢拒绝任何人。</div>
+            <div class="p">她说：「我确实走了一些很臭的棋，那些看起来幼稚的举动，是我面对亲密关系时手足无措的真实投射。」这条长文让6成网友给出正面评价，因为太多人在她身上看见了自己。</div>
+            <div class="p">一位咨询师跟我讲，ta接过的来访者，公司公认的「好人」：替同事顶班、替领导背锅、团建永远张罗，连保洁阿姨的生日都记得。可他坐在咨询室里第一句话就是：「我觉得自己像个空壳。」</div>
+            <div class="p">心理博主林安写过一段很扎心的话：「你对所有人都温柔，就是对自己残忍。你透支自己温暖别人的样子，其实是在告诉所有人——我的感受不重要。」她管这叫「隐性允许」：你允许别人随便用你，是因为你以为自己「应该被需要」。</div>
+            <div class="p">阿德勒在《被讨厌的勇气》里讲得很直接：「一切烦恼都来自人际关系。」讨好型人格的核心恐惧，是「被讨厌」。于是你不敢拒绝、不敢提需求、不敢反驳。短期看是关系和谐，长期看是慢性自我消耗。</div>
+            <div class="p">更扎心的是：过度付出往往养出依赖，不是尊重。同事习惯了让你帮忙，就不再觉得那是「帮」了；朋友习惯了你的迁就，就不再照顾你的感受了。你把所有刀都往自己身上揽，最后遍体鳞伤，别人只会说：「他不是一直都很能干吗？」</div>
+            <div class="p">真正的善良，不是对所有人都好，是先对自己好，再对值得的人好。请学会偶尔让人失望一下，因为退一步不是你的错，是对方越界了。</div>
+            <div class="cta">
+              <div style="font-weight:600;color:#134B43">【彩虹心理讨好型人格测评】</div>
+              <div style="margin-top:4px">扫码关注公众号 · 回复「讨好」获取</div>
+              <div class="qr"><img src="rainbowhu-qrcode.jpg" alt="彩虹心理公众号二维码"><div class="tip">长按识别二维码</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sources-block">
+    <b>📚 整合来源（7 位博主）：</b>
+    <div class="src-list">① @柳柳的微博 — 「半熟恋人5」长文回应 1 亿阅读<br>② @林安在这里 — 「何炅式讨好型人格」深度解读<br>③ @何炅话题bot — 「不太敢让别人失望」标准句式<br>④ @谢胜子 — 浓建议话题原文（40 万赞 / 12 万转）<br>⑤ @喵星君大大 — 「人都只想被安慰，不想被教育」<br>⑥ @心智复利 — 掏心掏肺列方案反疏远<br>⑦ @a朱晓迪 — 像太阳一样的人 / 爱的能力</div>
+  </div>
+</div>
+</div>
+
+<!-- ============ TOP3 ============ -->
+<div class="theme-section">
+<div class="theme-header">
+  <span class="theme-tag" style="background:#f3e5f5;color:#6b5b95">💜 主题：亲密关系（课题分离 / 边界感）</span>
+  <span class="rank-pill">🥉 RANK 3 · 88 分</span>
+</div>
+
+<div class="heatmap-card">
+  <div class="heatmap-header">
+    <div class="heatmap-title">关系再好，也别给太浓建议：越浓的关系，越要轻轻放</div>
+    <div class="heatmap-score">88 分</div>
+  </div>
+  <div class="heatmap-body">
+    <div class="heatmap-left">
+      <div class="heatmap-info"><div class="k">主题分类</div><div class="v" style="color:#6b5b95">亲密关系 / 课题分离 / 边界感</div></div>
+      <div class="heatmap-info"><div class="k">字数</div><div class="v">701 字（400-800 区间）</div></div>
+      <div class="heatmap-info"><div class="k">整合博主</div><div class="v">@谢胜子 @喵星君大大 @心智复利 @心理咨询师李波 @大眼仔心理 @曹大刚心理治疗师 @三联生活周刊 @施洁_课题分离</div></div>
+      <div class="heatmap-info"><div class="k">关键词</div><div class="v" style="font-size:13px">课题分离 | 边界感 | 浓建议 | 屏蔽力 | 谢胜子 | 阿德勒 | 亲密关系</div></div>
+      <div class="heatmap-info"><div class="k">热点数据</div><div class="v" style="color:#6b5b95">「关系再好也别给太浓建议」1.2 亿阅读 / 8 万讨论<br>「课题分离能解决所有人际关系烦恼」心理成长联盟话题<br>屏蔽力 + 0.5+0.5=1 婚姻模型<br>「不要对所有关系寄予同等期望」分级社交</div></div>
+      <div class="heatmap-info"><div class="k">转化入口</div><div class="v" style="color:#134B43">【彩虹心理亲密关系边界感测评】<br>回复"边界"获取</div></div>
+      <div class="score-grid">
+        <div class="score-item"><span class="n">26</span><span class="l">题材热度</span></div>
+        <div class="score-item"><span class="n">23</span><span class="l">情绪共鸣</span></div>
+        <div class="score-item"><span class="n">18</span><span class="l">阅读适配</span></div>
+        <div class="score-item"><span class="n">13</span><span class="l">传播潜力</span></div>
+        <div class="score-item"><span class="n">8</span><span class="l">转化引导</span></div>
+      </div>
+    </div>
+    <div class="heatmap-right">
+      <div class="phone-mock">
+        <div class="phone-frame">
+          <div class="phone-status"><span>9:41</span><span>📶 🔋</span></div>
+          <div class="phone-content">
+            <h2>关系再好，也别给太浓建议：<br>越浓的关系，越要轻轻放</h2>
+            <div class="p no-indent">你有没有被最亲的人狠狠伤过——不是你做错了什么，而是你那句「我是为你好」。</div>
+            <div class="p">今年六月，微博话题#关系再好也别给太浓建议#冲上热搜，1.2亿阅读，8万讨论。青年作家谢胜子写了一句话，被转发12万次、点赞40万：「关系再好，也不要给很浓很浓的建议。我不愿扭曲他人意志。」</div>
+            <div class="p">博主「喵星君大大」的评论戳中无数人：「人都只想被安慰，不想被教育。你给他讲得越多，越显得你在教他做事——这其实是隐形的优越感。」博主「心智复利」补充：「成年人不需要答案，只需要被理解。」</div>
+            <div class="p">这背后，是一个被反复验证的心理学概念：阿德勒的「课题分离」。它的判定标准只有一句话——谁承担最终结果，就是谁的课题。</div>
+            <div class="p">国家卫健委心理治疗师曹大刚讲得很通透：课题分离有三个维度——边界感（不干涉也不被干涉）、掌控感（专注自己该负责的）、抛离不可控（不背能力外的责任）。</div>
+            <div class="p">翻译成大白话：他的情绪归他，你的情绪归你。伴侣下班脸色不好，你可以问一句「怎么了」，但不必把对方的阴霾扛到自己头顶上过夜。</div>
+            <div class="p">「三联生活周刊」采访了一位小学心理教师施洁。她说哪怕是成年人，「尊重他人情境，放下改造情结」也是需要不断练习的事。她在校内组织过多次课题分离的家校工作坊，参与者反馈最多的是：「对他人的尊重与分离，让我内耗减轻了不少。」</div>
+            <div class="p">我们这一代人的痛苦，很少来自陌生人，往往来自最亲的人——以爱之名、以经验之名、以「我懂你」之名。所以，学会课题分离，不是变冷漠，是给彼此留一点不被侵入的空间。该说的话轻轻说，该给的意见淡淡提。能并肩走完一段，已经是难得的缘。</div>
+            <div class="p">愿你既能守护好自己，也能放手让对方活成 ta 想成为的样子。</div>
+            <div class="cta">
+              <div style="font-weight:600;color:#134B43">【彩虹心理亲密关系边界感测评】</div>
+              <div style="margin-top:4px">扫码关注公众号 · 回复「边界」获取</div>
+              <div class="qr"><img src="rainbowhu-qrcode.jpg" alt="彩虹心理公众号二维码"><div class="tip">长按识别二维码</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sources-block">
+    <b>📚 整合来源（8 位博主）：</b>
+    <div class="src-list">① @谢胜子 — 1.2 亿阅读话题原文作者（40 万赞 / 12 万转）<br>② @喵星君大大 — 「人都只想被安慰，不想被教育」<br>③ @心智复利 — 成年人不需要答案只需要被理解<br>④ @心理咨询师李波 — 课题分离落地方法论<br>⑤ @大眼仔心理 — #心理成长联盟 课题分离官方解读<br>⑥ @曹大刚心理治疗师 — 国家卫健委 / 屏蔽力三维度<br>⑦ @三联生活周刊 — 施洁心理教师家校工作坊<br>⑧ @施洁_课题分离 — 尊重他人情境放下改造情结</div>
+  </div>
+</div>
+</div>
+
+<div class="footer-qr">
+  <img src="rainbowhu-qrcode.jpg" alt="彩虹心理公众号二维码">
+  <div class="tip">🌈 关注「彩虹心理」公众号</div>
+  <div class="sub">每天懂一点心理学 · 懂你，也懂如何被懂得</div>
+</div>
+
+<div class="reminder">
+  <h4>⏰ 22:00 公众号定时发布提醒</h4>
+  <p>建议优先推送 RANK 1「打工人最隐秘的崩溃」→ 周末前夜，情绪共鸣高峰<br>次推 RANK 2「讨好型人格」 → 长期主义，吸引深度读者<br>第三篇 RANK 3「课题分离」 → 周日早间补发，做思考型内容沉淀</p>
+</div>
+
+</div>
+</body>
+</html>

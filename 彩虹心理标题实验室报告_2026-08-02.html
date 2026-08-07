@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>彩虹心理标题实验室报告 2026-08-02</title>
+<style>
+:root{--brand:#134B43;--gold:#C89B52;--bg:#F7F3EA;--card:#fff;--ink:#2c3e50;--ink2:#5a6c7d;--ink3:#95a5a6;--green:#27ae60;--red:#e74c3c;--border:#e8ece9;--purple:#9c27b0;--blue:#3f51b5;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--ink);line-height:1.8;}
+.wrap{max-width:960px;margin:0 auto;padding:24px 16px 60px;}
+.header{text-align:center;padding:40px 20px 30px;background:linear-gradient(135deg,var(--brand) 0%,#1a6655 100%);border-radius:16px;color:#fff;margin-bottom:28px;}
+.header h1{font-size:26px;margin-bottom:8px;font-weight:700;}
+.header .date{font-size:14px;opacity:.85;}
+.header .brand{font-size:12px;opacity:.7;margin-top:6px;}
+.score-badge{display:inline-block;background:var(--gold);color:#fff;font-size:12px;padding:2px 10px;border-radius:20px;font-weight:600;margin-left:8px;}
+.section{background:var(--card);border-radius:12px;padding:24px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,.04);}
+.section h2{font-size:18px;color:var(--brand);margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid var(--border);display:flex;align-items:center;}
+.section h2 .icon{margin-right:8px;}
+
+/* TOP10 card */
+.top-card{border:2px solid var(--gold);border-radius:12px;padding:20px;margin-bottom:16px;background:linear-gradient(135deg,#fff8ee 0%,#fff 100%);position:relative;overflow:hidden;}
+.top-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:var(--gold);}
+.top-card .rank{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;background:var(--gold);color:#fff;border-radius:50%;font-size:14px;font-weight:700;margin-right:10px;}
+.top-card .t-title{font-size:18px;font-weight:600;color:var(--ink);}
+.top-card .meta{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0;font-size:12px;color:var(--ink3);}
+.top-card .meta span{background:#f0f5f3;padding:2px 8px;border-radius:4px;}
+.top-card .score-bar-wrap{display:flex;align-items:center;gap:10px;margin:6px 0;}
+.top-card .score-label{font-size:11px;color:var(--ink3);width:80px;text-align:right;}
+.top-card .score-bar{flex:1;height:6px;background:#eee;border-radius:3px;overflow:hidden;}
+.top-card .score-fill{height:100%;border-radius:3px;}
+.top-card .score-val{font-size:12px;color:var(--brand);font-weight:600;min-width:30px;text-align:right;}
+.top-card .analysis{margin-top:12px;padding:12px;background:#fff;border-radius:8px;border-left:3px solid var(--gold);font-size:13px;color:var(--ink2);}
+
+/* Normal card */
+.normal-card{border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:12px;}
+.normal-card .t-title{font-size:16px;font-weight:600;}
+.normal-card .meta{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0;font-size:12px;color:var(--ink3);}
+.normal-card .meta span{background:#f0f5f3;padding:2px 8px;border-radius:4px;}
+.normal-card .score{font-size:14px;color:var(--brand);font-weight:600;}
+
+/* Group header */
+.group-header{background:var(--brand);color:#fff;padding:10px 16px;border-radius:8px;font-size:15px;font-weight:600;margin:24px 0 12px;display:flex;align-items:center;}
+.group-header .score-avg{font-size:12px;opacity:.8;margin-left:auto;font-weight:400;}
+
+/* Summary */
+.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:16px 0;}
+.summary-item{text-align:center;padding:12px 4px;background:#f9fbfa;border-radius:8px;}
+.summary-item .num{font-size:20px;font-weight:700;color:var(--brand);}
+.summary-item .lbl{font-size:11px;color:var(--ink3);margin-top:4px;}
+
+/* QR */
+.qr-section{text-align:center;padding:30px 20px;background:linear-gradient(135deg,#134B43 0%,#1a6655 100%);border-radius:12px;color:#fff;margin-top:20px;}
+.qr-section img{width:160px;height:160px;border-radius:12px;margin:16px auto;display:block;background:#fff;padding:8px;}
+.qr-section p{font-size:14px;opacity:.9;}
+.qr-section .cta{font-size:16px;font-weight:600;margin-bottom:8px;color:var(--gold);}
+
+/* Type tag */
+.type-tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-weight:600;}
+.type-反常识{background:#e3f2fd;color:#1565c0;}
+.type-悬念{background:#f3e5f5;color:#7b1fa2;}
+.type-数字承诺{background:#fff3e0;color:#e65100;}
+.type-痛点直击{background:#ffebee;color:#c62828;}
+.type-第一人称{background:#e8f5e9;color:#2e7d32;}
+.type-情绪共鸣{background:#fce4ec;color:#c62828;}
+.type-替人发声{background:#e8f5e9;color:#2e7d32;}
+.type-对话{background:#e3f2fd;color:#1565c0;}
+.type-专业{background:#f5f5f5;color:#616161;}
+.type-治愈{background:#fff8e1;color:#f57f17;}
+
+/* Radar legend */
+.radar-legend{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0;}
+.radar-legend span{font-size:12px;padding:2px 8px;border-radius:4px;background:#f0f5f3;color:var(--ink2);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="header">
+  <h1>🔬 彩虹心理标题实验室</h1>
+  <div class="date">2026年8月2日 星期日 · 基于今日雷达 TOP5 生成</div>
+  <div class="brand">彩虹心理 | 50个标题 × 5维度评分 × TOP10精选</div>
+</div>
+
+<div class="summary">
+  <div class="summary-item"><div class="num">50</div><div class="lbl">生成标题</div></div>
+  <div class="summary-item"><div class="num">10</div><div class="lbl">TOP10精选</div></div>
+  <div class="summary-item"><div class="num">91</div><div class="lbl">TOP10平均分</div></div>
+  <div class="summary-item"><div class="num">5</div><div class="lbl">覆盖选题</div></div>
+</div>
+
+<div class="section">
+  <h2><span class="icon">📊</span> 评分维度说明</h2>
+  <div class="radar-legend">
+    <span>🧠 好奇心缺口（25分）</span>
+    <span>💔 情绪触发（25分）</span>
+    <span>📚 专业可信度（15分）</span>
+    <span>📢 传播潜力（20分）</span>
+    <span>🎯 转化引导（15分）</span>
+  </div>
+  <p style="font-size:13px;color:var(--ink2);margin-top:8px;">每个标题按5维度独立评分，满分100分。TOP10覆盖5个选题，确保选题多样性不被单一话题垄断。</p>
+</div>
+
+<div class="section">
+  <h2><span class="icon">🏆</span> TOP10 精选标题</h2>
+
+  <div class="top-card">
+    <div style="display:flex;align-items:center;">
+      <span class="rank">1</span>
+      <span class="t-title">内耗不是懒，是你的大脑后台偷偷开了70个程序在烧电</span>
+      <span class="score-badge">94分</span>
+    </div>
+    <div class="meta">
+      <span>来源选题：内耗不是懒</span>
+      <span class="type-tag type-反常识">反常识型</span>
+      <span>平台：公众号/小红书/抖音</span>
+    </div>
+    <div class="score-bar-wrap"><span class="score-label">好奇心 24</span><div class="score-bar"><div class="score-fill" style="width:96%;background:#e74c3c"></div></div><span class="score-val">24/25</span></div>
+    <div class="score-bar-wrap"><span class="score-label">情绪触发 24</span><div class="score-bar"><div class="score-fill" style="width:96%;background:#e74c3c"></div></div><span class="score-val">24/25</span></div>
+    <div class="score-bar-wrap"><span class="score-label">专业可信 12</span><div class="score-bar"><div class="score-fill" style="width:80%;background:#3498db"></div></div><span class="score-val">12/15</span></div>
+    <div class="score-bar-wrap"><span class="score-label">传播潜力 20</span><div class="score-bar"><div class="score-fill" style="width:100%;background:#f1c40f"></div></div><span class="score-val">20/20</span></div>
+    <div class="score-bar-wrap"><span class="score-label">转化引导 14</span><div class="score-bar"><div class="score-fill" style="width:93%;background:#27ae60"></div></div><span class="score-val">14/15</span></div>
+    <div class="analysis">反常识结构（「不是…是…」）直接颠覆「内耗=懒」的全民认知，「大脑后台」「70个程序」「烧电」三重视觉隐喻将抽象认知过程转化为可感知画面，技术词汇+日常比喻的混搭制造专业与通俗的共振，跨平台传播力极强，转化自然导向内耗评估咨询。</div>
+  </div>
+
+  <div class="top-card">
+    <div style="display:flex;align-items:center;">
+      <span class="rank">2</span>
+      <span class="t-title">不是他变了，是你被「驯养」到离不开忽冷忽热</span>
+      <span class="score-badge">91分</span>
+    </div>
+    <div class="meta">
+      <span>来源选题：弃猫效应</span>
+      <span class="type-tag type-反常识">反常识型</span>
+      <span>平台：公众号/小红书</span>
+    </div>
+    <div class="score-bar-wrap"><span class="score-label">好奇心 23</span><div class="score-bar"><div class="score-fill" style="width:92%;background:#e74c3c"></div></div><span class="score-val">23/25</span></div>
+    <div class="score-bar-wrap"><span class="score-label">情绪触发 24</span><div class="score-bar"><div class="score-fill" style="width:96%;background:#e74c3c"></div></div><span class="score-val">24/25</span></div>
+    <div class="score-bar-wrap"><span class="score-label">专业可信 12</span><div class="score-bar"><div class="score-fill" style="width:80%;background:#3498db"></div></div><span class="score-val">12/15</span></div>
+    <div class="score-bar-wrap"><span class="score-label">传播潜力 19</span><div class="score-bar"><div class="score-fill" style="width:95%;background:#f1c40f"></div></div><span class="score-val">19/20</span></div>
+    <div class="score-bar-wrap"><span class="score-label">转化引导 13</span><div class="score-bar"><div class="score-fill" style="width:87%;background:#27ae60"></div></div><span class="score-val">13/15</span></div>
+    <div class="analysis">反常识结构将「他变了」的受害者叙事重新定义为「被驯养」的被动依赖，「驯养」一词精准映射间歇性强化的成瘾机制，兼具情感冲击力与心理学概念感，命中焦虑型依恋人群的核心痛点，亲密关系咨询转化路径清晰。</div>
+  </div>
+
+  <div class="top-card">
+    <div style="display:flex;align-items:center;">
+      <span class="rank">3</span>
+      <span class="t-title">弃猫效应正在批量制造焦虑型依恋，而你以为是爱情</span>
+      <span class="score-badge">91分</span>
+    </div>
+    <div class="meta">
+      <span>来源选题：弃猫效应</span>
+      <span class="type-tag type-痛点直击">痛点直击型</span>
+      <span>平台：公众号/小红书</span>
+    </div>
+    <div class="score-bar-wrap"><span class="score-label">好奇心 23</span><div class="score-bar"><div class="score-fill" style="width:92%;background:#e74c3c"></div></div><span class="score-val">23/25</span></div>
+    <div class="score-bar-wrap"><span class="score-label">情绪触发 24</span><div class="score-bar"><div class="score-fill" style="width:96%;background:#e74c3c"></div></div><span class="score-val">24/25</span></div>
+    <div class="score-bar-wrap"><span class="score-label">专业可信 12</span><div class="score-bar"><div class="score-fill" style="width:80%;background:#3498db"></div></div><span class="score-val">12/15</span></div>
+    <div class="score-bar-wrap"><span class="score-label">传播潜力 19</span><div class="score-bar"><div class="score-fill" style="width:95%;background:#f1c40f"></div></div><span class="score-val">19/20</span></div>
+    <div class="score-bar-wrap"><span class="score-label">转化引导 13</span><div class="score-bar"><div class="score-fill" style="width:87%;background:#27ae60"></div></div><span class="score-val">13/15</span></div>
+    <div class="analysis">「批量制造」制造社会议题感，「你以为是爱情」直接命名读者的认知盲区，将个体痛苦锚定为群体现象，「焦虑型依恋」专业术语提升可信度，结尾留白自然引导依恋类型自测和亲密关系咨询。</div>
+  </div>
+
+  <div class="top-card">
+    <div style="display:flex;align-items:center;">
+      <span class="rank">4</span>
+      <span class="t-title">不是脑子想不清楚，是身体早就说了不，你假装没听见</span>
+      <span class="score-badge">91分</span>
+    </div>
+    <div class="meta">
+      <span>来源选题：身体知道答案</span>
+      <span class="type-tag type-反常识">反常识型</span>
+      <span>平台：公众号/小红书</span>
+    </div>
+    <div class="score-bar-wrap"><span class="score-label">好奇心 23</span><div class="score-bar"><div class="score-fill" style="width:92%;background:#e74c3c"></div></div><span class="score-val">23/25</span></div>
+    <div class="score-bar-wrap"><span class="score-label">情绪触发 24</span><div class="score-bar"><div class="score-fill" style="width:96%;background:#e74c3c"></div></div><span class="score-val">24/25</span></div>
+    <div class="score-bar-wrap"><span class="score-label">专业可信 12</span><div class="score-bar"><div class="score-fill" style="width:80%;background:#3498db"></div></div><span class="score-val">12/15</span></div>
+    <div class="score-bar-wrap"><span class="score-label">传播潜力 19</span><div class="score-bar"><div class="score-fill" style="width:95%;background:#f1c40f"></div></div><span class="score-val">19/20</span></div>
+    <div class="score-bar-wrap"><span class="score-label">转化引导 13</span><div class="score-bar"><div class="score-fill" style="width:87%;background:#27ae60"></div></div><span class="score-val">13/15</span></div>
+    <div class="analysis">反常识结构挑战「理性至上」的集体信仰，「身体早就说了不」赋予身体以主体性和先知性，「假装没听见」精准刻画身心撕裂的自我保护机制，武志红IP势能+反直觉命名，身心整合咨询转化自然。</div>
+  </div>
+
+  <div class="top-card">
+    <div style="display:flex;align-items:center;">
+      <span class="rank">5</span>
+      <span class="t-title">为什么你什么都没做，却比加班到深夜的人还累？</span>
+      <span class="score-badge">91分</span>
+    </div>
+    <div class="meta">
+      <span>来源选题：内耗不是懒</span>
+      <span class="type-tag type-悬念">悬念型</span>
+      <span>平台：公众号/小红书/抖音</span>
+    </div>
+    <div class="score-bar-wrap"><span class="score-label">好奇心 24</span><div class="score-bar"><div class="score-fill" style="width:96%;background:#e74c3c"></div></div><span class="score-val">24/25</span></div>
+    <div class="score-bar-wrap"><span class="score-label">情绪触发 24</span><div class="score-bar"><div class="score-fill" style="width:96%;background:#e74c3c"></div></div><span class="score-val">24/25</span></div>
+    <div class="score-bar-wrap"><span class="score-label">专业可信 10</span><div class="score-bar"><div class="score-fill" style="width:67%;background:#3498db"></div></div><span class="score-val">10/15</span></div>
+    <div class="score-bar-wrap"><span class="score-label">传播潜力 20</span><div class="score-bar"><div class="score-fill" style="width:100%;background:#f1c40f"></div></div><span class="score-val">20/20</span></div>
+    <div class="score-bar-wrap"><span class="score-label">转化引导 13</span><div class="score-bar"><div class="score-fill" style="width:87%;background:#27ae60"></div></div><span class="score-val">13/15</span></div>
+    <div class="analysis">悬念结构制造强烈信息缺口，「什么都没做vs加班到深夜」的对比制造认知冲突，读者会本能地自我代入并寻找答案，抖音口播/小红书图文/公众号长文三平台原生适配，内耗检测表转化入口设计自然。</div>
+  </div>
+
+  <div class="top-card">
+    <div style="display:flex;align-items:center;">
+      <span class="rank">6</span>
+      <span class="t-title">内耗正在批量烧毁年轻人的前额叶皮层，而你还在骂自己懒</span>
+      <span class="score-badge">91分</span>
+    </div>
+    <div class="meta">
+      <span>来源选题：内耗不是懒</span>
+      <span class="type-tag type-痛点直击">痛点直击型</span>
+      <span>平台：公众号/小红书</span>
+    </div>
+    <div class="score-bar-wrap"><span class="score-label">好奇心 23</span><div class="score-bar"><div class="score-fill" style="width:92%;background:#e74c3c"></div></div><span class="score-val">23/25</span></div>
+    <div class="score-bar-wrap"><span class="score-label">情绪触发 24</span><div class="score-bar"><div class="score-fill" style="width:96%;background:#e74c3c"></div></div><span class="score-val">24/25</span></div>
+    <div class="score-bar-wrap"><span class="score-label">专业可信 12</span><div class="score-bar"><div class="score-fill" style="width:80%;background:#3498db"></div></div><span class="score-val">12/15</span></div>
+    <div class="score-bar-wrap"><span class="score-label">传播潜力 19</span><div class="score-bar"><div class="score-fill" style="width:95%;background:#f1c40f"></div></div><span class="score-val">19/20</span></div>
+    <div class="score-bar-wrap"><span class="score-label">转化引导 13</span><div class="score-bar"><div class="score-fill" style="width:87%;background:#27ae60"></div></div><span class="score-val">13/15</span></div>
+    <div class="analysis">「批量烧毁」制造危机感和群体共鸣，「前额叶皮层」专业术语锚定脑科学可信度，「骂自己懒」直接戳中内耗者的自我攻击模式，危机叙事+专业背书双重驱动，内耗评估咨询转化强烈。</div>
+  </div>
+
+  <div class="top-card">
+    <div style="display:flex;align-items:center;">
+      <span class="rank">7</span>
+      <span class="t-title">不是痛苦在折磨你，是你对痛苦的抵抗在加倍折磨你</span>
+      <span class="score-badge">91分</span>
+    </div>
+    <div class="meta">
+      <span>来源选题：痛苦抵抗</span>
+      <span class="type-tag type-反常识">反常识型</span>
+      <span>平台：公众号/小红书</span>
+    </div>
+    <div class="score-bar-wrap"><span class="score-label">好奇心 23</span><div class="score-bar"><div class="score-fill" style="width:92%;background:#e74c3c"></div></div><span class="score-val">23/25</span></div>
+    <div class="score-bar-wrap"><span class="score-label">情绪触发 24</span><div class="score-bar"><div class="score-fill" style="width:96%;background:#e74c3c"></div></div><span class="score-val">24/25</span></div>
+    <div class="score-bar-wrap"><span class="score-label">专业可信 12</span><div class="score-bar"><div class="score-fill" style="width:80%;background:#3498db"></div></div><span class="score-val">12/15</span></div>
+    <div class="score-bar-wrap"><span class="score-label">传播潜力 19</span><div class="score-bar"><div class="score-fill" style="width:95%;background:#f1c40f"></div></div><span class="score-val">19/20</span></div>
+    <div class="score-bar-wrap"><span class="score-label">转化引导 13</span><div class="score-bar"><div class="score-fill" style="width:87%;background:#27ae60"></div></div><span class="score-val">13/15</span></div>
+    <div class="analysis">反常识结构将「痛苦=敌人」的全民认知翻转为「抵抗=真正的敌人」，武志红亲身经历+庄子鼓盆而歌双重背书，「加倍折磨」量化对抗的代价，ACT接纳承诺疗法框架自然嵌入，情绪疗愈咨询导流精准。</div>
+  </div>
+
+  <div class="top-card">
+    <div style="display:flex;align-items:center;">
+      <span class="rank">8</span>
+      <span class="t-title">武志红北大抑郁两年：为什么越不抵抗，痛苦消失得越快？</span>
+      <span class="score-badge">91分</span>
+    </div>
+    <div class="meta">
+      <span>来源选题：痛苦抵抗</span>
+      <span class="type-tag type-悬念">悬念型</span>
+      <span>平台：公众号/知乎</span>
+    </div>
+    <div class="score-bar-wrap"><span class="score-label">好奇心 24</span><div class="score-bar"><div class="score-fill" style="width:96%;background:#e74c3c"></div></div><span class="score-val">24/25</span></div>
+    <div class="score-bar-wrap"><span class="score-label">情绪触发 23</span><div class="score-bar"><div class="score-fill" style="width:92%;background:#e74c3c"></div></div><span class="score-val">23/25</span></div>
+    <div class="score-bar-wrap"><span class="score-label">专业可信 13</span><div class="score-bar"><div class="score-fill" style="width:87%;background:#3498db"></div></div><span class="score-val">13/15</span></div>
+    <div class="score-bar-wrap"><span class="score-label">传播潜力 19</span><div class="score-bar"><div class="score-fill" style="width:95%;background:#f1c40f"></div></div><span class="score-val">19/20</span></div>
+    <div class="score-bar-wrap"><span class="score-label">转化引导 12</span><div class="score-bar"><div class="score-fill" style="width:80%;background:#27ae60"></div></div><span class="score-val">12/15</span></div>
+    <div class="analysis">「武志红」「北大抑郁两年」双权威IP制造可信好奇，「越不抵抗，消失得越快」直接挑战「对抗=解决」的直觉逻辑，知乎深度读者和公众号长文读者高度匹配，ACT疗法和躯体体验疗法转化路径清晰。</div>
+  </div>
+
+  <div class="top-card">
+    <div style="display:flex;align-items:center;">
+      <span class="rank">9</span>
+      <span class="t-title">低分享欲正在批量摧毁年轻人的情绪免疫系统</span>
+      <span class="score-badge">91分</span>
+    </div>
+    <div class="meta">
+      <span>来源选题：低分享欲</span>
+      <span class="type-tag type-痛点直击">痛点直击型</span>
+      <span>平台：公众号/小红书</span>
+    </div>
+    <div class="score-bar-wrap"><span class="score-label">好奇心 23</span><div class="score-bar"><div class="score-fill" style="width:92%;background:#e74c3c"></div></div><span class="score-val">23/25</span></div>
+    <div class="score-bar-wrap"><span class="score-label">情绪触发 24</span><div class="score-bar"><div class="score-fill" style="width:96%;background:#e74c3c"></div></div><span class="score-val">24/25</span></div>
+    <div class="score-bar-wrap"><span class="score-label">专业可信 12</span><div class="score-bar"><div class="score-fill" style="width:80%;background:#3498db"></div></div><span class="score-val">12/15</span></div>
+    <div class="score-bar-wrap"><span class="score-label">传播潜力 19</span><div class="score-bar"><div class="score-fill" style="width:95%;background:#f1c40f"></div></div><span class="score-val">19/20</span></div>
+    <div class="score-bar-wrap"><span class="score-label">转化引导 13</span><div class="score-bar"><div class="score-fill" style="width:87%;background:#27ae60"></div></div><span class="score-val">13/15</span></div>
+    <div class="analysis">「批量摧毁」制造社会危机叙事，「情绪免疫系统」将心理功能身体化，读者瞬间理解低分享欲的生物学后果，热搜话题势能叠加，情绪评估咨询和分享欲恢复练习转化双路径。</div>
+  </div>
+
+  <div class="top-card">
+    <div style="display:flex;align-items:center;">
+      <span class="rank">10</span>
+      <span class="t-title">我放弃和抑郁症对抗的第二年，它自己走了</span>
+      <span class="score-badge">90分</span>
+    </div>
+    <div class="meta">
+      <span>来源选题：痛苦抵抗</span>
+      <span class="type-tag type-第一人称">第一人称型</span>
+      <span>平台：公众号/小红书</span>
+    </div>
+    <div class="score-bar-wrap"><span class="score-label">好奇心 23</span><div class="score-bar"><div class="score-fill" style="width:92%;background:#e74c3c"></div></div><span class="score-val">23/25</span></div>
+    <div class="score-bar-wrap"><span class="score-label">情绪触发 24</span><div class="score-bar"><div class="score-fill" style="width:96%;background:#e74c3c"></div></div><span class="score-val">24/25</span></div>
+    <div class="score-bar-wrap"><span class="score-label">专业可信 11</span><div class="score-bar"><div class="score-fill" style="width:73%;background:#3498db"></div></div><span class="score-val">11/15</span></div>
+    <div class="score-bar-wrap"><span class="score-label">传播潜力 19</span><div class="score-bar"><div class="score-fill" style="width:95%;background:#f1c40f"></div></div><span class="score-val">19/20</span></div>
+    <div class="score-bar-wrap"><span class="score-label">转化引导 13</span><div class="score-bar"><div class="score-fill" style="width:87%;background:#27ae60"></div></div><span class="score-val">13/15</span></div>
+    <div class="analysis">第一人称叙事制造强烈代入感和希望感，「放弃对抗」是反常识行动，「它自己走了」是治愈结果，时间线「第二年」提供可期待的时间锚点，治愈向情绪疗愈咨询和接纳练习音频导流自然。</div>
+  </div>
+</div>
+
+<!-- 选题1 -->
+<div class="group-header">🎯 选题1：弃猫效应（亲密关系 · 情感操控）<span class="score-avg">10个标题</span></div>
+<div class="normal-card"><div class="t-title">你是不是也经历过：他热情三天，冷漠七天，你却在第八天开始自责</div><div class="meta"><span class="type-tag type-情绪共鸣">情绪共鸣</span><span>87分</span></div></div>
+<div class="normal-card"><div class="t-title">弃猫效应的4个阶段，第3个阶段最危险</div><div class="meta"><span class="type-tag type-数字承诺">数字承诺</span><span>85分</span></div></div>
+<div class="normal-card"><div class="t-title">「我不是恋爱脑，我只是被间歇性强化的猎物」</div><div class="meta"><span class="type-tag type-替人发声">替人发声</span><span>86分</span></div></div>
+<div class="normal-card"><div class="t-title">他对我越好，我越害怕失去——后来我才知道这叫弃猫效应</div><div class="meta"><span class="type-tag type-第一人称">第一人称</span><span>88分</span></div></div>
+<div class="normal-card"><div class="t-title">「你为什么不理我了？」——这句话问出来，你就已经被弃猫了</div><div class="meta"><span class="type-tag type-对话">对话</span><span>88分</span></div></div>
+<div class="normal-card"><div class="t-title">为什么越对你好的人，越知道怎么让你崩溃？</div><div class="meta"><span class="type-tag type-悬念">悬念</span><span>89分</span></div></div>
+<div class="normal-card"><div class="t-title">间歇性强化与创伤联结：弃猫效应的心理学机制</div><div class="meta"><span class="type-tag type-专业">专业</span><span>78分</span></div></div>
+<div class="normal-card"><div class="t-title">走出弃猫效应的第一步：承认那不是爱，是驯养</div><div class="meta"><span class="type-tag type-治愈">治愈</span><span>88分</span></div></div>
+<div class="normal-card" style="border:2px solid var(--gold);"><div class="t-title">不是他变了，是你被「驯养」到离不开忽冷忽热</div><div class="meta"><span class="type-tag type-反常识">反常识</span><span>91分 · TOP2</span></div></div>
+<div class="normal-card" style="border:2px solid var(--gold);"><div class="t-title">弃猫效应正在批量制造焦虑型依恋，而你以为是爱情</div><div class="meta"><span class="type-tag type-痛点直击">痛点直击</span><span>91分 · TOP3</span></div></div>
+
+<!-- 选题2 -->
+<div class="group-header">🎯 选题2：身体知道答案（自我成长 · 身心合一）<span class="score-avg">10个标题</span></div>
+<div class="normal-card"><div class="t-title">每次想辞职，身体比大脑先给了答案，只是你不敢听</div><div class="meta"><span class="type-tag type-情绪共鸣">情绪共鸣</span><span>89分</span></div></div>
+<div class="normal-card"><div class="t-title">武志红：做重大决定前，身体给出的3个信号别忽视</div><div class="meta"><span class="type-tag type-数字承诺">数字承诺</span><span>86分</span></div></div>
+<div class="normal-card"><div class="t-title">「别想了，你的身体比你的理性更诚实」</div><div class="meta"><span class="type-tag type-替人发声">替人发声</span><span>86分</span></div></div>
+<div class="normal-card"><div class="t-title">我学会信任身体后，终于辞掉了那份年薪30万的工作</div><div class="meta"><span class="type-tag type-第一人称">第一人称</span><span>88分</span></div></div>
+<div class="normal-card"><div class="t-title">「你到底想要什么？」——我问了大脑三个月，身体一秒就给了答案</div><div class="meta"><span class="type-tag type-对话">对话</span><span>88分</span></div></div>
+<div class="normal-card"><div class="t-title">为什么越用脑子做决定的人，越活得不开心？</div><div class="meta"><span class="type-tag type-悬念">悬念</span><span>89分</span></div></div>
+<div class="normal-card"><div class="t-title">躯体标记假说与内感受觉察：身体智慧的神经科学基础</div><div class="meta"><span class="type-tag type-专业">专业</span><span>76分</span></div></div>
+<div class="normal-card"><div class="t-title">只活在大脑里的人，身体正在一寸寸干枯</div><div class="meta"><span class="type-tag type-痛点直击">痛点直击</span><span>89分</span></div></div>
+<div class="normal-card"><div class="t-title">当你开始听懂身体说话，人生就再也骗不了你了</div><div class="meta"><span class="type-tag type-治愈">治愈</span><span>88分</span></div></div>
+<div class="normal-card" style="border:2px solid var(--gold);"><div class="t-title">不是脑子想不清楚，是身体早就说了不，你假装没听见</div><div class="meta"><span class="type-tag type-反常识">反常识</span><span>91分 · TOP4</span></div></div>
+
+<!-- 选题3 -->
+<div class="group-header">🎯 选题3：内耗不是懒（情绪心理 · 认知科学）<span class="score-avg">10个标题</span></div>
+<div class="normal-card"><div class="t-title">你明明什么都没做，却累得像跑了马拉松——这不是懒</div><div class="meta"><span class="type-tag type-情绪共鸣">情绪共鸣</span><span>89分</span></div></div>
+<div class="normal-card"><div class="t-title">内耗者的6大面具，第一种最隐蔽却最难察觉</div><div class="meta"><span class="type-tag type-数字承诺">数字承诺</span><span>86分</span></div></div>
+<div class="normal-card"><div class="t-title">「不是我不想动，是我的大脑在空转烧油，我停不下来」</div><div class="meta"><span class="type-tag type-替人发声">替人发声</span><span>88分</span></div></div>
+<div class="normal-card"><div class="t-title">确诊内耗型认知过载后，我才原谅了自己十年的「懒惰」</div><div class="meta"><span class="type-tag type-第一人称">第一人称</span><span>89分</span></div></div>
+<div class="normal-card"><div class="t-title">「你怎么又在发呆？」——我没发呆，我大脑正在跑满负荷</div><div class="meta"><span class="type-tag type-对话">对话</span><span>88分</span></div></div>
+<div class="normal-card"><div class="t-title">默认模式网络过度激活与认知资源耗竭：内耗的脑科学机制</div><div class="meta"><span class="type-tag type-专业">专业</span><span>76分</span></div></div>
+<div class="normal-card"><div class="t-title">停止内耗的第一步：把「我太懒了」改成「我的大脑在求救」</div><div class="meta"><span class="type-tag type-治愈">治愈</span><span>89分</span></div></div>
+<div class="normal-card" style="border:2px solid var(--gold);"><div class="t-title">为什么你什么都没做，却比加班到深夜的人还累？</div><div class="meta"><span class="type-tag type-悬念">悬念</span><span>91分 · TOP5</span></div></div>
+<div class="normal-card" style="border:2px solid var(--gold);"><div class="t-title">内耗正在批量烧毁年轻人的前额叶皮层，而你还在骂自己懒</div><div class="meta"><span class="type-tag type-痛点直击">痛点直击</span><span>91分 · TOP6</span></div></div>
+<div class="normal-card" style="border:2px solid var(--gold);"><div class="t-title">内耗不是懒，是你的大脑后台偷偷开了70个程序在烧电</div><div class="meta"><span class="type-tag type-反常识">反常识</span><span>94分 · TOP1</span></div></div>
+
+<!-- 选题4 -->
+<div class="group-header">🎯 选题4：痛苦抵抗（情绪疗愈 · 接纳）<span class="score-avg">10个标题</span></div>
+<div class="normal-card"><div class="t-title">你拼命想赶走悲伤，结果悲伤在你心里住了更久</div><div class="meta"><span class="type-tag type-情绪共鸣">情绪共鸣</span><span>88分</span></div></div>
+<div class="normal-card"><div class="t-title">对抗痛苦的3个代价，武志红用亲身经历告诉你</div><div class="meta"><span class="type-tag type-数字承诺">数字承诺</span><span>88分</span></div></div>
+<div class="normal-card"><div class="t-title">「允许自己悲伤，比强迫自己振作更需要勇气」</div><div class="meta"><span class="type-tag type-替人发声">替人发声</span><span>86分</span></div></div>
+<div class="normal-card"><div class="t-title">「你怎么还不走出来？」——我走不出来，是因为你一直在催我</div><div class="meta"><span class="type-tag type-对话">对话</span><span>87分</span></div></div>
+<div class="normal-card"><div class="t-title">你对抗情绪的样子，比情绪本身更伤人</div><div class="meta"><span class="type-tag type-痛点直击">痛点直击</span><span>89分</span></div></div>
+<div class="normal-card"><div class="t-title">接纳承诺疗法与情绪悖论：抵抗如何放大痛苦体验</div><div class="meta"><span class="type-tag type-专业">专业</span><span>77分</span></div></div>
+<div class="normal-card"><div class="t-title">真正的疗愈不是消灭痛苦，是学会和痛苦并肩坐着</div><div class="meta"><span class="type-tag type-治愈">治愈</span><span>88分</span></div></div>
+<div class="normal-card" style="border:2px solid var(--gold);"><div class="t-title">不是痛苦在折磨你，是你对痛苦的抵抗在加倍折磨你</div><div class="meta"><span class="type-tag type-反常识">反常识</span><span>91分 · TOP7</span></div></div>
+<div class="normal-card" style="border:2px solid var(--gold);"><div class="t-title">武志红北大抑郁两年：为什么越不抵抗，痛苦消失得越快？</div><div class="meta"><span class="type-tag type-悬念">悬念</span><span>91分 · TOP8</span></div></div>
+<div class="normal-card" style="border:2px solid var(--gold);"><div class="t-title">我放弃和抑郁症对抗的第二年，它自己走了</div><div class="meta"><span class="type-tag type-第一人称">第一人称</span><span>90分 · TOP10</span></div></div>
+
+<!-- 选题5 -->
+<div class="group-header">🎯 选题5：低分享欲（情绪心理 · 社交健康）<span class="score-avg">10个标题</span></div>
+<div class="normal-card"><div class="t-title">你越来越不想发朋友圈，不是成熟了，是累了</div><div class="meta"><span class="type-tag type-情绪共鸣">情绪共鸣</span><span>88分</span></div></div>
+<div class="normal-card"><div class="t-title">低分享欲的5个心理信号，第一个就戳中你</div><div class="meta"><span class="type-tag type-数字承诺">数字承诺</span><span>86分</span></div></div>
+<div class="normal-card"><div class="t-title">「我不是不想说，是我说了之后发现没人真正想听」</div><div class="meta"><span class="type-tag type-替人发声">替人发声</span><span>85分</span></div></div>
+<div class="normal-card"><div class="t-title">关闭朋友圈三年，我重新找回了说废话的能力</div><div class="meta"><span class="type-tag type-第一人称">第一人称</span><span>88分</span></div></div>
+<div class="normal-card"><div class="t-title">「你最近怎么不爱说话了？」——不是不爱说，是没力气说</div><div class="meta"><span class="type-tag type-对话">对话</span><span>86分</span></div></div>
+<div class="normal-card"><div class="t-title">受评忧虑与情绪劳动疲劳：低分享欲的心理机制与干预</div><div class="meta"><span class="type-tag type-专业">专业</span><span>76分</span></div></div>
+<div class="normal-card"><div class="t-title">保护你的分享欲，就像保护你内心最后一盏灯</div><div class="meta"><span class="type-tag type-治愈">治愈</span><span>87分</span></div></div>
+<div class="normal-card" style="border:2px solid var(--gold);"><div class="t-title">低分享欲不是性格内向，是你的前额叶皮层在发出求救信号</div><div class="meta"><span class="type-tag type-反常识">反常识</span><span>90分</span></div></div>
+<div class="normal-card" style="border:2px solid var(--gold);"><div class="t-title">为什么废话越多的人越幸福？心理学给出的答案让人沉默</div><div class="meta"><span class="type-tag type-悬念">悬念</span><span>90分</span></div></div>
+<div class="normal-card" style="border:2px solid var(--gold);"><div class="t-title">低分享欲正在批量摧毁年轻人的情绪免疫系统</div><div class="meta"><span class="type-tag type-痛点直击">痛点直击</span><span>91分 · TOP9</span></div></div>
+
+<div class="section">
+  <h2><span class="icon">📈</span> 数据洞察</h2>
+  <p style="font-size:14px;color:var(--ink2);line-height:2;">
+    <b>1. 反常识型统治力：</b>TOP10中4个反常识型标题，「不是…是…」结构持续验证为最强标题公式，直接颠覆读者已有认知，制造「原来如此」的顿悟感。<br>
+    <b>2. 情绪触发满分率：</b>TOP10中8个标题情绪维度达到24分（满分25），「驯养」「批量烧毁」「加倍折磨」等攻击性动词是核心情绪杠杆。<br>
+    <b>3. 悬念型高开低走：</b>悬念型在TOP10中仅2个，但平均分高达91分，说明悬念型门槛高、一旦命中传播爆发力极强。<br>
+    <b>4. 选题覆盖均衡：</b>5个选题全部进入TOP10，弃猫效应2个/内耗3个/痛苦3个/身体1个/分享1个，避免单一选题垄断。<br>
+    <b>5. 转化路径清晰：</b>每个TOP10标题均自然嵌入咨询/测评转化入口，内耗评估、依恋自测、情绪疗愈、身心整合四大方向完整覆盖。<br>
+  </p>
+</div>
+
+<div class="qr-section">
+  <div class="cta">扫码关注彩虹心理</div>
+  <p>回复「咨询」预约首次评估</p>
+  <img src="rainbowhu-qrcode.jpg" alt="彩虹心理公众号二维码">
+  <p style="font-size:12px;opacity:.7;margin-top:8px;">彩虹心理 · 专业心理咨询 · 温暖保密</p>
+</div>
+
+</div>
+</body>
+</html>

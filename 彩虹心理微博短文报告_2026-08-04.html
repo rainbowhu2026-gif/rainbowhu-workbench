@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>彩虹心理微博短文报告 2026-08-04</title>
+<style>
+:root{
+  --bg:#f5f5f7; --card:#fff; --ink:#1d1d1f; --ink2:#6e6e73; --ink3:#a1a1a6;
+  --line:#e5e5e7; --accent:#34c759; --accent2:#c06c84; --warn:#f6a957;
+  --r1:#ff6b6b;--r2:#feca57;--r3:#48dbfb;
+  --green:#2e7d32;--amber:#856404;--purple:#6b5b95;--blue:#1976d2;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;background:var(--bg);color:var(--ink);font-size:14px;-webkit-font-smoothing:antialiased}
+
+.header{background:linear-gradient(135deg,#134B43,#1a6b5e);color:#fff;padding:48px 28px 36px;text-align:center}
+.header h1{font-size:26px;font-weight:800;margin-bottom:8px;letter-spacing:.5px}
+.header .sub{font-size:14px;opacity:.85;margin-bottom:6px}
+.header .date{font-size:12px;opacity:.7}
+.header .reminder{display:inline-block;margin-top:16px;padding:8px 20px;background:rgba(255,255,255,.2);border-radius:20px;font-size:13px;font-weight:700;backdrop-filter:blur(4px)}
+
+.container{max-width:900px;margin:0 auto;padding:24px 20px 60px}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:30px}
+.stat-card{background:var(--card);border-radius:16px;padding:20px;text-align:center;box-shadow:0 2px 12px rgba(0,0,0,.05);border:1px solid var(--line)}
+.stat-card .num{font-size:36px;font-weight:800;line-height:1.1}
+.stat-card .label{font-size:12px;color:var(--ink2);margin-top:6px;font-weight:600}
+.num.c1{color:var(--accent2)} .num.c2{color:var(--purple)} .num.c3{color:var(--accent)} .num.c4{color:var(--warn)}
+
+.section-title{font-size:17px;font-weight:800;margin:30px 0 16px;display:flex;align-items:center;gap:10px}
+.section-title .icon{width:32px;height:32px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px}
+
+.article-card{background:var(--card);border-radius:18px;padding:24px;margin-bottom:20px;box-shadow:0 4px 20px rgba(0,0,0,.06);border:1px solid var(--line);position:relative;overflow:hidden}
+.article-card .rank-badge{position:absolute;top:0;right:0;width:56px;height:56px;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:0 0 0 18px;font-weight:800;color:#fff;font-size:11px;line-height:1.3}
+.article-card .rank-badge .rn{font-size:20px}
+.rb-1{background:#ff6b6b} .rb-2{background:#feca57;color:#1d1d1f!important} .rb-3{background:#48dbfb}
+
+.article-header{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:14px;padding-right:48px}
+.article-header .title{font-size:18px;font-weight:800;line-height:1.4;flex:1 1 100%}
+.article-meta{display:flex;gap:8px;flex-wrap:wrap}
+.tag{padding:4px 10px;border-radius:10px;font-size:11px;font-weight:700}
+.tag-theme{padding:4px 12px;border-radius:12px;font-size:11px;font-weight:700}
+
+.score-row{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.score-item{text-align:center}
+.score-item .sv{font-size:20px;font-weight:800}
+.score-item .sl{font-size:10px;color:var(--ink3);margin-top:2px}
+
+.preview-box{border:1px solid var(--line);border-radius:14px;background:#fafafa;padding:20px;margin:16px 0;max-width:480px;margin-left:auto;margin-right:auto}
+.preview-box .preview-label{font-size:10px;color:var(--ink3);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;font-weight:700;text-align:center}
+.preview-box .article-text{font-size:14px;line-height:1.85;color:#333;white-space:pre-wrap}
+.preview-box .article-text .cta-hl{display:block;margin-top:20px;padding:12px 16px;background:#f0f4f0;border-radius:10px;border-left:3px solid var(--green);font-size:13px;color:var(--green);font-weight:600}
+
+.source-row{margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}
+.source-row .src-label{font-size:11px;color:var(--ink3);font-weight:700;margin-bottom:6px}
+.source-chips{display:flex;flex-wrap:wrap;gap:6px}
+.src-chip{font-size:11px;padding:3px 10px;background:#f0f0f5;border-radius:8px;color:var(--ink2)}
+
+.keywords{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+.kw{font-size:10px;padding:2px 8px;background:#eef2f5;border-radius:6px;color:var(--ink3)}
+
+.blogger-section{margin-top:30px}
+.blogger-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px}
+.blogger-chip{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 12px;font-size:12px;display:flex;justify-content:space-between;align-items:center}
+.blogger-chip .bn{font-weight:700}
+.blogger-chip .bf{font-size:10px;color:var(--ink3)}
+
+.publish-guide{background:linear-gradient(135deg,#134B43,#1a6b5e);color:#fff;border-radius:18px;padding:28px;margin:30px 0;text-align:center}
+.publish-guide h3{font-size:20px;margin-bottom:12px}
+.publish-guide .steps{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin-top:16px}
+.publish-guide .step{text-align:center;flex:0 0 160px}
+.publish-guide .step .sn{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-size:18px;font-weight:800}
+.publish-guide .step .st{font-size:13px;opacity:.9;line-height:1.5}
+
+.qr-section{text-align:center;margin-top:40px;padding:30px;background:var(--card);border-radius:18px;box-shadow:0 2px 12px rgba(0,0,0,.05)}
+.qr-section img{width:160px;height:160px;border-radius:12px;margin-bottom:12px}
+.qr-section .qr-text{font-size:13px;color:var(--ink2);line-height:1.6}
+
+.footer{text-align:center;padding:20px;color:var(--ink3);font-size:11px;margin-top:20px}
+
+@media(max-width:600px){
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .preview-box{max-width:100%}
+  .publish-guide .steps{gap:16px}
+  .publish-guide .step{flex:0 0 120px}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>彩虹心理 · 微博短文创作报告</h1>
+  <div class="sub">微博热点 → 3篇短文 → 22:00 公众号发布</div>
+  <div class="date">2026年8月4日（周二）</div>
+  <div class="reminder">⏰ 定时发布提醒：今晚 22:00 公众号推送</div>
+</div>
+
+<div class="container">
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="stat-card"><div class="num c1">30</div><div class="label">扫描博主数</div></div>
+    <div class="stat-card"><div class="num c2">3</div><div class="label">整合短文数</div></div>
+    <div class="stat-card"><div class="num c3">50,000</div><div class="label">最低粉丝门槛</div></div>
+    <div class="stat-card"><div class="num c4">22:00</div><div class="label">定时发布时间</div></div>
+  </div>
+
+  <!-- RANK 1 -->
+  <div class="section-title"><span class="icon" style="background:#ff6b6b">1</span> TOP 1 · 隔阂与体面疏远（亲密关系）</div>
+  <div class="article-card">
+    <div class="rank-badge rb-1"><span class="rn">#1</span>94分</div>
+    <div class="article-header">
+      <div class="title">和有过隔阂的人示好，是你对自己最大的残忍</div>
+      <span class="tag-theme" style="background:#f3e5f5;color:#6b5b95">亲密关系</span>
+      <span class="tag" style="background:#fff0f0;color:#c62828">8月4日热搜</span>
+      <span class="tag" style="background:#e8f5e9;color:#2e7d32">436字</span>
+    </div>
+    <div class="score-row">
+      <div class="score-item"><div class="sv" style="color:#ff6b6b">28</div><div class="sl">题材热度/30</div></div>
+      <div class="score-item"><div class="sv" style="color:#feca57">24</div><div class="sl">情绪共鸣/25</div></div>
+      <div class="score-item"><div class="sv" style="color:#48dbfb">19</div><div class="sl">阅读适配/20</div></div>
+      <div class="score-item"><div class="sv" style="color:#1dd1a1">14</div><div class="sl">传播潜力/15</div></div>
+      <div class="score-item"><div class="sv" style="color:#a55eea">9</div><div class="sl">转化引导/10</div></div>
+    </div>
+
+    <div class="preview-box">
+      <div class="preview-label">📱 手机阅读预览</div>
+      <div class="article-text">8月4日，微博话题「建议不要和已产生隔阂的人示好」冲上热搜，数万条讨论背后，是一个扎心的共识：隔阂一旦形成，单方面示好往往修复不了关系，只会加剧自我消耗。
+
+为什么？因为隔阂的本质是信任受损。对方让你失望过不止一次，你的大脑已经把这个人和「不靠谱」画上了等号。心理学上这叫认知固化——人脑对伤害的记忆远强于善意，即使对方后来做了补救，你的杏仁核依然会在0.1秒内拉响警报。
+
+更微妙的是「认知偏见强化」。隔阂形成后，你会重新解读对方的一切行为：原本的友善可能被视为「装」，主动找你被看成「别有目的」。你示好，对方可能觉得是示弱；你不示好，关系又僵着。进退都是输。
+
+所以体面疏远不是冷漠，而是清醒。把示好的热情收回来，花在自我建设上。你不是在放弃一段关系，而是在保护所剩无几的心理能量。
+
+你不需要和所有人修复关系。有些裂缝，尊重它存在就好。
+
+<span class="cta-hl">【彩虹心理亲密关系评估】→ 扫码关注公众号，回复「关系」获取</span></div>
+    </div>
+
+    <div class="source-row">
+      <div class="src-label">📎 整合来源博主（8位）</div>
+      <div class="source-chips">
+        <span class="src-chip">@崔庆龙_</span><span class="src-chip">KnowYourself心理</span><span class="src-chip">简单心理</span><span class="src-chip">壹心理</span><span class="src-chip">武志红</span><span class="src-chip">李松蔚PKU</span><span class="src-chip">@安定郝姥爷</span><span class="src-chip">人民日报健康客户端</span>
+      </div>
+    </div>
+    <div class="keywords">
+      <span class="kw">隔阂</span><span class="kw">体面疏远</span><span class="kw">认知固化</span><span class="kw">认知偏见</span><span class="kw">信任受损</span><span class="kw">亲密关系</span><span class="kw">自我消耗</span>
+    </div>
+  </div>
+
+  <!-- RANK 2 -->
+  <div class="section-title"><span class="icon" style="background:#feca57;color:#1d1d1f">2</span> TOP 2 · 焦虑躯体化（情绪心理）</div>
+  <div class="article-card">
+    <div class="rank-badge rb-2"><span class="rn">#2</span>90分</div>
+    <div class="article-header">
+      <div class="title">你的斑秃不是病，是情绪在替你喊救命</div>
+      <span class="tag-theme" style="background:#fff3cd;color:#856404">情绪心理</span>
+      <span class="tag" style="background:#fff0f0;color:#c62828">800万粉博主</span>
+      <span class="tag" style="background:#e8f5e9;color:#2e7d32">465字</span>
+    </div>
+    <div class="score-row">
+      <div class="score-item"><div class="sv" style="color:#ff6b6b">27</div><div class="sl">题材热度/30</div></div>
+      <div class="score-item"><div class="sv" style="color:#feca57">23</div><div class="sl">情绪共鸣/25</div></div>
+      <div class="score-item"><div class="sv" style="color:#48dbfb">19</div><div class="sl">阅读适配/20</div></div>
+      <div class="score-item"><div class="sv" style="color:#1dd1a1">13</div><div class="sl">传播潜力/15</div></div>
+      <div class="score-item"><div class="sv" style="color:#a55eea">8</div><div class="sl">转化引导/10</div></div>
+    </div>
+
+    <div class="preview-box">
+      <div class="preview-label">📱 手机阅读预览</div>
+      <div class="article-text">800万粉丝博主胡楚靓最近在小号发视频哭诉：因为严重焦虑，她出现了躯体化反应，头上斑秃了4块。心理医生的诊断很精准——「你想要拯救所有人。」
+
+她停了工作会觉得对不起40多个员工，休息了会愧疚没帮大家赚更多钱。工资照发，但责任感把她压得喘不过气。这不是「太拼」，这是典型的焦虑躯体化——你的大脑消化不了的情绪，最终由身体买单。
+
+心理学上，躯体化是一种防御机制。当情绪长期被压抑、无法表达时，神经系统会把心理痛苦「翻译」成身体症状：斑秃、失眠、胃痛、心悸。你的身体在用最后的手段提醒你：停下来，我撑不住了。
+
+很多人把「扛住」当骄傲，把「崩溃」当羞耻。但胡楚靓的视频下面，十几万条评论都在说「我也是」。这说明什么？说明太多人正在用身体为情绪还债。
+
+允许自己不是救世主。你不需要对所有人的命运负责。停下来，不是放弃，是让身体把未说完的情绪说完。
+
+<span class="cta-hl">【彩虹心理焦虑评估】→ 扫码关注公众号，回复「焦虑」获取</span></div>
+    </div>
+
+    <div class="source-row">
+      <div class="src-label">📎 整合来源博主（8位）</div>
+      <div class="source-chips">
+        <span class="src-chip">胡楚靓（800万粉博主）</span><span class="src-chip">心理医生---孙丽</span><span class="src-chip">壹心理</span><span class="src-chip">简单心理</span><span class="src-chip">KnowYourself心理</span><span class="src-chip">董恺（北京安定医院）</span><span class="src-chip">@安定郝姥爷</span><span class="src-chip">严艺家</span>
+      </div>
+    </div>
+    <div class="keywords">
+      <span class="kw">焦虑躯体化</span><span class="kw">斑秃</span><span class="kw">胡楚靓</span><span class="kw">情绪压抑</span><span class="kw">防御机制</span><span class="kw">拯救者情结</span><span class="kw">愧疚感</span>
+    </div>
+  </div>
+
+  <!-- RANK 3 -->
+  <div class="section-title"><span class="icon" style="background:#48dbfb">3</span> TOP 3 · 情绪稳定的代价（情绪心理）</div>
+  <div class="article-card">
+    <div class="rank-badge rb-3"><span class="rn">#3</span>90分</div>
+    <div class="article-header">
+      <div class="title">那个永远情绪稳定的人，正在悄悄崩溃</div>
+      <span class="tag-theme" style="background:#fff3cd;color:#856404">情绪心理</span>
+      <span class="tag" style="background:#e3f2fd;color:#1976d2">清华教授观点</span>
+      <span class="tag" style="background:#e8f5e9;color:#2e7d32">518字</span>
+    </div>
+    <div class="score-row">
+      <div class="score-item"><div class="sv" style="color:#ff6b6b">26</div><div class="sl">题材热度/30</div></div>
+      <div class="score-item"><div class="sv" style="color:#feca57">24</div><div class="sl">情绪共鸣/25</div></div>
+      <div class="score-item"><div class="sv" style="color:#48dbfb">18</div><div class="sl">阅读适配/20</div></div>
+      <div class="score-item"><div class="sv" style="color:#1dd1a1">14</div><div class="sl">传播潜力/15</div></div>
+      <div class="score-item"><div class="sv" style="color:#a55eea">8</div><div class="sl">转化引导/10</div></div>
+    </div>
+
+    <div class="preview-box">
+      <div class="preview-label">📱 手机阅读预览</div>
+      <div class="article-text">你身边有没有这样的人——永远温柔、永远得体、永远没脾气。然后某天，因为快递送错了一个样品，突然蹲在地上嚎啕大哭。
+
+这不是脆弱，这是「情绪稳定」的代价。最近网上有个说法很火：「情绪稳定，全是拿身体在死扛。」清华大学的彭凯平教授说得更直接：你排队被人插队气得想骂人，那不是脾气臭，是身体在提醒你底线被踩了。
+
+加州大学洛杉矶分校的马修·利伯曼团队做过一个实验：让被试用「害怕」「恶心」这样的词精准描述情绪时，大脑杏仁核的活跃度瞬间下降约50%，前额叶皮层启动，最快6秒就能平复下来。
+
+也就是说，情绪本身不会伤害你。压抑情绪才会。当你逼自己做一个没有七情六欲的塑料人，难受了不认、委屈了不说，那些没流出来的泪、没发出来的火，不会凭空消失，它们会在身体里找一个出口——也许是斑秃，也许是某个深夜的突然崩溃。
+
+真正的情绪稳定，不是永远不炸，而是炸完之后能接得住自己。难受了就认，委屈了就说。能容纳自己坏脾气的人，才真的稳。
+
+<span class="cta-hl">【彩虹心理情绪评估】→ 扫码关注公众号，回复「情绪」获取</span></div>
+    </div>
+
+    <div class="source-row">
+      <div class="src-label">📎 整合来源博主（8位）</div>
+      <div class="source-chips">
+        <span class="src-chip">彭凯平（清华大学）</span><span class="src-chip">马修·利伯曼（UCLA）</span><span class="src-chip">再创业大姐</span><span class="src-chip">壹心理</span><span class="src-chip">简单心理</span><span class="src-chip">KnowYourself心理</span><span class="src-chip">人民日报健康客户端</span><span class="src-chip">@祝卓宏</span>
+      </div>
+    </div>
+    <div class="keywords">
+      <span class="kw">情绪稳定</span><span class="kw">躯体化</span><span class="kw">情绪压抑</span><span class="kw">杏仁核</span><span class="kw">利伯曼实验</span><span class="kw">彭凯平</span><span class="kw">情绪崩溃</span>
+    </div>
+  </div>
+
+  <!-- Blogger List -->
+  <div class="blogger-section">
+    <div class="section-title"><span class="icon" style="background:var(--purple)">📋</span> 扫描博主列表（30位）</div>
+    <div class="blogger-grid">
+      <div class="blogger-chip"><span class="bn">@崔庆龙_</span><span class="bf">98.2万</span></div>
+      <div class="blogger-chip"><span class="bn">李松蔚PKU</span><span class="bf">75.5万</span></div>
+      <div class="blogger-chip"><span class="bn">@安定郝姥爷</span><span class="bf">768.3万</span></div>
+      <div class="blogger-chip"><span class="bn">壹心理</span><span class="bf">1894万</span></div>
+      <div class="blogger-chip"><span class="bn">简单心理</span><span class="bf">536万</span></div>
+      <div class="blogger-chip"><span class="bn">KnowYourself心理</span><span class="bf">心理科普大号</span></div>
+      <div class="blogger-chip"><span class="bn">武志红</span><span class="bf">知名心理学家</span></div>
+      <div class="blogger-chip"><span class="bn">胡楚靓</span><span class="bf">800万粉</span></div>
+      <div class="blogger-chip"><span class="bn">严艺家</span><span class="bf">150万粉</span></div>
+      <div class="blogger-chip"><span class="bn">心理医生---孙丽</span><span class="bf">活跃咨询师</span></div>
+      <div class="blogger-chip"><span class="bn">心理学赵然</span><span class="bf">4.1万粉</span></div>
+      <div class="blogger-chip"><span class="bn">@祝卓宏</span><span class="bf">10.3万</span></div>
+      <div class="blogger-chip"><span class="bn">@梦汐心理</span><span class="bf">11.6万</span></div>
+      <div class="blogger-chip"><span class="bn">心理学刘爱民</span><span class="bf">393.6万</span></div>
+      <div class="blogger-chip"><span class="bn">冷爱</span><span class="bf">120.5万</span></div>
+      <div class="blogger-chip"><span class="bn">凯紫</span><span class="bf">110.4万</span></div>
+      <div class="blogger-chip"><span class="bn">再创业大姐</span><span class="bf">热门情感博主</span></div>
+      <div class="blogger-chip"><span class="bn">彭凯平</span><span class="bf">清华教授</span></div>
+      <div class="blogger-chip"><span class="bn">马修·利伯曼</span><span class="bf">UCLA教授</span></div>
+      <div class="blogger-chip"><span class="bn">董恺</span><span class="bf">北京安定医院</span></div>
+      <div class="blogger-chip"><span class="bn">徐凯文</span><span class="bf">心理学博士</span></div>
+      <div class="blogger-chip"><span class="bn">李雪</span><span class="bf">心理作家</span></div>
+      <div class="blogger-chip"><span class="bn">人民日报健康客户端</span><span class="bf">官方健康媒体</span></div>
+      <div class="blogger-chip"><span class="bn">@小茉儿宝</span><span class="bf">微博博主</span></div>
+      <div class="blogger-chip"><span class="bn">乐嘉</span><span class="bf">4280.8万</span></div>
+      <div class="blogger-chip"><span class="bn">雷明</span><span class="bf">493.1万</span></div>
+      <div class="blogger-chip"><span class="bn">晓生</span><span class="bf">414.9万</span></div>
+      <div class="blogger-chip"><span class="bn">心理咨询师韩美龄</span><span class="bf">304.6万</span></div>
+      <div class="blogger-chip"><span class="bn">季潇华-催眠-心理</span><span class="bf">79.6万</span></div>
+      <div class="blogger-chip"><span class="bn">赵悦辰</span><span class="bf">55.3万</span></div>
+    </div>
+  </div>
+
+  <!-- Publish Guide -->
+  <div class="publish-guide">
+    <h3>📢 22:00 公众号发布指南</h3>
+    <p style="opacity:.85;font-size:13px">建议按热度排名顺序发布，RANK 1 → RANK 2 → RANK 3</p>
+    <div class="steps">
+      <div class="step">
+        <div class="sn">1</div>
+        <div class="st">复制推文内容<br>检查排版格式</div>
+      </div>
+      <div class="step">
+        <div class="sn">2</div>
+        <div class="st">登录公众号后台<br>新建图文消息</div>
+      </div>
+      <div class="step">
+        <div class="sn">3</div>
+        <div class="st">粘贴内容+配图<br>设置22:00定时发送</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QR Code -->
+  <div class="qr-section">
+    <img src="rainbowhu-qrcode.jpg" alt="公众号二维码">
+    <div class="qr-text">关注「彩虹心理」公众号<br>回复关键词获取专业心理评估</div>
+  </div>
+
+</div>
+
+<div class="footer">
+  彩虹心理内容运营团队 · 微博短文创作 Agent 自动生成 · 2026-08-04
+</div>
+
+</body>
+</html>

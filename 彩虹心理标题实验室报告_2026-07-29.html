@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>彩虹心理标题实验室报告 | 2026-07-29</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f5f5f7;color:#1d1d1f;line-height:1.8}
+  .container{max-width:900px;margin:0 auto;background:#fff;min-height:100vh}
+  .header{background:linear-gradient(135deg,#c06c84 0%,#6b5b95 100%);padding:40px 30px;color:#fff}
+  .header h1{font-size:26px;font-weight:800;margin-bottom:8px}
+  .header .date{font-size:14px;opacity:.85}
+  .header .meta{font-size:12px;opacity:.7;margin-top:10px}
+  .content{padding:30px}
+  .section-title{font-size:18px;font-weight:800;color:#6b5b95;margin:30px 0 16px;padding-left:14px;border-left:4px solid #6b5b95}
+  .summary-box{background:#fff8e1;border:1px solid #f0d9a8;border-radius:12px;padding:16px 20px;margin:20px 0;font-size:13px;color:#7a5a1e;line-height:1.7}
+  .summary-box b{color:#a06a12}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0}
+  .stat{background:#f9f9fb;border-radius:12px;padding:16px;text-align:center}
+  .stat .num{font-size:28px;font-weight:800;color:#6b5b95}
+  .stat .label{font-size:12px;color:#666;margin-top:4px}
+  .top-card{background:linear-gradient(135deg,#fafafa,#f5f0ff);border:1.5px solid #e0d4f0;border-radius:14px;padding:18px 20px;margin-bottom:14px}
+  .top-header{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+  .rank-badge{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:14px;flex-shrink:0}
+  .r1{background:#c0392b} .r2{background:#d98c3a} .r3{background:#8e44ad} .r4{background:#27ae60} .r5{background:#2980b9}
+  .r6{background:#e67e22} .r7{background:#16a085} .r8{background:#c0392b} .r9{background:#8e44ad} .r10{background:#2c3e50}
+  .top-title{font-size:16px;font-weight:700;flex:1;line-height:1.4}
+  .top-score{font-size:20px;font-weight:800;color:#6b5b95;flex-shrink:0}
+  .top-meta{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0;font-size:12px}
+  .tag{padding:3px 10px;border-radius:10px;font-weight:700;font-size:11px}
+  .dims{display:flex;gap:10px;flex-wrap:wrap;font-size:12px;color:#666;margin-bottom:8px}
+  .dim b{color:#333}
+  .analysis{background:#fff;border-radius:8px;padding:10px 14px;font-size:13px;color:#555;line-height:1.6;border-left:3px solid #6b5b95}
+  .topic-group{margin:24px 0}
+  .topic-name{font-size:15px;font-weight:800;color:#6b5b95;margin-bottom:10px;display:flex;align-items:center;gap:10px}
+  .topic-name .topic-score{font-size:12px;background:#6b5b95;color:#fff;padding:2px 8px;border-radius:8px}
+  .compact-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .compact-item{display:flex;align-items:center;gap:10px;background:#f9f9fb;border-radius:8px;padding:10px 12px;font-size:13px}
+  .compact-item.top{background:linear-gradient(90deg,#f5f0ff,#fafafa);border:1px solid #e0d4f0}
+  .compact-score{font-size:14px;font-weight:800;color:#6b5b95;flex-shrink:0;width:32px;text-align:center}
+  .compact-title{flex:1;line-height:1.35}
+  .compact-type{font-size:10px;color:#999;flex-shrink:0;background:#f0f0f0;padding:2px 6px;border-radius:6px}
+  .radar-note{background:#f0f9f4;border-radius:12px;padding:16px 20px;margin:20px 0;font-size:13px;color:#4a6a5a}
+  .radar-note h4{color:#3a8c7a;margin-bottom:10px}
+  .radar-note ul{margin-left:18px}
+  .radar-note li{margin:6px 0}
+  .score-bar{display:flex;height:6px;border-radius:3px;overflow:hidden;margin:4px 0;background:#e8e8e8}
+  .score-bar .s-c{background:#e74c3c;height:100%}
+  .score-bar .s-e{background:#f39c12;height:100%}
+  .score-bar .s-p{background:#3498db;height:100%}
+  .score-bar .s-v{background:#2ecc71;height:100%}
+  .score-bar .s-t{background:#9b59b6;height:100%}
+  .qr-section{text-align:center;margin:40px 0 20px;padding:30px;background:linear-gradient(135deg,#f0ecf7,#fce4ec);border-radius:16px}
+  .qr-section img{width:150px;height:150px;border-radius:12px;border:3px solid #fff;box-shadow:0 4px 16px rgba(0,0,0,.08)}
+  .qr-section p{font-size:13px;color:#666;margin-top:12px}
+  .qr-section .cta-text{font-size:14px;color:#c06c84;font-weight:700;margin-top:8px}
+  .footer{text-align:center;padding:24px;font-size:12px;color:#aaa;border-top:1px solid #f0f0f0}
+  @media(max-width:700px){.compact-grid{grid-template-columns:1fr} .stats{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>🌈 彩虹心理爆款标题实验室报告</h1>
+    <div class="date">2026年7月29日 星期三 · Week 31</div>
+    <div class="meta">基于今日雷达 TOP5 选题 | 每个选题生成 10 个标题 | 5 维度评分筛选 TOP10 | 采集时间 09:00</div>
+  </div>
+
+  <div class="content">
+    <div class="summary-box">
+      <b>今日概览：</b>基于 2026-07-29 雷达 TOP5 选题（沉默断交 / 丝瓜汤文学 / 真正的亲密 / 时间讨好症 / 不吃压力），共生成 <b>50</b> 个标题，覆盖 10 种标题风格。按<b>好奇心缺口 25 + 情绪触发 25 + 专业可信度 15 + 传播潜力 20 + 转化引导 15 = 100</b> 评分，筛选出 TOP10 高潜力标题。TOP10 覆盖全部 <b>5</b> 个选题，可作为今日公众号/小红书/抖音内容标题优先参考。
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">50</div><div class="label">生成标题总数</div></div>
+      <div class="stat"><div class="num">10</div><div class="label">TOP10 精选</div></div>
+      <div class="stat"><div class="num">5</div><div class="label">覆盖选题数</div></div>
+      <div class="stat"><div class="num">91</div><div class="label">TOP10 平均分</div></div>
+    </div>
+
+    <div class="section-title">今日 TOP5 选题来源</div>
+    <div class="topic-group">
+      <div class="compact-grid">
+        <div class="compact-item"><div class="compact-score">94</div><div class="compact-title">#1 沉默断交</div><div class="compact-type">亲密关系</div></div>
+        <div class="compact-item"><div class="compact-score">93</div><div class="compact-title">#2 丝瓜汤文学</div><div class="compact-type">原生家庭</div></div>
+        <div class="compact-item"><div class="compact-score">91</div><div class="compact-title">#3 真正的亲密</div><div class="compact-type">亲密关系</div></div>
+        <div class="compact-item"><div class="compact-score">90</div><div class="compact-title">#4 时间讨好症</div><div class="compact-type">自我成长</div></div>
+        <div class="compact-item"><div class="compact-score">88</div><div class="compact-title">#5 不吃压力</div><div class="compact-type">情绪心理</div></div>
+      </div>
+    </div>
+
+    <div class="section-title">🏆 TOP10 精选标题</div>
+
+    <!-- TOP 1 -->
+    <div class="top-card">
+      <div class="top-header">
+        <div class="rank-badge r1">1</div>
+        <div class="top-title">时间讨好症的6个信号，73.6%职场人中招了</div>
+        <div class="top-score">92</div>
+      </div>
+      <div class="top-meta">
+        <span class="tag" style="background:#e67c22;color:#fff">数字承诺型</span>
+        <span class="tag" style="background:#f0f0f0;color:#555">时间讨好症</span>
+        <span class="tag" style="background:#e8f5e9;color:#27ae60">小红书</span>
+        <span class="tag" style="background:#e3f2fd;color:#1976d2">公众号</span>
+      </div>
+      <div class="dims">
+        <div class="dim">好奇<b>24</b></div>
+        <div class="dim">情绪<b>21</b></div>
+        <div class="dim">专业<b>14</b></div>
+        <div class="dim">传播<b>20</b></div>
+        <div class="dim">转化<b>13</b></div>
+      </div>
+      <div class="score-bar">
+        <div class="s-c" style="width:24%"></div><div class="s-e" style="width:21%"></div><div class="s-p" style="width:14%"></div><div class="s-v" style="width:20%"></div><div class="s-t" style="width:13%"></div>
+      </div>
+      <div class="analysis">数字承诺（6/73.6%）双锚定制造确定感与普遍性，「信号」一词暗示隐性特征激发自检欲，73.6%北师大权威数据背书专业感，小红书和公众号双平台精准适配。</div>
+    </div>
+
+    <!-- TOP 2 -->
+    <div class="top-card">
+      <div class="top-header">
+        <div class="rank-badge r2">2</div>
+        <div class="top-title">你以为的母爱，可能是一场持续几十年的精神控制</div>
+        <div class="top-score">91</div>
+      </div>
+      <div class="top-meta">
+        <span class="tag" style="background:#d32f2f;color:#fff">痛点直击型</span>
+        <span class="tag" style="background:#f0f0f0;color:#555">丝瓜汤文学</span>
+        <span class="tag" style="background:#e3f2fd;color:#1976d2">公众号</span>
+        <span class="tag" style="background:#e8f5e9;color:#27ae60">小红书</span>
+      </div>
+      <div class="dims">
+        <div class="dim">好奇<b>22</b></div>
+        <div class="dim">情绪<b>24</b></div>
+        <div class="dim">专业<b>13</b></div>
+        <div class="dim">传播<b>19</b></div>
+        <div class="dim">转化<b>13</b></div>
+      </div>
+      <div class="score-bar">
+        <div class="s-c" style="width:22%"></div><div class="s-e" style="width:24%"></div><div class="s-p" style="width:13%"></div><div class="s-v" style="width:19%"></div><div class="s-t" style="width:13%"></div>
+      </div>
+      <div class="analysis">「母爱」+「精神控制」的组合制造强烈认知冲突，「持续几十年」暗示长期隐性伤害，从丝瓜汤切入但上升到系统性代际控制问题，情绪触发极强。</div>
+    </div>
+
+    <!-- TOP 3 -->
+    <div class="top-card">
+      <div class="top-header">
+        <div class="rank-badge r3">3</div>
+        <div class="top-title">不是爱得太深才怕失去，是从来不知道什么是安全的爱</div>
+        <div class="top-score">91</div>
+      </div>
+      <div class="top-meta">
+        <span class="tag" style="background:#3f51b5;color:#fff">反常识型</span>
+        <span class="tag" style="background:#f0f0f0;color:#555">真正的亲密</span>
+        <span class="tag" style="background:#e3f2fd;color:#1976d2">公众号</span>
+        <span class="tag" style="background:#e8f5e9;color:#27ae60">小红书</span>
+      </div>
+      <div class="dims">
+        <div class="dim">好奇<b>22</b></div>
+        <div class="dim">情绪<b>23</b></div>
+        <div class="dim">专业<b>14</b></div>
+        <div class="dim">传播<b>18</b></div>
+        <div class="dim">转化<b>14</b></div>
+      </div>
+      <div class="score-bar">
+        <div class="s-c" style="width:22%"></div><div class="s-e" style="width:23%"></div><div class="s-p" style="width:14%"></div><div class="s-v" style="width:18%"></div><div class="s-t" style="width:14%"></div>
+      </div>
+      <div class="analysis">反常识结构（「不是...是...」）将「怕失去」从爱的证明重新定义为安全感受损，打破读者自我合理化，专业可信度高且自然导向依恋修复咨询。</div>
+    </div>
+
+    <!-- TOP 4 -->
+    <div class="top-card">
+      <div class="top-header">
+        <div class="rank-badge r4">4</div>
+        <div class="top-title">为什么有些人越爱越自由，而你越爱越怕</div>
+        <div class="top-score">91</div>
+      </div>
+      <div class="top-meta">
+        <span class="tag" style="background:#9c27b0;color:#fff">悬念型</span>
+        <span class="tag" style="background:#f0f0f0;color:#555">真正的亲密</span>
+        <span class="tag" style="background:#e8f5e9;color:#27ae60">小红书</span>
+        <span class="tag" style="background:#e3f2fd;color:#1976d2">公众号</span>
+      </div>
+      <div class="dims">
+        <div class="dim">好奇<b>23</b></div>
+        <div class="dim">情绪<b>22</b></div>
+        <div class="dim">专业<b>14</b></div>
+        <div class="dim">传播<b>19</b></div>
+        <div class="dim">转化<b>13</b></div>
+      </div>
+      <div class="score-bar">
+        <div class="s-c" style="width:23%"></div><div class="s-e" style="width:22%"></div><div class="s-p" style="width:14%"></div><div class="s-v" style="width:19%"></div><div class="s-t" style="width:13%"></div>
+      </div>
+      <div class="analysis">对比式悬念（「越爱越自由」vs「越爱越怕」）制造强烈好奇缺口，让焦虑型依恋者立刻对号入座，「自由」二字暗示解决方案，传播与转化兼顾。</div>
+    </div>
+
+    <!-- TOP 5 -->
+    <div class="top-card">
+      <div class="top-header">
+        <div class="rank-badge r5">5</div>
+        <div class="top-title">我学会了「不吃压力」后，焦虑发作从每周5次降到了0</div>
+        <div class="top-score">91</div>
+      </div>
+      <div class="top-meta">
+        <span class="tag" style="background:#1976d2;color:#fff">第一人称型</span>
+        <span class="tag" style="background:#f0f0f0;color:#555">不吃压力</span>
+        <span class="tag" style="background:#e8f5e9;color:#27ae60">小红书</span>
+        <span class="tag" style="background:#ff5722;color:#fff">抖音</span>
+      </div>
+      <div class="dims">
+        <div class="dim">好奇<b>23</b></div>
+        <div class="dim">情绪<b>22</b></div>
+        <div class="dim">专业<b>13</b></div>
+        <div class="dim">传播<b>19</b></div>
+        <div class="dim">转化<b>14</b></div>
+      </div>
+      <div class="score-bar">
+        <div class="s-c" style="width:23%"></div><div class="s-e" style="width:22%"></div><div class="s-p" style="width:13%"></div><div class="s-v" style="width:19%"></div><div class="s-t" style="width:14%"></div>
+      </div>
+      <div class="analysis">第一人称+量化前后对比（5→0）制造超强可信感，数字让效果可视化，诱导读者想象「我也能」，自然导向测评和咨询转化。</div>
+    </div>
+
+    <!-- TOP 6 -->
+    <div class="top-card">
+      <div class="top-header">
+        <div class="rank-badge r6">6</div>
+        <div class="top-title">为什么被沉默断交的人，比分手哭得更久？</div>
+        <div class="top-score">90</div>
+      </div>
+      <div class="top-meta">
+        <span class="tag" style="background:#9c27b0;color:#fff">悬念型</span>
+        <span class="tag" style="background:#f0f0f0;color:#555">沉默断交</span>
+        <span class="tag" style="background:#e8f5e9;color:#27ae60">小红书</span>
+        <span class="tag" style="background:#ff9800;color:#fff">知乎</span>
+      </div>
+      <div class="dims">
+        <div class="dim">好奇<b>24</b></div>
+        <div class="dim">情绪<b>22</b></div>
+        <div class="dim">专业<b>13</b></div>
+        <div class="dim">传播<b>19</b></div>
+        <div class="dim">转化<b>12</b></div>
+      </div>
+      <div class="score-bar">
+        <div class="s-c" style="width:24%"></div><div class="s-e" style="width:22%"></div><div class="s-p" style="width:13%"></div><div class="s-v" style="width:19%"></div><div class="s-t" style="width:12%"></div>
+      </div>
+      <div class="analysis">对比式悬念（「比分手哭得更久」）冲击常识，暗示沉默断交的伤害远超显性分手，「为什么」触发蔡格尼克效应让读者必须点开找到答案。</div>
+    </div>
+
+    <!-- TOP 7 -->
+    <div class="top-card">
+      <div class="top-header">
+        <div class="rank-badge r7">7</div>
+        <div class="top-title">不是妈妈不会爱，是她把你当成自己人生的补丁</div>
+        <div class="top-score">90</div>
+      </div>
+      <div class="top-meta">
+        <span class="tag" style="background:#3f51b5;color:#fff">反常识型</span>
+        <span class="tag" style="background:#f0f0f0;color:#555">丝瓜汤文学</span>
+        <span class="tag" style="background:#e3f2fd;color:#1976d2">公众号</span>
+        <span class="tag" style="background:#e8f5e9;color:#27ae60">小红书</span>
+      </div>
+      <div class="dims">
+        <div class="dim">好奇<b>22</b></div>
+        <div class="dim">情绪<b>23</b></div>
+        <div class="dim">专业<b>14</b></div>
+        <div class="dim">传播<b>18</b></div>
+        <div class="dim">转化<b>13</b></div>
+      </div>
+      <div class="score-bar">
+        <div class="s-c" style="width:22%"></div><div class="s-e" style="width:23%"></div><div class="s-p" style="width:14%"></div><div class="s-v" style="width:18%"></div><div class="s-t" style="width:13%"></div>
+      </div>
+      <div class="analysis">反常识结构重新定义「母爱」为「自我补丁」，瞬间解释了为何控制型父母如此难以摆脱，「补丁」隐喻精准且令人心疼，专业分析+情绪共鸣双重驱动。</div>
+    </div>
+
+    <!-- TOP 8 -->
+    <div class="top-card">
+      <div class="top-header">
+        <div class="rank-badge r8">8</div>
+        <div class="top-title">「越怕失去的关系越脆弱」——你小心翼翼维系的，可能只是假性亲密</div>
+        <div class="top-score">90</div>
+      </div>
+      <div class="top-meta">
+        <span class="tag" style="background:#c62828;color:#fff">情绪共鸣型</span>
+        <span class="tag" style="background:#f0f0f0;color:#555">真正的亲密</span>
+        <span class="tag" style="background:#e3f2fd;color:#1976d2">公众号</span>
+        <span class="tag" style="background:#e8f5e9;color:#27ae60">小红书</span>
+      </div>
+      <div class="dims">
+        <div class="dim">好奇<b>20</b></div>
+        <div class="dim">情绪<b>24</b></div>
+        <div class="dim">专业<b>14</b></div>
+        <div class="dim">传播<b>18</b></div>
+        <div class="dim">转化<b>14</b></div>
+      </div>
+      <div class="score-bar">
+        <div class="s-c" style="width:20%"></div><div class="s-e" style="width:24%"></div><div class="s-p" style="width:14%"></div><div class="s-v" style="width:18%"></div><div class="s-t" style="width:14%"></div>
+      </div>
+      <div class="analysis">直接引用读者内心独白制造共鸣开场，「小心翼翼维系」精准扫描焦虑型依恋行为，「假性亲密」概念提供认知框架让读者从情绪进入思考，转化路径清晰。</div>
+    </div>
+
+    <!-- TOP 9 -->
+    <div class="top-card">
+      <div class="top-header">
+        <div class="rank-badge r9">9</div>
+        <div class="top-title">你帮别人扛的压力，最后都会变成自己的内伤</div>
+        <div class="top-score">90</div>
+      </div>
+      <div class="top-meta">
+        <span class="tag" style="background:#d32f2f;color:#fff">痛点直击型</span>
+        <span class="tag" style="background:#f0f0f0;color:#555">不吃压力</span>
+        <span class="tag" style="background:#e8f5e9;color:#27ae60">小红书</span>
+        <span class="tag" style="background:#e3f2fd;color:#1976d2">公众号</span>
+      </div>
+      <div class="dims">
+        <div class="dim">好奇<b>21</b></div>
+        <div class="dim">情绪<b>24</b></div>
+        <div class="dim">专业<b>12</b></div>
+        <div class="dim">传播<b>19</b></div>
+        <div class="dim">转化<b>14</b></div>
+      </div>
+      <div class="score-bar">
+        <div class="s-c" style="width:21%"></div><div class="s-e" style="width:24%"></div><div class="s-p" style="width:12%"></div><div class="s-v" style="width:19%"></div><div class="s-t" style="width:14%"></div>
+      </div>
+      <div class="analysis">「扛」与「内伤」的身体化隐喻让隐性情绪消耗变得可感知，「都会」的绝对语气制造紧迫感，直击讨好型人格和情绪劳动的核心痛点。</div>
+    </div>
+
+    <!-- TOP 10 -->
+    <div class="top-card">
+      <div class="top-header">
+        <div class="rank-badge r10">10</div>
+        <div class="top-title">不是不爱了才沉默，是太怕受伤才不敢开口说再见</div>
+        <div class="top-score">89</div>
+      </div>
+      <div class="top-meta">
+        <span class="tag" style="background:#3f51b5;color:#fff">反常识型</span>
+        <span class="tag" style="background:#f0f0f0;color:#555">沉默断交</span>
+        <span class="tag" style="background:#e3f2fd;color:#1976d2">公众号</span>
+        <span class="tag" style="background:#e8f5e9;color:#27ae60">小红书</span>
+      </div>
+      <div class="dims">
+        <div class="dim">好奇<b>21</b></div>
+        <div class="dim">情绪<b>23</b></div>
+        <div class="dim">专业<b>14</b></div>
+        <div class="dim">传播<b>18</b></div>
+        <div class="dim">转化<b>13</b></div>
+      </div>
+      <div class="score-bar">
+        <div class="s-c" style="width:21%"></div><div class="s-e" style="width:23%"></div><div class="s-p" style="width:14%"></div><div class="s-v" style="width:18%"></div><div class="s-t" style="width:13%"></div>
+      </div>
+      <div class="analysis">反常识结构打破「沉默=不爱」的刻板归因，将沉默断交重新定义为恐惧驱动行为，让被断交者从自我否定转向理解，降低伤害感并自然导向关系咨询。</div>
+    </div>
+
+    <div class="section-title">📊 五维度雷达图说明</div>
+    <div class="radar-note">
+      <h4>评分体系（满分100分）</h4>
+      <ul>
+        <li><b>好奇心缺口（25分）</b>：是否制造信息差让人想点击？悬念/反常识/数字锚定是高分手法。</li>
+        <li><b>情绪触发（25分）</b>：是否触发强烈情绪（共鸣/焦虑/好奇/愤怒）？直接引用内心独白效果最佳。</li>
+        <li><b>专业可信度（15分）</b>：是否体现心理学专业性？引用理论/数据/专业术语可加分，但过度学术化会降低传播力。</li>
+        <li><b>传播潜力（20分）</b>：是否容易被转发？是否具备社交货币属性？替人发声型和治愈型天然高转发。</li>
+        <li><b>转化引导（15分）</b>：是否自然导向心理咨询/测评转化？痛点直击型和反常识型转化路径最清晰。</li>
+      </ul>
+    </div>
+
+    <div class="section-title">📋 全部 50 个标题（按选题分组）</div>
+
+    <!-- 选题1：沉默断交 -->
+    <div class="topic-group">
+      <div class="topic-name">🔇 选题一：沉默断交 <span class="topic-score">94分 · TOP1</span></div>
+      <div class="compact-grid">
+        <div class="compact-item top"><div class="compact-score">90</div><div class="compact-title">为什么被沉默断交的人，比分手哭得更久？</div><div class="compact-type">TOP6·悬念</div></div>
+        <div class="compact-item top"><div class="compact-score">89</div><div class="compact-title">不是不爱了才沉默，是太怕受伤才不敢开口说再见</div><div class="compact-type">TOP10·反常识</div></div>
+        <div class="compact-item"><div class="compact-score">88</div><div class="compact-title">「不删你、不拉黑你、就是不再回你了」——成年人的退场比分手更疼</div><div class="compact-type">情绪共鸣</div></div>
+        <div class="compact-item"><div class="compact-score">88</div><div class="compact-title">沉默断交的4种隐藏信号，90%的人正在经历</div><div class="compact-type">数字承诺</div></div>
+        <div class="compact-item"><div class="compact-score">87</div><div class="compact-title">「我没删你，只是不再期待你的消息了」</div><div class="compact-type">替人发声</div></div>
+        <div class="compact-item"><div class="compact-score">85</div><div class="compact-title">我用3个月的沉默换了一次体面的分手</div><div class="compact-type">第一人称</div></div>
+        <div class="compact-item"><div class="compact-score">84</div><div class="compact-title">「你为什么不回我？」——那些被沉默断交伤害的人，都在问这句话</div><div class="compact-type">对话</div></div>
+        <div class="compact-item"><div class="compact-score">80</div><div class="compact-title">蔡格尼克效应与习得性自我保护：沉默断交的双重心理学机制</div><div class="compact-type">专业</div></div>
+        <div class="compact-item"><div class="compact-score">88</div><div class="compact-title">沉默断交正在毁掉你对亲密关系的最后一点信任</div><div class="compact-type">痛点直击</div></div>
+        <div class="compact-item"><div class="compact-score">87</div><div class="compact-title">被沉默断交了？这不是你的错，是对方没学会好好告别</div><div class="compact-type">治愈</div></div>
+      </div>
+    </div>
+
+    <!-- 选题2：丝瓜汤文学 -->
+    <div class="topic-group">
+      <div class="topic-name">🥣 选题二：丝瓜汤文学 <span class="topic-score">93分 · TOP2</span></div>
+      <div class="compact-grid">
+        <div class="compact-item top"><div class="compact-score">91</div><div class="compact-title">你以为的母爱，可能是一场持续几十年的精神控制</div><div class="compact-type">TOP2·痛点直击</div></div>
+        <div class="compact-item top"><div class="compact-score">90</div><div class="compact-title">不是妈妈不会爱，是她把你当成自己人生的补丁</div><div class="compact-type">TOP7·反常识</div></div>
+        <div class="compact-item"><div class="compact-score">88</div><div class="compact-title">每次妈妈端上一碗汤，我都觉得自己被勒住了脖子</div><div class="compact-type">情绪共鸣</div></div>
+        <div class="compact-item"><div class="compact-score">89</div><div class="compact-title">丝瓜汤文学背后藏着5种以爱为名的控制，你中了几个</div><div class="compact-type">数字承诺</div></div>
+        <div class="compact-item"><div class="compact-score">87</div><div class="compact-title">「我都快三十了，连不喜欢喝某道汤的权利都没有」</div><div class="compact-type">替人发声</div></div>
+        <div class="compact-item"><div class="compact-score">88</div><div class="compact-title">我喝了28年不喜欢的汤，今年终于说了不</div><div class="compact-type">第一人称</div></div>
+        <div class="compact-item"><div class="compact-score">89</div><div class="compact-title">「为你好」——这句话毁掉了多少中国孩子的自我</div><div class="compact-type">对话</div></div>
+        <div class="compact-item"><div class="compact-score">88</div><div class="compact-title">为什么一碗丝瓜汤能让千万成年人集体崩溃？</div><div class="compact-type">悬念</div></div>
+        <div class="compact-item"><div class="compact-score">82</div><div class="compact-title">中国式家庭的共生陷阱：以爱为名的认知剥夺与边界建立</div><div class="compact-type">专业</div></div>
+        <div class="compact-item"><div class="compact-score">88</div><div class="compact-title">拒绝那碗汤不是背叛，是终于开始保护自己</div><div class="compact-type">治愈</div></div>
+      </div>
+    </div>
+
+    <!-- 选题3：真正的亲密 -->
+    <div class="topic-group">
+      <div class="topic-name">💜 选题三：真正的亲密 <span class="topic-score">91分 · TOP3</span></div>
+      <div class="compact-grid">
+        <div class="compact-item top"><div class="compact-score">91</div><div class="compact-title">不是爱得太深才怕失去，是从来不知道什么是安全的爱</div><div class="compact-type">TOP3·反常识</div></div>
+        <div class="compact-item top"><div class="compact-score">91</div><div class="compact-title">为什么有些人越爱越自由，而你越爱越怕</div><div class="compact-type">TOP4·悬念</div></div>
+        <div class="compact-item top"><div class="compact-score">90</div><div class="compact-title">「越怕失去的关系越脆弱」——你小心翼翼维系的，可能只是假性亲密</div><div class="compact-type">TOP8·情绪共鸣</div></div>
+        <div class="compact-item"><div class="compact-score">89</div><div class="compact-title">假性亲密的5个隐藏特征，3.8亿人看哭了</div><div class="compact-type">数字承诺</div></div>
+        <div class="compact-item"><div class="compact-score">88</div><div class="compact-title">「我不是不信任你，是不信任自己值得被爱」</div><div class="compact-type">替人发声</div></div>
+        <div class="compact-item"><div class="compact-score">88</div><div class="compact-title">我谈了3段恋爱，每一段都在复制同一个创伤</div><div class="compact-type">第一人称</div></div>
+        <div class="compact-item"><div class="compact-score">87</div><div class="compact-title">「你到底爱不爱我？」——问这句话的人，心里已经有了答案</div><div class="compact-type">对话</div></div>
+        <div class="compact-item"><div class="compact-score">81</div><div class="compact-title">依恋理论视角下的假性亲密：从焦虑抓取到安全自主</div><div class="compact-type">专业</div></div>
+        <div class="compact-item"><div class="compact-score">89</div><div class="compact-title">你拼命维系的那个人，可能从未真正进入过你的内心</div><div class="compact-type">痛点直击</div></div>
+        <div class="compact-item"><div class="compact-score">88</div><div class="compact-title">真正的亲密不用小心翼翼，真正的爱不用跪着抓紧</div><div class="compact-type">治愈</div></div>
+      </div>
+    </div>
+
+    <!-- 选题4：时间讨好症 -->
+    <div class="topic-group">
+      <div class="topic-name">⏰ 选题四：时间讨好症 <span class="topic-score">90分 · TOP4</span></div>
+      <div class="compact-grid">
+        <div class="compact-item top"><div class="compact-score">92</div><div class="compact-title">时间讨好症的6个信号，73.6%职场人中招了</div><div class="compact-type">TOP1·数字承诺</div></div>
+        <div class="compact-item"><div class="compact-score">89</div><div class="compact-title">我多讲的那23分钟，本质是怕别人觉得我不够好</div><div class="compact-type">情绪共鸣</div></div>
+        <div class="compact-item"><div class="compact-score">87</div><div class="compact-title">不是你真的热爱加班，是你的价值确认系统出了bug</div><div class="compact-type">反常识</div></div>
+        <div class="compact-item"><div class="compact-score">88</div><div class="compact-title">「客户还没说结束，我先多讲了23分钟」——这病得治</div><div class="compact-type">替人发声</div></div>
+        <div class="compact-item"><div class="compact-score">89</div><div class="compact-title">我当了5年讨好型咨询师，才发现最该被咨询的是自己</div><div class="compact-type">第一人称</div></div>
+        <div class="compact-item"><div class="compact-score">84</div><div class="compact-title">「你太热情了」——这句夸奖背后藏着时间讨好症</div><div class="compact-type">对话</div></div>
+        <div class="compact-item"><div class="compact-score">88</div><div class="compact-title">为什么越专业的人越容易掉进时间讨好症的坑</div><div class="compact-type">悬念</div></div>
+        <div class="compact-item"><div class="compact-score">82</div><div class="compact-title">时间讨好症：讨好型人格在数字时代的新变体与钩子反应</div><div class="compact-type">专业</div></div>
+        <div class="compact-item"><div class="compact-score">89</div><div class="compact-title">你每天超时工作的那30分钟，正在蚕食你的自我价值</div><div class="compact-type">痛点直击</div></div>
+        <div class="compact-item"><div class="compact-score">89</div><div class="compact-title">准时下班的你，不用对任何人说抱歉</div><div class="compact-type">治愈</div></div>
+      </div>
+    </div>
+
+    <!-- 选题5：不吃压力 -->
+    <div class="topic-group">
+      <div class="topic-name">🛡️ 选题五：不吃压力 <span class="topic-score">88分 · TOP5</span></div>
+      <div class="compact-grid">
+        <div class="compact-item top"><div class="compact-score">91</div><div class="compact-title">我学会了「不吃压力」后，焦虑发作从每周5次降到了0</div><div class="compact-type">TOP5·第一人称</div></div>
+        <div class="compact-item top"><div class="compact-score">90</div><div class="compact-title">你帮别人扛的压力，最后都会变成自己的内伤</div><div class="compact-type">TOP9·痛点直击</div></div>
+        <div class="compact-item"><div class="compact-score">89</div><div class="compact-title">「不吃压力」不是冷漠，是终于决定不再为别人的情绪买单</div><div class="compact-type">情绪共鸣</div></div>
+        <div class="compact-item"><div class="compact-score">89</div><div class="compact-title">不吃压力的5个实操步骤，5800万人都在学</div><div class="compact-type">数字承诺</div></div>
+        <div class="compact-item"><div class="compact-score">89</div><div class="compact-title">不是所有压力都值得扛，分清谁的情绪归谁管</div><div class="compact-type">反常识</div></div>
+        <div class="compact-item"><div class="compact-score">89</div><div class="compact-title">「够了，你的焦虑不是我的责任」</div><div class="compact-type">替人发声</div></div>
+        <div class="compact-item"><div class="compact-score">84</div><div class="compact-title">「你别往心里去」——这句话本身就是一种压力</div><div class="compact-type">对话</div></div>
+        <div class="compact-item"><div class="compact-score">86</div><div class="compact-title">为什么说不的人活得更好？不吃压力的底层逻辑</div><div class="compact-type">悬念</div></div>
+        <div class="compact-item"><div class="compact-score">81</div><div class="compact-title">边界感与情绪自主：不吃压力背后的心理学机制</div><div class="compact-type">专业</div></div>
+        <div class="compact-item"><div class="compact-score">88</div><div class="compact-title">你的善良不是用来盛放别人情绪的容器</div><div class="compact-type">治愈</div></div>
+      </div>
+    </div>
+
+    <div class="radar-note">
+      <h4>标题风格分布（10种 × 5选题 = 50个）</h4>
+      <ul>
+        <li><b>情绪共鸣型</b>：5个（平均分 88.8），最高分 90——适合公众号长文，以情感代入建立连接</li>
+        <li><b>数字承诺型</b>：5个（平均分 89.4），最高分 92——适合小红书图文，确定性结构驱动点击</li>
+        <li><b>反常识型</b>：5个（平均分 89.0），最高分 91——适合知乎/公众号，认知冲突驱动深度阅读</li>
+        <li><b>替人发声型</b>：5个（平均分 87.8），最高分 89——适合小红书/微博，社交货币属性最强</li>
+        <li><b>第一人称型</b>：5个（平均分 88.2），最高分 91——适合小红书/抖音，故事感降低阅读门槛</li>
+        <li><b>对话型</b>：5个（平均分 85.6），最高分 89——适合小红书图文，日常对话引发代入</li>
+        <li><b>悬念型</b>：5个（平均分 88.8），最高分 91——适合小红书/知乎，好奇缺口最强</li>
+        <li><b>专业型</b>：5个（平均分 81.2），最高分 82——适合知乎/公众号深度读者，权威背书</li>
+        <li><b>痛点直击型</b>：5个（平均分 89.4），最高分 91——适合公众号/小红书，直击核心焦虑</li>
+        <li><b>治愈型</b>：5个（平均分 88.0），最高分 89——适合公众号晚推/睡前阅读，温暖收束</li>
+      </ul>
+    </div>
+
+    <div class="qr-section">
+      <h3>🌈 扫码关注彩虹心理</h3>
+      <img src="rainbowhu-qrcode.jpg" alt="彩虹心理公众号二维码">
+      <p>专注心理咨询 · 情绪疗愈 · 关系修复</p>
+      <p class="cta-text">扫码关注彩虹心理，回复「咨询」预约首次评估</p>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    彩虹心理爆款标题实验室报告 · 2026-07-29 · 基于雷达 Agent 08:00 输出的 TOP5 选题自动生成
+  </div>
+</div>
+</body>
+</html>

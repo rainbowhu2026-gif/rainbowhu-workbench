@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>彩虹心理短视频报告 2026-08-07</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei','Segoe UI',sans-serif;background:#0f1115;color:#e6e6ea;line-height:1.8}
+.container{max-width:880px;margin:0 auto;padding:24px 18px 80px}
+.header{background:linear-gradient(135deg,#134B43 0%,#1a6b5e 60%,#c06c84 100%);color:#fff;padding:34px 26px 26px;border-radius:18px;margin-bottom:22px;box-shadow:0 12px 30px rgba(19,75,67,.35)}
+.header h1{font-size:24px;font-weight:800;margin-bottom:8px}
+.header .meta{font-size:13px;opacity:.85;margin-bottom:18px}
+.header .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.header .stat{background:rgba(255,255,255,.13);padding:11px 8px;border-radius:12px;text-align:center;backdrop-filter:blur(6px)}
+.header .stat .num{font-size:21px;font-weight:800}
+.header .stat .label{font-size:11px;opacity:.85;margin-top:3px}
+
+.section-title{font-size:16px;font-weight:800;color:#fff;margin:24px 0 12px;padding-left:12px;border-left:4px solid #c06c84}
+
+.focus-banner{background:linear-gradient(135deg,#1a6b5e,#134B43);color:#fff;padding:14px 18px;border-radius:14px;margin-bottom:22px;font-size:13px;display:flex;align-items:center;gap:10px}
+.focus-banner .badge{font-size:11px;background:rgba(255,255,255,.22);padding:4px 12px;border-radius:12px;font-weight:800;letter-spacing:1px}
+
+.video-card{background:#1a1d24;border:1px solid #2a2d36;border-radius:16px;margin-bottom:22px;overflow:hidden}
+.video-head{padding:18px 22px;display:flex;align-items:center;gap:14px;border-bottom:1px solid #2a2d36}
+.rank{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:14px;flex-shrink:0}
+.r1{background:linear-gradient(135deg,#FFD700,#FFA500)}
+.r2{background:linear-gradient(135deg,#C0C0C0,#A0A0A0)}
+.r3{background:linear-gradient(135deg,#CD7F32,#B87333)}
+.title{flex:1;font-size:16px;font-weight:700;line-height:1.4;color:#fff}
+.theme-tag{font-size:11px;padding:3px 10px;border-radius:11px;font-weight:700;white-space:nowrap}
+
+.video-body{padding:18px 22px}
+
+.hook-box{margin-bottom:14px;padding:12px 16px;background:linear-gradient(135deg,rgba(192,108,132,.15),rgba(192,108,132,.08));border-radius:12px;border-left:4px solid #c06c84}
+.hook-label{font-size:11px;color:#c06c84;font-weight:800;letter-spacing:1px;margin-bottom:4px}
+.hook-text{font-size:17px;font-weight:700;color:#fff;line-height:1.45}
+
+.meta-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.meta-chip{font-size:11px;color:#aaa;background:#262932;padding:4px 10px;border-radius:11px}
+
+.player-wrap{background:#000;border-radius:10px;overflow:hidden;margin-bottom:14px;position:relative}
+.player-wrap video{width:100%;display:block;max-height:520px}
+
+.desc-section{margin-bottom:14px}
+.desc-label{font-size:11px;color:#c06c84;font-weight:800;letter-spacing:1px;margin-bottom:6px}
+.desc-box{background:#262932;border-radius:10px;padding:14px 16px;font-size:13.5px;line-height:1.9;white-space:pre-wrap;color:#e6e6ea;border-left:3px solid #c06c84}
+
+.tag-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.tag{font-size:12px;padding:4px 10px;background:#262932;border-radius:11px;color:#9be7c4;font-weight:600}
+
+.tip-box{background:rgba(246,169,87,.08);border-left:4px solid #f6a957;padding:11px 14px;border-radius:8px;font-size:12.5px;color:#f6a957;line-height:1.7;margin-bottom:14px}
+
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn{padding:9px 16px;border-radius:11px;border:none;font-size:12px;font-weight:700;cursor:pointer;transition:all .15s}
+.btn-copy{background:#c06c84;color:#fff}
+.btn-copy:hover{background:#d57f97}
+.btn-play{background:#1a6b5e;color:#fff}
+.btn-play:hover{background:#239980}
+.copied{background:#34c759!important}
+
+.publish-flow{background:linear-gradient(135deg,#134B43,#1a6b5e);color:#fff;padding:22px 24px;border-radius:14px;margin:24px 0 12px}
+.publish-flow h2{font-size:17px;font-weight:800;margin-bottom:12px}
+.publish-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.step{background:rgba(255,255,255,.1);padding:13px;border-radius:11px;font-size:13px}
+.step .num{font-size:19px;font-weight:800;color:#feca57;margin-bottom:4px}
+.step .text{line-height:1.6}
+
+.all-copy-section{background:#1a1d24;border:1px solid #2a2d36;border-radius:14px;padding:18px 22px;margin:18px 0 22px}
+.all-copy-section .label{font-size:12px;color:#c06c84;font-weight:800;margin-bottom:10px;letter-spacing:1px}
+.all-copy-pre{background:#0f1115;border-radius:10px;padding:14px;font-size:12px;color:#9be7c4;line-height:1.7;white-space:pre-wrap;word-break:break-all;max-height:280px;overflow-y:auto}
+.btn-all-copy{display:block;width:100%;padding:13px;background:linear-gradient(135deg,#c06c84,#d57f97);color:#fff;border:none;border-radius:11px;font-size:14px;font-weight:700;cursor:pointer;margin-top:12px}
+.btn-all-copy:hover{opacity:.92}
+
+.footer{text-align:center;padding:30px 0 10px;font-size:12px;color:#666}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <h1>🎬 彩虹心理短视频报告</h1>
+    <div class="meta">2026-08-07 (周五) | 自动生成 21:00 | 核心目标:涨粉引流</div>
+    <div class="stats">
+      <div class="stat"><div class="num">3</div><div class="label">生成视频数</div></div>
+      <div class="stat"><div class="num">357s</div><div class="label">总时长</div></div>
+      <div class="stat"><div class="num">1080×1920</div><div class="label">视频规格</div></div>
+      <div class="stat"><div class="num">v2.0</div><div class="label">脚本版本</div></div>
+    </div>
+  </div>
+
+  <!-- Focus Banner -->
+  <div class="focus-banner">
+    <span class="badge">📈 涨粉引流</span>
+    <span>本批视频聚焦涨粉,不附公众号二维码,尾巴统一用"关注@彩虹心理,每天懂一点心理学"引导关注</span>
+  </div>
+
+  <!-- Video 1 -->
+  <div class="video-card">
+    <div class="video-head">
+      <div class="rank r1">1</div>
+      <div class="title">妈妈把弟弟溺亡怪到姐姐头上,是毁掉一个孩子的开始</div>
+      <span class="theme-tag" style="background:#e3f2fd;color:#1976d2">原生家庭</span>
+    </div>
+    <div class="video-body">
+      <div class="hook-box">
+        <div class="hook-label">🎯 3 秒钩子开场</div>
+        <div class="hook-text">「弟弟溺水妈妈把责任推到姐姐身上」冲上热搜</div>
+      </div>
+      <div class="meta-row">
+        <span class="meta-chip">⏱️ 时长 115s</span>
+        <span class="meta-chip">🎤 zh-CN-XiaoxiaoNeural</span>
+        <span class="meta-chip">📝 ASS 字幕 59 段</span>
+        <span class="meta-chip">🎨 主题 暖色</span>
+      </div>
+      <div class="player-wrap">
+        <video src="video-2026-08-07-01.mp4" controls preload="metadata"></video>
+      </div>
+      <div class="desc-section">
+        <div class="desc-label">📋 抖音发布文案</div>
+        <div class="desc-box">8月6日,「弟弟溺水妈妈把责任推到姐姐身上」冲上热搜。
+评论区几乎一边倒地心疼那个姐姐。
+热搜背后的心理机制叫「悲痛转嫁」:当巨大的丧失感袭来,成年人本能地要找一个替罪羊,而那个最不会反抗的孩子,成了最安全的情绪出口。
+如果你身边有类似处境的人,允许她恨,允许她哭。
+如果你就是那个姐姐,请记住:你没有杀死弟弟,你只是失去了他。
+
+关注@彩虹心理,每天懂一点心理学
+觉得有用,点赞分享给需要的人</div>
+      </div>
+      <div class="desc-label" style="margin-bottom:6px">🏷️ 话题标签 (8 个)</div>
+      <div class="tag-row">
+        <span class="tag">#彩虹心理</span>
+        <span class="tag">#心理健康</span>
+        <span class="tag">#心理学科普</span>
+        <span class="tag">#原生家庭</span>
+        <span class="tag">#悲痛转嫁</span>
+        <span class="tag">#愧疚式教育</span>
+        <span class="tag">#关注心理健康</span>
+        <span class="tag">#每天懂一点心理学</span>
+      </div>
+      <div class="tip-box">💡 建议发布时间:20:00-22:00(晚间情感话题高峰,原生家庭议题易引发评论区深度共鸣)</div>
+      <div class="actions">
+        <button class="btn btn-copy" onclick="copyText('desc1',this)">📋 复制文案</button>
+        <button class="btn btn-copy" onclick="copyText('tag1',this)">🏷️ 复制标签</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Video 2 -->
+  <div class="video-card">
+    <div class="video-head">
+      <div class="rank r2">2</div>
+      <div class="title">逼自己不允许一切发生的人,迟早会崩溃</div>
+      <span class="theme-tag" style="background:#e8f5e9;color:#2e7d32">自我成长</span>
+    </div>
+    <div class="video-body">
+      <div class="hook-box">
+        <div class="hook-label">🎯 3 秒钩子开场</div>
+        <div class="hook-text">「允许一切发生还能显得你大方一点」刷屏微博</div>
+      </div>
+      <div class="meta-row">
+        <span class="meta-chip">⏱️ 时长 123s</span>
+        <span class="meta-chip">🎤 zh-CN-XiaoxiaoNeural</span>
+        <span class="meta-chip">📝 ASS 字幕 62 段</span>
+        <span class="meta-chip">🎨 主题 冷色</span>
+      </div>
+      <div class="player-wrap">
+        <video src="video-2026-08-07-02.mp4" controls preload="metadata"></video>
+      </div>
+      <div class="desc-section">
+        <div class="desc-label">📋 抖音发布文案</div>
+        <div class="desc-box">8月5日,「允许一切发生还能显得你大方一点」刷屏微博。
+看似自嘲,实则戳中了这代人最隐秘的痛——我们都在拼命当掌控者,结果被自己的「不允许」压垮。
+你越逼自己开心,心里越空落落;你越不允许失败,失败越找上门。
+阿德勒的课题分离:把精力收回来改下一版,不是认输,是停止跟烂事较劲。
+允许自己偶尔搞砸,把内耗的力气省下来,照顾自己。
+
+关注@彩虹心理,每天懂一点心理学
+觉得有用,点赞分享给需要的人</div>
+      </div>
+      <div class="desc-label" style="margin-bottom:6px">🏷️ 话题标签 (8 个)</div>
+      <div class="tag-row">
+        <span class="tag">#彩虹心理</span>
+        <span class="tag">#心理健康</span>
+        <span class="tag">#心理学科普</span>
+        <span class="tag">#自我成长</span>
+        <span class="tag">#允许一切发生</span>
+        <span class="tag">#课题分离</span>
+        <span class="tag">#情绪内耗</span>
+        <span class="tag">#每天懂一点心理学</span>
+      </div>
+      <div class="tip-box">💡 建议发布时间:20:00-22:00(晚间年轻人活跃高峰,自我成长话题传播力强)</div>
+      <div class="actions">
+        <button class="btn btn-copy" onclick="copyText('desc2',this)">📋 复制文案</button>
+        <button class="btn btn-copy" onclick="copyText('tag2',this)">🏷️ 复制标签</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Video 3 -->
+  <div class="video-card">
+    <div class="video-head">
+      <div class="rank r3">3</div>
+      <div class="title">一到秋天就想哭不是矫情,是身体在喊救命</div>
+      <span class="theme-tag" style="background:#fff3cd;color:#856404">情绪心理</span>
+    </div>
+    <div class="video-body">
+      <div class="hook-box">
+        <div class="hook-label">🎯 3 秒钩子开场</div>
+        <div class="hook-text">别急着骂自己矫情</div>
+      </div>
+      <div class="meta-row">
+        <span class="meta-chip">⏱️ 时长 119s</span>
+        <span class="meta-chip">🎤 zh-CN-XiaoxiaoNeural</span>
+        <span class="meta-chip">📝 ASS 字幕 56 段</span>
+        <span class="meta-chip">🎨 主题 紫色</span>
+      </div>
+      <div class="player-wrap">
+        <video src="video-2026-08-07-03.mp4" controls preload="metadata"></video>
+      </div>
+      <div class="desc-section">
+        <div class="desc-label">📋 抖音发布文案</div>
+        <div class="desc-box">今天立秋。你有没有发现,一到这个节气,莫名地提不起劲?
+别急着骂自己矫情。北京回龙观医院数据显示:立秋以来精神科就诊人数增加约20%。
+科学上,它叫季节性情感障碍:白昼缩短→褪黑素增加→血清素下降,身体在经历一场真实的化学风暴。
+怎么办?三件事:晒太阳、动起来、允许自己停下来。
+你不需要对所有低落都找原因,有时候就是秋天来了。
+
+关注@彩虹心理,每天懂一点心理学
+觉得有用,点赞分享给需要的人</div>
+      </div>
+      <div class="desc-label" style="margin-bottom:6px">🏷️ 话题标签 (8 个)</div>
+      <div class="tag-row">
+        <span class="tag">#彩虹心理</span>
+        <span class="tag">#心理健康</span>
+        <span class="tag">#心理学科普</span>
+        <span class="tag">#悲秋综合征</span>
+        <span class="tag">#季节性情感障碍</span>
+        <span class="tag">#情绪低落</span>
+        <span class="tag">#关注心理健康</span>
+        <span class="tag">#每天懂一点心理学</span>
+      </div>
+      <div class="tip-box">💡 建议发布时间:21:00-23:00(立秋时节话题热度高,晚间情绪共鸣强)</div>
+      <div class="actions">
+        <button class="btn btn-copy" onclick="copyText('desc3',this)">📋 复制文案</button>
+        <button class="btn btn-copy" onclick="copyText('tag3',this)">🏷️ 复制标签</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- All-in-one copy -->
+  <div class="all-copy-section">
+    <div class="label">🚀 一键复制全部 3 条文案 + 标签(发布效率 Max)</div>
+    <pre class="all-copy-pre" id="allCopyText">===== 第 1 条 (原生家庭) =====
+妈妈把弟弟溺亡怪到姐姐头上,是毁掉一个孩子的开始
+
+8月6日,「弟弟溺水妈妈把责任推到姐姐身上」冲上热搜。
+评论区几乎一边倒地心疼那个姐姐。
+热搜背后的心理机制叫「悲痛转嫁」:当巨大的丧失感袭来,成年人本能地要找一个替罪羊,而那个最不会反抗的孩子,成了最安全的情绪出口。
+如果你身边有类似处境的人,允许她恨,允许她哭。
+如果你就是那个姐姐,请记住:你没有杀死弟弟,你只是失去了他。
+
+关注@彩虹心理,每天懂一点心理学
+觉得有用,点赞分享给需要的人
+
+#彩虹心理 #心理健康 #心理学科普 #原生家庭 #悲痛转嫁 #愧疚式教育 #关注心理健康 #每天懂一点心理学
+
+===== 第 2 条 (自我成长) =====
+逼自己不允许一切发生的人,迟早会崩溃
+
+8月5日,「允许一切发生还能显得你大方一点」刷屏微博。
+看似自嘲,实则戳中了这代人最隐秘的痛——我们都在拼命当掌控者,结果被自己的「不允许」压垮。
+你越逼自己开心,心里越空落落;你越不允许失败,失败越找上门。
+阿德勒的课题分离:把精力收回来改下一版,不是认输,是停止跟烂事较劲。
+允许自己偶尔搞砸,把内耗的力气省下来,照顾自己。
+
+关注@彩虹心理,每天懂一点心理学
+觉得有用,点赞分享给需要的人
+
+#彩虹心理 #心理健康 #心理学科普 #自我成长 #允许一切发生 #课题分离 #情绪内耗 #每天懂一点心理学
+
+===== 第 3 条 (情绪心理) =====
+一到秋天就想哭不是矫情,是身体在喊救命
+
+今天立秋。你有没有发现,一到这个节气,莫名地提不起劲?
+别急着骂自己矫情。北京回龙观医院数据显示:立秋以来精神科就诊人数增加约20%。
+科学上,它叫季节性情感障碍:白昼缩短→褪黑素增加→血清素下降,身体在经历一场真实的化学风暴。
+怎么办?三件事:晒太阳、动起来、允许自己停下来。
+你不需要对所有低落都找原因,有时候就是秋天来了。
+
+关注@彩虹心理,每天懂一点心理学
+觉得有用,点赞分享给需要的人
+
+#彩虹心理 #心理健康 #心理学科普 #悲秋综合征 #季节性情感障碍 #情绪低落 #关注心理健康 #每天懂一点心理学</pre>
+    <button class="btn-all-copy" onclick="copyAllText(this)">📋 一键复制全部 3 条文案 + 标签</button>
+  </div>
+
+  <!-- Publish Flow -->
+  <div class="publish-flow">
+    <h2>📌 抖音发布 3 步指引</h2>
+    <div class="publish-steps">
+      <div class="step">
+        <div class="num">1</div>
+        <div class="text">在抖音 App 点"+",选择"上传视频"</div>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <div class="text">选对应 .mp4 文件 → 添加封面 → 粘贴文案 → 添加话题标签</div>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <div class="text">按建议发布时间发布:21-23点 为涨粉黄金时段</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    彩虹心理短视频创作 Agent · 自动生成于 2026-08-07 21:00<br>
+    使用 make-short-video.py v2.0 + edge-tts + imageio-ffmpeg 生成
+  </div>
+</div>
+
+<script>
+// 单条文案复制
+var descs={
+  desc1:"8月6日,「弟弟溺水妈妈把责任推到姐姐身上」冲上热搜。\n评论区几乎一边倒地心疼那个姐姐。\n热搜背后的心理机制叫「悲痛转嫁」:当巨大的丧失感袭来,成年人本能地要找一个替罪羊,而那个最不会反抗的孩子,成了最安全的情绪出口。\n如果你身边有类似处境的人,允许她恨,允许她哭。\n如果你就是那个姐姐,请记住:你没有杀死弟弟,你只是失去了他。\n\n关注@彩虹心理,每天懂一点心理学\n觉得有用,点赞分享给需要的人",
+  desc2:"8月5日,「允许一切发生还能显得你大方一点」刷屏微博。\n看似自嘲,实则戳中了这代人最隐秘的痛——我们都在拼命当掌控者,结果被自己的「不允许」压垮。\n你越逼自己开心,心里越空落落;你越不允许失败,失败越找上门。\n阿德勒的课题分离:把精力收回来改下一版,不是认输,是停止跟烂事较劲。\n允许自己偶尔搞砸,把内耗的力气省下来,照顾自己。\n\n关注@彩虹心理,每天懂一点心理学\n觉得有用,点赞分享给需要的人",
+  desc3:"今天立秋。你有没有发现,一到这个节气,莫名地提不起劲?\n别急着骂自己矫情。北京回龙观医院数据显示:立秋以来精神科就诊人数增加约20%。\n科学上,它叫季节性情感障碍:白昼缩短→褪黑素增加→血清素下降,身体在经历一场真实的化学风暴。\n怎么办?三件事:晒太阳、动起来、允许自己停下来。\n你不需要对所有低落都找原因,有时候就是秋天来了。\n\n关注@彩虹心理,每天懂一点心理学\n觉得有用,点赞分享给需要的人",
+  tag1:"#彩虹心理 #心理健康 #心理学科普 #原生家庭 #悲痛转嫁 #愧疚式教育 #关注心理健康 #每天懂一点心理学",
+  tag2:"#彩虹心理 #心理健康 #心理学科普 #自我成长 #允许一切发生 #课题分离 #情绪内耗 #每天懂一点心理学",
+  tag3:"#彩虹心理 #心理健康 #心理学科普 #悲秋综合征 #季节性情感障碍 #情绪低落 #关注心理健康 #每天懂一点心理学"
+};
+
+function copyText(key,btn){
+  var text=descs[key];
+  var done=function(){
+    var oldText=btn.textContent;
+    btn.textContent='✅ 已复制';
+    btn.classList.add('copied');
+    setTimeout(function(){
+      btn.textContent=oldText;
+      btn.classList.remove('copied');
+    },2000);
+  };
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(done).catch(function(){fallback(text);done();});
+  }else{
+    fallback(text);done();
+  }
+}
+
+function fallback(text){
+  var ta=document.createElement('textarea');
+  ta.value=text;
+  ta.style.position='fixed';
+  ta.style.left='-9999px';
+  document.body.appendChild(ta);
+  ta.select();
+  try{document.execCommand('copy');}catch(e){}
+  document.body.removeChild(ta);
+}
+
+function copyAllText(btn){
+  var text=document.getElementById('allCopyText').textContent;
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(function(){
+      var oldText=btn.textContent;
+      btn.textContent='✅ 全部 3 条文案已复制,去抖音挨个发布吧!';
+      setTimeout(function(){btn.textContent=oldText;},3000);
+    }).catch(function(){fallback(text);});
+  }else{
+    fallback(text);
+    var oldText=btn.textContent;
+    btn.textContent='✅ 全部 3 条文案已复制,去抖音挨个发布吧!';
+    setTimeout(function(){btn.textContent=oldText;},3000);
+  }
+}
+</script>
+</body>
+</html>

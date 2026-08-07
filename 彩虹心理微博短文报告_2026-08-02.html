@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>彩虹心理微博短文报告 2026-08-02</title>
+<style>
+:root{
+  --bg:#f5f5f7; --card:#fff; --ink:#1d1d1f; --ink2:#6e6e73; --ink3:#a1a1a6;
+  --line:#e5e5e7; --accent:#34c759; --accent2:#c06c84; --warn:#f6a957;
+  --r1:#ff6b6b;--r2:#feca57;--r3:#48dbfb;
+  --green:#2e7d32;--amber:#856404;--purple:#6b5b95;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;background:var(--bg);color:var(--ink);font-size:14px;-webkit-font-smoothing:antialiased}
+
+.header{background:linear-gradient(135deg,#a18cd1,#fbc2eb);color:#fff;padding:48px 28px 36px;text-align:center}
+.header h1{font-size:26px;font-weight:800;margin-bottom:8px;letter-spacing:.5px}
+.header .sub{font-size:14px;opacity:.85;margin-bottom:6px}
+.header .date{font-size:12px;opacity:.7}
+.header .reminder{display:inline-block;margin-top:16px;padding:8px 20px;background:rgba(255,255,255,.2);border-radius:20px;font-size:13px;font-weight:700;backdrop-filter:blur(4px)}
+
+.container{max-width:900px;margin:0 auto;padding:24px 20px 60px}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:30px}
+.stat-card{background:var(--card);border-radius:16px;padding:20px;text-align:center;box-shadow:0 2px 12px rgba(0,0,0,.05);border:1px solid var(--line)}
+.stat-card .num{font-size:36px;font-weight:800;line-height:1.1}
+.stat-card .label{font-size:12px;color:var(--ink2);margin-top:6px;font-weight:600}
+.num.c1{color:var(--accent2)} .num.c2{color:var(--purple)} .num.c3{color:var(--accent)} .num.c4{color:var(--warn)}
+
+.section-title{font-size:17px;font-weight:800;margin:30px 0 16px;display:flex;align-items:center;gap:10px}
+.section-title .icon{width:32px;height:32px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px}
+
+.article-card{background:var(--card);border-radius:18px;padding:24px;margin-bottom:20px;box-shadow:0 4px 20px rgba(0,0,0,.06);border:1px solid var(--line);position:relative;overflow:hidden}
+.article-card .rank-badge{position:absolute;top:0;right:0;width:56px;height:56px;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:0 0 0 18px;font-weight:800;color:#fff;font-size:11px;line-height:1.3}
+.article-card .rank-badge .rn{font-size:20px}
+.rb-1{background:#ff6b6b} .rb-2{background:#feca57;color:#1d1d1f!important} .rb-3{background:#48dbfb}
+
+.article-header{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:14px;padding-right:48px}
+.article-header .title{font-size:18px;font-weight:800;line-height:1.4;flex:1 1 100%}
+.article-meta{display:flex;gap:8px;flex-wrap:wrap}
+.tag{padding:4px 10px;border-radius:10px;font-size:11px;font-weight:700}
+.tag-theme{padding:4px 12px;border-radius:12px;font-size:11px;font-weight:700}
+
+.score-row{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.score-item{text-align:center}
+.score-item .sv{font-size:20px;font-weight:800}
+.score-item .sl{font-size:10px;color:var(--ink3);margin-top:2px}
+
+.preview-box{border:1px solid var(--line);border-radius:14px;background:#fafafa;padding:20px;margin:16px 0;max-width:480px;margin-left:auto;margin-right:auto}
+.preview-box .preview-label{font-size:10px;color:var(--ink3);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;font-weight:700;text-align:center}
+.preview-box .article-text{font-size:14px;line-height:1.85;color:#333;white-space:pre-wrap}
+.preview-box .article-text .cta-hl{display:block;margin-top:20px;padding:12px 16px;background:#f0f4f0;border-radius:10px;border-left:3px solid var(--green);font-size:13px;color:var(--green);font-weight:600}
+
+.source-row{margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}
+.source-row .src-label{font-size:11px;color:var(--ink3);font-weight:700;margin-bottom:6px}
+.source-chips{display:flex;flex-wrap:wrap;gap:6px}
+.src-chip{font-size:11px;padding:3px 10px;background:#f0f0f5;border-radius:8px;color:var(--ink2)}
+
+.keywords{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+.kw{font-size:10px;padding:2px 8px;background:#eef2f5;border-radius:6px;color:var(--ink3)}
+
+.blogger-section{margin-top:30px}
+.blogger-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px}
+.blogger-chip{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 12px;font-size:12px;display:flex;justify-content:space-between;align-items:center}
+.blogger-chip .bn{font-weight:700}
+.blogger-chip .bf{font-size:10px;color:var(--ink3)}
+
+.publish-guide{background:linear-gradient(135deg,#134B43,#1a6b5e);color:#fff;border-radius:18px;padding:28px;margin:30px 0;text-align:center}
+.publish-guide h3{font-size:20px;margin-bottom:12px}
+.publish-guide .steps{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin-top:16px}
+.publish-guide .step{text-align:center;flex:0 0 160px}
+.publish-guide .step .sn{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-size:18px;font-weight:800}
+.publish-guide .step .st{font-size:13px;opacity:.9;line-height:1.5}
+
+.qr-section{text-align:center;margin-top:40px;padding:30px;background:var(--card);border-radius:18px;box-shadow:0 2px 12px rgba(0,0,0,.05)}
+.qr-section img{width:160px;height:160px;border-radius:12px;margin-bottom:12px}
+.qr-section .qr-text{font-size:13px;color:var(--ink2);line-height:1.6}
+
+.footer{text-align:center;padding:20px;color:var(--ink3);font-size:11px;margin-top:20px}
+
+@media(max-width:600px){
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .preview-box{max-width:100%}
+  .publish-guide .steps{gap:16px}
+  .publish-guide .step{flex:0 0 120px}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>彩虹心理 · 微博短文创作报告</h1>
+  <div class="sub">微博热点 → 3篇短文 → 22:00 公众号发布</div>
+  <div class="date">2026年8月2日（周日）</div>
+  <div class="reminder">⏰ 定时发布提醒：今晚 22:00 公众号推送</div>
+</div>
+
+<div class="container">
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="stat-card"><div class="num c1">28</div><div class="label">扫描博主数</div></div>
+    <div class="stat-card"><div class="num c2">3</div><div class="label">整合短文数</div></div>
+    <div class="stat-card"><div class="num c3">50,000</div><div class="label">最低粉丝门槛</div></div>
+    <div class="stat-card"><div class="num c4">22:00</div><div class="label">定时发布时间</div></div>
+  </div>
+
+  <!-- RANK 1 -->
+  <div class="section-title"><span class="icon" style="background:#ff6b6b">1</span> TOP 1 · 熟人羞耻症（聚光灯效应）</div>
+  <div class="article-card">
+    <div class="rank-badge rb-1"><span class="rn">#1</span>95分</div>
+    <div class="article-header">
+      <div class="title">发完朋友圈就想删？你不是矫情，是中了聚光灯效应的毒</div>
+      <span class="tag-theme" style="background:#fff3cd;color:#856404">情绪心理</span>
+      <span class="tag" style="background:#fff0f0;color:#c62828">社交焦虑</span>
+      <span class="tag" style="background:#e8f5e9;color:#2e7d32">578字</span>
+    </div>
+    <div class="score-row">
+      <div class="score-item"><div class="sv" style="color:#ff6b6b">28</div><div class="sl">题材热度/30</div></div>
+      <div class="score-item"><div class="sv" style="color:#feca57">25</div><div class="sl">情绪共鸣/25</div></div>
+      <div class="score-item"><div class="sv" style="color:#48dbfb">18</div><div class="sl">阅读适配/20</div></div>
+      <div class="score-item"><div class="sv" style="color:#1dd1a1">14</div><div class="sl">传播潜力/15</div></div>
+      <div class="score-item"><div class="sv" style="color:#a55eea">10</div><div class="sl">转化引导/10</div></div>
+    </div>
+
+    <div class="preview-box">
+      <div class="preview-label">📱 手机阅读预览</div>
+      <div class="article-text">你有没有过这种体验——精修了半小时的照片，配了八百遍的文案，发出去那一刻就开始后悔。心跳加速，头皮发麻，每隔十秒刷新一次看有没有人点赞。十分钟过去只有两三个赞，于是默默删掉了。
+
+别急着骂自己矫情。这在心理学上有一个精确的名字：聚光灯效应（Spotlight Effect）。我们本能地高估自己在别人眼中的关注度，总觉得发出去之后所有人都在审视你的文案和照片。但真相很残酷——大部分人的朋友圈，在别人信息流里只停留0.5秒，随手划走，连大图都不会点开。
+
+更麻烦的是，朋友圈早就不是「朋友」圈了。同事、领导、长辈、半生不熟的点头之交混在一起，它从一个真实分享空间变成了需要谨慎表演的「社交橱窗」。微博网友@-亿炽梨-管这叫「熟人羞耻症」：羞于在熟人面前展示真实的自己。于是你反复分组、再三斟酌、发完就缩回壳里。
+
+微博话题#每次发完朋友圈都特别尴尬#在7月底冲上热搜，数千万阅读，无数人自曝同款体验。有人戏称自己「朋友圈人格分裂」：大号谨小慎微，小号放飞自我。
+
+这不是你的问题，是一个把社交变成表演的环境出了问题。
+
+试着做一个微小的改变：把朋友圈从「表演生活」的舞台，还原成「记录生活」的日记本。记录是为了取悦未来的自己，而不是迎合当下的观众。网友@醉红唇_说过一句很治愈的话：「大家真没那么闲盯着你的动态看，你的朋友圈只是指尖滑过的一秒钟。」
+
+你不需要让所有人满意。你只需要让自己舒服。
+
+<span class="cta-hl">【彩虹心理社交焦虑评估】→ 扫码关注公众号，回复「社交」获取</span></div>
+    </div>
+
+    <div class="source-row">
+      <div class="src-label">📎 整合来源博主（6位）</div>
+      <div class="source-chips">
+        <span class="src-chip">@小晴谱</span><span class="src-chip">@醉红唇_</span><span class="src-chip">@-亿炽梨-</span><span class="src-chip">@草根足球记录员</span><span class="src-chip">KnowYourself心理</span><span class="src-chip">@新浪乐迷公社</span>
+      </div>
+    </div>
+    <div class="keywords">
+      <span class="kw">熟人羞耻症</span><span class="kw">聚光灯效应</span><span class="kw">朋友圈焦虑</span><span class="kw">社交橱窗</span><span class="kw">自我审查</span><span class="kw">社交焦虑</span>
+    </div>
+  </div>
+
+  <!-- RANK 2 -->
+  <div class="section-title"><span class="icon" style="background:#feca57;color:#1d1d1f">2</span> TOP 2 · 精神胜利法（认知重评）</div>
+  <div class="article-card">
+    <div class="rank-badge rb-2"><span class="rn">#2</span>93分</div>
+    <div class="article-header">
+      <div class="title">被领导骂了没事，他骂的是工位不是我：8亿人靠精神胜利法自救</div>
+      <span class="tag-theme" style="background:#fff3cd;color:#856404">情绪心理</span>
+      <span class="tag" style="background:#e3f2fd;color:#1976d2">职场心理</span>
+      <span class="tag" style="background:#e8f5e9;color:#2e7d32">621字</span>
+    </div>
+    <div class="score-row">
+      <div class="score-item"><div class="sv" style="color:#ff6b6b">30</div><div class="sl">题材热度/30</div></div>
+      <div class="score-item"><div class="sv" style="color:#feca57">23</div><div class="sl">情绪共鸣/25</div></div>
+      <div class="score-item"><div class="sv" style="color:#48dbfb">18</div><div class="sl">阅读适配/20</div></div>
+      <div class="score-item"><div class="sv" style="color:#1dd1a1">13</div><div class="sl">传播潜力/15</div></div>
+      <div class="score-item"><div class="sv" style="color:#a55eea">9</div><div class="sl">转化引导/10</div></div>
+    </div>
+
+    <div class="preview-box">
+      <div class="preview-label">📱 手机阅读预览</div>
+      <div class="article-text">「被领导骂了→没事，他骂的是我的工位，不是我。迟到→不是我起晚了，是世界来早了。犯错→说明我在做事，躺平的人连犯错的机会都没有。」
+
+2026年7月，微博博主@小茉儿宝的这几句话获得120万点赞，话题#本人常用的精神胜利法#冲上8亿阅读。评论区清一色「逐字学习」「太真实了」。紧跟着@一言不发的狗又补了6条法则，被网友称为「当代阿Q自救指南2.0」。
+
+有人嘲笑这是阿Q精神。但北京师范大学心理学教授王芳在接受《中国青年报》采访时说了关键一句：「年轻人正在用幽默化的方式主动调整对负面事件的解读，这本质上是一种成熟的认知重评策略。」
+
+翻译成大白话——这不叫自欺欺人，叫情绪自救。
+
+美国心理学家阿尔伯特·埃利斯创立的理性情绪行为疗法（REBT），核心思想就是：决定你情绪的从来不是事件本身，而是你对事件的解读。被骂了你可以想「我彻底完了」，也可以想「他只是在发泄情绪，跟我这个人本身没关系」。同样的事件，不同的解读，情绪天差地别。
+
+博主@云照熠晞总结得很透：「这6条法则，就是6个高效的思维转念工具。」其中最关键的一步是「行为与人格分离」——把「我的工作被批评」和「我是一个失败的人」拆开。这听起来像文字游戏，但脑科学研究表明，重新标记情绪（affect labeling）确实能降低杏仁核的应激反应。
+
+下次被怼的时候试试默念：他骂的是工位，不是坐在工位上的我。这句话听起来可笑，但它能给你一个喘息的缝隙——在那个缝隙里，你不再是受害者，而是一个有选择权的人。
+
+<span class="cta-hl">【彩虹心理情绪调节评估】→ 扫码关注公众号，回复「调节」获取</span></div>
+    </div>
+
+    <div class="source-row">
+      <div class="src-label">📎 整合来源博主（5位）</div>
+      <div class="source-chips">
+        <span class="src-chip">@小茉儿宝</span><span class="src-chip">@一言不发的狗</span><span class="src-chip">@云照熠晞</span><span class="src-chip">王芳（北师大）</span><span class="src-chip">@中国青年报</span>
+      </div>
+    </div>
+    <div class="keywords">
+      <span class="kw">精神胜利法</span><span class="kw">认知重评</span><span class="kw">REBT</span><span class="kw">阿尔伯特·埃利斯</span><span class="kw">职场情绪</span><span class="kw">行为人格分离</span>
+    </div>
+  </div>
+
+  <!-- RANK 3 -->
+  <div class="section-title"><span class="icon" style="background:#48dbfb">3</span> TOP 3 · 追蛇效应（停止自我攻击）</div>
+  <div class="article-card">
+    <div class="rank-badge rb-3"><span class="rn">#3</span>89分</div>
+    <div class="article-header">
+      <div class="title">伤害你的人早就忘了，只有你还在追问为什么——追蛇效应正在毁掉你</div>
+      <span class="tag-theme" style="background:#e8f5e9;color:#2e7d32">自我成长</span>
+      <span class="tag" style="background:#f3e5f5;color:#6b5b95">情绪疗愈</span>
+      <span class="tag" style="background:#e8f5e9;color:#2e7d32">605字</span>
+    </div>
+    <div class="score-row">
+      <div class="score-item"><div class="sv" style="color:#ff6b6b">27</div><div class="sl">题材热度/30</div></div>
+      <div class="score-item"><div class="sv" style="color:#feca57">24</div><div class="sl">情绪共鸣/25</div></div>
+      <div class="score-item"><div class="sv" style="color:#48dbfb">17</div><div class="sl">阅读适配/20</div></div>
+      <div class="score-item"><div class="sv" style="color:#1dd1a1">12</div><div class="sl">传播潜力/15</div></div>
+      <div class="score-item"><div class="sv" style="color:#a55eea">9</div><div class="sl">转化引导/10</div></div>
+    </div>
+
+    <div class="preview-box">
+      <div class="preview-label">📱 手机阅读预览</div>
+      <div class="article-text">被人伤害之后，你的第一反应是什么？大部分人会说：追问对方「为什么」。好像只要拿到一个说法，痛苦就能画上句号。
+
+壹心理在7月30日的专栏里讲了一个心理学概念叫「追蛇效应」：你被蛇咬了，最该做的事是处理伤口、赶紧去医院。但绝大多数人选择扔下自己不管，满山遍野去追那条蛇——问它为什么咬我、让它道歉、让它承认错了。结果蛇早就溜了，你的伤口在发炎感染。
+
+这就是为什么很多人分手三年了还在内耗——不是还爱着，是还没要到那个「说法」。
+
+武志红在2026年7月发表的6段治愈文字里，有一段讲得特别直接：「苦难本身很少会留下心理创伤。真正困住一个人的，是你如何看待那场苦难。如果始终不肯正视伤痛、强行伪装乐观，积压的负面情绪会不断催生内耗。」他管这叫「停止自我攻击」。
+
+史宇心理医生分享过一个真实案例：一个初一女生成绩一直不好，给自己贴了「我就是笨」的标签，干脆放弃努力。可做了大脑功能测评后发现，她的反应速度、记忆力、逻辑能力全部在线——不是能力不行，是长期失败体验塑造了一套错误的自我认知。她追的蛇是自己的过去。
+
+追蛇和追自己，其实是同一件事。
+
+有些伤害不需要答案。不是所有的「为什么」都有回音，也不是每个道歉都能等到。蛇跑了就跑了吧，你的伤口才值得全部的注意力。
+
+允许自己慢慢好起来。可以不原谅，但请放过自己。
+
+<span class="cta-hl">【彩虹心理创伤疗愈评估】→ 扫码关注公众号，回复「疗愈」获取</span></div>
+    </div>
+
+    <div class="source-row">
+      <div class="src-label">📎 整合来源博主（4位）</div>
+      <div class="source-chips">
+        <span class="src-chip">壹心理</span><span class="src-chip">武志红</span><span class="src-chip">史宇心理医生</span><span class="src-chip">@刘晨曦-从心</span>
+      </div>
+    </div>
+    <div class="keywords">
+      <span class="kw">追蛇效应</span><span class="kw">停止自我攻击</span><span class="kw">武志红</span><span class="kw">创伤疗愈</span><span class="kw">认知重构</span><span class="kw">自我认知</span>
+    </div>
+  </div>
+
+  <!-- Publish Guide -->
+  <div class="publish-guide">
+    <h3>🚀 22:00 公众号发布指引</h3>
+    <p style="opacity:.85;font-size:14px">3篇短文已就绪，建议按 RANK 1 → RANK 2 → RANK 3 顺序推送</p>
+    <div class="steps">
+      <div class="step"><div class="sn">1</div><div class="st">打开公众号后台<br>新建图文消息</div></div>
+      <div class="step"><div class="sn">2</div><div class="st">依次粘贴3篇短文<br>（含排版预览）</div></div>
+      <div class="step"><div class="sn">3</div><div class="st">设置定时发布<br>2026-08-02 22:00</div></div>
+      <div class="step"><div class="sn">✅</div><div class="st">发布后数据追踪<br>次日复盘</div></div>
+    </div>
+  </div>
+
+  <!-- Scanned Bloggers -->
+  <div class="blogger-section">
+    <div class="section-title"><span class="icon" style="background:var(--purple)">📋</span>今日扫描博主一览（28位 / 粉丝≥5万）</div>
+    <div class="blogger-grid">
+      <div class="blogger-chip"><span class="bn">壹心理</span><span class="bf">~170万粉</span></div>
+      <div class="blogger-chip"><span class="bn">KnowYourself心理</span><span class="bf">~130万粉</span></div>
+      <div class="blogger-chip"><span class="bn">武志红</span><span class="bf">头部大V</span></div>
+      <div class="blogger-chip"><span class="bn">史宇心理医生</span><span class="bf">专业认证</span></div>
+      <div class="blogger-chip"><span class="bn">@刘晨曦-从心</span><span class="bf">认证心理咨询师</span></div>
+      <div class="blogger-chip"><span class="bn">@银教授</span><span class="bf">~3000万粉</span></div>
+      <div class="blogger-chip"><span class="bn">@小晴谱</span><span class="bf">热搜话题发起</span></div>
+      <div class="blogger-chip"><span class="bn">@醉红唇_</span><span class="bf">社交焦虑分析</span></div>
+      <div class="blogger-chip"><span class="bn">@-亿炽梨-</span><span class="bf">熟人羞耻症</span></div>
+      <div class="blogger-chip"><span class="bn">@草根足球记录员</span><span class="bf">社交焦虑分享</span></div>
+      <div class="blogger-chip"><span class="bn">@小茉儿宝</span><span class="bf">120万赞爆文</span></div>
+      <div class="blogger-chip"><span class="bn">@一言不发的狗</span><span class="bf">6条法则爆文</span></div>
+      <div class="blogger-chip"><span class="bn">@云照熠晞</span><span class="bf">REBT转念分析</span></div>
+      <div class="blogger-chip"><span class="bn">@财鼠鼠123</span><span class="bf">12万赞爆文</span></div>
+      <div class="blogger-chip"><span class="bn">@时光轻饮荟</span><span class="bf">重启人生讨论</span></div>
+      <div class="blogger-chip"><span class="bn">@时光已散了</span><span class="bf">重启人生讨论</span></div>
+      <div class="blogger-chip"><span class="bn">@柳柳的微博</span><span class="bf">半熟恋人5嘉宾</span></div>
+      <div class="blogger-chip"><span class="bn">@谢胜子</span><span class="bf">12万转发40万赞</span></div>
+      <div class="blogger-chip"><span class="bn">@喵星君大大</span><span class="bf">情感心理分析</span></div>
+      <div class="blogger-chip"><span class="bn">@心智复利</span><span class="bf">心理学观点</span></div>
+      <div class="blogger-chip"><span class="bn">@林安在这里</span><span class="bf">讨好型人格分析</span></div>
+      <div class="blogger-chip"><span class="bn">@川上行</span><span class="bf">职场心理分析</span></div>
+      <div class="blogger-chip"><span class="bn">@小小书婧</span><span class="bf">打工人段子</span></div>
+      <div class="blogger-chip"><span class="bn">@半碗咖啡粥</span><span class="bf">凌晨咖啡店</span></div>
+      <div class="blogger-chip"><span class="bn">@郑朋的棉毛裤</span><span class="bf">焦虑分析</span></div>
+      <div class="blogger-chip"><span class="bn">@曹大刚心理治疗师</span><span class="bf">卫健委认证</span></div>
+      <div class="blogger-chip"><span class="bn">@施洁</span><span class="bf">课题分离实践</span></div>
+      <div class="blogger-chip"><span class="bn">@新浪乐迷公社</span><span class="bf">心理热点解读</span></div>
+    </div>
+    <p style="font-size:11px;color:var(--ink3);margin-top:12px;text-align:center">注：扫描基于公开搜索数据，粉丝数为搜索结果可确认的近似值，未直连微博API</p>
+  </div>
+
+  <!-- QR Code -->
+  <div class="qr-section">
+    <img src="rainbowhu-qrcode.jpg" alt="彩虹心理公众号二维码" onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+    <div style="display:none;padding:40px;border:2px dashed var(--line);border-radius:12px;color:var(--ink3);font-size:13px">📷 公众号二维码<br>（请将 rainbowhu-qrcode.jpg 放入工作目录）</div>
+    <div class="qr-text">扫码关注「彩虹心理」公众号<br>回复关键词获取专属心理评估</div>
+  </div>
+
+  <div class="footer">
+    彩虹心理 · 微博短文创作 Agent 自动生成<br>
+    报告时间：2026-08-02 20:00 | 发布提醒：22:00<br>
+    本报告数据基于公开搜索，未直连微博API
+  </div>
+
+</div>
+</body>
+</html>

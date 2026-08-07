@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>英语盲听练习 - rainbowhu</title>
+<link rel="icon" href="rainbowhu-cover.ico">
+<style>
+:root{
+  --bg:#f5f5f7; --card:#fff; --ink:#1d1d1f; --ink2:#6e6e73; --ink3:#a1a1a6;
+  --line:#e5e5e7; --accent:#0071e3; --accent-light:#e8f0fe; --green:#34c759;
+  --orange:#ff9500; --red:#ff3b30; --shadow:0 4px 24px rgba(0,0,0,.08); --r:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;-webkit-font-smoothing:antialiased}
+
+.list-view{max-width:820px;margin:0 auto;padding:24px 20px 60px}
+.list-header{text-align:center;margin-bottom:28px}
+.list-header h1{font-size:26px;font-weight:800;letter-spacing:-.5px}
+.list-header p{color:var(--ink2);margin-top:6px;font-size:14px}
+.article-card{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);padding:20px 24px;margin-bottom:14px;cursor:pointer;transition:transform .15s,box-shadow .15s;border:2px solid transparent}
+.article-card:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,0,0,.12);border-color:var(--accent-light)}
+.article-card .ac-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.ac-title-en{font-size:17px;font-weight:700;line-height:1.4}
+.ac-title-cn{font-size:13px;color:var(--ink2);margin-top:3px}
+.ac-badge{background:var(--accent);color:#fff;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;white-space:nowrap;flex-shrink:0}
+.ac-badge.bbc{background:#bb1919}
+.ac-badge.ted{background:#e62b1e}
+.ac-stats{display:flex;gap:18px;margin-top:14px;flex-wrap:wrap}
+.ac-stat{font-size:12px;color:var(--ink3)}
+.ac-listen-count{font-size:12px;color:var(--green);font-weight:600;margin-top:8px}
+
+.player-view{display:none;max-width:820px;margin:0 auto;padding:0 20px 120px}
+.player-view.active{display:block}
+.list-view.hidden{display:none}
+
+.player-topbar{display:flex;align-items:center;justify-content:space-between;padding:16px 0;border-bottom:1px solid var(--line);margin-bottom:20px;position:sticky;top:0;background:var(--bg);z-index:10}
+.back-btn{display:flex;align-items:center;gap:6px;color:var(--accent);font-weight:600;cursor:pointer;font-size:14px;border:none;background:none}
+.source-link{font-size:13px;color:var(--ink3);text-decoration:none}
+.source-link:hover{color:var(--accent)}
+
+.player-title{text-align:center;margin-bottom:16px}
+.player-title h2{font-size:22px;font-weight:800}
+.player-title p{color:var(--ink2);font-size:14px;margin-top:4px}
+
+.stat-bar{display:flex;justify-content:center;gap:24px;padding:12px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:24px}
+.stat-item{text-align:center}
+.stat-item .num{font-size:20px;font-weight:800;color:var(--accent)}
+.stat-item .label{font-size:11px;color:var(--ink3);margin-top:2px}
+
+.toggle-row{display:flex;justify-content:center;gap:12px;margin-bottom:20px}
+.toggle-btn{padding:7px 18px;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer;border:1.5px solid var(--line);background:var(--card);color:var(--ink2);transition:all .15s}
+.toggle-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+.sentence-list{display:flex;flex-direction:column;gap:2px}
+.sentence{padding:14px 16px;border-radius:10px;cursor:pointer;transition:background .12s;border-left:3px solid transparent}
+.sentence:hover{background:rgba(0,113,227,.04)}
+.sentence.playing{background:var(--accent-light);border-left-color:var(--accent)}
+.sentence .s-en{font-size:16px;line-height:1.7;font-weight:500}
+.sentence .s-cn{font-size:14px;line-height:1.6;color:var(--ink2);margin-top:4px}
+.sentence.hide-cn .s-cn{display:none}
+.sentence .s-idx{font-size:11px;color:var(--ink3);margin-right:6px}
+
+.controls{position:fixed;bottom:0;left:0;right:0;background:rgba(255,255,255,.95);backdrop-filter:blur(20px);border-top:1px solid var(--line);padding:14px 20px;z-index:100}
+.controls-inner{max-width:820px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:16px}
+.ctrl-btn{width:48px;height:48px;border-radius:50%;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:20px;transition:all .15s;background:var(--card);box-shadow:0 2px 8px rgba(0,0,0,.1);color:var(--ink)}
+.ctrl-btn:hover{background:var(--accent-light);color:var(--accent)}
+.ctrl-btn.play{width:56px;height:56px;background:var(--accent);color:#fff;font-size:22px}
+.ctrl-btn.play:hover{background:#005bb5}
+.ctrl-btn.loop.active{background:var(--orange);color:#fff}
+.ctrl-info{font-size:13px;color:var(--ink2);min-width:80px;text-align:center}
+
+.word-section{margin-top:32px;background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);padding:24px}
+.word-section h3{font-size:17px;font-weight:700;margin-bottom:4px}
+.word-section .ws-desc{font-size:13px;color:var(--ink2);margin-bottom:18px}
+.word-card{margin-bottom:18px}
+.word-q{font-size:18px;font-weight:700;margin-bottom:12px}
+.word-opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.word-opt{padding:12px 16px;border-radius:12px;border:2px solid var(--line);background:var(--card);cursor:pointer;font-size:14px;font-weight:500;transition:all .15s;text-align:center}
+.word-opt:hover{border-color:var(--accent)}
+.word-opt.correct{background:#e8f9ee;border-color:var(--green);color:var(--green)}
+.word-opt.wrong{background:#fdeceb;border-color:var(--red);color:var(--red)}
+.word-opt.disabled{opacity:.5;cursor:default}
+.word-result{text-align:center;padding:16px;font-size:15px;font-weight:600;color:var(--ink2)}
+.word-result .score{font-size:28px;font-weight:800;color:var(--accent)}
+
+@media(max-width:600px){
+  .word-opts{grid-template-columns:1fr}
+  .ac-stats{gap:12px}
+  .stat-bar{gap:16px}
+  .controls-inner{gap:10px}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== LIST VIEW (static HTML, no JS needed to display) ===== -->
+<div class="list-view" id="listView">
+  <div class="list-header">
+    <h1>🎧 英语盲听练习</h1>
+    <p>逐句精听 · 英中对照 · 生词训练</p>
+  </div>
+  <div id="articleList">
+
+    <div class="article-card" onclick="openArticle(1)">
+      <div class="ac-top">
+        <div>
+          <div class="ac-title-en">The Science of Procrastination</div>
+          <div class="ac-title-cn">拖延症的科学</div>
+        </div>
+        <span class="ac-badge ted">TED</span>
+      </div>
+      <div class="ac-stats">
+        <span class="ac-stat">📝 155 词</span>
+        <span class="ac-stat">⏱ 1′02″</span>
+        <span class="ac-stat">📚 12 词汇</span>
+        <span class="ac-stat">📄 12 句</span>
+      </div>
+    </div>
+
+    <div class="article-card" onclick="openArticle(2)">
+      <div class="ac-top">
+        <div>
+          <div class="ac-title-en">Why Sleep Matters More Than You Think</div>
+          <div class="ac-title-cn">为什么睡眠比你想象的更重要</div>
+        </div>
+        <span class="ac-badge bbc">BBC</span>
+      </div>
+      <div class="ac-stats">
+        <span class="ac-stat">📝 154 词</span>
+        <span class="ac-stat">⏱ 1′01″</span>
+        <span class="ac-stat">📚 12 词汇</span>
+        <span class="ac-stat">📄 12 句</span>
+      </div>
+    </div>
+
+    <div class="article-card" onclick="openArticle(3)">
+      <div class="ac-top">
+        <div>
+          <div class="ac-title-en">The Power of Small Habits</div>
+          <div class="ac-title-cn">微小习惯的力量</div>
+        </div>
+        <span class="ac-badge ted">TED</span>
+      </div>
+      <div class="ac-stats">
+        <span class="ac-stat">📝 159 词</span>
+        <span class="ac-stat">⏱ 1′03″</span>
+        <span class="ac-stat">📚 12 词汇</span>
+        <span class="ac-stat">📄 12 句</span>
+      </div>
+    </div>
+
+    <div class="article-card" onclick="openArticle(4)">
+      <div class="ac-top">
+        <div>
+          <div class="ac-title-en">Understanding Anxiety: When Worry Becomes Too Much</div>
+          <div class="ac-title-cn">理解焦虑：当担忧变得过多时</div>
+        </div>
+        <span class="ac-badge bbc">BBC</span>
+      </div>
+      <div class="ac-stats">
+        <span class="ac-stat">📝 151 词</span>
+        <span class="ac-stat">⏱ 1′00″</span>
+        <span class="ac-stat">📚 12 词汇</span>
+        <span class="ac-stat">📄 12 句</span>
+      </div>
+    </div>
+
+    <div class="article-card" onclick="openArticle(5)">
+      <div class="ac-top">
+        <div>
+          <div class="ac-title-en">The Art of Active Listening</div>
+          <div class="ac-title-cn">积极倾听的艺术</div>
+        </div>
+        <span class="ac-badge ted">TED</span>
+      </div>
+      <div class="ac-stats">
+        <span class="ac-stat">📝 156 词</span>
+        <span class="ac-stat">⏱ 1′02″</span>
+        <span class="ac-stat">📚 12 词汇</span>
+        <span class="ac-stat">📄 12 句</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== PLAYER VIEW ===== -->
+<div class="player-view" id="playerView">
+  <div class="player-topbar">
+    <button class="back-btn" onclick="backToList()">← 返回列表</button>
+    <a href="#" id="sourceLink" class="source-link" target="_blank">原文链接 ↗</a>
+  </div>
+  <div class="player-title">
+    <h2 id="pTitleEn"></h2>
+    <p id="pTitleCn"></p>
+  </div>
+  <div class="stat-bar">
+    <div class="stat-item"><div class="num" id="sWords"></div><div class="label">词数</div></div>
+    <div class="stat-item"><div class="num" id="sDuration"></div><div class="label">时长</div></div>
+    <div class="stat-item"><div class="num" id="sVocab"></div><div class="label">词汇量</div></div>
+    <div class="stat-item"><div class="num" id="sListened"></div><div class="label">已听次数</div></div>
+  </div>
+  <div class="toggle-row">
+    <button class="toggle-btn active" id="cnToggle" onclick="toggleCN()">中文译文：开</button>
+  </div>
+  <div class="sentence-list" id="sentenceList"></div>
+  <div class="word-section" id="wordSection"></div>
+</div>
+
+<!-- ===== CONTROLS ===== -->
+<div class="controls" id="controls" style="display:none">
+  <div class="controls-inner">
+    <button class="ctrl-btn loop" id="loopBtn" onclick="toggleLoop()" title="循环本句">🔁</button>
+    <button class="ctrl-btn" onclick="prevSentence()" title="上一句">⏮</button>
+    <button class="ctrl-btn play" id="playBtn" onclick="togglePlay()" title="播放/暂停">▶</button>
+    <button class="ctrl-btn" onclick="nextSentence()" title="下一句">⏭</button>
+    <span class="ctrl-info" id="ctrlInfo">— / —</span>
+  </div>
+</div>
+
+<script>
+// ===== ARTICLE DATA =====
+var ARTICLES = [
+  {
+    id:1, source:"TED", sourceUrl:"https://www.ted.com/topics/procrastination",
+    enTitle:"The Science of Procrastination", cnTitle:"拖延症的科学",
+    sentences:[
+      {en:"We all procrastinate from time to time, putting off important tasks for later.",cn:"我们都会时不时地拖延，把重要的事情推迟到以后再做。"},
+      {en:"Psychologists say procrastination is not about laziness but about managing emotions.",cn:"心理学家说，拖延不是因为懒惰，而是为了管理情绪。"},
+      {en:"When a task makes us feel anxious or bored, our brain seeks immediate relief.",cn:"当一项任务让我们感到焦虑或无聊时，大脑会寻求即时的解脱。"},
+      {en:"This is why we scroll through social media instead of starting our work.",cn:"这就是为什么我们会刷社交媒体，而不是开始工作。"},
+      {en:"The limbic system, one of the oldest parts of our brain, prioritizes short-term comfort.",cn:"边缘系统是我们大脑最古老的部分之一，它优先考虑短期的舒适。"},
+      {en:"The prefrontal cortex, responsible for planning, often loses the battle.",cn:"负责规划的前额叶皮层，往往会在这场战斗中失败。"},
+      {en:"Research shows that self-compassion is more effective than self-criticism.",cn:"研究表明，自我同情比自我批评更有效。"},
+      {en:"When you forgive yourself for procrastinating, you are less likely to delay next time.",cn:"当你原谅自己的拖延时，下次推迟的可能性反而更小。"},
+      {en:"Breaking tasks into tiny steps also helps reduce the emotional burden.",cn:"把任务拆分成小步骤也有助于减轻情绪负担。"},
+      {en:"The key is to start small, even if it means working for just five minutes.",cn:"关键是从小事开始，哪怕只意味着工作五分钟。"},
+      {en:"Once you begin, momentum often carries you forward naturally.",cn:"一旦开始，动力通常会自然而然地推着你前进。"},
+      {en:"Understanding the psychology behind procrastination is the first step to overcoming it.",cn:"理解拖延背后的心理学，是克服它的第一步。"}
+    ],
+    vocab:[
+      {word:"procrastination",meaning:"拖延"},
+      {word:"psychologist",meaning:"心理学家"},
+      {word:"limbic",meaning:"边缘的"},
+      {word:"cortex",meaning:"皮层"},
+      {word:"compassion",meaning:"同情"},
+      {word:"momentum",meaning:"动力"},
+      {word:"relief",meaning:"解脱"},
+      {word:"overcome",meaning:"克服"}
+    ]
+  },
+  {
+    id:2, source:"BBC", sourceUrl:"https://www.bbc.com/future/bespoke/follow-the-food/the-sleep-myth-holding-us-back.html",
+    enTitle:"Why Sleep Matters More Than You Think", cnTitle:"为什么睡眠比你想象的更重要",
+    sentences:[
+      {en:"Most people know that sleep is important, but few realize just how much it affects the brain.",cn:"大多数人都知道睡眠很重要，但很少有人意识到它对大脑的影响有多大。"},
+      {en:"During sleep, your brain clears out toxins that build up during the day.",cn:"在睡眠期间，大脑会清除白天积累的毒素。"},
+      {en:"This cleaning process is most active during deep sleep.",cn:"这个清理过程在深度睡眠时最为活跃。"},
+      {en:"Studies show that adults who sleep less than seven hours perform worse on memory tests.",cn:"研究表明，睡眠不足七小时的成年人在记忆测试中表现更差。"},
+      {en:"Lack of sleep also weakens the immune system, making you more likely to get sick.",cn:"睡眠不足还会削弱免疫系统，使你更容易生病。"},
+      {en:"Many people believe they can catch up on lost sleep during the weekend.",cn:"很多人认为可以在周末补回失去的睡眠。"},
+      {en:"However, research suggests that weekend recovery sleep does not fully restore brain function.",cn:"然而，研究表明周末的补偿睡眠并不能完全恢复大脑功能。"},
+      {en:"Consistent sleep schedules are far more beneficial than irregular long sleeps.",cn:"有规律的作息比不规律的长睡眠要有益得多。"},
+      {en:"The blue light from screens can delay the release of melatonin, the sleep hormone.",cn:"屏幕发出的蓝光会延迟褪黑素（睡眠激素）的释放。"},
+      {en:"Experts recommend avoiding screens at least one hour before bedtime.",cn:"专家建议在睡前至少一小时避免使用屏幕。"},
+      {en:"A cool, dark, and quiet room creates the ideal environment for deep rest.",cn:"凉爽、黑暗、安静的房间为深度休息创造了理想环境。"},
+      {en:"Good sleep is not a luxury but a biological necessity.",cn:"良好的睡眠不是奢侈，而是生物学的必需。"}
+    ],
+    vocab:[
+      {word:"toxin",meaning:"毒素"},
+      {word:"immune",meaning:"免疫的"},
+      {word:"melatonin",meaning:"褪黑素"},
+      {word:"consistent",meaning:"一致的"},
+      {word:"beneficial",meaning:"有益的"},
+      {word:"luxury",meaning:"奢侈"},
+      {word:"necessity",meaning:"必需品"},
+      {word:"restore",meaning:"恢复"}
+    ]
+  },
+  {
+    id:3, source:"TED", sourceUrl:"https://www.ted.com/topics/habits",
+    enTitle:"The Power of Small Habits", cnTitle:"微小习惯的力量",
+    sentences:[
+      {en:"We often believe that big changes require big actions.",cn:"我们常常认为，大的改变需要大的行动。"},
+      {en:"But the truth is, lasting change usually comes from small, daily habits.",cn:"但事实是，持久的改变通常来自微小的日常习惯。"},
+      {en:"If you improve by just one percent every day, you will be thirty-seven times better in a year.",cn:"如果你每天只进步百分之一，一年后你将变好三十七倍。"},
+      {en:"This is the power of compound growth applied to personal development.",cn:"这就是复利增长应用于个人发展的力量。"},
+      {en:"The key is to make the habit so small that it feels almost effortless.",cn:"关键是让习惯小到几乎不费力的程度。"},
+      {en:"Want to read more? Start with just one page a day.",cn:"想多读书？从每天一页开始。"},
+      {en:"Want to exercise? Begin with two minutes of stretching.",cn:"想锻炼？从两分钟拉伸开始。"},
+      {en:"The goal is not the result but to build the identity of someone who does that activity.",cn:"目标不在于结果，而在于建立做那件事的人的身份认同。"},
+      {en:"Once the habit is established, you can gradually increase the effort.",cn:"一旦习惯建立，你就可以逐渐增加投入。"},
+      {en:"Environment design plays a crucial role in maintaining habits.",cn:"环境设计在维持习惯方面起着至关重要的作用。"},
+      {en:"If you want to eat healthier, keep fruits visible and hide the snacks.",cn:"如果想吃得健康，把水果放在显眼处，把零食藏起来。"},
+      {en:"Small changes in your environment lead to big changes in your behavior.",cn:"环境中的小改变会带来行为上的大变化。"}
+    ],
+    vocab:[
+      {word:"compound",meaning:"复利的"},
+      {word:"effortless",meaning:"不费力的"},
+      {word:"identity",meaning:"身份认同"},
+      {word:"established",meaning:"已建立的"},
+      {word:"crucial",meaning:"至关重要的"},
+      {word:"gradually",meaning:"逐渐地"},
+      {word:"environment",meaning:"环境"},
+      {word:"behavior",meaning:"行为"}
+    ]
+  },
+  {
+    id:4, source:"BBC", sourceUrl:"https://www.bbc.com/future/article/what-is-anxiety",
+    enTitle:"Understanding Anxiety: When Worry Becomes Too Much", cnTitle:"理解焦虑：当担忧变得过多时",
+    sentences:[
+      {en:"Anxiety is a natural response to stress, and everyone experiences it occasionally.",cn:"焦虑是对压力的自然反应，每个人偶尔都会经历。"},
+      {en:"It becomes a problem when the worry is constant and difficult to control.",cn:"当担忧持续不断且难以控制时，它就成了问题。"},
+      {en:"People with anxiety disorders may feel restless, tired, or unable to concentrate.",cn:"患有焦虑症的人可能会感到焦躁、疲倦或无法集中注意力。"},
+      {en:"Physical symptoms include a racing heart, muscle tension, and trouble sleeping.",cn:"身体症状包括心跳加速、肌肉紧张和睡眠困难。"},
+      {en:"The amygdala, a small almond-shaped structure in the brain, triggers the fear response.",cn:"杏仁核是大脑中一个小的杏仁状结构，负责触发恐惧反应。"},
+      {en:"In healthy individuals, this response fades once the threat is gone.",cn:"在健康的人身上，一旦威胁消失，这种反应就会消退。"},
+      {en:"But in anxiety disorders, the alarm system stays switched on.",cn:"但在焦虑症中，警报系统一直保持开启状态。"},
+      {en:"Cognitive behavioral therapy has proven effective for many people.",cn:"认知行为疗法已被证明对许多人有效。"},
+      {en:"It teaches patients to identify and challenge irrational thoughts.",cn:"它教会患者识别和质疑不合理的想法。"},
+      {en:"Regular exercise and meditation can also reduce anxiety symptoms significantly.",cn:"规律的运动和冥想也能显著减轻焦虑症状。"},
+      {en:"Talking to a professional is the most important step toward recovery.",cn:"与专业人士交谈是走向康复最重要的一步。"},
+      {en:"Anxiety is treatable, and no one should suffer in silence.",cn:"焦虑是可以治疗的，没有人应该在沉默中受苦。"}
+    ],
+    vocab:[
+      {word:"occasionally",meaning:"偶尔"},
+      {word:"restless",meaning:"焦躁的"},
+      {word:"amygdala",meaning:"杏仁核"},
+      {word:"irrational",meaning:"不合理的"},
+      {word:"cognitive",meaning:"认知的"},
+      {word:"symptom",meaning:"症状"},
+      {word:"treatable",meaning:"可治疗的"},
+      {word:"recovery",meaning:"康复"}
+    ]
+  },
+  {
+    id:5, source:"TED", sourceUrl:"https://www.ted.com/topics/listening",
+    enTitle:"The Art of Active Listening", cnTitle:"积极倾听的艺术",
+    sentences:[
+      {en:"We spend years learning how to speak, but almost no time learning how to listen.",cn:"我们花多年时间学习如何说话，却几乎没有时间学习如何倾听。"},
+      {en:"Most of us listen not to understand, but to reply.",cn:"我们大多数人倾听不是为了理解，而是为了回应。"},
+      {en:"Active listening means giving your full attention to the speaker without judgment.",cn:"积极倾听意味着全神贯注地听说话者，不加评判。"},
+      {en:"It requires silencing the inner voice that constantly prepares a response.",cn:"它要求让那个不断准备回应的内心声音安静下来。"},
+      {en:"One simple technique is to wait three seconds before responding.",cn:"一个简单的技巧是在回应前等待三秒钟。"},
+      {en:"This pause shows respect and gives the speaker space to continue.",cn:"这个停顿表示尊重，也给说话者继续的空间。"},
+      {en:"Asking open-ended questions encourages deeper conversation.",cn:"提出开放式问题能鼓励更深入的对话。"},
+      {en:"Instead of asking a simple yes or no question, try asking what was the best part of their day.",cn:"与其问简单的是非题，不如试试问他们今天最棒的部分是什么。"},
+      {en:"Body language matters too. Eye contact and nodding signal that you are engaged.",cn:"肢体语言也很重要。眼神交流和点头表明你在投入。"},
+      {en:"Good listeners do not offer solutions unless they are asked.",cn:"好的倾听者不会主动提供解决方案，除非被要求。"},
+      {en:"Sometimes people just need to feel heard and understood.",cn:"有时候人们只需要感到被倾听和理解。"},
+      {en:"In a world full of noise, true listening is a rare and precious gift.",cn:"在一个充满噪音的世界里，真正的倾听是稀有而珍贵的礼物。"}
+    ],
+    vocab:[
+      {word:"judgment",meaning:"评判"},
+      {word:"silencing",meaning:"使安静"},
+      {word:"engaged",meaning:"投入的"},
+      {word:"precious",meaning:"珍贵的"},
+      {word:"response",meaning:"回应"},
+      {word:"technique",meaning:"技巧"},
+      {word:"solution",meaning:"解决方案"},
+      {word:"signal",meaning:"表明"}
+    ]
+  }
+];
+
+// ===== STATE =====
+var currentArticle = null;
+var currentIdx = 0;
+var isPlaying = false;
+var isLooping = false;
+var loopTimer = null;
+var cnVisible = true;
+var wordScore = 0;
+var wordAnswered = {};
+
+// ===== STORAGE =====
+function getListenCount(id){
+  try{ return parseInt(localStorage.getItem("el_listen_"+id) || "0"); }
+  catch(e){ return 0; }
+}
+function incListenCount(id){
+  try{
+    var c = getListenCount(id) + 1;
+    localStorage.setItem("el_listen_"+id, c);
+    return c;
+  }catch(e){ return 0; }
+}
+
+// ===== PLAYER =====
+function openArticle(id){
+  currentArticle = null;
+  for(var i=0;i<ARTICLES.length;i++){
+    if(ARTICLES[i].id === id){ currentArticle = ARTICLES[i]; break; }
+  }
+  if(!currentArticle) return;
+
+  currentIdx = 0;
+  isPlaying = false;
+  isLooping = false;
+  cnVisible = true;
+  wordScore = 0;
+  wordAnswered = {};
+
+  var a = currentArticle;
+  var wc = 0;
+  for(var i=0;i<a.sentences.length;i++){
+    wc += a.sentences[i].en.split(/\s+/).length;
+  }
+  var dur = Math.round(wc / 150 * 60);
+  var vocab = a.vocab.length + Math.floor(wc / 25);
+
+  document.getElementById("pTitleEn").textContent = a.enTitle;
+  document.getElementById("pTitleCn").textContent = a.cnTitle;
+  document.getElementById("sWords").textContent = wc;
+  document.getElementById("sDuration").textContent = Math.floor(dur/60) + ":" + String(dur%60).padStart(2,"0");
+  document.getElementById("sVocab").textContent = vocab;
+  document.getElementById("sListened").textContent = getListenCount(id);
+
+  document.getElementById("sourceLink").href = a.sourceUrl;
+  document.getElementById("cnToggle").textContent = "中文译文：开";
+  document.getElementById("cnToggle").classList.add("active");
+
+  // Render sentences
+  var html = "";
+  for(var i=0;i<a.sentences.length;i++){
+    var s = a.sentences[i];
+    var cls = "sentence";
+    if(i === 0) cls += " playing";
+    html += '<div class="' + cls + '" id="s' + i + '" onclick="jumpTo(' + i + ')">';
+    html += '<span class="s-idx">' + (i+1) + '</span>';
+    html += '<div class="s-en">' + s.en + '</div>';
+    html += '<div class="s-cn">' + s.cn + '</div>';
+    html += '</div>';
+  }
+  document.getElementById("sentenceList").innerHTML = html;
+
+  // Render word training
+  renderWordTraining();
+
+  document.getElementById("listView").classList.add("hidden");
+  document.getElementById("playerView").classList.add("active");
+  document.getElementById("controls").style.display = "block";
+
+  incListenCount(id);
+  document.getElementById("sListened").textContent = getListenCount(id);
+  updateCtrlInfo();
+}
+
+function backToList(){
+  stopSpeech();
+  if(loopTimer){clearTimeout(loopTimer);loopTimer=null;}
+  isLooping = false;
+  document.getElementById("loopBtn").classList.remove("active");
+  document.getElementById("playerView").classList.remove("active");
+  document.getElementById("listView").classList.remove("hidden");
+  document.getElementById("controls").style.display = "none";
+}
+
+function jumpTo(idx){
+  currentIdx = idx;
+  highlightCurrent();
+  updateCtrlInfo();
+  if(isPlaying) speakCurrent();
+}
+
+function highlightCurrent(){
+  var els = document.querySelectorAll(".sentence");
+  for(var i=0;i<els.length;i++){
+    if(i === currentIdx) els[i].classList.add("playing");
+    else els[i].classList.remove("playing");
+  }
+  var el = document.getElementById("s" + currentIdx);
+  if(el) el.scrollIntoView({behavior:"smooth", block:"center"});
+}
+
+function updateCtrlInfo(){
+  document.getElementById("ctrlInfo").textContent = (currentIdx+1) + " / " + currentArticle.sentences.length;
+}
+
+// ===== TTS =====
+function togglePlay(){
+  if(isPlaying){
+    stopSpeech();
+  } else {
+    isPlaying = true;
+    document.getElementById("playBtn").textContent = "⏸";
+    speakCurrent();
+  }
+}
+
+function speakCurrent(){
+  stopSpeechNoReset();
+  var text = currentArticle.sentences[currentIdx].en;
+  if(!window.speechSynthesis) return;
+  speechUtter = new SpeechSynthesisUtterance(text);
+  speechUtter.lang = "en-US";
+  speechUtter.rate = 0.9;
+  var voices = window.speechSynthesis.getVoices();
+  var enVoice = null;
+  for(var i=0;i<voices.length;i++){
+    if(voices[i].lang.indexOf("en") === 0){ enVoice = voices[i]; break; }
+  }
+  if(enVoice) speechUtter.voice = enVoice;
+
+  speechUtter.onend = function(){
+    if(isLooping){
+      loopTimer = setTimeout(function(){ speakCurrent(); }, 600);
+    } else if(isPlaying){
+      if(currentIdx < currentArticle.sentences.length - 1){
+        currentIdx++;
+        highlightCurrent();
+        updateCtrlInfo();
+        setTimeout(function(){ speakCurrent(); }, 400);
+      } else {
+        isPlaying = false;
+        document.getElementById("playBtn").textContent = "▶";
+        currentIdx = 0;
+        highlightCurrent();
+        updateCtrlInfo();
+      }
+    }
+  };
+  window.speechSynthesis.speak(speechUtter);
+}
+
+function stopSpeechNoReset(){
+  if(window.speechSynthesis) window.speechSynthesis.cancel();
+  if(loopTimer){clearTimeout(loopTimer);loopTimer=null;}
+}
+
+function stopSpeech(){
+  stopSpeechNoReset();
+  isPlaying = false;
+  document.getElementById("playBtn").textContent = "▶";
+}
+
+function nextSentence(){
+  if(currentIdx < currentArticle.sentences.length - 1){
+    currentIdx++;
+    highlightCurrent();
+    updateCtrlInfo();
+    if(isPlaying) speakCurrent();
+  }
+}
+
+function prevSentence(){
+  if(currentIdx > 0){
+    currentIdx--;
+    highlightCurrent();
+    updateCtrlInfo();
+    if(isPlaying) speakCurrent();
+  }
+}
+
+function toggleLoop(){
+  isLooping = !isLooping;
+  document.getElementById("loopBtn").classList.toggle("active", isLooping);
+  if(isLooping && isPlaying) speakCurrent();
+}
+
+function toggleCN(){
+  cnVisible = !cnVisible;
+  var btn = document.getElementById("cnToggle");
+  btn.textContent = "中文译文：" + (cnVisible ? "开" : "关");
+  btn.classList.toggle("active", cnVisible);
+  var els = document.querySelectorAll(".sentence");
+  for(var i=0;i<els.length;i++){
+    if(!cnVisible) els[i].classList.add("hide-cn");
+    else els[i].classList.remove("hide-cn");
+  }
+}
+
+// ===== WORD TRAINING =====
+function renderWordTraining(){
+  var a = currentArticle;
+  var picked = a.vocab.slice().sort(function(){ return Math.random() - 0.5; }).slice(0, 5);
+  var allMeanings = a.vocab.map(function(v){ return v.meaning; });
+
+  var html = "";
+  for(var qi=0; qi<picked.length; qi++){
+    var item = picked[qi];
+    var wrong = allMeanings.filter(function(m){ return m !== item.meaning; }).sort(function(){ return Math.random() - 0.5; }).slice(0, 3);
+    var opts = [item.meaning].concat(wrong).sort(function(){ return Math.random() - 0.5; });
+
+    html += '<div class="word-card" id="wc' + qi + '">';
+    html += '<div class="word-q">' + (qi+1) + '. <strong>' + item.word + '</strong></div>';
+    html += '<div class="word-opts">';
+    for(var oi=0; oi<opts.length; oi++){
+      html += '<div class="word-opt" data-qi="' + qi + '" data-chosen="' + opts[oi] + '" data-correct="' + item.meaning + '" onclick="checkAnswer(this)">' + opts[oi] + '</div>';
+    }
+    html += '</div></div>';
+  }
+
+  document.getElementById("wordSection").innerHTML =
+    '<h3>🔤 单词训练</h3>' +
+    '<p class="ws-desc">从本文中选取 5 个生词，选择正确的中文释义</p>' +
+    html +
+    '<div class="word-result" id="wordResult" style="display:none"></div>';
+}
+
+function checkAnswer(el){
+  var qi = el.getAttribute("data-qi");
+  var chosen = el.getAttribute("data-chosen");
+  var correct = el.getAttribute("data-correct");
+  if(wordAnswered[qi]) return;
+  wordAnswered[qi] = true;
+  var card = document.getElementById("wc" + qi);
+  var opts = card.querySelectorAll(".word-opt");
+  for(var i=0;i<opts.length;i++){
+    opts[i].classList.add("disabled");
+    if(opts[i].getAttribute("data-correct") === correct) opts[i].classList.add("correct");
+    else if(opts[i] === el) opts[i].classList.add("wrong");
+  }
+  if(chosen === correct) wordScore++;
+  var total = Object.keys(wordAnswered).length;
+  if(total >= 5){
+    var r = document.getElementById("wordResult");
+    r.style.display = "block";
+    r.innerHTML = "练习完成！得分：<span class=\"score\">" + wordScore + "/5</span>";
+  }
+}
+
+// Load voices
+if(window.speechSynthesis){
+  window.speechSynthesis.onvoiceschanged = function(){};
+}
+</script>
+</body>
+</html>

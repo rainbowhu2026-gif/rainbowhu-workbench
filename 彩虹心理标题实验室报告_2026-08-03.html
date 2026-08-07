@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>彩虹心理标题实验室报告 2026-08-03</title>
+<style>
+:root{--green:#134B43;--cream:#F7F3EA;--light-green:#E8F0EA;--gold:#C89B52;--ink:#42665B;--bg:#FAFAF7;--red:#e74c3c;--purple:#9c27b0;--blue:#2980b9;--orange:#e67e22;--teal:#16a085;--indigo:#3f51b5;--dblue:#2c3e50;--lime:#27ae60;--deep-purple:#8e44ad;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:#333;line-height:1.7;font-size:15px}
+.wrap{max-width:960px;margin:0 auto;padding:30px 20px}
+.header{text-align:center;padding:50px 20px 40px;background:linear-gradient(135deg,var(--green),#1a5f56);border-radius:20px;margin-bottom:30px;color:#fff}
+.header h1{font-size:28px;font-weight:800;margin-bottom:8px}
+.header .date{font-size:14px;opacity:.85;margin-bottom:8px}
+.header .summary{font-size:13px;opacity:.75;margin-top:8px;line-height:1.6}
+.section{background:#fff;border-radius:16px;padding:28px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,.04)}
+.section h2{font-size:20px;font-weight:800;color:var(--green);margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid var(--light-green)}
+/* Stats row */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
+.stat{background:var(--cream);border-radius:12px;padding:16px;text-align:center;border-left:4px solid var(--green)}
+.stat .num{font-size:28px;font-weight:800;color:var(--green)}
+.stat .label{font-size:12px;color:var(--ink);margin-top:4px}
+/* TOP10 cards */
+.top10-grid{display:grid;grid-template-columns:1fr;gap:16px}
+.top-card{border-radius:14px;padding:20px;position:relative;background:var(--cream);border:2px solid var(--light-green);transition:box-shadow .2s}
+.top-card.gold{border-color:var(--gold);background:linear-gradient(135deg,#fef9f0,#fff8e7)}
+.top-card.silver{border-color:#c0c0c0;background:linear-gradient(135deg,#f8f8f8,#f0f0f0)}
+.top-card.bronze{border-color:#cd7f32;background:linear-gradient(135deg,#fdf5f0,#faf0e6)}
+.top-card:hover{box-shadow:0 6px 24px rgba(19,75,67,.12)}
+.top-card .rank-badge{position:absolute;top:-12px;left:20px;width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;color:#fff}
+.rank-1{background:var(--gold)}.rank-2{background:#c0c0c0;color:#333}.rank-3{background:#cd7f32}
+.rank-4,.rank-5,.rank-6,.rank-7,.rank-8,.rank-9,.rank-10{background:var(--green)}
+.top-card .title-row{display:flex;align-items:flex-start;gap:12px;margin-top:4px;margin-bottom:10px}
+.top-card .title-text{font-size:17px;font-weight:700;color:var(--green);line-height:1.5;flex:1}
+.top-card .score-badge{font-size:22px;font-weight:800;color:var(--gold);white-space:nowrap}
+.top-card .meta{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0;font-size:12px}
+.top-card .meta-tag{padding:3px 12px;border-radius:12px;font-weight:600;font-size:11px}
+.top-card .dims{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+.top-card .dim{padding:3px 10px;border-radius:10px;font-size:11px;background:#fff;border:1px solid var(--light-green)}
+.top-card .analysis{font-size:13px;color:var(--ink);line-height:1.7;margin-top:10px;padding:12px;background:#fff;border-radius:10px;border-left:3px solid var(--green)}
+/* Topic groups */
+.topic-group{margin-bottom:28px}
+.topic-group h3{font-size:17px;font-weight:700;color:var(--green);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.topic-group h3 .score{font-size:13px;background:var(--gold);color:#fff;padding:2px 10px;border-radius:12px;font-weight:600}
+.title-list{border:1px solid var(--light-green);border-radius:12px;overflow:hidden}
+.title-item{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--light-green);font-size:13px;background:#fff;transition:background .15s}
+.title-item:last-child{border-bottom:none}
+.title-item:hover{background:var(--cream)}
+.title-item .ti-score{width:42px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;color:#fff;flex-shrink:0}
+.ti-high{background:var(--green)}.ti-mid{background:var(--ink)}.ti-low{background:#999}
+.title-item .ti-type{padding:2px 10px;border-radius:8px;font-size:10px;font-weight:600;white-space:nowrap;flex-shrink:0;color:#fff}
+.title-item .ti-title{flex:1;color:#333;line-height:1.4}
+.title-item .ti-platforms{display:flex;gap:4px;flex-shrink:0}
+.title-item .ti-plat{padding:2px 8px;border-radius:6px;font-size:10px;background:var(--light-green);color:var(--green)}
+/* Scoring explanation */
+.radar-exp{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.radar-item{background:var(--cream);border-radius:12px;padding:16px;text-align:center}
+.radar-item .ri-icon{font-size:24px;margin-bottom:6px}
+.radar-item .ri-name{font-weight:700;color:var(--green);font-size:14px}
+.radar-item .ri-score{font-size:11px;color:var(--ink);margin-top:4px;line-height:1.4}
+/* QR section */
+.qrcode-section{text-align:center;background:linear-gradient(135deg,var(--green),#1a5f56);border-radius:16px;padding:30px 20px;margin-top:24px;color:#fff}
+.qrcode-section img{width:160px;height:160px;border-radius:12px;border:6px solid #fff;margin:16px auto;display:block}
+.qrcode-section p{font-size:14px;opacity:.9;line-height:1.6}
+.qrcode-section .cta{font-size:16px;font-weight:700;margin-top:10px;color:var(--gold)}
+/* Summary bar */
+.summary-bar{background:linear-gradient(135deg,var(--green),#1a5f56);border-radius:12px;padding:20px;color:#fff;margin-bottom:24px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.summary-bar .s-item{text-align:center;flex:1;min-width:100px}
+.summary-bar .s-num{font-size:32px;font-weight:800}
+.summary-bar .s-label{font-size:12px;opacity:.8;margin-top:4px}
+.footer{text-align:center;padding:20px;font-size:12px;color:#999}
+/* TOP badge ribbons */
+.type-colors .tc-emotion{background:var(--orange)}.tc-number{background:var(--blue)}.tc-counter{background:var(--indigo)}.tc-voice{background:var(--deep-purple)}.tc-first{background:var(--lime)}.tc-dialog{background:var(--teal)}.tc-suspense{background:var(--purple)}.tc-pro{background:var(--dblue)}.tc-pain{background:var(--red)}.tc-heal{background:var(--gold)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="header">
+    <h1>彩虹心理标题实验室</h1>
+    <div class="date">2026年8月3日 星期一 · 自动化生成</div>
+    <div class="summary">
+      基于今日雷达 TOP5 选题，生成 50 个标题<br>
+      覆盖 10 种创作风格 · 5 维度评分筛选 TOP10
+    </div>
+  </div>
+
+  <!-- Summary Bar -->
+  <div class="summary-bar">
+    <div class="s-item"><div class="s-num">50</div><div class="s-label">总标题数</div></div>
+    <div class="s-item"><div class="s-num">5</div><div class="s-label">覆盖选题</div></div>
+    <div class="s-item"><div class="s-num">10</div><div class="s-label">风格类型</div></div>
+    <div class="s-item"><div class="s-num">91</div><div class="s-label">TOP10均分</div></div>
+    <div class="s-item"><div class="s-num">95</div><div class="s-label">最高分</div></div>
+  </div>
+
+  <!-- 评分体系说明 -->
+  <div class="section">
+    <h2>五维评分体系（100分制）</h2>
+    <div class="radar-exp">
+      <div class="radar-item">
+        <div class="ri-icon">🎯</div>
+        <div class="ri-name">好奇心缺口</div>
+        <div class="ri-score">25分<br>制造信息差，让人忍不住点击</div>
+      </div>
+      <div class="radar-item">
+        <div class="ri-icon">💥</div>
+        <div class="ri-name">情绪触发</div>
+        <div class="ri-score">25分<br>触发共鸣/焦虑/好奇/愤怒</div>
+      </div>
+      <div class="radar-item">
+        <div class="ri-icon">🎓</div>
+        <div class="ri-name">专业可信度</div>
+        <div class="ri-score">15分<br>体现心理学专业，不像标题党</div>
+      </div>
+      <div class="radar-item">
+        <div class="ri-icon">🚀</div>
+        <div class="ri-name">传播潜力</div>
+        <div class="ri-score">20分<br>社交货币属性，易被转发</div>
+      </div>
+      <div class="radar-item">
+        <div class="ri-icon">🔮</div>
+        <div class="ri-name">转化引导</div>
+        <div class="ri-score">15分<br>自然导向咨询/测评转化</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 今日选题 -->
+  <div class="section">
+    <h2>今日 TOP5 选题（来自雷达报告）</h2>
+    <div class="stats">
+      <div class="stat"><div class="num">95</div><div class="label">① 关系断舍离</div></div>
+      <div class="stat"><div class="num">94</div><div class="label">② 亲职化·长女还债</div></div>
+      <div class="stat"><div class="num">93</div><div class="label">③ 反刍思维</div></div>
+      <div class="stat"><div class="num">91</div><div class="label">④ 坚强是毒药</div></div>
+    </div>
+    <div class="stat" style="max-width:240px;margin-top:4px"><div class="num">88</div><div class="label">⑤ 养育内耗</div></div>
+  </div>
+
+  <!-- TOP10 精选标题 -->
+  <div class="section">
+    <h2>TOP10 精选标题（均分 91）</h2>
+    <div class="top10-grid">
+
+      <div class="top-card gold">
+        <div class="rank-badge rank-1">1</div>
+        <div class="title-row" style="margin-top:12px">
+          <div class="title-text">预防抑郁症的从来不是坚强，是你在最崩溃时还敢说「我不行了」</div>
+          <div class="score-badge">95</div>
+        </div>
+        <div class="meta">
+          <span class="meta-tag" style="background:var(--indigo);color:#fff">反常识型</span>
+          <span class="meta-tag" style="background:var(--light-green);color:var(--green)">坚强是毒药</span>
+          <span class="meta-tag" style="background:#eee;color:#555">公众号</span>
+          <span class="meta-tag" style="background:#eee;color:#555">小红书</span>
+          <span class="meta-tag" style="background:#eee;color:#555">抖音</span>
+        </div>
+        <div class="dims">
+          <span class="dim">好奇 24</span><span class="dim">情绪 24</span><span class="dim">专业 13</span><span class="dim">传播 21</span><span class="dim">转化 13</span>
+        </div>
+        <div class="analysis">反常识结构将「坚强=保护」的全民信念翻转为「坚强=毒药」，前半句以专业口吻否定常识建立权威，后半句「最崩溃时」「还敢说」两个峰值情绪短语制造强烈认知冲击，「我不行了」用引号包裹成内心独白格式，让无数硬扛的成年人瞬间产生被看见的共鸣。跨平台三端原生适配，转化自然导向压抑性应对指数自测和情绪评估咨询。</div>
+      </div>
+
+      <div class="top-card silver">
+        <div class="rank-badge rank-2">2</div>
+        <div class="title-row" style="margin-top:12px">
+          <div class="title-text">不是你很懂事，是你从小就被训练成了父母的情绪容器和ATM</div>
+          <div class="score-badge">94</div>
+        </div>
+        <div class="meta">
+          <span class="meta-tag" style="background:var(--indigo);color:#fff">反常识型</span>
+          <span class="meta-tag" style="background:var(--light-green);color:var(--green)">亲职化·长女还债</span>
+          <span class="meta-tag" style="background:#eee;color:#555">公众号</span>
+          <span class="meta-tag" style="background:#eee;color:#555">小红书</span>
+          <span class="meta-tag" style="background:#eee;color:#555">抖音</span>
+        </div>
+        <div class="dims">
+          <span class="dim">好奇 24</span><span class="dim">情绪 24</span><span class="dim">专业 13</span><span class="dim">传播 20</span><span class="dim">转化 13</span>
+        </div>
+        <div class="analysis">反常识结构挑战「懂事=美德」的东亚文化核心信念，「情绪容器」和「ATM」分别对应情感性亲职化与工具性亲职化双重组别，精准命中长女群体内核创伤——她们一直被夸「懂事」，却从未被问过「你痛不痛」。「训练」一词暗示习得性无助的心理机制，兼具医学术语的冰冷感和社会评论的尖锐感。</div>
+      </div>
+
+      <div class="top-card bronze">
+        <div class="rank-badge rank-3">3</div>
+        <div class="title-row" style="margin-top:12px">
+          <div class="title-text">婚姻满意度低47%的真凶不是吵架，是你每天都在做的那件事</div>
+          <div class="score-badge">93</div>
+        </div>
+        <div class="meta">
+          <span class="meta-tag" style="background:var(--purple);color:#fff">悬念型</span>
+          <span class="meta-tag" style="background:var(--light-green);color:var(--green)">反刍思维</span>
+          <span class="meta-tag" style="background:#eee;color:#555">公众号</span>
+          <span class="meta-tag" style="background:#eee;color:#555">小红书</span>
+          <span class="meta-tag" style="background:#eee;color:#555">抖音</span>
+        </div>
+        <div class="dims">
+          <span class="dim">好奇 25</span><span class="dim">情绪 22</span><span class="dim">专业 13</span><span class="dim">传播 20</span><span class="dim">转化 13</span>
+        </div>
+        <div class="analysis">悬念型典范：具体数据「47%」建立科学可信度，「不是A是B」的反预期结构制造认知缺口，「每天都在做的那件事」制造强烈信息差——读者会本能自我代入猜测答案，点击冲动极高。数据背书+反预期+信息缺口的黄金公式，三平台原生适配。</div>
+      </div>
+
+      <div class="top-card">
+        <div class="rank-badge rank-4">4</div>
+        <div class="title-row" style="margin-top:12px">
+          <div class="title-text">为什么长女最容易抑郁和乳腺结节？答案藏在「母强父逃」里</div>
+          <div class="score-badge">93</div>
+        </div>
+        <div class="meta">
+          <span class="meta-tag" style="background:var(--purple);color:#fff">悬念型</span>
+          <span class="meta-tag" style="background:var(--light-green);color:var(--green)">亲职化·长女还债</span>
+          <span class="meta-tag" style="background:#eee;color:#555">公众号</span>
+          <span class="meta-tag" style="background:#eee;color:#555">小红书</span>
+        </div>
+        <div class="dims">
+          <span class="dim">好奇 25</span><span class="dim">情绪 23</span><span class="dim">专业 13</span><span class="dim">传播 20</span><span class="dim">转化 12</span>
+        </div>
+        <div class="analysis">悬念+痛点双重驱动：「乳腺结节」将心理创伤躯体化，让无数长女瞬间自我映射，「母强父逃」四字精准命名中国式家庭的权力结构配方，既有传播力又有画面感。问题直指群体创伤源头，答案承诺提供心理机制解读。</div>
+      </div>
+
+      <div class="top-card">
+        <div class="rank-badge rank-5">5</div>
+        <div class="title-row" style="margin-top:12px">
+          <div class="title-text">作为长女我被父母榨走47万，直到心理咨询师说了一句话我才懂</div>
+          <div class="score-badge">93</div>
+        </div>
+        <div class="meta">
+          <span class="meta-tag" style="background:var(--lime);color:#fff">第一人称型</span>
+          <span class="meta-tag" style="background:var(--light-green);color:var(--green)">亲职化·长女还债</span>
+          <span class="meta-tag" style="background:#eee;color:#555">公众号</span>
+          <span class="meta-tag" style="background:#eee;color:#555">小红书</span>
+        </div>
+        <div class="dims">
+          <span class="dim">好奇 23</span><span class="dim">情绪 24</span><span class="dim">专业 12</span><span class="dim">传播 21</span><span class="dim">转化 13</span>
+        </div>
+        <div class="analysis">第一人称故事型，真实案件「47万」具象化亲职化的经济代价，数字制造视觉冲击和可信度，「榨走」精准传达被剥削感而非给予感。「心理咨询师说了一句话」制造第二层信息缺口——读者不仅想知道那句话是什么，更想确认自己是否也经历了同样伤害。</div>
+      </div>
+
+      <div class="top-card">
+        <div class="rank-badge rank-6">6</div>
+        <div class="title-row" style="margin-top:12px">
+          <div class="title-text">不是吵架毁掉感情，是吵完之后你脑子里那场永不停播的重播</div>
+          <div class="score-badge">93</div>
+        </div>
+        <div class="meta">
+          <span class="meta-tag" style="background:var(--indigo);color:#fff">反常识型</span>
+          <span class="meta-tag" style="background:var(--light-green);color:var(--green)">反刍思维</span>
+          <span class="meta-tag" style="background:#eee;color:#555">公众号</span>
+          <span class="meta-tag" style="background:#eee;color:#555">小红书</span>
+          <span class="meta-tag" style="background:#eee;color:#555">抖音</span>
+        </div>
+        <div class="dims">
+          <span class="dim">好奇 23</span><span class="dim">情绪 24</span><span class="dim">专业 13</span><span class="dim">传播 20</span><span class="dim">转化 13</span>
+        </div>
+        <div class="analysis">反常识结构升级版：「不是A是B」框架中，A（吵架）是全民常识，B（脑内重播）是精准命名但从未被言说的隐形伤害。「永不停播的重播」将反刍思维的循环性用电视直播隐喻可视化，读者瞬间理解并在评论区自曝经历。抖音口播钩子力极强。</div>
+      </div>
+
+      <div class="top-card">
+        <div class="rank-badge rank-7">7</div>
+        <div class="title-row" style="margin-top:12px">
+          <div class="title-text">不是你不爱了，是你的心理节能机制已经强制断电了</div>
+          <div class="score-badge">92</div>
+        </div>
+        <div class="meta">
+          <span class="meta-tag" style="background:var(--indigo);color:#fff">反常识型</span>
+          <span class="meta-tag" style="background:var(--light-green);color:var(--green)">关系断舍离</span>
+          <span class="meta-tag" style="background:#eee;color:#555">公众号</span>
+          <span class="meta-tag" style="background:#eee;color:#555">小红书</span>
+        </div>
+        <div class="dims">
+          <span class="dim">好奇 23</span><span class="dim">情绪 23</span><span class="dim">专业 14</span><span class="dim">传播 19</span><span class="dim">转化 13</span>
+        </div>
+        <div class="analysis">反常识结构将「不爱=道德问题」重新框定为「心理节能机制=生理保护」，精准戳中无数人内疚的核心——「我不是不爱了，我是没电了」。「强制断电」用电力系统隐喻将抽象情感耗竭转化为可感知的物理体验，既降低自责又提升求助意愿。</div>
+      </div>
+
+      <div class="top-card">
+        <div class="rank-badge rank-8">8</div>
+        <div class="title-row" style="margin-top:12px">
+          <div class="title-text">为什么最坚强的人反而最先倒下？心理学揭开了残酷真相</div>
+          <div class="score-badge">92</div>
+        </div>
+        <div class="meta">
+          <span class="meta-tag" style="background:var(--purple);color:#fff">悬念型</span>
+          <span class="meta-tag" style="background:var(--light-green);color:var(--green)">坚强是毒药</span>
+          <span class="meta-tag" style="background:#eee;color:#555">公众号</span>
+          <span class="meta-tag" style="background:#eee;color:#555">小红书</span>
+          <span class="meta-tag" style="background:#eee;color:#555">抖音</span>
+        </div>
+        <div class="dims">
+          <span class="dim">好奇 24</span><span class="dim">情绪 23</span><span class="dim">专业 13</span><span class="dim">传播 20</span><span class="dim">转化 12</span>
+        </div>
+        <div class="analysis">悬念结构以自反悖论驱动：「最坚强=最先倒下」挑战「坚强=安全」的直觉逻辑，制造强烈认知冲突。「反而」和「残酷真相」双重强化信息缺口，暗示答案将颠覆读者认知。适合公众号深度长文和小红书9图滑动。</div>
+      </div>
+
+      <div class="top-card">
+        <div class="rank-badge rank-9">9</div>
+        <div class="title-row" style="margin-top:12px">
+          <div class="title-text">为什么你越付出越不被珍惜？答案藏在「心理节能机制」五个字里</div>
+          <div class="score-badge">91</div>
+        </div>
+        <div class="meta">
+          <span class="meta-tag" style="background:var(--purple);color:#fff">悬念型</span>
+          <span class="meta-tag" style="background:var(--light-green);color:var(--green)">关系断舍离</span>
+          <span class="meta-tag" style="background:#eee;color:#555">公众号</span>
+          <span class="meta-tag" style="background:#eee;color:#555">小红书</span>
+        </div>
+        <div class="dims">
+          <span class="dim">好奇 24</span><span class="dim">情绪 22</span><span class="dim">专业 14</span><span class="dim">传播 20</span><span class="dim">转化 11</span>
+        </div>
+        <div class="analysis">悬念+专业双轮驱动：前半句命名了无数人在亲密关系中的核心困惑，「越付出越不被珍惜」是高度共鸣的全民痛点。后半句用专业概念「心理节能机制」提供答案承诺，既制造信息差又建立专业可信度。五字概念易记易传播。</div>
+      </div>
+
+      <div class="top-card">
+        <div class="rank-badge rank-10">10</div>
+        <div class="title-row" style="margin-top:12px">
+          <div class="title-text">你的每一次崩溃怒吼，都在孩子的情绪记忆里刻下一道疤</div>
+          <div class="score-badge">91</div>
+        </div>
+        <div class="meta">
+          <span class="meta-tag" style="background:var(--red);color:#fff">痛点直击型</span>
+          <span class="meta-tag" style="background:var(--light-green);color:var(--green)">养育内耗</span>
+          <span class="meta-tag" style="background:#eee;color:#555">公众号</span>
+          <span class="meta-tag" style="background:#eee;color:#555">小红书</span>
+        </div>
+        <div class="dims">
+          <span class="dim">好奇 21</span><span class="dim">情绪 25</span><span class="dim">专业 12</span><span class="dim">传播 19</span><span class="dim">转化 14</span>
+        </div>
+        <div class="analysis">痛点直击型巅峰之作：「崩溃怒吼」直指亲子冲突中最真实的场景，丝毫不回避家长的失控时刻。「情绪记忆」「刻下一道疤」用创伤隐喻将瞬间行为长期化，制造强烈愧疚感和行动驱动——读者不是被指责而是被唤醒。转化极强：自然导向养育焦虑指数自测和家庭教育咨询。</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 全部50个标题按选题分组 -->
+  <div class="section">
+    <h2>全部 50 个标题（按选题分组）</h2>
+
+    <!-- 选题1：关系断舍离 -->
+    <div class="topic-group">
+      <h3>① 关系断舍离 <span class="score">95</span></h3>
+      <div class="title-list">
+        <div class="title-item"><div class="ti-score ti-high">92</div><span class="ti-type" style="background:var(--indigo)">反常识</span><div class="ti-title">不是你不爱了，是你的心理节能机制已经强制断电了</div><div class="ti-platforms"><span class="ti-plat">公众号</span><span class="ti-plat">小红书</span></div></div>
+        <div class="title-item"><div class="ti-score ti-high">91</div><span class="ti-type" style="background:var(--purple)">悬念</span><div class="ti-title">为什么你越付出越不被珍惜？答案藏在「心理节能机制」五个字里</div><div class="ti-platforms"><span class="ti-plat">公众号</span><span class="ti-plat">小红书</span></div></div>
+        <div class="title-item"><div class="ti-score ti-high">89</div><span class="ti-type" style="background:var(--red)">痛点直击</span><div class="ti-title">提供不了情绪、经济、陪伴——三点全不占，你还在用什么撑</div><div class="ti-platforms"><span class="ti-plat">公众号</span><span class="ti-plat">小红书</span></div></div>
+        <div class="title-item"><div class="ti-score ti-mid">87</div><span class="ti-type" style="background:var(--blue)">数字承诺</span><div class="ti-title">一段关系该不该断的5个信号，中3个就别硬撑了</div><div class="ti-platforms"><span class="ti-plat">公众号</span><span class="ti-plat">小红书</span></div></div>
+        <div class="title-item"><div class="ti-score ti-mid">87</div><span class="ti-type" style="background:var(--deep-purple)">替人发声</span><div class="ti-title">「我撑不下去了」——这句话在4.2亿条笔记里被反复写下</div><div class="ti-platforms"><span class="ti-plat">公众号</span><span class="ti-plat">小红书</span></div></div>
+        <div class="title-item"><div class="ti-score ti-mid">84</div><span class="ti-type" style="background:var(--lime)">第一人称</span><div class="ti-title">我亲手断了一段三年不沾的关系，三个月后终于笑得出来了</div><div class="ti-platforms"><span class="ti-plat">公众号</span><span class="ti-plat">小红书</span></div></div>
+        <div class="title-item"><div class="ti-score ti-mid">84</div><span class="ti-type" style="background:var(--teal)">对话</span><div class="ti-title">「你给他的是未来，他给你的是账单」——关系断舍离的残酷真相</div><div class="ti-platforms"><span class="ti-plat">公众号</span><span class="ti-plat">小红书</span></div></div>
+        <div class="title-item"><div class="ti-score ti-mid">84</div><span class="ti-type" style="background:var(--gold)">治愈</span><div class="ti-title">离开一段消耗型关系不是失败，是你终于把温柔留给了自己</div><div class="ti-platforms"><span class="ti-plat">公众号</span><span class="ti-plat">小红书</span></div></div>
+        <div class="title-item"><div class="ti-score ti-mid">83</div><span class="ti-type" style="background:var(--orange)">情绪共鸣</span><div class="ti-title">明明在一段关系里，却比单身时还要孤独——这种感觉你有吗</div><div class="ti-platforms"><span class="ti-plat">公众号</span><span class="ti-plat">小红书</span></div></div>
+        <div class="title-item"><div class="ti-score ti-low">69</div><span class="ti-type" style="background:var(--dblue)">专业</span><div class="ti-title">情绪价值失衡与关系倦怠：从依恋理论看关系断舍离</div><div class="ti-platforms"><span class="ti-plat">公众号</span></div></div>
+      </div>
+    </div>
+
+    <!-- 选题2：亲职化·长女还债 -->
+    <div class="topic-group">
+      <h3>② 亲职化·长女还债 <span class="score">94</span></h3>
+      <div class="title-list">
+        <div class="title-item"><div class="ti-score ti-high">94</div><span class="ti-type" style="background:var(--indigo)">反常识</span><div class="ti-title">不是你很懂事，是你从小就被训练成了父母的情绪容器和ATM</div><div class="ti-platforms"><span class="ti-plat">公众号</span><span class="ti-plat">小红书</span><span class="ti-plat">抖音</span></div></div>
+        <div class="title-item"><div class="ti-score ti-high">93</div><span class="ti-type" style="background:var(--purple)">悬念</span><div class="ti-title">为什么长女最容易抑郁和乳腺结节？答案藏在「母强父逃」里</div><div class="ti-platforms"><span class="ti-plat">公众号</span><span class="ti-plat">小红书</span></div></div>
+        <div class="title-item"><div class="ti-score ti-high">93</div><span class="ti-type" style="background:var(--lime)">第一人称</span><div class="ti-title">作为长女我被父母榨走47万，直到心理咨询师说了一句话我才懂</div><div class="ti-platforms"><span class="ti-plat">公众号</span><span class="ti-plat">小红书</span></div></div>
+        <div class="title-item"><div class="ti-score ti-high">90</div><span class="ti-type" style="background:var(--blue)">数字承诺</span><div class="ti-title">亲职化长女的7个特征，超过3条说明你从未真正为自己活过</div><div class="ti-platforms"><span class="ti-plat">公众号</span><span class="ti-plat">小红书</span></div></div>
+        <div class="title-item"><div class="ti-score ti-high">89</div><span class="ti-type" style="background:var(--deep-purple)">替人发声</span><div class="ti-title">「我替父母活着，谁替我活着」——亲职化长女的无声崩溃</div><div class="ti-platforms"><span class="ti-plat">公众号</span><span class="ti-plat">小红书</span></div></div>
+        <div class="title-item"><div class="ti-score ti-high">89</div><span class="ti-type" style="background:var(--teal)">对话</span><div class="ti-title">「你是老大，你不管谁管」——这句话亲手毁了多少长女的一生</div><div class="ti-platforms"><span class="ti-plat">公众号</span><span class="ti-plat">小红书</span></div></div>
+        <div class="title-item"><div class="ti-score ti-high">89</div><span class="ti-type" style="background:var(--red)">痛点直击</span><div class="ti-title">你以为是孝顺，其实是亲职化在悄悄吞噬你的人生</div><div class="ti-platforms"><span class="ti-plat">公众号</span><span class="ti-plat">小红书</span></div></div>
+        <div class="title-item"><div class="ti-score ti-mid">86</div><span class="ti-type" style="background:var(--orange)">情绪共鸣</span><div class="ti-title">你是家里最能扛的那个人，也是家里最不被看见的那个人</div><div class="ti-platforms"><span class="ti-plat">公众号</span><span class="ti-plat">小红书</span></div></div>
+        <div class="title-item"><div class="ti-score ti-mid">86</div><span class="ti-type" style="background:var(--gold)">治愈</span><div class="ti-title">从「全家的救世主」到「自己的主人」——长女觉醒的第一步</div><div class="ti-platforms"><span class="ti-plat">公众号</span><span class="ti-plat">小红书</span></div></div>
+        <div class="title-item"><div class="ti-score ti-low">68</div><span class="ti-type" style="background:var(--dblue)">专业</span><div class="ti-title">工具性亲职化与情感性亲职化：长女困境的心理学双重机制</div><div class="ti-platforms"><span class="ti-plat">公众号</span></div></div>
+      </div>
+    </div>
+
+    <!-- 选题3：反刍思维 -->
+    <div class="topic-group">
+      <h3>③ 反刍思维 <span class="score">93</span></h3>
+      <div class="title-list">
+        <div class="title-item"><div class="ti-score ti-high">93</div><span class="ti-type" style="background:var(--purple)">悬念</span><div class="ti-title">婚姻满意度低47%的真凶不是吵架，是你每天都在做的那件事</div><div class="ti-platforms"><span class="ti-plat">公众号</span><span class="ti-plat">小红书</span><span class="ti-plat">抖音</span></div></div>
+        <div class="title-item"><div class="ti-score ti-high">93</div><span class="ti-type" style="background:var(--indigo)">反常识</span><div class="ti-title">不是吵架毁掉感情，是吵完之后你脑子里那场永不停播的重播</div><div class="ti-platforms"><span class="ti-plat">公众号</span><span class="ti-plat">小红书</span><span class="ti-plat">抖音</span></div></div>
+        <div class="title-item"><div class="ti-score ti-high">89</div><span class="ti-type" style="background:var(--red)">痛点直击</span><div class="ti-title">你大脑里那个永不关机的播放器，正在慢性杀死你的关系</div><div class="ti-platforms"><span class="ti-plat">公众号</span><span class="ti-plat">小红书</span></div></div>
+        <div class="title-item"><div class="ti-score ti-mid">88</div><span class="ti-type" style="background:var(--orange)">情绪共鸣</span><div class="ti-title">他没回消息的那几分钟，你的脑子里已经演完了被抛弃的全过程</div><div class="ti-platforms"><span class="ti-plat">公众号</span><span class="ti-plat">小红书</span><span class="ti-plat">抖音</span></div></div>
+        <div class="title-item"><div class="ti-score ti-mid">88</div><span class="ti-type" style="background:var(--blue)">数字承诺</span><div class="ti-title">反刍思维毁掉亲密关系的4个阶段，第2阶段就已经危险了</div><div class="ti-platforms"><span class="ti-plat">公众号</span><span class="ti-plat">小红书</span></div></div>
+        <div class="title-item"><div class="ti-score ti-mid">88</div><span class="ti-type" style="background:var(--deep-purple)">替人发声</span><div class="ti-title">「发消息没秒回，我已经在脑子里和他分手八百次了」</div><div class="ti-platforms"><span class="ti-plat">公众号</span><span class="ti-plat">小红书</span><span class="ti-plat">抖音</span></div></div>
+        <div class="title-item"><div class="ti-score ti-mid">88</div><span class="ti-type" style="background:var(--lime)">第一人称</span><div class="ti-title">我每天反复回放他说过的话，直到咨询师告诉我这叫反刍思维</div><div class="ti-platforms"><span class="ti-plat">公众号</span><span class="ti-plat">小红书</span></div></div>
+        <div class="title-item"><div class="ti-score ti-mid">87</div><span class="ti-type" style="background:var(--teal)">对话</span><div class="ti-title">「你怎么又翻旧账？」——我不是翻旧账，是反刍思维停不下来</div><div class="ti-platforms"><span class="ti-plat">公众号</span><span class="ti-plat">小红书</span></div></div>
+        <div class="title-item"><div class="ti-score ti-mid">84</div><span class="ti-type" style="background:var(--gold)">治愈</span><div class="ti-title">按掉脑海里的重播键——停止反刍思维，你的关系还有救</div><div class="ti-platforms"><span class="ti-plat">公众号</span><span class="ti-plat">小红书</span></div></div>
+        <div class="title-item"><div class="ti-score ti-low">68</div><span class="ti-type" style="background:var(--dblue)">专业</span><div class="ti-title">反刍思维的默认模式网络机制：从脑科学解读亲密关系的内耗</div><div class="ti-platforms"><span class="ti-plat">公众号</span></div></div>
+      </div>
+    </div>
+
+    <!-- 选题4：坚强是毒药 -->
+    <div class="topic-group">
+      <h3>④ 坚强是毒药 <span class="score">91</span></h3>
+      <div class="title-list">
+        <div class="title-item"><div class="ti-score ti-high">95</div><span class="ti-type" style="background:var(--indigo)">反常识</span><div class="ti-title">预防抑郁症的从来不是坚强，是你在最崩溃时还敢说「我不行了」</div><div class="ti-platforms"><span class="ti-plat">公众号</span><span class="ti-plat">小红书</span><span class="ti-plat">抖音</span></div></div>
+        <div class="title-item"><div class="ti-score ti-high">92</div><span class="ti-type" style="background:var(--purple)">悬念</span><div class="ti-title">为什么最坚强的人反而最先倒下？心理学揭开了残酷真相</div><div class="ti-platforms"><span class="ti-plat">公众号</span><span class="ti-plat">小红书</span><span class="ti-plat">抖音</span></div></div>
+        <div class="title-item"><div class="ti-score ti-high">91</div><span class="ti-type" style="background:var(--red)">痛点直击</span><div class="ti-title">「坚强」正在批量生产一批表面完好、内脏淤血的成年人</div><div class="ti-platforms"><span class="ti-plat">公众号</span><span class="ti-plat">小红书</span></div></div>
+        <div class="title-item"><div class="ti-score ti-high">89</div><span class="ti-type" style="background:var(--deep-purple)">替人发声</span><div class="ti-title">「我挺好的」——这三个字背后藏着一座即将决堤的情绪水库</div><div class="ti-platforms"><span class="ti-plat">公众号</span><span class="ti-plat">小红书</span><span class="ti-plat">抖音</span></div></div>
+        <div class="title-item"><div class="ti-score ti-mid">88</div><span class="ti-type" style="background:var(--blue)">数字承诺</span><div class="ti-title">「假装坚强」正在毁掉你的5个信号，第4个最致命</div><div class="ti-platforms"><span class="ti-plat">公众号</span><span class="ti-plat">小红书</span></div></div>
+        <div class="title-item"><div class="ti-score ti-mid">86</div><span class="ti-type" style="background:var(--orange)">情绪共鸣</span><div class="ti-title">所有人说你很坚强，只有镜子里的你知道自己在偷偷崩溃</div><div class="ti-platforms"><span class="ti-plat">公众号</span><span class="ti-plat">小红书</span></div></div>
+        <div class="title-item"><div class="ti-score ti-mid">86</div><span class="ti-type" style="background:var(--lime)">第一人称</span><div class="ti-title">办公室最靠得住的那个人，拿包那一刻手腕突然抖得停不下来</div><div class="ti-platforms"><span class="ti-plat">公众号</span><span class="ti-plat">小红书</span></div></div>
+        <div class="title-item"><div class="ti-score ti-mid">86</div><span class="ti-type" style="background:var(--teal)">对话</span><div class="ti-title">「你怎么了？」「我没事。」——最危险的对话，没有之一</div><div class="ti-platforms"><span class="ti-plat">公众号</span><span class="ti-plat">小红书</span></div></div>
+        <div class="title-item"><div class="ti-score ti-mid">85</div><span class="ti-type" style="background:var(--gold)">治愈</span><div class="ti-title">真正的勇敢不是咬牙硬扛，是在撑不住的时候允许自己倒下</div><div class="ti-platforms"><span class="ti-plat">公众号</span><span class="ti-plat">小红书</span></div></div>
+        <div class="title-item"><div class="ti-score ti-low">68</div><span class="ti-type" style="background:var(--dblue)">专业</span><div class="ti-title">压抑性应对与情绪淤积：从心理不适到躯体病变的心理学路径</div><div class="ti-platforms"><span class="ti-plat">公众号</span></div></div>
+      </div>
+    </div>
+
+    <!-- 选题5：养育内耗 -->
+    <div class="topic-group">
+      <h3>⑤ 养育内耗 <span class="score">88</span></h3>
+      <div class="title-list">
+        <div class="title-item"><div class="ti-score ti-high">91</div><span class="ti-type" style="background:var(--red)">痛点直击</span><div class="ti-title">你的每一次崩溃怒吼，都在孩子的情绪记忆里刻下一道疤</div><div class="ti-platforms"><span class="ti-plat">公众号</span><span class="ti-plat">小红书</span></div></div>
+        <div class="title-item"><div class="ti-score ti-high">91</div><span class="ti-type" style="background:var(--indigo)">反常识</span><div class="ti-title">不是孩子不听话，是你的焦虑已经把孩子推到了情绪的对岸</div><div class="ti-platforms"><span class="ti-plat">公众号</span><span class="ti-plat">小红书</span></div></div>
+        <div class="title-item"><div class="ti-score ti-high">91</div><span class="ti-type" style="background:var(--purple)">悬念</span><div class="ti-title">为什么越负责的家长越容易养出叛逆的孩子？答案扎心了</div><div class="ti-platforms"><span class="ti-plat">公众号</span><span class="ti-plat">小红书</span></div></div>
+        <div class="title-item"><div class="ti-score ti-high">89</div><span class="ti-type" style="background:var(--lime)">第一人称</span><div class="ti-title">我越用力管孩子越叛逆，直到咨询师说我不是在教育是在共生</div><div class="ti-platforms"><span class="ti-plat">公众号</span><span class="ti-plat">小红书</span></div></div>
+        <div class="title-item"><div class="ti-score ti-mid">87</div><span class="ti-type" style="background:var(--orange)">情绪共鸣</span><div class="ti-title">你拼命想当好妈妈，结果活成了孩子最想躲开的那个人</div><div class="ti-platforms"><span class="ti-plat">公众号</span><span class="ti-plat">小红书</span></div></div>
+        <div class="title-item"><div class="ti-score ti-mid">87</div><span class="ti-type" style="background:var(--blue)">数字承诺</span><div class="ti-title">养育内耗的4个阶段，第3个阶段亲子关系已经开始流血了</div><div class="ti-platforms"><span class="ti-plat">公众号</span><span class="ti-plat">小红书</span></div></div>
+        <div class="title-item"><div class="ti-score ti-mid">87</div><span class="ti-type" style="background:var(--deep-purple)">替人发声</span><div class="ti-title">「成绩没提上来，亲子温度先降了」——多少妈妈在深夜崩溃</div><div class="ti-platforms"><span class="ti-plat">公众号</span><span class="ti-plat">小红书</span></div></div>
+        <div class="title-item"><div class="ti-score ti-mid">86</div><span class="ti-type" style="background:var(--gold)">治愈</span><div class="ti-title">做60分妈妈就够了——让出那40分，你和孩子都需要喘息</div><div class="ti-platforms"><span class="ti-plat">公众号</span><span class="ti-plat">小红书</span></div></div>
+        <div class="title-item"><div class="ti-score ti-mid">82</div><span class="ti-type" style="background:var(--teal)">对话</span><div class="ti-title">「你什么态度？」「你先看看你什么表情」——亲子战场的真实台词</div><div class="ti-platforms"><span class="ti-plat">公众号</span><span class="ti-plat">小红书</span></div></div>
+        <div class="title-item"><div class="ti-score ti-low">67</div><span class="ti-type" style="background:var(--dblue)">专业</span><div class="ti-title">超限效应与情绪共生：养育内耗的心理学机制与家长自我调节</div><div class="ti-platforms"><span class="ti-plat">公众号</span></div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 风格分布统计 -->
+  <div class="section">
+    <h2>10 种创作风格 × 5 选题 = 50 标题</h2>
+    <div style="font-size:13px;color:var(--ink);line-height:2">
+      <span style="display:inline-block;padding:3px 12px;border-radius:10px;background:var(--orange);color:#fff;margin:3px;font-weight:600">情绪共鸣型 5个</span>
+      <span style="display:inline-block;padding:3px 12px;border-radius:10px;background:var(--blue);color:#fff;margin:3px;font-weight:600">数字承诺型 5个</span>
+      <span style="display:inline-block;padding:3px 12px;border-radius:10px;background:var(--indigo);color:#fff;margin:3px;font-weight:600">反常识型 5个</span>
+      <span style="display:inline-block;padding:3px 12px;border-radius:10px;background:var(--deep-purple);color:#fff;margin:3px;font-weight:600">替人发声型 5个</span>
+      <span style="display:inline-block;padding:3px 12px;border-radius:10px;background:var(--lime);color:#fff;margin:3px;font-weight:600">第一人称型 5个</span>
+      <span style="display:inline-block;padding:3px 12px;border-radius:10px;background:var(--teal);color:#fff;margin:3px;font-weight:600">对话型 5个</span>
+      <span style="display:inline-block;padding:3px 12px;border-radius:10px;background:var(--purple);color:#fff;margin:3px;font-weight:600">悬念型 5个</span>
+      <span style="display:inline-block;padding:3px 12px;border-radius:10px;background:var(--dblue);color:#fff;margin:3px;font-weight:600">专业型 5个</span>
+      <span style="display:inline-block;padding:3px 12px;border-radius:10px;background:var(--red);color:#fff;margin:3px;font-weight:600">痛点直击型 5个</span>
+      <span style="display:inline-block;padding:3px 12px;border-radius:10px;background:var(--gold);color:#fff;margin:3px;font-weight:600">治愈型 5个</span>
+    </div>
+  </div>
+
+  <!-- 发布建议 -->
+  <div class="section">
+    <h2>TOP10 发布建议</h2>
+    <div style="font-size:14px;color:var(--ink);line-height:1.9">
+      <p><b>公众号长文：</b>TOP1/2/5/7 反常识型和第一人称型标题，适合深度心理学解读长文（2000-2500字），用专业理论背书情绪共鸣。</p>
+      <p><b>小红书图文：</b>TOP3/6/10 悬念型和痛点直击型，适合9图滑动+短文案，评论区互动引导自测。</p>
+      <p><b>抖音短视频：</b>TOP1/2/3/6/8 适合口播类短视频，3秒钩子+反常识观点+CTA关注转化，涨粉导向。</p>
+      <p><b>标题策略建议：</b>今日「关系断舍离」反常识型（TOP7）和悬念型（TOP9）均可用作系列文标题，搭配关系健康度自评量表做深度内容矩阵。</p>
+    </div>
+  </div>
+
+  <div class="qrcode-section">
+    <h3 style="font-size:18px;font-weight:800;margin-bottom:8px;">彩虹心理</h3>
+    <p>专业心理咨询 · 情绪疗愈 · 亲密关系 · 原生家庭</p>
+    <img src="rainbowhu-qrcode.jpg" alt="彩虹心理公众号二维码" onerror="this.style.display='none'">
+    <p class="cta">扫码关注彩虹心理，回复「咨询」预约首次评估</p>
+    <p style="font-size:12px;opacity:.7;margin-top:8px;">温暖、专业、有边界感的心灵陪伴</p>
+  </div>
+
+  <div class="footer">
+    彩虹心理标题实验室报告 · 2026-08-03 · 自动化生成<br>
+    基于今日雷达 Agent（08:00）TOP5 选题，10种风格 × 5选题 = 50标题，5维度评分筛选 TOP10<br>
+    本报告由 AI 自动生成，标题仅供参考，具体文章标题可结合实际情况调整
+  </div>
+</div>
+</body>
+</html>

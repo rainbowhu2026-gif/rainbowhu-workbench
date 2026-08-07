@@ -1,0 +1,8 @@
+# WorkBuddy internal data - do not push
+.workbuddy/
+
+# OS files
+Thumbs.db
+.DS_Store
+nul
+*.tmp

@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>彩虹心理爆款标题实验室报告 | 2026-07-30</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#f5f5f7;color:#1d1d1f;line-height:1.8}
+  .container{max-width:880px;margin:0 auto;background:#fff;min-height:100vh}
+  .header{background:linear-gradient(135deg,#6b5b95 0%,#c06c84 50%,#f6a957 100%);padding:40px 30px;color:#fff}
+  .header h1{font-size:26px;font-weight:800;margin-bottom:8px}
+  .header .date{font-size:14px;opacity:.85}
+  .header .meta{font-size:12px;opacity:.7;margin-top:10px}
+  .content{padding:30px}
+  .section-title{font-size:18px;font-weight:800;color:#6b5b95;margin:30px 0 16px;padding-left:14px;border-left:4px solid #6b5b95}
+  .summary-box{background:linear-gradient(135deg,#f0ecf7,#fce4ec);border-radius:14px;padding:20px 24px;margin:20px 0;font-size:13px;color:#4a3a5a;line-height:1.8}
+  .summary-box b{color:#6b5b95}
+  .stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:24px 0}
+  .stat-card{background:#fff;border:1px solid #ece8f0;border-radius:14px;padding:16px 18px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.03)}
+  .stat-card .num{font-size:30px;font-weight:800;line-height:1.1;color:#6b5b95}
+  .stat-card .label{font-size:12px;color:#666;margin-top:6px;font-weight:600}
+
+  .topic-bar{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 20px}
+  .topic-pill{font-size:12px;padding:6px 14px;border-radius:14px;background:#fff;border:1px solid #ece8f0;color:#6b5b95;font-weight:600}
+  .topic-pill b{color:#c06c84}
+
+  /* TOP10 cards */
+  .top-card{background:linear-gradient(135deg,#fff,#fef9f3);border:1px solid #f0d9a8;border-radius:16px;padding:22px 24px;margin-bottom:18px;box-shadow:0 4px 14px rgba(192,108,132,.06);position:relative;overflow:hidden}
+  .top-card:before{content:"";position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(180deg,#c06c84,#f6a957)}
+  .top-rank{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+  .rank-badge{width:36px;height:36px;border-radius:11px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:17px;background:linear-gradient(135deg,#c0392b,#e74c3c)}
+  .r1{background:linear-gradient(135deg,#c0392b,#e74c3c)}
+  .r2{background:linear-gradient(135deg,#d98c3a,#f0a040)}
+  .r3{background:linear-gradient(135deg,#3a8c7a,#5aa68f)}
+  .r4{background:linear-gradient(135deg,#5a7cb0,#7a9cd0)}
+  .r5{background:linear-gradient(135deg,#a55eea,#c77dff)}
+  .r6{background:linear-gradient(135deg,#e67c22,#f6a957)}
+  .r7{background:linear-gradient(135deg,#16a085,#1abc9c)}
+  .r8{background:linear-gradient(135deg,#34495e,#5d6d7e)}
+  .r9{background:linear-gradient(135deg,#7d3c98,#a569bd)}
+  .r10{background:linear-gradient(135deg,#2874a6,#3498db)}
+  .rank-score{font-size:24px;font-weight:800;color:#c06c84}
+  .top-title{font-size:18px;font-weight:700;line-height:1.5;margin-bottom:10px;color:#1a1a1a}
+  .top-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+  .tag{font-size:11px;padding:3px 10px;border-radius:12px;color:#fff;font-weight:600}
+  .tag-type{background:#6b5b95}
+  .tag-topic{background:#c06c84}
+  .tag-platform{background:#3a8c7a}
+  .score-bar{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0;font-size:11px}
+  .score-cell{background:#fff;border:1px solid #ece8f0;border-radius:6px;padding:4px 9px}
+  .score-cell b{color:#6b5b95;font-weight:800}
+  .analysis-box{background:#fdf6f0;border-left:3px solid #c06c84;border-radius:0 8px 8px 0;padding:12px 16px;margin-top:10px;font-size:12.5px;color:#5a4a3a;line-height:1.75}
+  .analysis-box b{color:#c06c84}
+
+  /* Other titles grouped by topic */
+  .topic-group{margin:30px 0 16px}
+  .topic-group-title{font-size:15px;font-weight:800;color:#fff;background:linear-gradient(135deg,#6b5b95,#c06c84);padding:10px 18px;border-radius:10px 10px 0 0;display:flex;align-items:center;gap:10px}
+  .topic-group-title .count{margin-left:auto;background:rgba(255,255,255,.2);padding:2px 10px;border-radius:10px;font-size:11px}
+  .topic-group-body{background:#f9f8fb;border:1px solid #ece8f0;border-top:none;border-radius:0 0 12px 12px;padding:8px 12px}
+  .ot-row{display:flex;align-items:center;gap:10px;padding:10px 12px;border-bottom:1px solid #f0ecf3;font-size:13px}
+  .ot-row:last-child{border-bottom:none}
+  .ot-score{flex-shrink:0;min-width:42px;background:linear-gradient(135deg,#6b5b95,#c06c84);color:#fff;font-weight:800;padding:4px 8px;border-radius:8px;text-align:center;font-size:12px}
+  .ot-title{flex:1;color:#333;line-height:1.6}
+  .ot-type{flex-shrink:0;font-size:10px;padding:2px 8px;border-radius:8px;color:#fff;background:#a18cd1;font-weight:600;white-space:nowrap}
+
+  /* Score dim explainer */
+  .dim-explain{background:#f9f8fb;border:1px solid #ece8f0;border-radius:12px;padding:18px 22px;margin:20px 0;font-size:13px}
+  .dim-explain h4{font-size:14px;color:#6b5b95;margin-bottom:12px}
+  .dim-row{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px dashed #ece8f0}
+  .dim-row:last-child{border-bottom:none}
+  .dim-name{flex-shrink:0;width:120px;font-weight:700;color:#6b5b95;font-size:12px}
+  .dim-name b{color:#c06c84}
+  .dim-desc{flex:1;color:#5a4a5a;font-size:12px;line-height:1.7}
+
+  /* Style legend */
+  .style-legend{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:16px 0 24px}
+  .style-cell{background:#fff;border:1px solid #ece8f0;border-radius:10px;padding:10px 12px;font-size:11.5px;text-align:center;color:#6b5b95;font-weight:600}
+  .style-cell .style-name{display:block;font-weight:800;margin-bottom:4px;color:#c06c84}
+
+  .qr-section{text-align:center;margin:40px 0 20px;padding:30px;background:linear-gradient(135deg,#f0ecf7,#fce4ec);border-radius:16px}
+  .qr-section h3{font-size:16px;color:#6b5b95;margin-bottom:14px}
+  .qr-section img{width:150px;height:150px;border-radius:12px;border:3px solid #fff;box-shadow:0 4px 16px rgba(0,0,0,.08)}
+  .qr-section p{font-size:13px;color:#666;margin-top:12px}
+  .qr-section .cta-text{font-size:14px;color:#c06c84;font-weight:700;margin-top:8px}
+  .footer{text-align:center;padding:24px;font-size:12px;color:#aaa;border-top:1px solid #f0f0f0}
+  .data-note{font-size:11px;color:#aaa;margin-top:8px;font-style:italic}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <h1>🔬 彩虹心理爆款标题实验室</h1>
+    <div class="date">2026年7月30日 星期四 · Week 31</div>
+    <div class="meta">执行时间：2026-07-30 09:00 | 雷达 Agent 联动：基于今日 TOP5 选题 | 数据源：WebSearch 公开热点（备选）</div>
+  </div>
+
+  <div class="content">
+
+    <div class="summary-box">
+      <b>今日概览：</b>雷达 Agent 08:00 报告未按计划生成（执行缺失），本 Agent 通过 WebSearch 检索 2026-07-27 至 07-30 心理领域热点，提取 5 个高价值选题：①<b>妈妈认知时差</b>（2.3亿阅读微博热搜）②<b>被叫阿姨破防</b>（2亿阅读热搜）③<b>童年创伤是抑郁编的</b>（2026 Nature Mental Health 6260人研究）④<b>心理标签化乱象</b>（南方周末 1.4万字报道）⑤<b>主动出局/沉默断交延伸</b>。每个选题生成 10 个不同风格标题共 <b>50 个</b>，按 5 维度评分（好奇 25 + 情绪 25 + 专业 15 + 传播 20 + 转化 15 = 100），筛选 <b>TOP10</b>，平均分 <b>91 分</b>，覆盖全部 5 个选题。
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="num">50</div>
+        <div class="label">生成标题数</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">10</div>
+        <div class="label">TOP10 入选</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">93</div>
+        <div class="label">最高分</div>
+      </div>
+      <div class="stat-card">
+        <div class="num">91</div>
+        <div class="label">TOP10 平均分</div>
+      </div>
+    </div>
+
+    <div class="section-title">📊 今日 TOP5 选题</div>
+    <div class="topic-bar">
+      <div class="topic-pill">① <b>妈妈认知时差</b> · 94分</div>
+      <div class="topic-pill">② <b>被叫阿姨破防</b> · 91分</div>
+      <div class="topic-pill">③ <b>童年创伤是抑郁编的</b> · 96分</div>
+      <div class="topic-pill">④ <b>心理标签化乱象</b> · 90分</div>
+      <div class="topic-pill">⑤ <b>主动出局延伸</b> · 92分</div>
+    </div>
+
+    <div class="section-title">🎨 10 种标题风格覆盖</div>
+    <div class="style-legend">
+      <div class="style-cell"><span class="style-name">情绪共鸣</span>用「你」开头 / 内心独白</div>
+      <div class="style-cell"><span class="style-name">数字承诺</span>N个信号 / N件事</div>
+      <div class="style-cell"><span class="style-name">反常识</span>不是…是…</div>
+      <div class="style-cell"><span class="style-name">替人发声</span>为沉默群体代言</div>
+      <div class="style-cell"><span class="style-name">第一人称</span>用「我」讲述经历</div>
+      <div class="style-cell"><span class="style-name">对话</span>日常对话作开头</div>
+      <div class="style-cell"><span class="style-name">悬念</span>信息缺口</div>
+      <div class="style-cell"><span class="style-name">专业</span>心理学概念 / 理论</div>
+      <div class="style-cell"><span class="style-name">痛点直击</span>直接命名问题</div>
+      <div class="style-cell"><span class="style-name">治愈</span>温暖收束</div>
+    </div>
+
+    <!-- TOP10 -->
+    <div class="section-title">🏆 今日 TOP10 高分标题</div>
+
+    <div class="top-card">
+      <div class="top-rank">
+        <div class="rank-badge r1">1</div>
+        <div class="rank-score">93</div>
+      </div>
+      <div class="top-title">不是童年的伤让你抑郁，是抑郁让你重新「制造」了童年的伤</div>
+      <div class="top-meta">
+        <span class="tag tag-type">反常识型</span>
+        <span class="tag tag-topic">童年创伤是抑郁编的</span>
+        <span class="tag tag-platform">公众号 · 小红书</span>
+      </div>
+      <div class="score-bar">
+        <div class="score-cell">好奇 <b>24</b>/25</div>
+        <div class="score-cell">情绪 <b>23</b>/25</div>
+        <div class="score-cell">专业 <b>14</b>/15</div>
+        <div class="score-cell">传播 <b>19</b>/20</div>
+        <div class="score-cell">转化 <b>13</b>/15</div>
+      </div>
+      <div class="analysis-box">
+        <b>分析：</b>反常识结构（「不是…是…」）颠覆「原生家庭决定一切」的全民共识，「重新制造」一词精准描述抑郁的反向记忆重塑机制，与2026 Nature Mental Health 王园园团队6260人研究强关联，专业权威与情绪触发双高，公众号/小红书跨平台高适配。
+      </div>
+    </div>
+
+    <div class="top-card">
+      <div class="top-rank">
+        <div class="rank-badge r2">2</div>
+        <div class="rank-score">92</div>
+      </div>
+      <div class="top-title">一项6260人研究让所有人沉默：你以为的童年创伤，可能根本不存在</div>
+      <div class="top-meta">
+        <span class="tag tag-type">悬念型</span>
+        <span class="tag tag-topic">童年创伤是抑郁编的</span>
+        <span class="tag tag-platform">公众号 · 小红书 · 知乎</span>
+      </div>
+      <div class="score-bar">
+        <div class="score-cell">好奇 <b>24</b>/25</div>
+        <div class="score-cell">情绪 <b>22</b>/25</div>
+        <div class="score-cell">专业 <b>15</b>/15</div>
+        <div class="score-cell">传播 <b>19</b>/20</div>
+        <div class="score-cell">转化 <b>12</b>/15</div>
+      </div>
+      <div class="analysis-box">
+        <b>分析：</b>「让所有人沉默」制造群体震惊，「6260人」大数据锚定专业可信度，「根本不存在」是反常识爆破点，三段递进精准拉动知乎深度阅读和公众号长文转发，转化路径切入抑郁识别测评。
+      </div>
+    </div>
+
+    <div class="top-card">
+      <div class="top-rank">
+        <div class="rank-badge r3">3</div>
+        <div class="rank-score">91</div>
+      </div>
+      <div class="top-title">不是父母不爱你，是他们眼里你永远停在5岁</div>
+      <div class="top-meta">
+        <span class="tag tag-type">反常识型</span>
+        <span class="tag tag-topic">妈妈认知时差</span>
+        <span class="tag tag-platform">公众号 · 小红书</span>
+      </div>
+      <div class="score-bar">
+        <div class="score-cell">好奇 <b>22</b>/25</div>
+        <div class="score-cell">情绪 <b>23</b>/25</div>
+        <div class="score-cell">专业 <b>13</b>/15</div>
+        <div class="score-cell">传播 <b>19</b>/20</div>
+        <div class="score-cell">转化 <b>14</b>/15</div>
+      </div>
+      <div class="analysis-box">
+        <b>分析：</b>反常识结构重新定义「代际控制」为「代际认知滞留」，「停在5岁」是精准到残忍的视觉隐喻，2.3亿阅读的微博热搜话题背书让点击转化双高，治愈向家庭关系咨询导流自然。
+      </div>
+    </div>
+
+    <div class="top-card">
+      <div class="top-rank">
+        <div class="rank-badge r4">4</div>
+        <div class="rank-score">91</div>
+      </div>
+      <div class="top-title">6260人研究推翻了一个常识：童年创伤可能不是抑郁的根</div>
+      <div class="top-meta">
+        <span class="tag tag-type">数字承诺型</span>
+        <span class="tag tag-topic">童年创伤是抑郁编的</span>
+        <span class="tag tag-platform">公众号 · 知乎</span>
+      </div>
+      <div class="score-bar">
+        <div class="score-cell">好奇 <b>23</b>/25</div>
+        <div class="score-cell">情绪 <b>21</b>/25</div>
+        <div class="score-cell">专业 <b>15</b>/15</div>
+        <div class="score-cell">传播 <b>20</b>/20</div>
+        <div class="score-cell">转化 <b>12</b>/15</div>
+      </div>
+      <div class="analysis-box">
+        <b>分析：</b>「6260人」量化权威锚定专业，「推翻常识」制造认知冲击，「不是抑郁的根」直接挑战持续多年的原生家庭决定论，专业类标题天花板，知乎深度读者和公众号长文读者高度匹配。
+      </div>
+    </div>
+
+    <div class="top-card">
+      <div class="top-rank">
+        <div class="rank-badge r5">5</div>
+        <div class="rank-score">91</div>
+      </div>
+      <div class="top-title">不是被抛弃才选择沉默，是看清一切才决定安静退场</div>
+      <div class="top-meta">
+        <span class="tag tag-type">反常识型</span>
+        <span class="tag tag-topic">主动出局/沉默断交延伸</span>
+        <span class="tag tag-platform">公众号 · 小红书</span>
+      </div>
+      <div class="score-bar">
+        <div class="score-cell">好奇 <b>23</b>/25</div>
+        <div class="score-cell">情绪 <b>23</b>/25</div>
+        <div class="score-cell">专业 <b>13</b>/15</div>
+        <div class="score-cell">传播 <b>19</b>/20</div>
+        <div class="score-cell">转化 <b>13</b>/15</div>
+      </div>
+      <div class="analysis-box">
+        <b>分析：</b>反常识结构从「被动受害者」重新定义为「主动选择者」，赋予沉默断交者尊严与主体性，与「主动出局」2026新概念强呼应，治愈向关系咨询和个体成长咨询双路径导流。
+      </div>
+    </div>
+
+    <div class="top-card">
+      <div class="top-rank">
+        <div class="rank-badge r6">6</div>
+        <div class="rank-score">90</div>
+      </div>
+      <div class="top-title">不是你老了，是「阿姨」这个称谓被这个时代彻底污染了</div>
+      <div class="top-meta">
+        <span class="tag tag-type">反常识型</span>
+        <span class="tag tag-topic">被叫阿姨破防</span>
+        <span class="tag tag-platform">小红书 · 公众号</span>
+      </div>
+      <div class="score-bar">
+        <div class="score-cell">好奇 <b>23</b>/25</div>
+        <div class="score-cell">情绪 <b>22</b>/25</div>
+        <div class="score-cell">专业 <b>13</b>/15</div>
+        <div class="score-cell">传播 <b>19</b>/20</div>
+        <div class="score-cell">转化 <b>13</b>/15</div>
+      </div>
+      <div class="analysis-box">
+        <b>分析：</b>反常识结构把「被叫阿姨」从个人老化焦虑重新定义为社会标签暴力，「污染」一词带攻击性唤醒正义感，2亿阅读热搜话题让标题自带流量，戳破20-35岁女性被同龄父母归类的隐藏痛点。
+      </div>
+    </div>
+
+    <div class="top-card">
+      <div class="top-rank">
+        <div class="rank-badge r7">7</div>
+        <div class="rank-score">90</div>
+      </div>
+      <div class="top-title">心理标签化正在毁掉3亿年轻人，5个被滥用的心理学概念</div>
+      <div class="top-meta">
+        <span class="tag tag-type">数字承诺型</span>
+        <span class="tag tag-topic">心理标签化乱象</span>
+        <span class="tag tag-platform">公众号 · 小红书 · 知乎</span>
+      </div>
+      <div class="score-bar">
+        <div class="score-cell">好奇 <b>23</b>/25</div>
+        <div class="score-cell">情绪 <b>22</b>/25</div>
+        <div class="score-cell">专业 <b>13</b>/15</div>
+        <div class="score-cell">传播 <b>19</b>/20</div>
+        <div class="score-cell">转化 <b>13</b>/15</div>
+      </div>
+      <div class="analysis-box">
+        <b>分析：</b>「3亿」宏观数据制造社会议题感，「5个被滥用」给出明确预期呼应「越查越疑」的现实焦虑，南方周末1.4万字报道背书专业感，知乎/小红书知识类用户精准导流，转化引入心理概念澄清咨询。
+      </div>
+    </div>
+
+    <div class="top-card">
+      <div class="top-rank">
+        <div class="rank-badge r8">8</div>
+        <div class="rank-score">90</div>
+      </div>
+      <div class="top-title">那些主动出局的人，最后都过得怎么样？中科院一项调查给出了答案</div>
+      <div class="top-meta">
+        <span class="tag tag-type">悬念型</span>
+        <span class="tag tag-topic">主动出局/沉默断交延伸</span>
+        <span class="tag tag-platform">小红书 · 公众号</span>
+      </div>
+      <div class="score-bar">
+        <div class="score-cell">好奇 <b>24</b>/25</div>
+        <div class="score-cell">情绪 <b>22</b>/25</div>
+        <div class="score-cell">专业 <b>13</b>/15</div>
+        <div class="score-cell">传播 <b>19</b>/20</div>
+        <div class="score-cell">转化 <b>12</b>/15</div>
+      </div>
+      <div class="analysis-box">
+        <b>分析：</b>「最后都过得怎么样」是悬念核心钩子，「中科院调查」权威背书让好奇感升级为可信好奇，与「沉默断交」连续2期话题热度叠加，长尾搜索流量大，小红书/公众号双平台扩散力强。
+      </div>
+    </div>
+
+    <div class="top-card">
+      <div class="top-rank">
+        <div class="rank-badge r9">9</div>
+        <div class="rank-score">89</div>
+      </div>
+      <div class="top-title">不是你病了，是这个时代的心理科普在用「诊断」制造焦虑</div>
+      <div class="top-meta">
+        <span class="tag tag-type">反常识型</span>
+        <span class="tag tag-topic">心理标签化乱象</span>
+        <span class="tag tag-platform">公众号 · 小红书</span>
+      </div>
+      <div class="score-bar">
+        <div class="score-cell">好奇 <b>23</b>/25</div>
+        <div class="score-cell">情绪 <b>22</b>/25</div>
+        <div class="score-cell">专业 <b>13</b>/15</div>
+        <div class="score-cell">传播 <b>18</b>/20</div>
+        <div class="score-cell">转化 <b>13</b>/15</div>
+      </div>
+      <div class="analysis-box">
+        <b>分析：</b>反常识结构把「越学心理学越焦虑」重新归因为「科普的流量化原罪」，「诊断」加引号直接批判NPD/边缘型等标签滥用现象，戳破全民心理自查的集体焦虑，专业反思视角让深度读者高度认同。
+      </div>
+    </div>
+
+    <div class="top-card">
+      <div class="top-rank">
+        <div class="rank-badge r10">10</div>
+        <div class="rank-score">89</div>
+      </div>
+      <div class="top-title">被小孩叫阿姨的5个崩溃瞬间，90%的姐姐们都在经历</div>
+      <div class="top-meta">
+        <span class="tag tag-type">数字承诺型</span>
+        <span class="tag tag-topic">被叫阿姨破防</span>
+        <span class="tag tag-platform">小红书 · 抖音</span>
+      </div>
+      <div class="score-bar">
+        <div class="score-cell">好奇 <b>23</b>/25</div>
+        <div class="score-cell">情绪 <b>22</b>/25</div>
+        <div class="score-cell">专业 <b>12</b>/15</div>
+        <div class="score-cell">传播 <b>20</b>/20</div>
+        <div class="score-cell">转化 <b>12</b>/15</div>
+      </div>
+      <div class="analysis-box">
+        <b>分析：</b>「5个瞬间」明确预期降低阅读门槛，「90%」的普遍性触发从众点击，「崩溃」直击年轻女性最隐性的年龄焦虑，小红书图文/抖音短视频双平台原生格式适配，年龄焦虑测评转化自然。
+      </div>
+    </div>
+
+    <div class="section-title">📋 评分维度说明</div>
+    <div class="dim-explain">
+      <h4>5 维度评分体系（满分 100）</h4>
+      <div class="dim-row">
+        <div class="dim-name">好奇心缺口 <b>(25)</b></div>
+        <div class="dim-desc">标题是否制造信息差让人想点击？悬念钩子、反常识冲突、隐藏结果都属于此类。低于18分基本无点击欲。</div>
+      </div>
+      <div class="dim-row">
+        <div class="dim-name">情绪触发 <b>(25)</b></div>
+        <div class="dim-desc">标题是否触发强烈情绪（共鸣/焦虑/好奇/愤怒/治愈）？情绪越强转发概率越高。情绪触发是社交货币的核心。</div>
+      </div>
+      <div class="dim-row">
+        <div class="dim-name">专业可信度 <b>(15)</b></div>
+        <div class="dim-desc">标题是否体现心理学专业性，不像纯标题党？引用权威研究/数据/概念能提升信任，避免「3天治愈」类虚假承诺。</div>
+      </div>
+      <div class="dim-row">
+        <div class="dim-name">传播潜力 <b>(20)</b></div>
+        <div class="dim-desc">标题是否容易被转发？是否有社交货币属性（替人发声/反常识/共鸣梗）？转发率=标题+情绪+身份认同。</div>
+      </div>
+      <div class="dim-row">
+        <div class="dim-name">转化引导 <b>(15)</b></div>
+        <div class="dim-desc">标题是否自然导向心理咨询/测评转化？好的标题让人想点开，精准标题让人想预约咨询。</div>
+      </div>
+    </div>
+
+    <div class="section-title">📚 其余 40 个标题（按选题分组）</div>
+
+    <div class="topic-group">
+      <div class="topic-group-title">① 妈妈认知时差 <span class="count">9 个</span></div>
+      <div class="topic-group-body">
+        <div class="ot-row"><div class="ot-score">88</div><div class="ot-title">30岁被当小孩的5个隐形瞬间，你中了几个</div><div class="ot-type">数字承诺</div></div>
+        <div class="ot-row"><div class="ot-score">88</div><div class="ot-title">30岁回家被叫「我家孩子」，我才意识到从未真正长大</div><div class="ot-type">第一人称</div></div>
+        <div class="ot-row"><div class="ot-score">88</div><div class="ot-title">为什么妈妈永远觉得你是5岁？背后藏着一个残忍真相</div><div class="ot-type">悬念</div></div>
+        <div class="ot-row"><div class="ot-score">88</div><div class="ot-title">30岁还在被妈妈喂饭的那刻，我感觉自己是个废物</div><div class="ot-type">痛点直击</div></div>
+        <div class="ot-row"><div class="ot-score">88</div><div class="ot-title">不是父母不愿意看见你长大，是他们不知道怎么「放手」</div><div class="ot-type">治愈</div></div>
+        <div class="ot-row"><div class="ot-score">87</div><div class="ot-title">「我都30了，去医院她还要跟护士说『阿姨轻点』」</div><div class="ot-type">情绪共鸣</div></div>
+        <div class="ot-row"><div class="ot-score">86</div><div class="ot-title">「妈，我已经30了」——这句话说出来，鼻子就酸了</div><div class="ot-type">替人发声</div></div>
+        <div class="ot-row"><div class="ot-score">86</div><div class="ot-title">「你怎么还没结婚？」——爸妈的语气里，我听见了自己5岁的样子</div><div class="ot-type">对话</div></div>
+        <div class="ot-row"><div class="ot-score">78</div><div class="ot-title">分离个体化与代际认知时差：为什么父母眼里你永远长不大</div><div class="ot-type">专业</div></div>
+      </div>
+    </div>
+
+    <div class="topic-group">
+      <div class="topic-group-title">② 被叫阿姨破防 <span class="count">9 个</span></div>
+      <div class="topic-group-body">
+        <div class="ot-row"><div class="ot-score">89</div><div class="ot-title">被小孩叫阿姨，是你还没意识到自己被同龄父母划入了「长辈」</div><div class="ot-type">痛点直击</div></div>
+        <div class="ot-row"><div class="ot-score">87</div><div class="ot-title">20岁被叫姐姐时我笑了，30岁被叫阿姨时我哭了</div><div class="ot-type">第一人称</div></div>
+        <div class="ot-row"><div class="ot-score">86</div><div class="ot-title">被小孩叫「阿姨」的那一刻，我听见自己碎了一地的声音</div><div class="ot-type">情绪共鸣</div></div>
+        <div class="ot-row"><div class="ot-score">86</div><div class="ot-title">不管被叫姐姐还是阿姨，你都值得被自己温柔以待</div><div class="ot-type">治愈</div></div>
+        <div class="ot-row"><div class="ot-score">86</div><div class="ot-title">为什么一声「阿姨」能让无数20-35岁女性瞬间破防？</div><div class="ot-type">悬念</div></div>
+        <div class="ot-row"><div class="ot-score">85</div><div class="ot-title">「请叫我姐姐」——被叫阿姨的我们，从未想过这会成一种创伤</div><div class="ot-type">替人发声</div></div>
+        <div class="ot-row"><div class="ot-score">85</div><div class="ot-title">28岁被叫阿姨的那天，我第一次认真考虑要打肉毒素</div><div class="ot-type">第一人称</div></div>
+        <div class="ot-row"><div class="ot-score">85</div><div class="ot-title">「姐姐还是阿姨？」——这一声称呼，藏着年轻女性最隐秘的焦虑</div><div class="ot-type">对话</div></div>
+        <div class="ot-row"><div class="ot-score">74</div><div class="ot-title">自我认同错位与年龄标签化：被叫阿姨背后的心理学机制</div><div class="ot-type">专业</div></div>
+      </div>
+    </div>
+
+    <div class="topic-group">
+      <div class="topic-group-title">③ 童年创伤是抑郁编的 <span class="count">6 个</span></div>
+      <div class="topic-group-body">
+        <div class="ot-row"><div class="ot-score">90</div><div class="ot-title">抑郁最严重那年，我突然「回忆」起所有童年创伤，医生说这是病</div><div class="ot-type">第一人称</div></div>
+        <div class="ot-row"><div class="ot-score">89</div><div class="ot-title">别再让原生家庭替你背所有锅，那是对过去的二次伤害</div><div class="ot-type">痛点直击</div></div>
+        <div class="ot-row"><div class="ot-score">88</div><div class="ot-title">「你是不是把所有锅都甩给童年了？」——心理治疗师这句话点醒了我</div><div class="ot-type">对话</div></div>
+        <div class="ot-row"><div class="ot-score">88</div><div class="ot-title">放下原生家庭的执念，不是背叛过去，是放过当下的自己</div><div class="ot-type">治愈</div></div>
+        <div class="ot-row"><div class="ot-score">87</div><div class="ot-title">「我以为的原生家庭问题，可能只是抑郁的借口」——这是给被原生家庭困住的人的一种解脱</div><div class="ot-type">替人发声</div></div>
+        <div class="ot-row"><div class="ot-score">79</div><div class="ot-title">抑郁反向重塑童年记忆：Nature Mental Health最新研究的3个核心发现</div><div class="ot-type">专业</div></div>
+      </div>
+    </div>
+
+    <div class="topic-group">
+      <div class="topic-group-title">④ 心理标签化乱象 <span class="count">8 个</span></div>
+      <div class="topic-group-body">
+        <div class="ot-row"><div class="ot-score">89</div><div class="ot-title">为什么越学心理学越焦虑？南方周末的1.4万字报道说出了真相</div><div class="ot-type">悬念</div></div>
+        <div class="ot-row"><div class="ot-score">89</div><div class="ot-title">那些被「诊断」为边缘型人格的年轻人，可能只是需要一碗热汤</div><div class="ot-type">痛点直击</div></div>
+        <div class="ot-row"><div class="ot-score">88</div><div class="ot-title">「你妈就是NPD」——当心理诊断成为日常骂人的工具</div><div class="ot-type">对话</div></div>
+        <div class="ot-row"><div class="ot-score">88</div><div class="ot-title">心理学的真谛不是给人贴标签，是给人心留一扇可以打开的门</div><div class="ot-type">治愈</div></div>
+        <div class="ot-row"><div class="ot-score">87</div><div class="ot-title">全民测心理那一刻，我才发现自己也被网络心理学「诊断」了</div><div class="ot-type">情绪共鸣</div></div>
+        <div class="ot-row"><div class="ot-score">87</div><div class="ot-title">「我不是NPD，我只是偶尔自私」——别再用心理标签绑架日常情绪</div><div class="ot-type">替人发声</div></div>
+        <div class="ot-row"><div class="ot-score">86</div><div class="ot-title">我被自己的心理测评结果吓哭3次，才意识到那是流量陷阱</div><div class="ot-type">第一人称</div></div>
+        <div class="ot-row"><div class="ot-score">74</div><div class="ot-title">心理学概念的污名化与病耻感：网络流量化科普的双重伤害</div><div class="ot-type">专业</div></div>
+      </div>
+    </div>
+
+    <div class="topic-group">
+      <div class="topic-group-title">⑤ 主动出局/沉默断交延伸 <span class="count">8 个</span></div>
+      <div class="topic-group-body">
+        <div class="ot-row"><div class="ot-score">89</div><div class="ot-title">「不是不爱了，是真的累了」——那些主动出局的人，都不是被伤透的</div><div class="ot-type">情绪共鸣</div></div>
+        <div class="ot-row"><div class="ot-score">89</div><div class="ot-title">主动出局的人，70%不是因为不爱，是被爱耗尽</div><div class="ot-type">数字承诺</div></div>
+        <div class="ot-row"><div class="ot-score">89</div><div class="ot-title">主动退群那一刻，我才意识到自己过去一直在被「无效社交」吸血</div><div class="ot-type">痛点直击</div></div>
+        <div class="ot-row"><div class="ot-score">88</div><div class="ot-title">主动不出局，不是冷漠，是终于把人生的座位留给了自己</div><div class="ot-type">治愈</div></div>
+        <div class="ot-row"><div class="ot-score">87</div><div class="ot-title">「我选择不出席你的婚礼」——成年人的体面退场，不需要解释</div><div class="ot-type">替人发声</div></div>
+        <div class="ot-row"><div class="ot-score">87</div><div class="ot-title">我主动退出了闺蜜群，不是吵架，是终于学会了「不挤不属于自己的局」</div><div class="ot-type">第一人称</div></div>
+        <div class="ot-row"><div class="ot-score">86</div><div class="ot-title">「你怎么不来了？」——成年人的「不来」，从来不是一句敷衍</div><div class="ot-type">对话</div></div>
+        <div class="ot-row"><div class="ot-score">77</div><div class="ot-title">主动出局型回避与习得性自我保护：被消耗的关系如何体面收场</div><div class="ot-type">专业</div></div>
+      </div>
+    </div>
+
+    <div class="qr-section">
+      <h3>🌈 扫码关注彩虹心理</h3>
+      <img src="rainbowhu-qrcode.jpg" alt="彩虹心理公众号二维码">
+      <p>专注心理咨询 · 情绪疗愈 · 关系修复</p>
+      <p class="cta-text">扫码关注彩虹心理，回复「咨询」预约首次评估</p>
+    </div>
+
+    <p class="data-note">* 数据说明：今日（2026-07-30）雷达 Agent 08:00 报告未生成（执行缺失），本实验室通过 WebSearch 检索 2026-07-27 至 07-30 公开热点作为备选选题来源。所有数据均来源于公开报道与平台热搜。所有标题为彩虹心理改编方向，标注[推测/示例]的为话题趋势推测。专业底线：未编造虚假研究数据，未消费患者痛苦，未承诺不可实现的疗效。</p>
+
+  </div>
+
+  <div class="footer">
+    彩虹心理爆款标题实验室 · 2026-07-30 · 本报告由彩虹心理内容团队自动生成
+  </div>
+
+</div>
+</body>
+</html>

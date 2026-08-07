@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>彩虹心理每日心理热点报告 · 2026-07-26</title>
+<style>
+  :root{
+    --bg:#f6f5f2; --card:#ffffff; --ink:#23272e; --ink2:#5b6470; --ink3:#8a93a0;
+    --line:#e8e4dd; --accent:#6b5b95; --accent2:#c06c84; --accent3:#f6a957;
+    --tag1:#6b5b95; --tag2:#c06c84; --tag3:#3a8c7a; --tag4:#d98c3a; --tag5:#5a7cb0;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;background:var(--bg);color:var(--ink);line-height:1.75;padding:32px 20px;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:920px;margin:0 auto}
+  .hero{background:linear-gradient(135deg,#6b5b95 0%,#8a6fae 50%,#c06c84 100%);color:#fff;border-radius:18px;padding:34px 34px 30px;box-shadow:0 12px 30px -12px rgba(107,91,149,.45)}
+  .hero .kicker{font-size:13px;letter-spacing:3px;opacity:.85;text-transform:uppercase}
+  .hero h1{font-size:27px;margin-top:10px;font-weight:800;letter-spacing:.5px}
+  .hero .meta{display:flex;flex-wrap:wrap;gap:18px;margin-top:16px;font-size:14px;opacity:.95}
+  .hero .meta span b{font-weight:700}
+  .disclaimer{background:#fff7e8;border:1px solid #f0d9a8;color:#7a5a1e;border-radius:12px;padding:13px 16px;margin:18px 0;font-size:13.5px}
+  .disclaimer b{color:#a06a12}
+  section{margin:26px 0}
+  h2.sec{font-size:20px;font-weight:800;margin-bottom:4px;display:flex;align-items:center;gap:10px}
+  h2.sec .bar{width:5px;height:20px;border-radius:3px;background:var(--accent)}
+  .sec-sub{color:var(--ink3);font-size:13px;margin-bottom:16px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px 26px;margin-bottom:22px;box-shadow:0 4px 16px -10px rgba(0,0,0,.08)}
+  .rank-line{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+  .rank{width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:17px;color:#fff;flex-shrink:0}
+  .r1{background:linear-gradient(135deg,#c0392b,#e74c3c)}.r2{background:linear-gradient(135deg,#d98c3a,#f0a040)}.r3{background:linear-gradient(135deg,#6b5b95,#8a6fae)}.r4{background:linear-gradient(135deg,#3a8c7a,#5aa68f)}.r5{background:linear-gradient(135deg,#5a7cb0,#7a9cc8)}
+  .rank-title{font-size:17px;font-weight:700;line-height:1.4}
+  .score{margin-left:auto;text-align:right;flex-shrink:0}
+  .score .num{font-size:24px;font-weight:800;color:var(--accent)}
+  .score .lbl{font-size:11px;color:var(--ink3)}
+  .meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px 26px;font-size:13px;background:#faf8f5;border-radius:10px;padding:12px 16px;margin-bottom:16px}
+  .meta-grid .k{color:var(--ink3)}.meta-grid .v{color:var(--ink2);font-weight:600}
+  .tagrow{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px}
+  .tag{font-size:11px;padding:3px 9px;border-radius:20px;color:#fff;font-weight:600}
+  .tag.t1{background:var(--tag1)}.tag.t2{background:var(--tag2)}.tag.t3{background:var(--tag3)}.tag.t4{background:var(--tag4)}.tag.t5{background:var(--tag5)}
+  h4.blk{font-size:14px;font-weight:800;color:var(--accent);margin:18px 0 8px;display:flex;align-items:center;gap:7px}
+  h4.blk:before{content:"";width:8px;height:8px;border-radius:2px;background:var(--accent)}
+  .analysis-list{font-size:13.7px;color:var(--ink2)}
+  .analysis-list li{margin:5px 0;padding-left:18px;position:relative}
+  .analysis-list li:before{content:"▸";position:absolute;left:0;color:var(--accent3);font-weight:700}
+  .titles{display:flex;flex-direction:column;gap:9px;margin:6px 0 4px}
+  .ttitle{background:#f7f4ff;border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:9px 13px;font-size:14px;font-weight:600;color:var(--ink)}
+  .ttitle .vt{display:inline-block;font-size:10.5px;color:#fff;background:var(--accent);padding:2px 8px;border-radius:10px;margin-right:8px;vertical-align:1px}
+  .ttitle.v2{background:#fff0f4;border-left-color:var(--accent2)}.ttitle.v2 .vt{background:var(--accent2)}
+  .ttitle.v3{background:#fff7e8;border-left-color:var(--accent3)}.ttitle.v3 .vt{background:var(--accent3)}
+  .form-checks{display:flex;flex-wrap:wrap;gap:10px 18px;font-size:13px;color:var(--ink2);margin:4px 0 2px}
+  .form-checks label{display:inline-flex;align-items:center;gap:6px}
+  .box{width:14px;height:14px;border:1.6px solid var(--ink3);border-radius:3px;display:inline-block;position:relative;flex-shrink:0}
+  .box.chk{background:var(--accent);border-color:var(--accent)}.box.chk:after{content:"✓";color:#fff;font-size:10px;position:absolute;top:-3px;left:2px;font-weight:700}
+  .qbox{background:#f9f7fb;border:1px solid var(--line);border-radius:10px;padding:13px 16px;margin-top:14px}
+  .qbox .q{font-size:13px;margin:7px 0;color:var(--ink2)}
+  .qbox .q b{color:var(--accent);font-weight:700;margin-right:5px}
+  .visual{font-size:13px;color:var(--ink2)}
+  .visual .vl{display:grid;grid-template-columns:88px 1fr;gap:5px 12px;margin-top:5px}
+  .visual .vl .lk{color:var(--ink3);font-size:12px}
+  .lib-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-top:14px}
+  .lib-card{border-radius:13px;padding:16px;color:#fff}
+  .lib-card h5{font-size:14px;margin-bottom:6px}
+  .lib-card p{font-size:12px;opacity:.92;line-height:1.6}
+  .lib1{background:var(--tag1)}.lib2{background:var(--tag2)}.lib3{background:var(--tag3)}.lib4{background:var(--tag4)}.lib5{background:var(--tag5)}
+  .footer-note{background:var(--card);border:1px dashed var(--line);border-radius:12px;padding:18px 20px;font-size:13px;color:var(--ink2);margin-top:8px}
+  .footer-note b{color:var(--ink)}
+  .mono{font-family:"SF Mono",Consolas,monospace;font-size:12px;background:#f0ece4;padding:1px 6px;border-radius:4px;color:var(--ink2)}
+  .pill{display:inline-block;font-size:11px;padding:2px 9px;border-radius:20px;background:#eef0f2;color:var(--ink2);margin-right:5px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="kicker">RAINBOW PSYCHOLOGY · DAILY RADAR</div>
+    <h1>彩虹心理每日心理热点报告</h1>
+    <div class="meta">
+      <span>报告日期：<b>2026-07-26（周日）</b></span>
+      <span>数据时段：<b>近 24-72 小时</b></span>
+      <span>覆盖平台：<b>微信公众号 · 微博 · 小红书 · 知乎</b></span>
+      <span>出品：<b>彩虹心理内容中心</b></span>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    <b>时效性说明：</b>受平台实时热搜接口限制，"近 24 小时"数据未能完整获取，本报告采集的是<b>近期高热、可检索到的代表性心理爆款内容</b>（多为 2026 年 1-6 月持续发酵的高热长尾内容）。部分具体阅读/点赞数字未获取到，已如实标注，不作估算。建议团队后续接入各平台热搜 API 以补齐实时数据。
+  </div>
+
+  <section>
+    <h2 class="sec"><span class="bar"></span>一、今日 TOP5 心理热点选题</h2>
+    <p class="sec-sub">评分维度：用户痛点(30) + 情绪共鸣(25) + 传播潜力(25) + 商业价值(20) = 100 分。仅保留高价值选题，不堆砌信息。</p>
+
+    <!-- ============ TOP 1 ============ -->
+    <div class="card">
+      <div class="rank-line">
+        <div class="rank r1">1</div>
+        <div class="rank-title">习惯性讨好的人，都在用委屈自己换别人的认可<br><span style="font-size:12.5px;color:var(--ink3);font-weight:500">（走出讨好型陷阱的 4 个心法 · 跨平台持续高热）</span></div>
+        <div class="score"><div class="num">96</div><div class="lbl">/ 100</div></div>
+      </div>
+      <div class="tagrow"><span class="tag t1">自我成长</span><span class="tag t2">原生家庭</span><span class="tag t4">情绪心理</span></div>
+      <div class="meta-grid">
+        <div><span class="k">来源：</span><span class="v">《心理学上说：习惯性讨好的人，都在用委屈自己换别人的认可》及多版本</span></div>
+        <div><span class="k">平台：</span><span class="v">微信公众号（武志红主创团 / 壹心理体系）</span></div>
+        <div><span class="k">作者：</span><span class="v">武志红主创团、壹心理·此刻心理</span></div>
+        <div><span class="k">数据表现：</span><span class="v">跨平台多版本高热，精确阅读数未获取</span></div>
+        <div><span class="k">发布时间：</span><span class="v">2026-01 / 2026-05（持续发酵）</span></div>
+        <div><span class="k">延伸热度：</span><span class="v">今日头条、热播剧《家业》讨好型人格共鸣</span></div>
+      </div>
+
+      <h4 class="blk">爆款原因分析</h4>
+      <ul class="analysis-list">
+        <li><b>用户痛点：</b>精准命中"为什么讨好别人""为什么无法拒绝别人"——大众高频痛点，原生家庭+自我价值+内耗三重叠加。</li>
+        <li><b>情绪触发点：</b>"朋友约逛街身体不舒服也硬撑""同事甩活忙到冒烟也说不出拒绝"——读者瞬间产生"这说的不就是我吗"。</li>
+        <li><b>标题结构：</b>"习惯性讨好的人 + 都在用委屈自己换别人的认可"，揭示反常识真相（讨好≠善良，而是换认可），制造认知落差。</li>
+        <li><b>内容结构：</b>读者留言引入 → 3 个心理根源（认可依赖/冲突恐惧/边界模糊）→ 4 个心法落地，"痛点—解释—方法"闭环。</li>
+        <li><b>为什么容易传播：</b>讨好/内耗是永恒高共鸣母题；评论区天然成"树洞"自述现场，转发收藏价值高；原生家庭解释具备"原来如此"的解谜快感。</li>
+      </ul>
+
+      <h4 class="blk">彩虹心理改编建议</h4>
+      <div class="titles">
+        <div class="ttitle"><span class="vt">专业型</span>讨好型人格的三重心理根源与边界重建路径</div>
+        <div class="ttitle v2"><span class="vt">情绪共鸣型</span>为什么你越讨好，别人越不把你当回事</div>
+        <div class="ttitle v3"><span class="vt">爆款传播型</span>不敢拒绝别人的你，其实不是善良，是太缺爱了</div>
+      </div>
+      <div class="form-checks">
+        <label><span class="box chk"></span>公众号长文</label>
+        <label><span class="box chk"></span>小红书图文</label>
+        <label><span class="box chk"></span>短视频</label>
+        <label><span class="box"></span>朋友圈海报</label>
+        <label><span class="box"></span>心理测试</label>
+      </div>
+      <div class="visual" style="margin-top:12px">
+        <b>推荐视觉方向：</b>
+        <div class="vl">
+          <span class="lk">图片主题</span><span>一个笑着答应所有人、独自在角落疲惫的人</span>
+          <span class="lk">人物状态</span><span>表面顺从微笑 / 内心能量耗尽的对比</span>
+          <span class="lk">色彩方向</span><span>暖灰底 + 暗红强调（压抑与觉醒的张力）</span>
+          <span class="lk">设计关键词</span><span>边界感、讨好、被看见、自我价值</span>
+        </div>
+      </div>
+
+      <div class="qbox">
+        <div class="q"><b>1. 为什么值得做？</b>讨好是咨询转化最强入口之一，直接连接"原生家庭创伤疗愈"咨询线，且受众基数极大。</div>
+        <div class="q"><b>2. 用户为什么会看？</b>标题击中"我不是善良，是缺爱"的自我归因渴望，提供"终于被理解"的释然感。</div>
+        <div class="q"><b>3. 彩虹心理如何差异化？</b>武志红偏理论，彩虹心理可强化"来访者真实案例 + 咨询师解读 + 21 天边界练习"的可执行闭环。</div>
+        <div class="q"><b>4. 如何转化为咨询客户？</b>文末嵌入"讨好型人格自测量表"，高分用户引导至原生家庭疗愈咨询/团体咨询。</div>
+      </div>
+    </div>
+
+    <!-- ============ TOP 2 ============ -->
+    <div class="card">
+      <div class="rank-line">
+        <div class="rank r2">2</div>
+        <div class="rank-title">我讨厌我自己——如何停止"自我厌恶"</div>
+        <div class="score"><div class="num">92</div><div class="lbl">/ 100</div></div>
+      </div>
+      <div class="tagrow"><span class="tag t1">自我成长</span><span class="tag t4">情绪心理</span></div>
+      <div class="meta-grid">
+        <div><span class="k">来源：</span><span class="v">中国网心理中国《心理公开课｜我讨厌我自己》</span></div>
+        <div><span class="k">平台：</span><span class="v">心理中国 / 公众号转载（长青高搜索）</span></div>
+        <div><span class="k">作者：</span><span class="v">邢穆岚（《心理与健康》杂志供稿）</span></div>
+        <div><span class="k">数据表现：</span><span class="v">长尾高搜索，精确数据未获取</span></div>
+        <div><span class="k">发布时间：</span><span class="v">2024-04（持续被检索引用）</span></div>
+        <div><span class="k">核心观点：</span><span class="v">自我厌恶非天生，源于批评型家庭+理想自我差距+完美主义</span></div>
+      </div>
+      <h4 class="blk">爆款原因分析</h4>
+      <ul class="analysis-list">
+        <li><b>用户痛点：</b>"为什么总是否定自己""我找不到自己哪里值得被爱"——自我价值缺失，深痛点。</li>
+        <li><b>情绪触发点：</b>升职失败、33 岁一事无成、相亲失败的闺蜜独白，代入感极强。</li>
+        <li><b>标题结构：</b>"我讨厌我自己"第一人称自白，赤裸、刺痛，激发强烈共鸣与自我投射。</li>
+        <li><b>内容结构：</b>真实案例 → 自我厌恶定义与表现 → 3 成因 → 自我接纳 3 法，逻辑清晰可落地。</li>
+        <li><b>为什么容易传播：</b>"我讨厌我自己"是大量人不敢说出口的话，标题本身就是情绪出口，易引发转发与收藏"留给自己看"。</li>
+      </ul>
+      <h4 class="blk">彩虹心理改编建议</h4>
+      <div class="titles">
+        <div class="ttitle"><span class="vt">专业型</span>自我厌恶的心理机制：从批评内化到自我接纳重建</div>
+        <div class="ttitle v2"><span class="vt">情绪共鸣型</span>你之所以讨厌自己，是因为从小没人好好夸过你</div>
+        <div class="ttitle v3"><span class="vt">爆款传播型</span>我讨厌我自己：一个成年人最隐秘的崩溃</div>
+      </div>
+      <div class="form-checks">
+        <label><span class="box chk"></span>公众号长文</label>
+        <label><span class="box"></span>小红书图文</label>
+        <label><span class="box chk"></span>短视频</label>
+        <label><span class="box chk"></span>朋友圈海报</label>
+        <label><span class="box"></span>心理测试</label>
+      </div>
+      <div class="visual" style="margin-top:12px">
+        <b>推荐视觉方向：</b>
+        <div class="vl">
+          <span class="lk">图片主题</span><span>镜中两个自己——批判者与被批判者</span>
+          <span class="lk">人物状态</span><span>凝视镜面，眼神从回避到正视</span>
+          <span class="lk">色彩方向</span><span>冷蓝灰 → 暖光的过渡（从厌恶到接纳）</span>
+          <span class="lk">设计关键词</span><span>自我接纳、内在批判者、值得被爱</span>
+        </div>
+      </div>
+      <div class="qbox">
+        <div class="q"><b>1. 为什么值得做？</b>自我厌恶是抑郁/低自尊的前置状态，专业介入价值高，可做系列栏目"自我关系修复"。</div>
+        <div class="q"><b>2. 用户为什么会看？</b>替读者说出了不敢说的话，提供"被命名、被理解"的情绪价值。</div>
+        <div class="q"><b>3. 彩虹心理如何差异化？</b>加入咨询师视角的"内在批判者对话练习"，把抽象自我接纳变成可操作的觉察工具。</div>
+        <div class="q"><b>4. 如何转化为咨询客户？</b>提供"自我厌恶程度测评"，中重度用户引导至低自尊疗愈个体咨询。</div>
+      </div>
+    </div>
+
+    <!-- ============ TOP 3 ============ -->
+    <div class="card">
+      <div class="rank-line">
+        <div class="rank r3">3</div>
+        <div class="rank-title">为什么我们比以前更累了？原因有 1 个</div>
+        <div class="score"><div class="num">90</div><div class="lbl">/ 100</div></div>
+      </div>
+      <div class="tagrow"><span class="tag t4">情绪心理</span><span class="tag t1">自我成长</span></div>
+      <div class="meta-grid">
+        <div><span class="k">来源：</span><span class="v">武志红《为什么我们比以前更累了？原因有1个》</span></div>
+        <div><span class="k">平台：</span><span class="v">微信公众号 武志红（ID：wzhxlx）</span></div>
+        <div><span class="k">作者：</span><span class="v">和小畏（武志红主创团，后现代取向咨询师）</span></div>
+        <div><span class="k">数据表现：</span><span class="v">武志红号百万级阅读基盘，精确数未获取</span></div>
+        <div><span class="k">发布时间：</span><span class="v">2026-04-10</span></div>
+        <div><span class="k">核心观点：</span><span class="v">倦怠≠意志力不足，而是内在秩序被外界声音破坏</span></div>
+      </div>
+      <h4 class="blk">爆款原因分析</h4>
+      <ul class="analysis-list">
+        <li><b>用户痛点：</b>"为什么总感觉累""不想上班、不想努力、拖延"——当代人最普遍的疲惫感。</li>
+        <li><b>情绪触发点：</b>"现金流桌游"隐喻——被外界声音入侵、内在秩序被破坏的过程，可视、可感。</li>
+        <li><b>标题结构：</b>"为什么比以前更累 + 原因有1个"，悬念+承诺单一归因，引发好奇点击。</li>
+        <li><b>内容结构：</b>现象引入 → 桌游体验叙事 → 心理机制（自我被外在声音淹没）→ 反直觉结论，故事化说服力强。</li>
+        <li><b>为什么容易传播：</b>倦怠是高频社交话题，"原来不是我不够努力"的释然感驱动转发。</li>
+      </ul>
+      <h4 class="blk">彩虹心理改编建议</h4>
+      <div class="titles">
+        <div class="ttitle"><span class="vt">专业型</span>倦怠的心理机制：内在秩序如何被外界入侵</div>
+        <div class="ttitle v2"><span class="vt">情绪共鸣型</span>你不是懒，你是被掏空了</div>
+        <div class="ttitle v3"><span class="vt">爆款传播型</span>为什么你睡了十个小时，还是觉得累到崩溃</div>
+      </div>
+      <div class="form-checks">
+        <label><span class="box chk"></span>公众号长文</label>
+        <label><span class="box chk"></span>小红书图文</label>
+        <label><span class="box chk"></span>短视频</label>
+        <label><span class="box"></span>朋友圈海报</label>
+        <label><span class="box chk"></span>心理测试</label>
+      </div>
+      <div class="visual" style="margin-top:12px">
+        <b>推荐视觉方向：</b>
+        <div class="vl">
+          <span class="lk">图片主题</span><span>被无数声音箭头穿透、逐渐空掉的容器</span>
+          <span class="lk">人物状态</span><span>瘫坐、眼神放空，背景喧嚣</span>
+          <span class="lk">色彩方向</span><span>低饱和灰绿（疲惫）+ 一束暖光（觉察）</span>
+          <span class="lk">设计关键词</span><span>倦怠、内在秩序、边界、自我保护</span>
+        </div>
+      </div>
+      <div class="qbox">
+        <div class="q"><b>1. 为什么值得做？</b>倦怠是情绪管理/正念咨询的直接入口，可承接职场心理与企业 EAP 两条业务线。</div>
+        <div class="q"><b>2. 用户为什么会看？</b>把"累"从生理疲劳重新定义为心理秩序问题，给读者"被理解+有解"的希望。</div>
+        <div class="q"><b>3. 彩虹心理如何差异化？</b>武志红偏叙事，彩虹心理可强化"倦怠自评 + 正念/边界恢复 7 日方案"的工具化输出。</div>
+        <div class="q"><b>4. 如何转化为咨询客户？</b>嵌入"倦怠指数测评"，高分引导至情绪管理咨询或正念课程/团体。</div>
+      </div>
+    </div>
+
+    <!-- ============ TOP 4 ============ -->
+    <div class="card">
+      <div class="rank-line">
+        <div class="rank r4">4</div>
+        <div class="rank-title">"脸皮厚能治心理疾病"？心理咨询师直接反驳</div>
+        <div class="score"><div class="num">89</div><div class="lbl">/ 100</div></div>
+      </div>
+      <div class="tagrow"><span class="tag t4">情绪心理</span><span class="tag t5">咨询师IP</span></div>
+      <div class="meta-grid">
+        <div><span class="k">来源：</span><span class="v">环球网校心理咨询师频道专业反驳文</span></div>
+        <div><span class="k">平台：</span><span class="v">微博热搜 + 心理专业号</span></div>
+        <div><span class="k">作者：</span><span class="v">专业心理咨询师（科普反驳）</span></div>
+        <div><span class="k">数据表现：</span><span class="v">微博热搜阅读量超 17 万（文中提及）</span></div>
+        <div><span class="k">发布时间：</span><span class="v">2026-06-23</span></div>
+        <div><span class="k">核心观点：</span><span class="v">心理疾病≠性格脆弱；硬扛式自愈加重内耗，需专业干预</span></div>
+      </div>
+      <h4 class="blk">爆款原因分析</h4>
+      <ul class="analysis-list">
+        <li><b>用户痛点：</b>大众普遍存在"靠意志力自愈""想太多就是矫情"的认知误区，污名化心理求助。</li>
+        <li><b>情绪触发点：</b>"脸皮厚就能治好"的反常识热搜，激起患者被冒犯感与专业澄清需求。</li>
+        <li><b>标题结构：</b>引用热搜金句 + "心理咨询师直接反驳"，制造观点对立与权威介入。</li>
+        <li><b>内容结构：</b>热搜引入 → 2 大错误认知拆解 → 科学干预路径，立场鲜明、科普有力。</li>
+        <li><b>为什么容易传播：</b>话题本身已是热搜，自带流量；立场型内容易引发两方讨论与站队转发。</li>
+      </ul>
+      <h4 class="blk">彩虹心理改编建议</h4>
+      <div class="titles">
+        <div class="ttitle"><span class="vt">专业型</span>"脸皮厚能治心理疾病"为何是危险误区——来自咨询师的澄清</div>
+        <div class="ttitle v2"><span class="vt">情绪共鸣型</span>你已经撑了很久，不必再用"脸皮厚"骗自己</div>
+        <div class="ttitle v3"><span class="vt">爆款传播型</span>"想开点就好了"：这句话，正在毁掉多少抑郁的人</div>
+      </div>
+      <div class="form-checks">
+        <label><span class="box chk"></span>公众号长文</label>
+        <label><span class="box chk"></span>小红书图文</label>
+        <label><span class="box chk"></span>短视频</label>
+        <label><span class="box"></span>朋友圈海报</label>
+        <label><span class="box"></span>心理测试</label>
+      </div>
+      <div class="visual" style="margin-top:12px">
+        <b>推荐视觉方向：</b>
+        <div class="vl">
+          <span class="lk">图片主题</span><span>硬撑笑脸裂纹下真实的疲惫与求助信号</span>
+          <span class="lk">人物状态</span><span>强撑的微笑 + 一道裂缝透出光</span>
+          <span class="lk">色彩方向</span><span>深灰底 + 破壁而出的暖黄光</span>
+          <span class="lk">设计关键词</span><span>污名化、专业干预、允许求助、去病耻感</span>
+        </div>
+      </div>
+      <div class="qbox">
+        <div class="q"><b>1. 为什么值得做？</b>这是天然的"咨询转化入口"——反驳错误认知即建立专业权威，直接导向"该不该求助"。</div>
+        <div class="q"><b>2. 用户为什么会看？</b>替长期被误解的患者发声，提供"专业的人替我说了公道话"的爽感与认同。</div>
+        <div class="q"><b>3. 彩虹心理如何差异化？</b>不流于科普，加入"如何判断自己该不该看咨询师"的 4 个信号清单，把立场变成行动指引。</div>
+        <div class="q"><b>4. 如何转化为咨询客户？</b>直接提供"心理求助自检清单 + 首次咨询绿色通道"，转化路径最短。</div>
+      </div>
+    </div>
+
+    <!-- ============ TOP 5 ============ -->
+    <div class="card">
+      <div class="rank-line">
+        <div class="rank r5">5</div>
+        <div class="rank-title">为什么越亲密的人，越容易互相伤害？（依恋与共生关系）</div>
+        <div class="score"><div class="num">87</div><div class="lbl">/ 100</div></div>
+      </div>
+      <div class="tagrow"><span class="tag t2">亲密关系</span><span class="tag t1">自我成长</span></div>
+      <div class="meta-grid">
+        <div><span class="k">来源：</span><span class="v">知乎高赞"为什么越亲密的人越容易互相伤害"等</span></div>
+        <div><span class="k">平台：</span><span class="v">知乎</span></div>
+        <div><span class="k">作者：</span><span class="v">知乎心理学者 @清流、@KnowYourself 等</span></div>
+        <div><span class="k">数据表现：</span><span class="v">单题 87 万浏览/3000+ 回答；另 200 万+ 浏览题</span></div>
+        <div><span class="k">发布时间：</span><span class="v">知乎长青高赞问题（持续高热）</span></div>
+        <div><span class="k">核心观点：</span><span class="v">共生关系 vs 联结关系；亲密冲突源于童年创伤激活</span></div>
+      </div>
+      <h4 class="blk">爆款原因分析</h4>
+      <ul class="analysis-list">
+        <li><b>用户痛点：</b>"为什么亲密关系容易争吵"——情侣/夫妻最高频困惑。</li>
+        <li><b>情绪触发点：</b>"两个溺水的人互相往下按"的比喻，把相爱相杀讲透了。</li>
+        <li><b>标题结构：</b>疑问句式制造认知悬念，"越亲密越伤害"的反差击中困惑。</li>
+        <li><b>内容结构：</b>依恋理论框架 + 共生/联结对比 + 70% 期待源于童年未满足需求，理论与共鸣并重。</li>
+        <li><b>为什么容易传播：</b>亲密关系是永恒社交货币，金句多、易截图二次传播。</li>
+      </ul>
+      <h4 class="blk">彩虹心理改编建议</h4>
+      <div class="titles">
+        <div class="ttitle"><span class="vt">专业型</span>亲密关系冲突的依恋根源与联结重建</div>
+        <div class="ttitle v2"><span class="vt">情绪共鸣型</span>你们不是不爱，是都在用吵架求救</div>
+        <div class="ttitle v3"><span class="vt">爆款传播型</span>为什么越相爱，越容易把对方伤得最深</div>
+      </div>
+      <div class="form-checks">
+        <label><span class="box chk"></span>公众号长文</label>
+        <label><span class="box chk"></span>小红书图文</label>
+        <label><span class="box chk"></span>短视频</label>
+        <label><span class="box chk"></span>朋友圈海报</label>
+        <label><span class="box"></span>心理测试</label>
+      </div>
+      <div class="visual" style="margin-top:12px">
+        <b>推荐视觉方向：</b>
+        <div class="vl">
+          <span class="lk">图片主题</span><span>两棵树——根相连却各自向阳（联结关系隐喻）</span>
+          <span class="lk">人物状态</span><span>背对背却根系缠绕，从拉扯到各自生长</span>
+          <span class="lk">色彩方向</span><span>温润大地色 + 一线根系暖光</span>
+          <span class="lk">设计关键词</span><span>依恋、共生、边界、共同成长</span>
+        </div>
+      </div>
+      <div class="qbox">
+        <div class="q"><b>1. 为什么值得做？</b>亲密关系咨询是高客单价业务核心，可承接情侣/婚姻咨询产品线。</div>
+        <div class="q"><b>2. 用户为什么会看？</b>为"相爱却互相伤害"的困惑提供专业解释，缓解自责与无力。</div>
+        <div class="q"><b>3. 彩虹心理如何差异化？</b>知乎偏理论，彩虹心理可输出"依恋类型测评 + 伴侣沟通 5 步法"的实操组合。</div>
+        <div class="q"><b>4. 如何转化为咨询客户？</b>嵌入"依恋类型测试"，引导焦虑型/回避型用户至伴侣咨询或亲密关系成长团体。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 选题库 ============ -->
+  <section>
+    <h2 class="sec"><span class="bar"></span>二、彩虹心理选题库（自动分类入库）</h2>
+    <p class="sec-sub">今日 5 个选题已按主题归类入库，供后续系列化生产调用。</p>
+    <div class="lib-grid">
+      <div class="lib-card lib1"><h5>① 自我成长</h5><p>关键词：自卑 · 内耗 · 自责 · 完美主义 · 自我接纳<br><br>入库：自我厌恶、倦怠、讨好型人格（自我维度）</p></div>
+      <div class="lib-card lib2"><h5>② 亲密关系</h5><p>关键词：依恋 · 沟通 · 控制 · 冷暴力 · 情绪迁怒<br><br>入库：越亲密越伤害、共生vs联结</p></div>
+      <div class="lib-card lib3"><h5>③ 原生家庭</h5><p>关键词：父母关系 · 童年经历 · 情感忽视 · 家庭模式<br><br>入库：讨好型人格的童年根源、原生家庭创伤</p></div>
+      <div class="lib-card lib4"><h5>④ 情绪心理</h5><p>关键词：焦虑 · 抑郁 · 压力 · 情绪管理<br><br>入库：倦怠、"脸皮厚治心理病"误区、正念情绪自救</p></div>
+      <div class="lib-card lib5"><h5>⑤ 咨询师IP</h5><p>关键词：咨询案例 · 咨询师成长 · 专业知识 · 行业观察<br><br>入库：咨询师专业反驳类内容范式</p></div>
+    </div>
+  </section>
+
+  <!-- ============ 周度提示 ============ -->
+  <section>
+    <h2 class="sec"><span class="bar"></span>三、本周内容战略提示</h2>
+    <div class="footer-note">
+      <p style="margin-bottom:10px"><b>本周（截至 2026-07-26）增长最快的心理主题：</b>"精神内耗 / 讨好型人格"持续霸榜，"原生家庭疗愈"在社交媒体话题讨论量超 3000 万（来源：2026 情绪管理趋势报道）。</p>
+      <p style="margin-bottom:10px"><b>用户最关注的问题：</b>"我为什么这么累""为什么无法拒绝别人""我是不是抑郁了"——围绕<b>自我耗竭与自我价值</b>两条主线。</p>
+      <p style="margin-bottom:10px"><b>爆款标题规律：</b>① 第一人称自白式（"我讨厌我自己"）；② 反常识归因式（"讨好不是善良是缺爱"）；③ 悬念承诺式（"原因有1个"）；④ 替人发声式（"这句话正在毁掉多少抑郁的人"）。</p>
+      <p style="margin-bottom:10px"><b>下周推荐方向：</b>主打"自我耗竭"主题系列——讨好→自我厌恶→倦怠→完美主义，构成一条完整自我疗愈链路，适合做连续 4 期栏目。</p>
+      <p><b>建议制作的系列栏目：</b>《自我关系修复计划》4 期连更 + 配套"讨好型人格 / 倦怠指数 / 依恋类型 / 自我厌恶"4 份测评，形成"内容→测评→咨询"转化闭环。</p>
+    </div>
+  </section>
+
+  <!-- ============ 核心任务 ============ -->
+  <section>
+    <h2 class="sec"><span class="bar"></span>四、今日核心任务复盘</h2>
+    <div class="footer-note">
+      <p style="margin-bottom:8px"><b>用户正在痛苦什么？</b>讨好与无法拒绝、自我厌恶与"我不配"、说不清的持续疲惫、亲密关系里的互相伤害、被"想开点"压着不敢求助。</p>
+      <p style="margin-bottom:8px"><b>用户正在讨论什么？</b>"脸皮厚能不能治心理病"的争议、原生家庭如何决定讨好模式、越亲密为何越受伤、2026 情绪管理成养生刚需。</p>
+      <p><b>彩虹心理如何用专业帮助他们？</b>5 个选题均满足"<b>专业性 + 普通人能理解 + 有情绪连接 + 有咨询转化可能</b>"四项标准。每个选题都内置"测评→咨询"转化钩子，下周可启动《自我关系修复计划》系列。</p>
+    </div>
+    <p style="text-align:center;color:var(--ink3);font-size:12px;margin-top:22px">彩虹心理内容中心 · 每日 08:00 自动生成 · <span class="mono">v1.0</span> · 数据来源：微信公众号 / 微博 / 小红书 / 知乎 公开检索</p>
+  </section>
+
+  <!-- ============ 私域入口 ============ -->
+  <section style="text-align:center">
+    <h2 class="sec" style="justify-content:center"><span class="bar"></span>关注彩虹心理公众号 · 预约心理咨询</h2>
+    <p class="sec-sub">扫码关注，回复「咨询」即可领取首次咨询评估 + 1 对 1 心理师匹配</p>
+    <div class="card" style="display:inline-block;padding:22px 30px">
+      <img src="rainbowhu-qrcode.jpg" alt="彩虹心理公众号二维码" style="width:180px;height:180px;border-radius:12px;display:block;margin:0 auto">
+      <div style="margin-top:12px;font-size:13px;color:var(--ink2)">微信公众号：彩虹心理</div>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

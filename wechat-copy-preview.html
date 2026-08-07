@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>彩虹心理 - 公众号复制效果预览</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif; background: #f5f5f7; padding: 20px; margin: 0; }
+    .wrap { max-width: 680px; margin: 0 auto; background: #fff; border-radius: 16px; padding: 24px; box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+    .tip { background: #E8F0EA; border-left: 4px solid #134B43; border-radius: 8px; padding: 14px 18px; margin-bottom: 20px; font-size: 14px; color: #134B43; line-height: 1.7; }
+    .tabs { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+    .tab { padding: 8px 16px; border-radius: 20px; border: 1px solid #134B43; background: #fff; color: #134B43; cursor: pointer; font-size: 14px; }
+    .tab.active { background: #134B43; color: #fff; }
+    .content { background: #F7F3EA; padding: 24px; border-radius: 12px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="tip"><b>说明：</b>下面展示的是点击工作台「复制公众号格式」后，粘贴到公众号编辑器里的效果。配色方案：深绿#134B43 / 米白#F7F3EA / 浅绿框#E8F0EA / 暖金#C89B52 / 正文#3F3F3F / 15px / 1.75行距 / 长段落自动拆分（3-5行一段）。</div>
+    <div class="tabs">
+      <button class="tab active" onclick="show(0)">文章1：文字讨好症</button>
+      <button class="tab" onclick="show(1)">文章2：职场倦怠</button>
+      <button class="tab" onclick="show(2)">文章3：焦虑型依恋</button>
+    </div>
+    <div class="content" id="wechatContent"></div>
+  </div>
+
+  <script type="text/html" id="article-source-0">
+<span class="brand-tag">彩虹心理 · 自我成长</span>
+
+<h1>文字讨好症：你发每条消息都在讨好，却忘了问自己累不累</h1>
+<p class="subtitle">当"嗯嗯好的呀～"成为条件反射，你的真实感受正在被一条条消息吞没。</p>
+
+<div class="quote-box">
+  <b>心理学视角：</b>人际敏感性（Interpersonal Sensitivity）指的是个体对他人态度、情绪和意图的觉察能力。正常的人际敏感性是社交的必要能力——我们需要根据对方的反馈来调整自己的行为。但当这种敏感性过高时，就会表现为对他人评价、拒绝和接纳的<b>高度警觉</b>，从而引发低自尊和社交焦虑。
+</div>
+  </script>
+
+  <script type="text/html" id="article-source-1">
+<span class="brand-tag">彩虹心理 · 情绪心理</span>
+<h1>职场倦怠：你不是懒，是情绪劳动透支了</h1>
+<p class="subtitle">明明坐办公室，为什么下班后累到说不出话？</p>
+
+<div class="quote-box">
+  <b>心理学视角：</b>1983年，美国社会学家阿莉·霍克希尔在《心灵的整造》一书中首次提出"情绪劳动"概念。她发现，除了体力劳动和脑力劳动，还存在"第三种劳动"——为了让组织或他人感到满意和舒适，而调节自己的情绪和表情所付出的、常常被忽视的劳动。
+</div>
+
+<div class="quote-box">
+  <b>心理咨询师视角：</b>倦怠不是你的意志力不够，也不是你"太矫情"。它是一个信号，提醒你的心理系统已经超负荷运转太久了。
+</div>
+  </script>
+
+  <script type="text/html" id="article-source-2">
+<span class="brand-tag">彩虹心理 · 亲密关系</span>
+<h1>焦虑型依恋：为什么你一谈恋爱就患得患失</h1>
+<p class="subtitle">你不是太粘人，只是太害怕被留下。</p>
+
+<div class="quote-box">
+  <b>焦虑型依恋的核心特征：</b>极度渴望亲密，同时对被抛弃有着深层的恐惧。在关系中，焦虑型依恋者需要持续的证据来确认"对方还爱我"。
+</div>
+
+<div class="quote-box">
+  <b>关键理解：</b>焦虑型依恋不是"性格缺陷"，而是一种<b>适应策略</b>。
+</div>
+  </script>
+
+  <script>
+    function inlineRich(node, baseFont, gold) {
+      var html = node.innerHTML;
+      html = html.replace(/<b\b/g, '<b style="color:' + gold + ';font-weight:700;"');
+      html = html.replace(/<strong\b/g, '<strong style="color:' + gold + ';font-weight:700;"');
+      return html;
+    }
+    function escapeHtml(text) {
+      if (!text) return '';
+      return text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+    function splitPara(html, pStyle, maxLen) {
+      maxLen = maxLen || 75;
+      var tmp = document.createElement('div');
+      tmp.innerHTML = html;
+      var text = tmp.textContent;
+      if (text.length <= maxLen) return '<p style="' + pStyle + '">' + html + '</p>';
+      var chunks = [], current = '', textLen = 0, inTag = false, tagStack = [];
+      for (var i = 0; i < html.length; i++) {
+        var ch = html[i];
+        if (ch === '<') {
+          inTag = true;
+          if (html[i+1] === '/') {
+            var ce = html.indexOf('>', i);
+            var cn = html.substring(i+2, ce).trim().toLowerCase().split(' ')[0];
+            for (var j = tagStack.length-1; j >= 0; j--) { if (tagStack[j].name === cn) { tagStack.splice(j, 1); break; } }
+          } else if (!html.substring(i).match(/^<(br|img|hr|input|meta|link)\b/i)) {
+            var te = html.indexOf('>', i);
+            var ft = html.substring(i, te+1);
+            var tn = html.substring(i+1, te).split(/[\s>]/)[0].toLowerCase();
+            if (tn && !tn.match(/^(br|img|hr|input|meta|link)$/)) tagStack.push({name: tn, fullTag: ft});
+          }
+        }
+        current += ch;
+        if (!inTag && ch !== ' ' && ch !== '\n' && ch !== '\t') textLen++;
+        if (ch === '>') inTag = false;
+        if (!inTag && (ch === '。' || ch === '！' || ch === '？') && textLen >= maxLen * 0.6) {
+          var closeStr = '';
+          for (var j = tagStack.length-1; j >= 0; j--) closeStr += '</' + tagStack[j].name + '>';
+          chunks.push(current + closeStr);
+          var reopenStr = '';
+          for (var j = 0; j < tagStack.length; j++) reopenStr += tagStack[j].fullTag;
+          current = reopenStr; textLen = 0;
+        }
+        if (!inTag && ch === '，' && textLen >= maxLen) {
+          var closeStr2 = '';
+          for (var j = tagStack.length-1; j >= 0; j--) closeStr2 += '</' + tagStack[j].name + '>';
+          chunks.push(current + closeStr2);
+          var reopenStr2 = '';
+          for (var j = 0; j < tagStack.length; j++) reopenStr2 += tagStack[j].fullTag;
+          current = reopenStr2; textLen = 0;
+        }
+      }
+      if (current.replace(/<[^>]*>/g, '').trim()) chunks.push(current);
+      return chunks.map(function(c) { return '<p style="' + pStyle + '">' + c + '</p>'; }).join('');
+    }
+    function buildWechatHTML(sourceHtml) {
+      var parser = new DOMParser();
+      var doc = parser.parseFromString(sourceHtml, 'text/html');
+      var article = doc.querySelector('.article-container') || doc.querySelector('.article') || doc.body;
+      var baseFont = "-apple-system,BlinkMacSystemFont,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif";
+      var brandColor = '#134B43', bgColor = '#F7F3EA', boxBg = '#E8F0EA';
+      var boxText = '#42665B', gold = '#C89B52', textColor = '#3F3F3F';
+      var parts = [];
+      Array.from(article.children).forEach(function (node) {
+        var tag = node.tagName ? node.tagName.toLowerCase() : '';
+        var cls = ' ' + (node.className || '') + ' ';
+        if (tag === 'span' && cls.indexOf(' brand-tag ') > -1) {
+          parts.push('<div style="text-align:center;margin-bottom:16px;"><span style="display:inline-block;font-size:12px;color:' + brandColor + ';background:' + boxBg + ';padding:4px 14px;border-radius:20px;letter-spacing:1px;font-family:' + baseFont + ';">' + escapeHtml(node.textContent) + '</span></div>');
+        } else if (tag === 'h1') {
+          parts.push('<h1 style="font-size:22px;font-weight:800;color:' + brandColor + ';line-height:1.5;text-align:center;margin:0 0 12px;font-family:' + baseFont + ';">' + escapeHtml(node.textContent) + '</h1>');
+        } else if (cls.indexOf(' subtitle ') > -1) {
+          parts.push('<p style="font-size:14px;color:#666666;text-align:center;margin:0 0 28px;line-height:1.6;font-family:' + baseFont + ';">' + inlineRich(node, baseFont, gold) + '</p>');
+        } else if (cls.indexOf(' quote-box ') > -1) {
+          var titleHtml = '';
+          var bodyHtml = inlineRich(node, baseFont, gold);
+          var titleMatch = bodyHtml.match(/^\s*<b[^>]*>([^<]+?)：<\/b>\s*/);
+          if (titleMatch) {
+            bodyHtml = bodyHtml.replace(titleMatch[0], '');
+            titleHtml = '<p style="font-size:16px;font-weight:bold;color:' + brandColor + ';margin-bottom:8px;font-family:' + baseFont + ';">' + titleMatch[1] + '</p>';
+          }
+          var boxPStyle = 'font-size:15px;color:' + boxText + ';line-height:1.75;font-family:' + baseFont + ';margin:0 0 10px 0;';
+          parts.push('<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:' + boxBg + ';border-radius:8px;margin:20px 0;font-family:' + baseFont + ';"><tr><td style="width:4px;background:' + brandColor + ';font-size:0;">&nbsp;</td><td style="padding:16px 20px;">' + titleHtml + splitPara(bodyHtml, boxPStyle, 70) + '</td></tr></table>');
+        } else if (tag === 'h2') {
+          parts.push('<h2 style="font-size:18px;font-weight:700;color:' + brandColor + ';margin:32px 0 14px;padding-left:12px;border-left:4px solid ' + brandColor + ';font-family:' + baseFont + ';">' + escapeHtml(node.textContent) + '</h2>');
+        } else if (tag === 'p') {
+          var pStyle = 'font-size:15px;color:' + textColor + ';line-height:1.75;margin:16px 0;font-family:' + baseFont + ';';
+          parts.push(splitPara(inlineRich(node, baseFont, gold), pStyle, 75));
+        }
+      });
+      return '<section style="font-family:' + baseFont + ';background:' + bgColor + ';padding:24px 20px;color:' + textColor + ';line-height:1.75;font-size:15px;">' + parts.join('') + '</section>';
+    }
+    function show(idx) {
+      document.querySelectorAll('.tab').forEach((t, i) => t.classList.toggle('active', i === idx));
+      var inner = document.getElementById('article-source-' + idx).textContent;
+      var wrapped = '<!DOCTYPE html><html><body><div class="article">' + inner + '</div></body></html>';
+      document.getElementById('wechatContent').innerHTML = buildWechatHTML(wrapped);
+    }
+    show(0);
+  </script>
+</body>
+</html>
