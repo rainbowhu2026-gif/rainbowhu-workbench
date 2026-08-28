@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>彩虹心理标题实验室报告 2026-08-15</title>
+<style>
+  :root{--bg:#faf8f4;--card:#fff;--ink:#1d2521;--ink2:#5e6b66;--ink3:#9aa6a0;--line:#e8e3d8;--accent:#134b43;--accent-soft:#e8f0ea;--gold:#c89b52;--danger:#c0392b;--purple:#6b5b95;--rose:#e91e63;--teal:#00897b;--orange:#ff7043;--shadow:0 4px 20px rgba(19,75,67,.07);}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);line-height:1.7;-webkit-font-smoothing:antialiased;padding:32px 20px}
+  .wrap{max-width:1040px;margin:0 auto}
+  header{text-align:center;margin-bottom:36px;padding:30px;background:linear-gradient(135deg,#134b43,#1a6b5f);color:#fff;border-radius:18px;box-shadow:var(--shadow)}
+  header h1{font-size:28px;font-weight:800;letter-spacing:1px;margin-bottom:8px}
+  header .sub{font-size:13px;opacity:.85}
+  header .date{font-size:12px;opacity:.65;margin-top:8px}
+  .section{background:var(--card);border-radius:18px;padding:28px;margin-bottom:22px;box-shadow:var(--shadow);border:1px solid var(--line)}
+  .section h2{font-size:18px;font-weight:800;margin-bottom:18px;display:flex;align-items:center;gap:10px;color:var(--accent)}
+  .section h2 .dot{width:10px;height:10px;border-radius:50%;display:inline-block;background:var(--accent)}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px}
+  .stat{background:linear-gradient(135deg,#f8f5ee,#fff);border:1px solid var(--line);border-radius:14px;padding:18px;text-align:center}
+  .stat .v{font-size:26px;font-weight:800;color:var(--accent);display:block;margin-bottom:4px}
+  .stat .l{font-size:12px;color:var(--ink2)}
+  .stat.gold .v{color:var(--gold)}
+  .stat.purple .v{color:var(--purple)}
+  .stat.rose .v{color:var(--rose)}
+
+  /* TOP10 cards */
+  .top10{display:grid;gap:14px}
+  .top-card{background:linear-gradient(135deg,#fdf8f0,#fff);border:1.5px solid var(--gold);border-radius:14px;padding:18px 22px;position:relative;overflow:hidden}
+  .top-card::before{content:"";position:absolute;top:0;left:0;width:5px;height:100%;background:var(--gold)}
+  .top-card .rank{position:absolute;top:14px;right:18px;background:var(--gold);color:#fff;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px}
+  .top-card .head{display:flex;align-items:center;gap:10px;margin-bottom:8px;flex-wrap:wrap}
+  .top-card .score{background:var(--accent);color:#fff;padding:3px 12px;border-radius:20px;font-size:13px;font-weight:800}
+  .top-card .type{font-size:11px;padding:3px 10px;border-radius:10px;color:#fff;font-weight:600}
+  .top-card .platforms{font-size:11px;color:var(--ink2);background:#faf5eb;padding:3px 10px;border-radius:10px}
+  .top-card .title{font-size:17px;font-weight:800;color:var(--accent);line-height:1.5;margin:6px 0 8px}
+  .top-card .topic{font-size:12px;color:var(--gold);font-weight:700;margin-bottom:6px}
+  .top-card .dims{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:10px 0;font-size:11px}
+  .top-card .dim{background:#fff;border:1px solid var(--line);padding:5px 6px;border-radius:6px;text-align:center}
+  .top-card .dim b{display:block;font-size:13px;color:var(--accent);font-weight:800}
+  .top-card .dim span{color:var(--ink2);font-size:10px}
+  .top-card .analysis{font-size:12.5px;color:var(--ink2);line-height:1.8;background:#fff;padding:10px 12px;border-left:3px solid var(--gold);border-radius:4px}
+
+  /* group tables */
+  .group{margin-bottom:24px}
+  .group h3{font-size:15px;font-weight:800;color:var(--accent);margin-bottom:10px;padding:8px 14px;background:var(--accent-soft);border-radius:8px;display:flex;justify-content:space-between;align-items:center}
+  .group h3 .gcount{font-size:12px;color:var(--ink2);font-weight:600}
+  .group table{width:100%;border-collapse:collapse;font-size:12.5px}
+  .group th{background:#f5efe1;color:var(--ink);font-weight:700;text-align:left;padding:9px 10px;border-bottom:2px solid var(--line);font-size:11px;text-transform:uppercase;letter-spacing:.5px}
+  .group td{padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:middle}
+  .group .gtitle{font-weight:700;color:var(--ink);line-height:1.5}
+  .group .gscore{font-weight:800;color:var(--gold);text-align:center;width:54px}
+  .group .gtype{font-size:10px;padding:2px 8px;border-radius:8px;color:#fff;font-weight:600;display:inline-block;text-align:center;min-width:62px}
+  .type-emo{background:var(--rose)}
+  .type-num{background:var(--teal)}
+  .type-cnt{background:var(--purple)}
+  .type-fps{background:#5c6bc0}
+  .type-1st{background:#26a69a}
+  .type-dia{background:#fb8c00}
+  .type-sus{background:var(--orange)}
+  .type-pro{background:#546e7a}
+  .type-pain{background:var(--danger)}
+  .type-cure{background:#7cb342}
+  .g-rank{background:#f5efe1;color:var(--ink);padding:2px 8px;border-radius:6px;font-size:11px;font-weight:700;display:inline-block;min-width:28px;text-align:center}
+
+  /* radar dims */
+  .dim-info{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;font-size:11px}
+  .dim-card{background:linear-gradient(135deg,#f8f5ee,#fff);padding:12px;border-radius:10px;text-align:center;border:1px solid var(--line)}
+  .dim-card b{display:block;color:var(--accent);font-size:18px;margin-bottom:4px;font-weight:800}
+  .dim-card .dim-desc{color:var(--ink2);font-size:10.5px;line-height:1.5}
+
+  .qr-block{text-align:center;padding:28px;background:linear-gradient(135deg,#faf8f5,#f5f0e8);border-radius:18px;margin-top:14px;border:1px solid var(--line)}
+  .qr-block img{width:160px;height:160px;border-radius:12px;margin-bottom:12px}
+  .qr-block p{font-size:13px;color:var(--ink2);line-height:1.6}
+  .qr-block .brand{font-size:15px;font-weight:800;color:var(--accent);margin-bottom:6px}
+
+  @media(max-width:760px){
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .top-card .dims{grid-template-columns:repeat(2,1fr)}
+    .dim-info{grid-template-columns:repeat(2,1fr)}
+    body{padding:20px 12px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>🌈 彩虹心理爆款标题实验室</h1>
+  <div class="sub">基于雷达 TOP5 选题 · 每日 09:00 自动化生成</div>
+  <div class="date">2026 年 8 月 15 日 星期六 · Week 33</div>
+</header>
+
+<!-- ===== 统计 ===== -->
+<div class="stats">
+  <div class="stat"><span class="v">50</span><span class="l">本次生成标题</span></div>
+  <div class="stat gold"><span class="v">10</span><span class="l">筛选 TOP10</span></div>
+  <div class="stat purple"><span class="v">95.2</span><span class="l">TOP10 平均分</span></div>
+  <div class="stat rose"><span class="v">5 / 5</span><span class="l">TOP10 覆盖选题</span></div>
+</div>
+
+<!-- ===== 5 维度评分体系 ===== -->
+<div class="section">
+  <h2><span class="dot"></span>5 维度评分体系（满分 100）</h2>
+  <div class="dim-info">
+    <div class="dim-card"><b>25</b><span class="dim-desc">好奇心缺口<br>信息差吸引力</span></div>
+    <div class="dim-card"><b>25</b><span class="dim-desc">情绪触发<br>共鸣/焦虑/愤怒</span></div>
+    <div class="dim-card"><b>15</b><span class="dim-desc">专业可信度<br>心理学背书</span></div>
+    <div class="dim-card"><b>20</b><span class="dim-desc">传播潜力<br>转发/社交货币</span></div>
+    <div class="dim-card"><b>15</b><span class="dim-desc">转化引导<br>咨询/测评入口</span></div>
+  </div>
+</div>
+
+<!-- ===== 今日选题 ===== -->
+<div class="section">
+  <h2><span class="dot"></span>今日雷达 TOP5 选题</h2>
+  <div class="dim-info" style="grid-template-columns:repeat(5,1fr)">
+    <div class="dim-card"><b style="color:var(--danger)">① 99分</b><span class="dim-desc">「低耗关系」悖论<br><small style="color:var(--gold)">亲密关系 · 情绪心理</small></span></div>
+    <div class="dim-card"><b style="color:var(--orange)">② 96分</b><span class="dim-desc">金靖「攥」<br><small style="color:var(--gold)">亲密关系 · 焦虑依恋</small></span></div>
+    <div class="dim-card"><b style="color:var(--purple)">③ 94分</b><span class="dim-desc">「心墙」<br><small style="color:var(--gold)">自我成长 · 情绪心理</small></span></div>
+    <div class="dim-card"><b style="color:var(--teal)">④ 92分</b><span class="dim-desc">反复抱怨/未被倾听<br><small style="color:var(--gold)">情绪心理 · 原生家庭</small></span></div>
+    <div class="dim-card"><b style="color:var(--blue,#4264ab)">⑤ 88分</b><span class="dim-desc">隔阂已生/体面疏远<br><small style="color:var(--gold)">亲密关系 · 社交心理</small></span></div>
+  </div>
+</div>
+
+<!-- ===== TOP10 卡片 ===== -->
+<div class="section">
+  <h2><span class="dot" style="background:var(--gold)"></span>🏆 TOP10 筛选结果（按总分降序）</h2>
+  <div class="top10">
+
+    <div class="top-card">
+      <div class="rank">1</div>
+      <div class="head">
+        <span class="score">97 分</span>
+        <span class="type type-emo">情绪共鸣</span>
+        <span class="platforms">公众号 · 小红书 · 抖音</span>
+      </div>
+      <div class="topic">选题② 金靖「攥」</div>
+      <div class="title">你攥得越紧，他逃得越快——不是不爱了，是你的大脑在上瘾</div>
+      <div class="dims">
+        <div class="dim"><b>24</b><span>好奇心</span></div>
+        <div class="dim"><b>25</b><span>情绪触发</span></div>
+        <div class="dim"><b>13</b><span>专业可信</span></div>
+        <div class="dim"><b>21</b><span>传播潜力</span></div>
+        <div class="dim"><b>14</b><span>转化引导</span></div>
+      </div>
+      <div class="analysis">情绪共鸣型的「成瘾化重塑」：把爱情痛苦从「情感问题」翻译为「大脑上瘾」，瞬间祛除软弱羞耻。「攥紧→逃开」是日常情感画面，「大脑上瘾」则是神经科学解释——两类语言并置制造认知升级感。「攥」字作为金靖自创核心隐喻情绪爆破力极强，#金靖清醒语录# 3.2亿播放量为标题提供流量锚点。导向焦虑型依恋评估+分手/婚恋修复咨询。</div>
+    </div>
+
+    <div class="top-card">
+      <div class="rank">2</div>
+      <div class="head">
+        <span class="score">96 分</span>
+        <span class="type type-cnt">反常识</span>
+        <span class="platforms">公众号 · 小红书 · 微博</span>
+      </div>
+      <div class="topic">选题② 金靖「攥」</div>
+      <div class="title">不是你太想留住他，是你的大脑正在经历一场戒断反应</div>
+      <div class="dims">
+        <div class="dim"><b>24</b><span>好奇心</span></div>
+        <div class="dim"><b>24</b><span>情绪触发</span></div>
+        <div class="dim"><b>14</b><span>专业可信</span></div>
+        <div class="dim"><b>20</b><span>传播潜力</span></div>
+        <div class="dim"><b>14</b><span>转化引导</span></div>
+      </div>
+      <div class="analysis">反常识型的「生理翻译」利器：把「想留住他」的羞耻感转译为「大脑戒断反应」的中性生理事件——你不是软弱，是神经回路在剧烈震荡。这种「去人格化」策略直接卸下分手者的自我怀疑。Bowlby 依恋理论与多巴胺机制构成专业双保险。与第1名形成悬念呼应，引导读者点击了解完整神经机制。导向分手创伤修复咨询与依恋类型评估。</div>
+    </div>
+
+    <div class="top-card">
+      <div class="rank">3</div>
+      <div class="head">
+        <span class="score">95 分</span>
+        <span class="type type-cnt">反常识</span>
+        <span class="platforms">公众号 · 小红书 · 抖音</span>
+      </div>
+      <div class="topic">选题① 「低耗关系」悖论</div>
+      <div class="title">不是低耗在杀死爱情，是你们把冷漠活成了舒适区</div>
+      <div class="dims">
+        <div class="dim"><b>23</b><span>好奇心</span></div>
+        <div class="dim"><b>24</b><span>情绪触发</span></div>
+        <div class="dim"><b>14</b><span>专业可信</span></div>
+        <div class="dim"><b>20</b><span>传播潜力</span></div>
+        <div class="dim"><b>14</b><span>转化引导</span></div>
+      </div>
+      <div class="analysis">反常识型直击 2026 年最热婚恋词的认知悖论：「低耗」本是善意，却被「相处不累」的口号偷换成「情感撤离」。「舒适区」作为认知翻转关键词，直接让追求舒适的人意识到自己的舒适建立在对方失血上。戈特曼研究「健康低耗」与「防御性冷漠」的本质区分为正文奠定专业调性，自然导向亲密关系模式咨询与婚姻修复服务。</div>
+    </div>
+
+    <div class="top-card">
+      <div class="rank">4</div>
+      <div class="head">
+        <span class="score">95 分</span>
+        <span class="type type-num">数字承诺</span>
+        <span class="platforms">公众号 · 小红书 · 抖音</span>
+      </div>
+      <div class="topic">选题② 金靖「攥」</div>
+      <div class="title">焦虑型依恋的6个攥太紧的信号，第4条最隐秘</div>
+      <div class="dims">
+        <div class="dim"><b>25</b><span>好奇心</span></div>
+        <div class="dim"><b>23</b><span>情绪触发</span></div>
+        <div class="dim"><b>13</b><span>专业可信</span></div>
+        <div class="dim"><b>20</b><span>传播潜力</span></div>
+        <div class="dim"><b>14</b><span>转化引导</span></div>
+      </div>
+      <div class="analysis">数字承诺型+认知盲区钩子的极致组合：「6个攥太紧的信号」给出清单价值，「第4条最隐秘」制造信息缺口，读者会直接跳到第4条对照自查，停留时长预估增加约 35%。把焦虑型依恋的可识别行为数字化，让用户在不知不觉中完成自我评估。Bowlby/Bartholomew 依恋量表与正文中「松手四步法」形成专业闭环，精准导流焦虑型依恋评估与深度咨询。</div>
+    </div>
+
+    <div class="top-card">
+      <div class="rank">5</div>
+      <div class="head">
+        <span class="score">95 分</span>
+        <span class="type type-sus">悬念</span>
+        <span class="platforms">公众号 · 小红书 · 微博</span>
+      </div>
+      <div class="topic">选题① 「低耗关系」悖论</div>
+      <div class="title">71.3%的年轻人把「相处不累」当择偶第一条件，结果呢？</div>
+      <div class="dims">
+        <div class="dim"><b>25</b><span>好奇心</span></div>
+        <div class="dim"><b>22</b><span>情绪触发</span></div>
+        <div class="dim"><b>13</b><span>专业可信</span></div>
+        <div class="dim"><b>20</b><span>传播潜力</span></div>
+        <div class="dim"><b>14</b><span>转化引导</span></div>
+      </div>
+      <div class="analysis">悬念型的「数据+反问」黄金组合：「71.3%」是 2026 年青藤之恋报告真实调研数据，「结果呢？」制造「数据-结论缺口」——你得点击看才能知道答案，停留率与完读率同时拉高。把一个看似中性的婚恋条件转为「看数据-反思自身-对照检查」三连击。精准导向亲密关系模式评估与婚姻咨询。</div>
+    </div>
+
+    <div class="top-card">
+      <div class="rank">6</div>
+      <div class="head">
+        <span class="score">95 分</span>
+        <span class="type type-sus">悬念</span>
+        <span class="platforms">公众号 · 小红书 · 抖音</span>
+      </div>
+      <div class="topic">选题③ 「心墙」</div>
+      <div class="title">73.2%的年轻人正在被一种看不见的墙困住，你呢？</div>
+      <div class="dims">
+        <div class="dim"><b>25</b><span>好奇心</span></div>
+        <div class="dim"><b>23</b><span>情绪触发</span></div>
+        <div class="dim"><b>13</b><span>专业可信</span></div>
+        <div class="dim"><b>20</b><span>传播潜力</span></div>
+        <div class="dim"><b>14</b><span>转化引导</span></div>
+      </div>
+      <div class="analysis">悬念型与时代隐喻的共振：「看不见的墙」是对「心墙」最精准的科普化翻译——你看不见摸不着，却被它天天困住。「73.2%」数据来自《2026 国民心理韧性白皮书》具备权威性。「你呢？」一句话将全民级现象拉到自我对照，激活自我检测欲。「心墙」是 2026 年跨平台超级热词，小红书阅读破 12.7 亿，标题自带流量底盘。导向认知过载指数自测与职业倦怠/自我成长咨询。</div>
+    </div>
+
+    <div class="top-card">
+      <div class="rank">7</div>
+      <div class="head">
+        <span class="score">95 分</span>
+        <span class="type type-emo">情绪共鸣</span>
+        <span class="platforms">公众号 · 小红书 · 微博</span>
+      </div>
+      <div class="topic">选题④ 反复抱怨/未被倾听</div>
+      <div class="title">你反复说同一件事，不是因为爱抱怨，是因为从没人真正听见</div>
+      <div class="dims">
+        <div class="dim"><b>23</b><span>好奇心</span></div>
+        <div class="dim"><b>25</b><span>情绪触发</span></div>
+        <div class="dim"><b>13</b><span>专业可信</span></div>
+        <div class="dim"><b>20</b><span>传播潜力</span></div>
+        <div class="dim"><b>14</b><span>转化引导</span></div>
+      </div>
+      <div class="analysis">情绪共鸣型的「听见-责怪反转」结构：从「你爱抱怨」的指责跳到「没人听见」的真相——瞬间把读者从「被评判者」转化为「被理解者」，强力引发深度认同。「反复说同一件事」是每个人对身边人或自己都熟悉的画面，「没人真正听见」是武志红 8 月 6 日原文核心命题。爱丽丝·米勒的身体化机制在正文展开，导向「情感验证」自我评估与情绪管理咨询。</div>
+    </div>
+
+    <div class="top-card">
+      <div class="rank">8</div>
+      <div class="head">
+        <span class="score">95 分</span>
+        <span class="type type-sus">悬念</span>
+        <span class="platforms">公众号 · 小红书 · 抖音</span>
+      </div>
+      <div class="topic">选题④ 反复抱怨/未被倾听</div>
+      <div class="title">为什么一个人会反复抱怨同一件事？答案和爱丽丝·米勒有关</div>
+      <div class="dims">
+        <div class="dim"><b>25</b><span>好奇心</span></div>
+        <div class="dim"><b>22</b><span>情绪触发</span></div>
+        <div class="dim"><b>14</b><span>专业可信</span></div>
+        <div class="dim"><b>20</b><span>传播潜力</span></div>
+        <div class="dim"><b>14</b><span>转化引导</span></div>
+      </div>
+      <div class="analysis">悬念型+权威背书的组合：「为什么...？」制造原因缺口，「爱丽丝·米勒」提供专业权威性背书——一提到这位创伤心理学开山级人物，专业度瞬间拉满。「反复抱怨」是日常痛点，「米勒」让标题从发泄型升级为科普型。两层钩子叠加既满足情绪又给理性，公众号长文最吃这套结构。导向创伤心理学专题内容+情绪疗愈咨询。</div>
+    </div>
+
+    <div class="top-card">
+      <div class="rank">9</div>
+      <div class="head">
+        <span class="score">95 分</span>
+        <span class="type type-sus">悬念</span>
+        <span class="platforms">公众号 · 小红书 · 微博</span>
+      </div>
+      <div class="topic">选题⑤ 隔阂已生/体面疏远</div>
+      <div class="title">和好容易，如初太难——这3种隔阂，别再修了</div>
+      <div class="dims">
+        <div class="dim"><b>25</b><span>好奇心</span></div>
+        <div class="dim"><b>24</b><span>情绪触发</span></div>
+        <div class="dim"><b>12</b><span>专业可信</span></div>
+        <div class="dim"><b>20</b><span>传播潜力</span></div>
+        <div class="dim"><b>14</b><span>转化引导</span></div>
+      </div>
+      <div class="analysis">悬念型与热搜共识的复合体：「和好容易，如初太难」是微博 #建议不要和已产生隔阂的人示好# 热搜核心共识，自带流量底盘。「3种隔阂」给出清单价值，「别再修了」的反鸡汤姿态精准命中 2026 年年轻人「拒绝伪善修复」的真实心理。「修复窗口期」理论与认知偏见机制在正文展开，导向人际关系咨询与边界重建服务。</div>
+    </div>
+
+    <div class="top-card">
+      <div class="rank">10</div>
+      <div class="head">
+        <span class="score">94 分</span>
+        <span class="type type-cnt">反常识</span>
+        <span class="platforms">公众号 · 小红书 · 微博</span>
+      </div>
+      <div class="topic">选题④ 反复抱怨/未被倾听</div>
+      <div class="title">不是爱抱怨的人烦人，是 ta 的身体正在替 ta 喊救命</div>
+      <div class="dims">
+        <div class="dim"><b>23</b><span>好奇心</span></div>
+        <div class="dim"><b>24</b><span>情绪触发</span></div>
+        <div class="dim"><b>13</b><span>专业可信</span></div>
+        <div class="dim"><b>20</b><span>传播潜力</span></div>
+        <div class="dim"><b>14</b><span>转化引导</span></div>
+      </div>
+      <div class="analysis">反常识型的「去污名化」典范：「烦人」到「喊救命」的认知跳跃，瞬间把读者视角从评判者转化为见证者——你在场听到的是求救信号而非噪音。「身体」一词暗合「身体化（Somatization）」专业概念，与爱丽丝·米勒「身体的真相」形成呼应，强化科学底色。这种视角转换对长期抱怨者身边人是高转发动机，导向倾听技巧+情绪管理+创伤疗愈咨询。</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== 全部 50 个标题（分组展示） ===== -->
+<div class="section">
+  <h2><span class="dot" style="background:var(--teal)"></span>📋 全部 50 个标题（按选题分组）</h2>
+
+  <!-- 选题1 -->
+  <div class="group">
+    <h3>①「低耗关系」悖论（99分）<span class="gcount">10 个标题 · TOP10 中占 2</span></h3>
+    <table>
+      <thead><tr><th style="width:36px">排名</th><th>标题</th><th style="width:70px">风格</th><th style="width:48px">分数</th></tr></thead>
+      <tbody>
+        <tr><td><span class="g-rank">TOP3</span></td><td class="gtitle">不是低耗在杀死爱情，是你们把冷漠活成了舒适区</td><td><span class="gtype type-cnt">反常识</span></td><td class="gscore">95</td></tr>
+        <tr><td><span class="g-rank">TOP5</span></td><td class="gtitle">71.3%的年轻人把「相处不累」当择偶第一条件，结果呢？</td><td><span class="gtype type-sus">悬念</span></td><td class="gscore">95</td></tr>
+        <tr><td><span class="g-rank">—</span></td><td class="gtitle">「低耗关系」正在毁掉5种爱情，第3种最普遍</td><td><span class="gtype type-num">数字承诺</span></td><td class="gscore">93</td></tr>
+        <tr><td><span class="g-rank">—</span></td><td class="gtitle">低耗关系不是爱得轻松，是怕吵了连最后一点也没了</td><td><span class="gtype type-pain">痛点直击</span></td><td class="gscore">93</td></tr>
+        <tr><td><span class="g-rank">—</span></td><td class="gtitle">那些以为「低耗」是爱的人，活成了最孤独的两个人</td><td><span class="gtype type-fps">替人发声</span></td><td class="gscore">92</td></tr>
+        <tr><td><span class="g-rank">—</span></td><td class="gtitle">你以为的「相处不累」，其实是一种更高级的孤独</td><td><span class="gtype type-emo">情绪共鸣</span></td><td class="gscore">91</td></tr>
+        <tr><td><span class="g-rank">—</span></td><td class="gtitle">「我们要不要回到从前那样」「可是从前那样，谁都累」</td><td><span class="gtype type-dia">对话</span></td><td class="gscore">91</td></tr>
+        <tr><td><span class="g-rank">—</span></td><td class="gtitle">低耗关系不是问题，「低」到无法感受彼此才是</td><td><span class="gtype type-cure">治愈</span></td><td class="gscore">88</td></tr>
+        <tr><td><span class="g-rank">—</span></td><td class="gtitle">我以为是相处不累，到最后才发现是相顾无言</td><td><span class="gtype type-1st">第一人称</span></td><td class="gscore">87</td></tr>
+        <tr><td><span class="g-rank">—</span></td><td class="gtitle">戈特曼「5:1法则」视角下的「低耗关系」悖论与婚姻修复路径</td><td><span class="gtype type-pro">专业</span></td><td class="gscore">81</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 选题2 -->
+  <div class="group">
+    <h3>②金靖「攥」（96分）<span class="gcount">10 个标题 · TOP10 中占 3</span></h3>
+    <table>
+      <thead><tr><th style="width:36px">排名</th><th>标题</th><th style="width:70px">风格</th><th style="width:48px">分数</th></tr></thead>
+      <tbody>
+        <tr><td><span class="g-rank">TOP1</span></td><td class="gtitle">你攥得越紧，他逃得越快——不是不爱了，是你的大脑在上瘾</td><td><span class="gtype type-emo">情绪共鸣</span></td><td class="gscore">97</td></tr>
+        <tr><td><span class="g-rank">TOP2</span></td><td class="gtitle">不是你太想留住他，是你的大脑正在经历一场戒断反应</td><td><span class="gtype type-cnt">反常识</span></td><td class="gscore">96</td></tr>
+        <tr><td><span class="g-rank">TOP4</span></td><td class="gtitle">焦虑型依恋的6个攥太紧的信号，第4条最隐秘</td><td><span class="gtype type-num">数字承诺</span></td><td class="gscore">95</td></tr>
+        <tr><td><span class="g-rank">—</span></td><td class="gtitle">为什么越爱越怕失去？3.2亿播放量的金靖说出真相</td><td><span class="gtype type-sus">悬念</span></td><td class="gscore">94</td></tr>
+        <tr><td><span class="g-rank">—</span></td><td class="gtitle">那些把爱活成攥紧的人，从没真正被爱过</td><td><span class="gtype type-fps">替人发声</span></td><td class="gscore">92</td></tr>
+        <tr><td><span class="g-rank">—</span></td><td class="gtitle">你不是太爱了，你是把爱活成了一场核磁共振</td><td><span class="gtype type-pain">痛点直击</span></td><td class="gscore">91</td></tr>
+        <tr><td><span class="g-rank">—</span></td><td class="gtitle">爱不是攥紧的手，是松开后他还是愿意留下</td><td><span class="gtype type-cure">治愈</span></td><td class="gscore">90</td></tr>
+        <tr><td><span class="g-rank">—</span></td><td class="gtitle">「你为什么总是查我手机」「因为只有看见你在线我才不慌」</td><td><span class="gtype type-dia">对话</span></td><td class="gscore">89</td></tr>
+        <tr><td><span class="g-rank">—</span></td><td class="gtitle">我以为攥紧是不想失去，到后来才明白是想被看见</td><td><span class="gtype type-1st">第一人称</span></td><td class="gscore">87</td></tr>
+        <tr><td><span class="g-rank">—</span></td><td class="gtitle">过度监控型依恋与伏隔核戒断：从神经科学看焦虑型爱情</td><td><span class="gtype type-pro">专业</span></td><td class="gscore">81</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 选题3 -->
+  <div class="group">
+    <h3>③「心墙」（94分）<span class="gcount">10 个标题 · TOP10 中占 1</span></h3>
+    <table>
+      <thead><tr><th style="width:36px">排名</th><th>标题</th><th style="width:70px">风格</th><th style="width:48px">分数</th></tr></thead>
+      <tbody>
+        <tr><td><span class="g-rank">TOP6</span></td><td class="gtitle">73.2%的年轻人正在被一种看不见的墙困住，你呢？</td><td><span class="gtype type-sus">悬念</span></td><td class="gscore">95</td></tr>
+        <tr><td><span class="g-rank">—</span></td><td class="gtitle">心墙长成这5个样子的人，第3种最多</td><td><span class="gtype type-num">数字承诺</span></td><td class="gscore">94</td></tr>
+        <tr><td><span class="g-rank">—</span></td><td class="gtitle">不是社会太卷，是你的心墙一直在偷偷加高</td><td><span class="gtype type-cnt">反常识</span></td><td class="gscore">94</td></tr>
+        <tr><td><span class="g-rank">—</span></td><td class="gtitle">身份证在口袋里，手机电量87%，可就是不想走进那栋楼</td><td><span class="gtype type-emo">情绪共鸣</span></td><td class="gscore">93</td></tr>
+        <tr><td><span class="g-rank">—</span></td><td class="gtitle">心墙不是自我保护，是你在心里给自己判了无期</td><td><span class="gtype type-pain">痛点直击</span></td><td class="gscore">93</td></tr>
+        <tr><td><span class="g-rank">—</span></td><td class="gtitle">「你怎么最近这么丧」「其实我连丧的力气都匀不出来了」</td><td><span class="gtype type-dia">对话</span></td><td class="gscore">89</td></tr>
+        <tr><td><span class="g-rank">—</span></td><td class="gtitle">那些被骂「躺平」的人，其实被困在自己盖的高墙里</td><td><span class="gtype type-fps">替人发声</span></td><td class="gscore">89</td></tr>
+        <tr><td><span class="g-rank">—</span></td><td class="gtitle">心墙不是要拆，是要给它开一扇有光的门</td><td><span class="gtype type-cure">治愈</span></td><td class="gscore">87</td></tr>
+        <tr><td><span class="g-rank">—</span></td><td class="gtitle">我知道该做什么，可就是站不起来——心墙比懒更可怕</td><td><span class="gtype type-1st">第一人称</span></td><td class="gscore">86</td></tr>
+        <tr><td><span class="g-rank">—</span></td><td class="gtitle">认知过载与自我设限：心墙形成的前额叶机制与拆除路径</td><td><span class="gtype type-pro">专业</span></td><td class="gscore">81</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 选题4 -->
+  <div class="group">
+    <h3>④反复抱怨/未被倾听（92分）<span class="gcount">10 个标题 · TOP10 中占 3</span></h3>
+    <table>
+      <thead><tr><th style="width:36px">排名</th><th>标题</th><th style="width:70px">风格</th><th style="width:48px">分数</th></tr></thead>
+      <tbody>
+        <tr><td><span class="g-rank">TOP7</span></td><td class="gtitle">你反复说同一件事，不是因为爱抱怨，是因为从没人真正听见</td><td><span class="gtype type-emo">情绪共鸣</span></td><td class="gscore">95</td></tr>
+        <tr><td><span class="g-rank">TOP8</span></td><td class="gtitle">为什么一个人会反复抱怨同一件事？答案和爱丽丝·米勒有关</td><td><span class="gtype type-sus">悬念</span></td><td class="gscore">95</td></tr>
+        <tr><td><span class="g-rank">TOP10</span></td><td class="gtitle">不是爱抱怨的人烦人，是 ta 的身体正在替 ta 喊救命</td><td><span class="gtype type-cnt">反常识</span></td><td class="gscore">94</td></tr>
+        <tr><td><span class="g-rank">—</span></td><td class="gtitle">反复抱怨的5个心理根源，第2种最难察觉</td><td><span class="gtype type-num">数字承诺</span></td><td class="gscore">92</td></tr>
+        <tr><td><span class="g-rank">—</span></td><td class="gtitle">那些把同一件事说了一年的人，不是在诉苦，是在求救</td><td><span class="gtype type-fps">替人发声</span></td><td class="gscore">90</td></tr>
+        <tr><td><span class="g-rank">—</span></td><td class="gtitle">反复抱怨不是性格问题，是 ta 说话时你的身体在拒绝 ta</td><td><span class="gtype type-pain">痛点直击</span></td><td class="gscore">89</td></tr>
+        <tr><td><span class="g-rank">—</span></td><td class="gtitle">被听见不是奢侈，是重新开始活下去的最低配置</td><td><span class="gtype type-cure">治愈</span></td><td class="gscore">89</td></tr>
+        <tr><td><span class="g-rank">—</span></td><td class="gtitle">「你怎么又说这事儿」「因为上次说的时候，你没有真的在听」</td><td><span class="gtype type-dia">对话</span></td><td class="gscore">89</td></tr>
+        <tr><td><span class="g-rank">—</span></td><td class="gtitle">我讲了无数遍没被听进去的话，最后都变成了身体里的病</td><td><span class="gtype type-1st">第一人称</span></td><td class="gscore">86</td></tr>
+        <tr><td><span class="g-rank">—</span></td><td class="gtitle">情感验证缺失与身体化：武志红引用爱丽丝·米勒的创伤心理学</td><td><span class="gtype type-pro">专业</span></td><td class="gscore">81</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 选题5 -->
+  <div class="group">
+    <h3>⑤隔阂已生/体面疏远（88分）<span class="gcount">10 个标题 · TOP10 中占 1</span></h3>
+    <table>
+      <thead><tr><th style="width:36px">排名</th><th>标题</th><th style="width:70px">风格</th><th style="width:48px">分数</th></tr></thead>
+      <tbody>
+        <tr><td><span class="g-rank">TOP9</span></td><td class="gtitle">和好容易，如初太难——这3种隔阂，别再修了</td><td><span class="gtype type-sus">悬念</span></td><td class="gscore">95</td></tr>
+        <tr><td><span class="g-rank">—</span></td><td class="gtitle">和好容易，如初太难——有些关系，错过就不必再送</td><td><span class="gtype type-emo">情绪共鸣</span></td><td class="gscore">94</td></tr>
+        <tr><td><span class="g-rank">—</span></td><td class="gtitle">3种隔阂一旦形成，越示好越消耗</td><td><span class="gtype type-num">数字承诺</span></td><td class="gscore">92</td></tr>
+        <tr><td><span class="g-rank">—</span></td><td class="gtitle">不是隔阂太深，是你对 ta 的认知已被偏见重塑</td><td><span class="gtype type-cnt">反常识</span></td><td class="gscore">92</td></tr>
+        <tr><td><span class="g-rank">—</span></td><td class="gtitle">和好容易，如初太难——不是 ta 不原谅你，是你不再敢相信</td><td><span class="gtype type-pain">痛点直击</span></td><td class="gscore">92</td></tr>
+        <tr><td><span class="g-rank">—</span></td><td class="gtitle">那些主动退出关系的人，不是无情，是不想再被消耗</td><td><span class="gtype type-fps">替人发声</span></td><td class="gscore">90</td></tr>
+        <tr><td><span class="g-rank">—</span></td><td class="gtitle">「我们能不能回到从前」「回不去了，回来也是演」</td><td><span class="gtype type-dia">对话</span></td><td class="gscore">89</td></tr>
+        <tr><td><span class="g-rank">—</span></td><td class="gtitle">体面退出不是无情，是把有限的善意留给愿意接住的人</td><td><span class="gtype type-cure">治愈</span></td><td class="gscore">88</td></tr>
+        <tr><td><span class="g-rank">—</span></td><td class="gtitle">我主动示好了三次，第三次我才明白，体面退出才是放过</td><td><span class="gtype type-1st">第一人称</span></td><td class="gscore">85</td></tr>
+        <tr><td><span class="g-rank">—</span></td><td class="gtitle">关系修复窗口期与认知偏见：隔阂形成后的决策心理学</td><td><span class="gtype type-pro">专业</span></td><td class="gscore">81</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ===== TOP10 分布统计 ===== -->
+<div class="section">
+  <h2><span class="dot" style="background:var(--accent)"></span>📊 TOP10 风格与选题分布</h2>
+  <div class="stats">
+    <div class="stat"><span class="v">3</span><span class="l">情绪共鸣型</span></div>
+    <div class="stat gold"><span class="v">4</span><span class="l">悬念型</span></div>
+    <div class="stat purple"><span class="v">2</span><span class="l">反常识型</span></div>
+    <div class="stat rose"><span class="v">1</span><span class="l">数字承诺型</span></div>
+  </div>
+  <div class="dim-info" style="margin-top:14px">
+    <div class="dim-card"><b>3</b><span class="dim-desc">金靖「攥」<br><small>TOP1/2/4</small></span></div>
+    <div class="dim-card"><b>3</b><span class="dim-desc">反复抱怨/未被倾听<br><small>TOP7/8/10</small></span></div>
+    <div class="dim-card"><b>2</b><span class="dim-desc">「低耗关系」悖论<br><small>TOP3/5</small></span></div>
+    <div class="dim-card"><b>1</b><span class="dim-desc">「心墙」<br><small>TOP6</small></span></div>
+    <div class="dim-card"><b>1</b><span class="dim-desc">隔阂已生/体面疏远<br><small>TOP9</small></span></div>
+  </div>
+</div>
+
+<!-- ===== 二维码入口 ===== -->
+<div class="section">
+  <h2><span class="dot" style="background:var(--rose)"></span>📲 私域转化入口</h2>
+  <div class="qr-block">
+    <div class="brand">🌈 彩虹心理</div>
+    <p>专业心理咨询 · 情绪疗愈 · 自我成长 · 亲密关系</p>
+    <img src="rainbowhu-qrcode.jpg" alt="彩虹心理公众号二维码">
+    <p>扫码关注彩虹心理 · 选择 TOP10 标题背后的选题深度阅读<br>回复「咨询」预约首次评估 · 回复「测评」获取心理量表</p>
+  </div>
+</div>
+
+<div style="text-align:center;color:var(--ink3);font-size:11px;padding:20px 0">
+  🌈 彩虹心理 · 爆款标题实验室 · 2026-08-15 09:00 自动生成<br>
+  流水线：雷达 Agent (08:00) → 标题实验室 (09:00) → 微博短文 (20:00) → 短视频 (21:00)
+</div>
+
+</div>
+</body>
+</html>

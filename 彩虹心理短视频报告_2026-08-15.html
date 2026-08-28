@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>彩虹心理短视频报告 2026-08-15</title>
+<style>
+:root {
+  --bg: #0f0f1a;
+  --card: #1a1a2e;
+  --card2: #16213e;
+  --text: #e0e0e0;
+  --text2: #a0a0b0;
+  --accent1: #e17055;
+  --accent2: #00b894;
+  --accent3: #6c5ce7;
+  --border: #2a2a40;
+  --gold: #f9ca24;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: 'PingFang SC','Microsoft YaHei','Helvetica Neue',sans-serif; background:var(--bg); color:var(--text); min-height:100vh; padding:20px; }
+.container { max-width:1100px; margin:0 auto; }
+.header { text-align:center; padding:40px 20px 30px; }
+.header h1 { font-size:28px; background:linear-gradient(135deg,#e17055,#6c5ce7,#00b894); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin-bottom:8px; }
+.header .sub { color:var(--text2); font-size:14px; }
+.header .date { color:var(--gold); font-size:13px; margin-top:4px; }
+.stats { display:flex; gap:16px; justify-content:center; margin-bottom:32px; flex-wrap:wrap; }
+.stat { background:var(--card); border-radius:16px; padding:20px 28px; text-align:center; min-width:140px; border:1px solid var(--border); }
+.stat .num { font-size:36px; font-weight:700; background:linear-gradient(135deg,#e17055,#f9ca24); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+.stat .label { color:var(--text2); font-size:12px; margin-top:4px; }
+.publish-flow { background:linear-gradient(135deg,#1a3a2a,#16213e); border-radius:16px; padding:20px 28px; margin-bottom:32px; border:1px solid #2a4a3a; }
+.publish-flow h3 { color:#00b894; margin-bottom:12px; font-size:16px; }
+.publish-flow .steps { display:flex; gap:20px; align-items:center; flex-wrap:wrap; justify-content:center; }
+.publish-flow .step { background:#0f1a14; border-radius:12px; padding:12px 20px; text-align:center; }
+.publish-flow .step .snum { display:inline-block; width:28px; height:28px; border-radius:50%; background:#00b894; color:#000; line-height:28px; font-weight:700; font-size:14px; margin-bottom:4px; }
+.publish-flow .step .stext { font-size:12px; color:var(--text2); }
+.publish-flow .arrow { color:#00b894; font-size:20px; }
+.progress-bar { margin-top:16px; background:#2a3a2a; border-radius:10px; height:8px; overflow:hidden; }
+.progress-bar .fill { height:100%; background:linear-gradient(90deg,#00b894,#f9ca24); border-radius:10px; width:0%; transition:width 0.5s; }
+.progress-text { text-align:center; font-size:12px; color:var(--text2); margin-top:6px; }
+.copy-all { text-align:center; margin-top:16px; }
+.copy-all button { background:linear-gradient(135deg,#00b894,#0984e3); border:none; color:#fff; padding:10px 32px; border-radius:24px; font-size:14px; font-weight:600; cursor:pointer; transition:transform 0.2s; }
+.copy-all button:hover { transform:scale(1.05); }
+.video-card { background:var(--card); border-radius:16px; padding:24px; margin-bottom:24px; border:1px solid var(--border); }
+.video-card .vheader { display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap; margin-bottom:16px; }
+.video-card .vrank { font-size:40px; font-weight:900; }
+.video-card .vmeta { flex:1; }
+.video-card .vtitle { font-size:18px; font-weight:700; margin-bottom:8px; line-height:1.4; }
+.video-card .vtheme { display:inline-block; padding:4px 12px; border-radius:12px; font-size:12px; font-weight:600; margin-right:8px; }
+.video-card .vduration { color:var(--text2); font-size:12px; }
+.video-card .hook-box { background:linear-gradient(135deg,rgba(225,112,85,0.15),rgba(108,92,231,0.15)); border-radius:12px; padding:16px 20px; margin-bottom:16px; border-left:4px solid var(--accent1); }
+.video-card .hook-box .hook-label { font-size:11px; color:var(--accent1); font-weight:600; text-transform:uppercase; letter-spacing:1px; margin-bottom:4px; }
+.video-card .hook-box .hook-text { font-size:17px; font-weight:700; line-height:1.5; }
+.video-card video { width:100%; border-radius:12px; margin-bottom:16px; max-height:400px; background:#000; }
+.video-card .section-label { font-size:12px; font-weight:700; color:var(--text2); text-transform:uppercase; letter-spacing:1px; margin-bottom:8px; }
+.video-card .tags { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:16px; }
+.video-card .tags span { background:var(--card2); padding:4px 12px; border-radius:14px; font-size:12px; color:var(--text2); border:1px solid var(--border); }
+.video-card .desc-box { background:var(--card2); border-radius:12px; padding:16px; margin-bottom:16px; white-space:pre-line; font-size:13px; line-height:1.7; color:var(--text); border:1px solid var(--border); }
+.video-card .publish-tip { background:rgba(249,202,36,0.08); border-radius:8px; padding:10px 16px; font-size:12px; color:var(--gold); border:1px solid rgba(249,202,36,0.2); }
+.video-card .actions { display:flex; gap:10px; margin-top:16px; flex-wrap:wrap; }
+.video-card .actions button { padding:8px 20px; border-radius:20px; border:none; cursor:pointer; font-size:13px; font-weight:600; transition:transform 0.2s; }
+.video-card .actions .btn-copy { background:var(--accent2); color:#000; }
+.video-card .actions .btn-published { background:#666; color:#fff; }
+.video-card .actions .btn-play { background:var(--accent3); color:#fff; }
+.video-card .actions button:hover { transform:translateY(-1px); }
+.video-card.published .vtitle { opacity:0.5; text-decoration:line-through; }
+.footer { text-align:center; color:var(--text2); font-size:12px; margin-top:40px; padding:20px; border-top:1px solid var(--border); }
+.footer .summary { display:flex; justify-content:center; gap:24px; flex-wrap:wrap; margin-bottom:8px; }
+.footer .summary span { color:var(--text); }
+@media (max-width:640px) {
+  .header h1 { font-size:22px; }
+  .stats { gap:10px; }
+  .stat { min-width:100px; padding:14px 18px; }
+  .stat .num { font-size:28px; }
+  .video-card { padding:16px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>彩虹心理 · 短视频创作报告</h1>
+  <div class="sub">涨粉引流 · 1080×1920 竖版 · ASS高级字幕 · edge-tts中文配音</div>
+  <div class="date">2026年8月15日 星期六 · 22:00 抖音发布</div>
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="num">3</div><div class="label">生成视频数</div></div>
+  <div class="stat"><div class="num">340s</div><div class="label">总时长(5:40)</div></div>
+  <div class="stat"><div class="num">9.6MB</div><div class="label">总大小</div></div>
+  <div class="stat"><div class="num">涨粉引流</div><div class="label">核心目标</div></div>
+</div>
+
+<div class="publish-flow">
+  <h3>📱 抖音发布流程指引</h3>
+  <div class="steps">
+    <div class="step"><div class="snum">1</div><div class="stext">复制下方视频文案</div></div>
+    <div class="arrow">→</div>
+    <div class="step"><div class="snum">2</div><div class="stext">打开抖音点击+号</div></div>
+    <div class="arrow">→</div>
+    <div class="step"><div class="snum">3</div><div class="stext">粘贴文案+上传视频</div></div>
+    <div class="arrow">→</div>
+    <div class="step"><div class="snum">4</div><div class="stext">发布！</div></div>
+  </div>
+  <div class="progress-bar"><div class="fill" id="progressFill" style="width:0%"></div></div>
+  <div class="progress-text">今日发布进度 <span id="progressCount">0</span> / 3</div>
+  <div class="copy-all"><button onclick="copyAllText()">📋 一键复制全部3条文案+标签</button></div>
+</div>
+
+<div class="video-card" id="v1">
+  <div class="vheader">
+    <div class="vrank" style="background:linear-gradient(135deg,#e17055,#f9ca24);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">01</div>
+    <div class="vmeta">
+      <div class="vtitle">「低耗关系」正在杀死爱情：你害怕的不是吵架，是连架都懒得吵</div>
+      <span class="vtheme" style="background:#f3e5f5;color:#6b5b95;">亲密关系</span>
+      <span class="vduration">⏱ 131秒 · 3.8 MB · 61段字幕 · theme=warm</span>
+    </div>
+  </div>
+
+  <div class="hook-box">
+    <div class="hook-label">⚡ 3秒钩子</div>
+    <div class="hook-text">最舒服的感情，是相处不累。</div>
+  </div>
+
+  <video controls preload="metadata"><source src="video-2026-08-15-01.mp4" type="video/mp4"></video>
+
+  <div class="section-label">🏷 话题标签（8个）</div>
+  <div class="tags" id="tags1">
+    <span>#彩虹心理</span><span>#心理健康</span><span>#心理学科普</span><span>#亲密关系</span>
+    <span>#低耗关系</span><span>#假性亲密</span><span>#关注心理健康</span><span>#每天懂一点心理学</span>
+  </div>
+
+  <div class="section-label">📝 抖音发布文案</div>
+  <div class="desc-box" id="desc1">最舒服的感情，是相处不累。
+
+可结婚七年的她戳中了所有人：他现在说我们是低耗关系，连吵架都懒得吵了。
+
+《2026当代青年婚恋态度报告》显示，71.3%的年轻人把"相处不累"列为择偶第一条件。可离婚原因里，无话可说占43.7%，远超出轨的17.3%。
+
+戈特曼5:1法则：一次消极互动，需要至少5次积极互动才能抵消。
+
+关注我@彩虹心理，每天懂一点心理学
+觉得有用，点赞分享给需要的人</div>
+
+  <div class="publish-tip">💡 建议发布时间：20:00-22:00（晚间亲密关系话题高峰，情感议题易引发共鸣和转发）</div>
+
+  <div class="actions">
+    <button class="btn-copy" onclick="copyDesc('desc1')">📋 复制文案+标签</button>
+    <button class="btn-play" onclick="document.querySelector('#v1 video').scrollIntoView();document.querySelector('#v1 video').play()">▶ 播放视频</button>
+    <button class="btn-published" onclick="togglePublished(1)">✅ 标记已发布</button>
+  </div>
+</div>
+
+<div class="video-card" id="v2">
+  <div class="vheader">
+    <div class="vrank" style="background:linear-gradient(135deg,#0984e3,#00b894);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">02</div>
+    <div class="vmeta">
+      <div class="vtitle">「心墙」比牢笼更可怕：你不敢踏进的写字楼，藏着你最大的自我设限</div>
+      <span class="vtheme" style="background:#e8f5e9;color:#2e7d32;">自我成长</span>
+      <span class="vduration">⏱ 103秒 · 3.0 MB · 50段字幕 · theme=cool</span>
+    </div>
+  </div>
+
+  <div class="hook-box">
+    <div class="hook-label">⚡ 3秒钩子</div>
+    <div class="hook-text">不是懒，是心墙又长高了一寸。</div>
+  </div>
+
+  <video controls preload="metadata"><source src="video-2026-08-15-02.mp4" type="video/mp4"></video>
+
+  <div class="section-label">🏷 话题标签（8个）</div>
+  <div class="tags" id="tags2">
+    <span>#彩虹心理</span><span>#心理健康</span><span>#心理学科普</span><span>#自我成长</span>
+    <span>#心墙</span><span>#自我设限</span><span>#认知过载</span><span>#每天懂一点心理学</span>
+  </div>
+
+  <div class="section-label">📝 抖音发布文案</div>
+  <div class="desc-box" id="desc2">身份证在口袋里，地铁卡在包里，手机电量还有87%，可你就是不想走进那栋写字楼。
+
+不是懒，是心墙又长高了一寸。
+
+心墙这个词最近在小红书上被读出了12.7亿次。知乎热榜连续19天霸榜前三。
+
+你不是没能力，是前额叶皮层被过载的念头榨干了。
+
+关注我@彩虹心理，每天懂一点心理学
+觉得有用，点赞分享给需要的人</div>
+
+  <div class="publish-tip">💡 建议发布时间：20:00-22:00（晚间自我成长话题高峰，职场议题+认知类内容易引发收藏）</div>
+
+  <div class="actions">
+    <button class="btn-copy" onclick="copyDesc('desc2')">📋 复制文案+标签</button>
+    <button class="btn-play" onclick="document.querySelector('#v2 video').scrollIntoView();document.querySelector('#v2 video').play()">▶ 播放视频</button>
+    <button class="btn-published" onclick="togglePublished(2)">✅ 标记已发布</button>
+  </div>
+</div>
+
+<div class="video-card" id="v3">
+  <div class="vheader">
+    <div class="vrank" style="background:linear-gradient(135deg,#6c5ce7,#e17055);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">03</div>
+    <div class="vmeta">
+      <div class="vtitle">那个总在抱怨的人，其实在喊「救命」：未被倾听的苦痛会毁掉一个人</div>
+      <span class="vtheme" style="background:#fff3cd;color:#856404;">情绪心理</span>
+      <span class="vduration">⏱ 106秒 · 3.0 MB · 52段字幕 · theme=purple</span>
+    </div>
+  </div>
+
+  <div class="hook-box">
+    <div class="hook-label">⚡ 3秒钩子</div>
+    <div class="hook-text">你可能觉得烦，觉得他负能量。</div>
+  </div>
+
+  <video controls preload="metadata"><source src="video-2026-08-15-03.mp4" type="video/mp4"></video>
+
+  <div class="section-label">🏷 话题标签（8个）</div>
+  <div class="tags" id="tags3">
+    <span>#彩虹心理</span><span>#心理健康</span><span>#心理学科普</span><span>#情绪心理</span>
+    <span>#情感验证</span><span>#反复抱怨</span><span>#情绪反刍</span><span>#每天懂一点心理学</span>
+  </div>
+
+  <div class="section-label">📝 抖音发布文案</div>
+  <div class="desc-box" id="desc3">你身边一定有这样的人：同一件委屈，反反复复地说。
+
+你可能觉得烦，觉得他负能量。可心理学告诉你，那不是抱怨，是求救。
+
+爱丽丝·米勒说：不被听见的痛苦不会消失，只会储存在身体里，变成胃疼、失眠、莫名的心慌。
+
+关注我@彩虹心理，每天懂一点心理学
+觉得有用，点赞分享给需要的人</div>
+
+  <div class="publish-tip">💡 建议发布时间：21:00-23:00（深夜情绪话题高峰，情感共鸣类内容易引发评论）</div>
+
+  <div class="actions">
+    <button class="btn-copy" onclick="copyDesc('desc3')">📋 复制文案+标签</button>
+    <button class="btn-play" onclick="document.querySelector('#v3 video').scrollIntoView();document.querySelector('#v3 video').play()">▶ 播放视频</button>
+    <button class="btn-published" onclick="togglePublished(3)">✅ 标记已发布</button>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="summary">
+    <span>📊 脚本版本 v2.0</span>
+    <span>🎙 edge-tts XiaoxiaoNeural</span>
+    <span>🎬 make-short-video.py</span>
+    <span>🌈 涨粉向（无二维码）</span>
+  </div>
+  <div>彩虹心理短视频 Agent · 每日 21:00 自动执行</div>
+</div>
+
+</div>
+
+<script>
+var STORAGE_KEY = 'rh_sv_pub_2026-08-15';
+
+function copyDesc(descId){
+  var d = document.getElementById(descId);
+  var idx = descId.replace('desc','');
+  var tags = '';
+  var spans = document.querySelectorAll('#tags'+idx+' span');
+  spans.forEach(function(s){ tags += s.textContent + ' '; });
+  var text = d.textContent.trim() + '\n\n' + tags.trim();
+  copyToClipboard(text);
+}
+function copyAllText(){
+  var all = '';
+  for(var i=1;i<=3;i++){
+    var d = document.getElementById('desc'+i);
+    if(!d) continue;
+    all += '【视频'+i+'】\n' + d.textContent.trim() + '\n\n';
+    var spans = document.querySelectorAll('#tags'+i+' span');
+    spans.forEach(function(s){ all += s.textContent + ' '; });
+    all += '\n\n---\n\n';
+  }
+  copyToClipboard(all.trim());
+}
+function copyToClipboard(text){
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(function(){ alert('已复制到剪贴板！'); });
+  } else {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position='fixed';ta.style.left='-9999px';
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    alert('已复制到剪贴板！');
+  }
+}
+
+function togglePublished(idx){
+  var published = getPublished();
+  if(published.indexOf(idx) >= 0){
+    published = published.filter(function(x){ return x !== idx; });
+  } else {
+    published.push(idx);
+  }
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(published));
+  renderPublished();
+}
+function getPublished(){
+  try {
+    var v = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+    return Array.isArray(v) ? v : [];
+  } catch(e){ return []; }
+}
+function renderPublished(){
+  var published = getPublished();
+  var count = 0;
+  for(var i=1;i<=3;i++){
+    var card = document.getElementById('v'+i);
+    if(!card) continue;
+    if(published.indexOf(i) >= 0){
+      card.classList.add('published');
+      card.style.opacity = '0.55';
+      card.style.borderStyle = 'dashed';
+      count++;
+    } else {
+      card.classList.remove('published');
+      card.style.opacity = '1';
+      card.style.borderStyle = 'solid';
+    }
+  }
+  document.getElementById('progressFill').style.width = (count/3*100) + '%';
+  document.getElementById('progressCount').textContent = count;
+  if(count === 3){
+    document.getElementById('progressCount').parentNode.innerHTML = '今日发布进度 <span style="color:#00b894;font-weight:700">✅ 全部发布完成</span>';
+  }
+}
+renderPublished();
+</script>
+</body>
+</html>

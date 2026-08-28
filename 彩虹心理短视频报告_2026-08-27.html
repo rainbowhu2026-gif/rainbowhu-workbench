@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>彩虹心理短视频报告 - 2026-08-27</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Microsoft YaHei','PingFang SC',sans-serif;background:#f5f5f5;color:#333;line-height:1.6;}
+.header{background:linear-gradient(135deg,#134B43,#1a6b5e);color:#fff;padding:30px 20px;text-align:center;}
+.header h1{font-size:24px;margin-bottom:8px;}
+.header .date{font-size:14px;opacity:0.8;}
+.stats-bar{display:flex;justify-content:center;gap:20px;padding:15px;background:#fff;border-bottom:1px solid #eee;flex-wrap:wrap;}
+.stat-item{text-align:center;}
+.stat-item .num{font-size:20px;font-weight:bold;color:#134B43;}
+.stat-item .label{font-size:12px;color:#888;}
+.publish-guide{background:linear-gradient(135deg,#134B43,#2e7d62);color:#fff;padding:20px;margin:15px;border-radius:12px;}
+.publish-guide h3{font-size:16px;margin-bottom:12px;}
+.publish-steps{display:flex;gap:15px;flex-wrap:wrap;}
+.publish-step{flex:1;min-width:180px;background:rgba(255,255,255,0.1);padding:12px;border-radius:8px;}
+.publish-step .step-num{font-size:24px;font-weight:bold;opacity:0.6;}
+.publish-step .step-text{font-size:13px;margin-top:4px;}
+.progress-bar{margin-top:12px;background:rgba(255,255,255,0.2);border-radius:10px;height:24px;overflow:hidden;position:relative;}
+.progress-fill{height:100%;background:#C89B52;transition:width 0.3s;border-radius:10px;}
+.progress-text{position:absolute;top:0;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:center;font-size:12px;color:#fff;}
+.video-card{background:#fff;margin:15px;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.08);}
+.video-header{padding:15px 20px;display:flex;align-items:center;gap:10px;}
+.rank-badge{width:32px;height:32px;border-radius:50%;background:#134B43;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:14px;}
+.video-title{font-size:16px;font-weight:bold;flex:1;}
+.theme-tag{padding:3px 10px;border-radius:12px;font-size:12px;font-weight:bold;}
+.video-body{padding:0 20px 15px;}
+.video-meta{display:flex;gap:15px;flex-wrap:wrap;font-size:13px;color:#888;margin-bottom:10px;}
+.hook-box{background:linear-gradient(135deg,#fce4ec,#f3e5f5);padding:10px 15px;border-radius:8px;margin-bottom:10px;border-left:4px solid #C89B52;}
+.hook-label{font-size:12px;color:#888;margin-bottom:4px;}
+.hook-text{font-size:15px;font-weight:bold;color:#333;}
+.video-player{width:100%;background:#000;border-radius:8px;overflow:hidden;margin-bottom:10px;}
+.video-player video{width:100%;display:block;max-height:500px;object-fit:contain;}
+.douyin-section{background:#f9f9f9;padding:12px;border-radius:8px;margin-bottom:10px;}
+.douyin-label{font-size:12px;color:#888;margin-bottom:6px;}
+.douyin-text{font-size:14px;white-space:pre-wrap;color:#333;}
+.hashtags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px;}
+.hashtag{background:#e8f5e9;color:#2e7d32;padding:3px 10px;border-radius:12px;font-size:13px;}
+.publish-tip{font-size:13px;color:#666;background:#fff3e0;padding:8px 12px;border-radius:6px;border-left:3px solid #e67c22;}
+.btn-row{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap;}
+.btn{padding:8px 16px;border:none;border-radius:6px;cursor:pointer;font-size:13px;transition:opacity 0.2s;}
+.btn-copy{background:#134B43;color:#fff;}
+.btn-copy:hover{opacity:0.85;}
+.btn-publish{background:#C89B52;color:#fff;}
+.btn-publish:hover{opacity:0.85;}
+.btn-publish.published{background:#999;}
+.copy-all-bar{position:fixed;bottom:20px;right:20px;z-index:999;}
+.btn-copy-all{background:#134B43;color:#fff;padding:12px 24px;border-radius:25px;font-size:14px;box-shadow:0 4px 12px rgba(0,0,0,0.15);}
+.btn-copy-all:hover{opacity:0.9;}
+.toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#134B43;color:#fff;padding:10px 20px;border-radius:8px;font-size:14px;z-index:1000;opacity:0;transition:opacity 0.3s;}
+.toast.show{opacity:1;}
+.footer{text-align:center;padding:20px;color:#999;font-size:12px;}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>彩虹心理短视频报告</h1>
+  <div class="date">2026-08-27 | 涨粉引流 | make-short-video.py v2.0</div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat-item"><div class="num">3</div><div class="label">生成视频</div></div>
+  <div class="stat-item"><div class="num">258s</div><div class="label">总时长</div></div>
+  <div class="stat-item"><div class="num">1080x1920</div><div class="label">视频规格</div></div>
+  <div class="stat-item"><div class="num">涨粉引流</div><div class="label">核心目标</div></div>
+</div>
+
+<div class="publish-guide">
+  <h3>发布流程指引</h3>
+  <div class="publish-steps">
+    <div class="publish-step"><div class="step-num">1</div><div class="step-text">复制视频对应的抖音文案和话题标签</div></div>
+    <div class="publish-step"><div class="step-num">2</div><div class="step-text">打开抖音，点击+号发布视频</div></div>
+    <div class="publish-step"><div class="step-num">3</div><div class="step-text">粘贴文案和标签，选择封面后发布</div></div>
+  </div>
+  <div class="progress-bar">
+    <div class="progress-fill" id="progressFill" style="width:0%"></div>
+    <div class="progress-text" id="progressText">今日发布进度: 0/3</div>
+  </div>
+</div>
+
+<!-- Video 1 -->
+<div class="video-card" id="card-1">
+  <div class="video-header">
+    <div class="rank-badge">1</div>
+    <div class="video-title">情绪稳定成择偶第一标准：但太多人，正在用「情绪稳定」四个字毁掉自己的爱情</div>
+    <div class="theme-tag" style="background:#f3e5f5;color:#6b5b95">亲密关系</div>
+  </div>
+  <div class="video-body">
+    <div class="video-meta">
+      <span>时长: 92s</span>
+      <span>字幕: 47段</span>
+      <span>配音: XiaoxiaoNeural</span>
+      <span>主题: 暖色</span>
+    </div>
+    <div class="hook-box">
+      <div class="hook-label">3秒钩子句</div>
+      <div class="hook-text">最近上海人民广场相亲角的A4纸变了</div>
+    </div>
+    <div class="video-player">
+      <video controls preload="none">
+        <source src="video-2026-08-27-01.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="douyin-section">
+      <div class="douyin-label">抖音发布文案</div>
+      <div class="douyin-text" id="desc-1">上海人民广场相亲角的A4纸变了。五年前最抢手的是「年薪50万、内环有房」，现在出现频率最高的是：情绪稳定、会好好说话、能共情。
+
+但很多人误会了情绪稳定。它不是没脾气，而是压力下不翻脸、不冷暴力、不把锅甩给对方。心理学家戈特曼发现，决定婚姻质量的，是「末日四骑士」出现的频率。
+
+真正健康的情绪稳定，是两个人都能说「我现在有点难受」，而不是把情绪当武器。
+
+关注@彩虹心理，每天懂一点心理学
+觉得有用，点赞分享给需要的人</div>
+    </div>
+    <div class="hashtags">
+      <span class="hashtag">#彩虹心理</span>
+      <span class="hashtag">#心理健康</span>
+      <span class="hashtag">#心理学科普</span>
+      <span class="hashtag">#亲密关系</span>
+      <span class="hashtag">#情绪稳定</span>
+      <span class="hashtag">#择偶标准</span>
+      <span class="hashtag">#关注心理健康</span>
+      <span class="hashtag">#每天懂一点心理学</span>
+    </div>
+    <div class="publish-tip">建议发布时间：21:00-23:00（晚间亲密关系话题高峰，情绪稳定+择偶标准易引发共鸣与评论）</div>
+    <div class="btn-row">
+      <button class="btn btn-copy" onclick="copyText(1)">复制文案+标签</button>
+      <button class="btn btn-publish" id="pub-1" onclick="togglePublish(1)">标记已发布</button>
+    </div>
+  </div>
+</div>
+
+<!-- Video 2 -->
+<div class="video-card" id="card-2">
+  <div class="video-header">
+    <div class="rank-badge">2</div>
+    <div class="video-title">越刷越空虚：「纯过日子」时代，藏着年轻人不敢说的崩溃</div>
+    <div class="theme-tag" style="background:#fff3cd;color:#856404">情绪心理</div>
+  </div>
+  <div class="video-body">
+    <div class="video-meta">
+      <span>时长: 80s</span>
+      <span>字幕: 39段</span>
+      <span>配音: XiaoxiaoNeural</span>
+      <span>主题: 冷色</span>
+    </div>
+    <div class="hook-box">
+      <div class="hook-label">3秒钩子句</div>
+      <div class="hook-text">「以后不哭了，不分析了，不原生家庭了，不塔罗牌了，纯过日子。」</div>
+    </div>
+    <div class="video-player">
+      <video controls preload="none">
+        <source src="video-2026-08-27-02.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="douyin-section">
+      <div class="douyin-label">抖音发布文案</div>
+      <div class="douyin-text" id="desc-2">「以后不哭了，不分析了，不原生家庭了，不塔罗牌了，纯过日子。」这条微博被转了几十万次。
+
+表面看是消费降级，其实是一场集体心理防御——当努力与回报不对等，人本能地调低期待，把注意力撤回「能控制的小事」。
+
+想要把日子过回来，先做三件事：列「够了清单」、把「我应该」换成「我想要」、每天做一件能看见成果的小事。
+
+关注@彩虹心理，每天懂一点心理学
+觉得有用，点赞分享给需要的人</div>
+    </div>
+    <div class="hashtags">
+      <span class="hashtag">#彩虹心理</span>
+      <span class="hashtag">#心理健康</span>
+      <span class="hashtag">#心理学科普</span>
+      <span class="hashtag">#情绪心理</span>
+      <span class="hashtag">#纯过日子</span>
+      <span class="hashtag">#算法疲劳</span>
+      <span class="hashtag">#空虚感</span>
+      <span class="hashtag">#每天懂一点心理学</span>
+    </div>
+    <div class="publish-tip">建议发布时间：21:00-23:00（深夜情绪话题高峰，纯过日子+空虚感易引发评论与收藏）</div>
+    <div class="btn-row">
+      <button class="btn btn-copy" onclick="copyText(2)">复制文案+标签</button>
+      <button class="btn btn-publish" id="pub-2" onclick="togglePublish(2)">标记已发布</button>
+    </div>
+  </div>
+</div>
+
+<!-- Video 3 -->
+<div class="video-card" id="card-3">
+  <div class="video-header">
+    <div class="rank-badge">3</div>
+    <div class="video-title">习惯性讨好的你，不是善良，是不敢再说「我想要」的崩溃</div>
+    <div class="theme-tag" style="background:#e8f5e9;color:#2e7d32">自我成长</div>
+  </div>
+  <div class="video-body">
+    <div class="video-meta">
+      <span>时长: 86s</span>
+      <span>字幕: 43段</span>
+      <span>配音: XiaoxiaoNeural</span>
+      <span>主题: 紫色</span>
+    </div>
+    <div class="hook-box">
+      <div class="hook-label">3秒钩子句</div>
+      <div class="hook-text">习惯性讨好的人，小时候往往有个共同点：情感需求很少被接住</div>
+    </div>
+    <div class="video-player">
+      <video controls preload="none">
+        <source src="video-2026-08-27-03.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="douyin-section">
+      <div class="douyin-label">抖音发布文案</div>
+      <div class="douyin-text" id="desc-3">27岁的小安说：「我活得像个客服，永远在解决别人的情绪问题，却不敢说自己想要什么。」
+
+习惯性讨好的人，小时候往往有个共同点：情感需求很少被接住。美国心理学家皮特·沃克提出，讨好不是性格好，是一种生存策略。
+
+你不是生来就要讨所有人喜欢。真正爱你的人，不会因为你说了「我想要」就离开。
+
+关注@彩虹心理，每天懂一点心理学
+觉得有用，点赞分享给需要的人</div>
+    </div>
+    <div class="hashtags">
+      <span class="hashtag">#彩虹心理</span>
+      <span class="hashtag">#心理健康</span>
+      <span class="hashtag">#心理学科普</span>
+      <span class="hashtag">#自我成长</span>
+      <span class="hashtag">#讨好型人格</span>
+      <span class="hashtag">#情绪边界</span>
+      <span class="hashtag">#关注心理健康</span>
+      <span class="hashtag">#每天懂一点心理学</span>
+    </div>
+    <div class="publish-tip">建议发布时间：20:00-22:00（晚间自我成长话题高峰，讨好型人格+自我需求觉醒易引发深度共鸣）</div>
+    <div class="btn-row">
+      <button class="btn btn-copy" onclick="copyText(3)">复制文案+标签</button>
+      <button class="btn btn-publish" id="pub-3" onclick="togglePublish(3)">标记已发布</button>
+    </div>
+  </div>
+</div>
+
+<div class="copy-all-bar">
+  <button class="btn btn-copy-all" onclick="copyAllText()">一键复制全部3条文案</button>
+</div>
+
+<div class="footer">
+  彩虹心理 · 短视频创作 Agent · 2026-08-27 21:00<br>
+  视频生成: make-short-video.py v2.0 | edge-tts + ffmpeg | 1080x1920 竖版<br>
+  涨粉引流，不需要二维码，聚焦优质内容吸引关注
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+function copyText(n){
+  var desc = document.getElementById('desc-'+n).innerText;
+  var tags = document.querySelectorAll('#card-'+n+' .hashtag');
+  var tagStr = '';
+  tags.forEach(function(t){ tagStr += t.innerText + ' '; });
+  var full = desc + '\n\n' + tagStr.trim();
+  navigator.clipboard.writeText(full).then(function(){
+    showToast('已复制第'+n+'条文案+标签');
+  }).catch(function(){
+    var ta = document.createElement('textarea');
+    ta.value = full;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    showToast('已复制第'+n+'条文案+标签');
+  });
+}
+
+function copyAllText(){
+  var all = '';
+  for(var i=1; i<=3; i++){
+    var desc = document.getElementById('desc-'+i).innerText;
+    var tags = document.querySelectorAll('#card-'+i+' .hashtag');
+    var tagStr = '';
+    tags.forEach(function(t){ tagStr += t.innerText + ' '; });
+    all += '=== 视频'+i+' ===\n\n' + desc + '\n\n' + tagStr.trim() + '\n\n';
+  }
+  navigator.clipboard.writeText(all.trim()).then(function(){
+    showToast('已复制全部3条文案');
+  }).catch(function(){
+    var ta = document.createElement('textarea');
+    ta.value = all.trim();
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    showToast('已复制全部3条文案');
+  });
+}
+
+function togglePublish(n){
+  var btn = document.getElementById('pub-'+n);
+  var key = 'rh_sv_pub_video-2026-08-27-0'+n;
+  var published = localStorage.getItem(key) === '1';
+  if(!published){
+    localStorage.setItem(key,'1');
+    btn.textContent = '已发布';
+    btn.classList.add('published');
+  } else {
+    localStorage.setItem(key,'0');
+    btn.textContent = '标记已发布';
+    btn.classList.remove('published');
+  }
+  updateProgress();
+}
+
+function updateProgress(){
+  var count = 0;
+  for(var i=1; i<=3; i++){
+    var key = 'rh_sv_pub_video-2026-08-27-0'+i;
+    if(localStorage.getItem(key) === '1'){
+      count++;
+      var btn = document.getElementById('pub-'+i);
+      if(btn){ btn.textContent = '已发布'; btn.classList.add('published'); }
+    }
+  }
+  var pct = Math.round(count / 3 * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  var txt = '今日发布进度: ' + count + '/3';
+  if(count === 3) txt += ' ✅';
+  document.getElementById('progressText').textContent = txt;
+}
+
+function showToast(msg){
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(function(){ t.classList.remove('show'); }, 2000);
+}
+
+updateProgress();
+</script>
+
+</body>
+</html>

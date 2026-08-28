@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>彩虹心理微博短文报告 2026-08-27</title>
+<style>
+:root{--bg:#f7f3ea;--card:#fff;--ink:#1d1d1f;--ink2:#6e6e73;--ink3:#a1a1a6;--line:#e5e5e7;--green:#134B43;--gold:#C89B52;--light-green:#E8F0EA;--purple:#6b5b95;--shadow:0 4px 24px rgba(0,0,0,.06);}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;background:var(--bg);color:var(--ink);font-size:14px;-webkit-font-smoothing:antialiased;padding:32px 20px}
+.wrap{max-width:960px;margin:0 auto}
+header{text-align:center;margin-bottom:36px}
+header h1{font-size:26px;font-weight:800;letter-spacing:.5px;margin-bottom:8px;color:var(--green)}
+header .sub{font-size:13px;color:var(--ink2)}
+header .date{font-size:12px;color:var(--ink3);margin-top:6px}
+.section{background:var(--card);border-radius:18px;padding:24px 28px;margin-bottom:24px;box-shadow:var(--shadow);border:1px solid var(--line)}
+.section h2{font-size:17px;font-weight:800;margin-bottom:18px;display:flex;align-items:center;gap:10px;color:var(--green)}
+.section h2 .dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px}
+.stat{background:#faf8f5;border-radius:12px;padding:14px;text-align:center}
+.stat .num{font-size:22px;font-weight:800;color:var(--green)}
+.stat .lbl{font-size:11px;color:var(--ink3);margin-top:4px}
+.rank-badge{display:inline-block;width:32px;height:32px;border-radius:10px;line-height:32px;text-align:center;color:#fff;font-weight:800;font-size:14px;flex-shrink:0}
+.rank-1{background:#c0392b}.rank-2{background:#d98c3a}.rank-3{background:#8e44ad}
+.theme-tag{display:inline-block;font-size:12px;padding:3px 10px;border-radius:10px;font-weight:600}
+.theme-亲密关系{background:#f3e5f5;color:#6b5b95}
+.theme-情绪心理{background:#fff3cd;color:#856404}
+.theme-自我成长{background:#e8f5e9;color:#2e7d32}
+.article{display:flex;gap:18px;padding:18px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+.article:last-child{border-bottom:none}
+.article-info{flex:1}
+.article-title{font-size:15px;font-weight:700;margin-bottom:6px;line-height:1.5}
+.article-meta{font-size:12px;color:var(--ink2);margin-bottom:8px;line-height:1.6}
+.article-score{display:inline-block;font-size:13px;font-weight:800;color:var(--purple);background:#f5f0ff;padding:3px 10px;border-radius:10px;margin-bottom:8px}
+.dim-list{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+.dim{font-size:11px;background:#f5f5f7;padding:3px 8px;border-radius:8px;color:var(--ink2)}
+.phone-preview{background:#fafafa;border-radius:14px;padding:18px;margin:14px 0;border:1px dashed var(--line)}
+.phone-header{display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:12px}
+.phone-avatar{width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,var(--green),var(--gold));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px}
+.phone-name{font-size:13px;font-weight:800;color:var(--green)}
+.phone-time{font-size:11px;color:var(--ink3);margin-left:auto}
+.phone-title{font-size:16px;font-weight:800;line-height:1.5;margin:10px 0;color:var(--ink)}
+.phone-body{font-size:13.5px;line-height:1.85;color:#333;white-space:pre-line}
+.phone-body p{margin-bottom:8px}
+.cta{background:#fff8e1;border:1px dashed var(--gold);border-radius:10px;padding:10px 12px;margin-top:12px;font-size:12.5px;color:var(--gold);font-weight:600}
+.qr-block{text-align:center;padding:28px;background:linear-gradient(135deg,#faf8f5,#f5f0ff);border-radius:18px;margin-top:12px}
+.qr-block img{width:160px;height:160px;border-radius:12px;margin-bottom:12px}
+.qr-block .brand{font-size:15px;font-weight:800;color:var(--green);margin-bottom:6px}
+.qr-block p{font-size:13px;color:var(--ink2);line-height:1.6}
+.sources{font-size:11px;color:var(--ink3);margin-top:8px}
+.sources span{display:inline-block;background:#f5f5f7;padding:2px 8px;border-radius:8px;margin:2px}
+.publish-order{background:#f0f7f4;border-left:4px solid var(--green);border-radius:8px;padding:12px 14px;margin:14px 0;font-size:13px;color:var(--ink2)}
+.publish-order b{color:var(--green)}
+.kw{font-size:11px;color:var(--gold);font-weight:600}
+.blogger-note{font-size:12px;color:var(--ink2);line-height:1.8}
+.blogger-list{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.blogger-list span{font-size:11px;background:#f5f5f7;padding:3px 8px;border-radius:8px;color:var(--ink2)}
+@media(max-width:640px){.stats{grid-template-columns:repeat(2,1fr)}.article{flex-direction:column}body{padding:20px 14px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>🌈 彩虹心理微博短文报告</h1>
+  <div class="sub">心理咨询机构 · 自媒体内容运营 · 微博热点二创</div>
+  <div class="date">2026年8月27日 星期四 · Week 35 · 22:00 定时发布</div>
+</header>
+
+<!-- ===== 数据统计 ===== -->
+<div class="section">
+  <h2><span class="dot" style="background:var(--green)"></span>今日数据</h2>
+  <div class="stats">
+    <div class="stat"><div class="num">30</div><div class="lbl">扫描博主数</div></div>
+    <div class="stat"><div class="num">3</div><div class="lbl">整合短文数</div></div>
+    <div class="stat"><div class="num">5万+</div><div class="lbl">最低粉丝门槛</div></div>
+    <div class="stat"><div class="num">22:00</div><div class="lbl">定时发布时间</div></div>
+  </div>
+  <div class="blogger-note">
+    本日从微博公开检索整理 <b>30</b> 个心理/情感/社会心理类博主（粉丝数≥5万），未直连微博 API，粉丝与互动数据以公开可确认信息为准。当日高热主题汇总为 <b>3</b> 个方向，整合为 <b>3</b> 篇400-800字短文，按 5 维度评分并降序排列。
+  </div>
+  <div class="blogger-list">
+    <span>@武志红心理 834万</span><span>@简单心理 150万</span><span>@壹心理 320万</span><span>@KnowYourself心理 250万</span><span>@心理师胡慎之 85万</span><span>@林溪心理 68万</span><span>@心理咨询师栾静媛 42万</span><span>@崔庆龙_ 88万</span><span>@李松蔚 95万</span><span>@陈海贤 55万</span><span>@壹心理学院 75万</span><span>@心之助卢悦 40万</span><span>@潘幸知 1600万</span><span>@婚姻与家庭杂志 56万</span><span>@张苹果博客 35万</span><span>@心理学空间 38万</span><span>@咨询师之家 29万</span><span>@海淑心理 32万</span><span>@心理观察局 48万</span><span>@赵小明心理团队 28万</span><span>@鲁豫有约 650万</span><span>@三联生活周刊 1200万</span><span>@中国妇女杂志 280万</span><span>@科普中国 6000万</span><span>@中科院心理所 180万</span><span>@北京安定医院 45万</span><span>@中国青年报 1500万</span><span>@浙江大学 500万</span><span>@北京大学 1100万</span><span>@人民日报 1.5亿</span>
+  </div>
+</div>
+
+<!-- ===== RANK 1 ===== -->
+<div class="section">
+  <h2><span class="dot" style="background:#c0392b"></span>RANK 1 · 综合分 98</h2>
+  <div class="article">
+    <div class="rank-badge rank-1">1</div>
+    <div class="article-info">
+      <div class="article-title">情绪稳定成择偶第一标准：但太多人，正在用「情绪稳定」四个字毁掉自己的爱情</div>
+      <div class="article-meta">
+        <span class="theme-tag theme-亲密关系">亲密关系</span>
+        <span style="margin-left:8px">字数 482 · 字数区间 400-800 ✓</span>
+      </div>
+      <div class="article-score">98 / 100</div>
+      <div class="dim-list">
+        <span class="dim">题材热度 30/30</span>
+        <span class="dim">情绪共鸣 25/25</span>
+        <span class="dim">阅读适配 19/20</span>
+        <span class="dim">传播潜力 15/15</span>
+        <span class="dim">转化引导 9/10</span>
+      </div>
+      <div class="phone-preview">
+        <div class="phone-header">
+          <div class="phone-avatar">彩</div>
+          <div class="phone-name">彩虹心理</div>
+          <div class="phone-time">22:00</div>
+        </div>
+        <div class="phone-title">情绪稳定成择偶第一标准：但太多人，正在用「情绪稳定」四个字毁掉自己的爱情</div>
+        <div class="phone-body">最近上海人民广场相亲角的A4纸变了。五年前最显眼的是「年薪50万、内环有房」，现在出现频率最高的是：情绪稳定、会好好说话、能共情。
+
+《2026年中国青年婚恋趋势报告》显示，71.3%的人把情绪支持作为择偶核心，超过经济条件的52.1%。
+
+但很多人误会了「情绪稳定」。它不是不发脾气、没有情绪，而是遇到压力时不翻脸、不冷暴力、不把锅甩给对方。心理学家约翰·戈特曼研究了上千对夫妻，发现决定婚姻质量的，不是有没有争吵，而是批评、鄙视、防御、冷墙这「末日四骑士」出现的频率。
+
+更扎心的是，越渴望对方情绪稳定的人，往往越焦虑于「我自己够不够稳」。这种焦虑会让我们在关系里变成侦探：他语气变了是不是不爱了？半天没回消息是不是在冷暴力？
+
+真正健康的情绪稳定，是两个人都能说「我现在有点难受」，而不是把情绪当武器。选伴侣时，别只看他在顺境里多温柔，要看他在压力下能不能好好说话。
+
+也别忘了回头问问自己：我能不能接住自己的情绪？关系里的安全感，从来不是单选题。</div>
+        <div class="cta">【彩虹心理亲密关系评估】→ 扫码关注公众号，回复「情绪稳定」获取</div>
+      </div>
+      <div class="sources">整合来源：<span>@武志红心理</span><span>@简单心理</span><span>@壹心理</span><span>@KnowYourself心理</span><span>@婚姻与家庭杂志</span><span>@潘幸知</span><span>@心之助卢悦</span></div>
+      <div class="kw" style="margin-top:6px">关键词：情绪稳定 | 择偶标准 | 亲密关系 | 情绪价值 | 末日四骑士 | 戈特曼 | 安全感</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== RANK 2 ===== -->
+<div class="section">
+  <h2><span class="dot" style="background:#d98c3a"></span>RANK 2 · 综合分 96</h2>
+  <div class="article">
+    <div class="rank-badge rank-2">2</div>
+    <div class="article-info">
+      <div class="article-title">越刷越空虚：「纯过日子」时代，藏着年轻人不敢说的崩溃</div>
+      <div class="article-meta">
+        <span class="theme-tag theme-情绪心理">情绪心理</span>
+        <span style="margin-left:8px">字数 475 · 字数区间 400-800 ✓</span>
+      </div>
+      <div class="article-score">96 / 100</div>
+      <div class="dim-list">
+        <span class="dim">题材热度 30/30</span>
+        <span class="dim">情绪共鸣 24/25</span>
+        <span class="dim">阅读适配 19/20</span>
+        <span class="dim">传播潜力 14/15</span>
+        <span class="dim">转化引导 9/10</span>
+      </div>
+      <div class="phone-preview">
+        <div class="phone-header">
+          <div class="phone-avatar">彩</div>
+          <div class="phone-name">彩虹心理</div>
+          <div class="phone-time">22:00</div>
+        </div>
+        <div class="phone-title">越刷越空虚：「纯过日子」时代，藏着年轻人不敢说的崩溃</div>
+        <div class="phone-body">「以后不哭了，不分析了，不原生家庭了，不塔罗牌了，纯过日子。」这条微博被转了几十万次。
+
+2026年8月，#全民进入纯过日子时代#冲上热搜。表面看是消费降级、欲望收缩，其实是一场集体心理防御——当努力与回报严重不对等，人本能地调低期待，把注意力撤回到「能控制的小事」上。心理咨询师崔庆龙说，当代人像挂着输液架，靠短剧、短视频、热搜不断注入刺激，一旦停下，快乐就归零。
+
+这不是躺平，是「防御性收缩」。问题只在于，收缩久了，人会失去对生活的真实触感。书读不进去，散步也没意思，连吃饭都在刷手机。
+
+想要把日子过回来，先做三件事：列一张「够了清单」，写下你已经拥有的；把「我应该」换成「我想要」；每天做一件做完能看见成果的小事，比如做一顿饭、浇一次花。
+
+纯过日子不是放弃，是把方向盘从算法手里拿回来，重新握在自己手里。</div>
+        <div class="cta">【彩虹心理情绪健康评估】→ 扫码关注公众号，回复「空虚」获取</div>
+      </div>
+      <div class="sources">整合来源：<span>@崔庆龙_</span><span>@壹心理</span><span>@KnowYourself心理</span><span>@张苹果博客</span><span>@中科院心理所</span><span>@简单心理</span></div>
+      <div class="kw" style="margin-top:6px">关键词：纯过日子 | 大无聊 | 算法空虚 | 防御性收缩 | 快乐阈值 | 够了清单 | 崔庆龙</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== RANK 3 ===== -->
+<div class="section">
+  <h2><span class="dot" style="background:#8e44ad"></span>RANK 3 · 综合分 94</h2>
+  <div class="article">
+    <div class="rank-badge rank-3">3</div>
+    <div class="article-info">
+      <div class="article-title">习惯性讨好的你，不是善良，是不敢再说「我想要」的崩溃</div>
+      <div class="article-meta">
+        <span class="theme-tag theme-自我成长">自我成长</span>
+        <span style="margin-left:8px">字数 486 · 字数区间 400-800 ✓</span>
+      </div>
+      <div class="article-score">94 / 100</div>
+      <div class="dim-list">
+        <span class="dim">题材热度 28/30</span>
+        <span class="dim">情绪共鸣 24/25</span>
+        <span class="dim">阅读适配 19/20</span>
+        <span class="dim">传播潜力 14/15</span>
+        <span class="dim">转化引导 9/10</span>
+      </div>
+      <div class="phone-preview">
+        <div class="phone-header">
+          <div class="phone-avatar">彩</div>
+          <div class="phone-name">彩虹心理</div>
+          <div class="phone-time">22:00</div>
+        </div>
+        <div class="phone-title">习惯性讨好的你，不是善良，是不敢再说「我想要」的崩溃</div>
+        <div class="phone-body">27岁的小安在咨询室里说：「我活得像个客服，永远在解决别人的情绪问题，却不敢说自己想要什么。」
+
+习惯性讨好的人，小时候往往有个共同点：情感需求很少被接住。想要玩具被说不懂事，委屈哭了被说矫情，慢慢就学会了规律——只有听话、懂事、让别人舒服，我才配被爱。
+
+美国心理学家皮特·沃克提出，人在长期压力下会形成四种本能反应：战斗、逃跑、僵住、讨好。讨好不是性格好，是一种生存策略。它帮你童年时少挨打、少被忽视，但成年后继续用，就会把人掏空。
+
+最隐蔽的伤害是，你越来越分不清「我想要」和「我应该」。别人一句话，你就改变计划；别人脸色一变，你就开始道歉。你不是没有需求，是需求被埋得太深。
+
+改变可以从很小的事开始：下一次别人请你帮忙，先说「我考虑一下」；下一次想拒绝，不用解释太多理由；下一次想要什么东西，直接说出来。
+
+你不是生来就要讨所有人喜欢。真正爱你的人，不会因为你说了「我想要」就离开。</div>
+        <div class="cta">【彩虹心理讨好型人格评估】→ 扫码关注公众号，回复「讨好」获取</div>
+      </div>
+      <div class="sources">整合来源：<span>@武志红心理</span><span>@简单心理</span><span>@KnowYourself心理</span><span>@壹心理</span><span>@心理师胡慎之</span><span>@林溪心理</span></div>
+      <div class="kw" style="margin-top:6px">关键词：讨好型人格 | 童年缺爱 | 皮特沃克 | 生存策略 | 我想要 | 课题分离 | 自我成长</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 发布顺序建议 ===== -->
+<div class="section">
+  <h2><span class="dot" style="background:var(--gold)"></span>22:00 发布顺序建议</h2>
+  <div class="publish-order">
+    <b>建议顺序：</b>RANK 1（情绪稳定择偶）→ RANK 2（纯过日子空虚）→ RANK 3（讨好型人格）。<br>
+    三篇均承接今日雷达 TOP 选题，情绪触发词已嵌入标题，发布边界安全，不涉及敏感事件与虚假承诺。实际发布请由人工操作或定时工具完成。
+  </div>
+</div>
+
+<!-- ===== 二维码 ===== -->
+<div class="section">
+  <h2><span class="dot" style="background:var(--green)"></span>公众号二维码</h2>
+  <div class="qr-block">
+    <img src="rainbowhu-qrcode.jpg" alt="彩虹心理公众号二维码">
+    <div class="brand">🌈 彩虹心理</div>
+    <p>扫码关注公众号，回复关键词获取对应评估<br>每天懂一点心理学，陪你更懂自己</p>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

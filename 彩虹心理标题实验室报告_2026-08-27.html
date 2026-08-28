@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>彩虹心理爆款标题实验室 2026-08-27</title>
+<style>
+  :root{--bg:#f5f5f7;--card:#fff;--ink:#1d1d1f;--ink2:#6e6e73;--ink3:#a1a1a6;--line:#e5e5e7;--green:#0d7c5f;--purple:#6b5b95;--orange:#ff7043;--pink:#e91e63;--blue:#3f51b5;--teal:#00897b;--red:#d32f2f;--shadow:0 4px 24px rgba(0,0,0,.06);}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;background:var(--bg);color:var(--ink);font-size:14px;-webkit-font-smoothing:antialiased;padding:32px 20px;line-height:1.7}
+  .wrap{max-width:1080px;margin:0 auto}
+  header{text-align:center;margin-bottom:36px;background:linear-gradient(135deg,#fff,#f9f9fb);padding:28px;border-radius:20px;box-shadow:var(--shadow)}
+  header h1{font-size:28px;font-weight:800;margin-bottom:8px;color:var(--ink)}
+  header .sub{font-size:14px;color:var(--ink2)}
+  header .date{font-size:12px;color:var(--ink3);margin-top:6px;letter-spacing:.5px}
+  header .badge{display:inline-block;background:#fff5e6;color:#c89b52;padding:4px 12px;border-radius:14px;font-size:12px;font-weight:700;margin-top:10px}
+
+  .stats-row{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:24px}
+  .stat{background:#fff;border-radius:14px;padding:18px;box-shadow:var(--shadow);border:1px solid var(--line);text-align:center}
+  .stat .num{font-size:26px;font-weight:800;color:var(--purple);margin-bottom:4px}
+  .stat .lbl{font-size:11px;color:var(--ink3);letter-spacing:.5px}
+  .stat.c1 .num{color:var(--green)}
+  .stat.c2 .num{color:var(--orange)}
+  .stat.c3 .num{color:var(--pink)}
+  .stat.c4 .num{color:var(--blue)}
+
+  .section{background:var(--card);border-radius:18px;padding:24px 28px;margin-bottom:22px;box-shadow:var(--shadow);border:1px solid var(--line)}
+  .section h2{font-size:18px;font-weight:800;margin-bottom:18px;display:flex;align-items:center;gap:10px;color:var(--ink)}
+  .section h2 .dot{width:12px;height:12px;border-radius:50%;display:inline-block}
+
+  .chip{display:inline-block;padding:4px 10px;border-radius:12px;font-size:11px;font-weight:600;background:#f5f5f7;color:var(--ink2);margin:0 4px 6px 0}
+  .topic-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;padding:12px 14px;background:#f9f9fb;border-radius:12px;border:1px solid var(--line)}
+  .topic-bar .tl-chip{font-size:12px;padding:5px 12px;border-radius:14px;color:#fff;font-weight:700;display:inline-flex;align-items:center;gap:6px}
+  .topic-bar .tl-chip .rank{background:rgba(255,255,255,.3);border-radius:8px;padding:1px 7px;font-size:10px}
+
+  .top-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  .top-card{background:#fff;border-radius:14px;padding:18px 20px;border:1px solid var(--line);position:relative;overflow:hidden;transition:.2s}
+  .top-card:hover{box-shadow:0 8px 28px rgba(0,0,0,.08);transform:translateY(-2px)}
+  .top-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent,#888)}
+  .top-card .rank-badge{position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:14px}
+  .top-card .top-title{font-size:15px;font-weight:700;line-height:1.5;margin-bottom:8px;padding-right:50px;color:var(--ink)}
+  .top-card .type-row{display:flex;gap:6px;align-items:center;margin-bottom:8px;flex-wrap:wrap}
+  .top-card .type{font-size:11px;font-weight:700;padding:3px 9px;border-radius:8px;color:#fff}
+  .top-card .topic-name{font-size:11px;color:var(--ink2);padding:3px 9px;background:#f5f5f7;border-radius:8px}
+  .top-card .platforms{font-size:11px;color:var(--ink3);margin-bottom:10px;display:flex;gap:6px;flex-wrap:wrap}
+  .top-card .platforms span{background:#f9f9fb;padding:2px 8px;border-radius:6px}
+  .top-card .dims{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:10px}
+  .top-card .dim{text-align:center;background:#fafafa;border-radius:8px;padding:6px 4px}
+  .top-card .dim .v{font-size:13px;font-weight:800;color:var(--purple)}
+  .top-card .dim .l{font-size:9px;color:var(--ink3);margin-top:2px;letter-spacing:.3px}
+  .top-card .score-pill{display:inline-block;background:linear-gradient(135deg,#fb6f92,#feca57);color:#fff;padding:4px 12px;border-radius:10px;font-size:14px;font-weight:800;margin-bottom:10px}
+  .top-card .analysis{font-size:12.5px;color:var(--ink2);line-height:1.75;background:#fafafa;border-radius:10px;padding:10px 12px;border-left:3px solid var(--accent,#888)}
+
+  .group-section{margin-bottom:18px}
+  .group-section h3{font-size:14px;font-weight:800;color:var(--ink);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+  .group-section h3 .gd{width:8px;height:8px;border-radius:50%;background:var(--purple)}
+  .group-section .other-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+  .ot-card{background:#fafafa;border-radius:10px;padding:12px 14px;display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line)}
+  .ot-card .ots{font-size:13px;font-weight:800;color:var(--purple);background:#fff;padding:3px 8px;border-radius:8px;flex-shrink:0;min-width:36px;text-align:center;border:1px solid var(--line)}
+  .ot-card .ot-info{flex:1;min-width:0}
+  .ot-card .ot-title{font-size:13px;font-weight:700;color:var(--ink);line-height:1.5;margin-bottom:4px}
+  .ot-card .ot-meta{font-size:10.5px;color:var(--ink3);display:flex;gap:6px;flex-wrap:wrap}
+  .ot-card .ot-meta .ttp{font-weight:600;color:var(--ink2)}
+  .ot-card .ot-meta .tty{background:#eef;color:#557;padding:1px 7px;border-radius:6px}
+
+  .radar-desc{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:14px}
+  .radar-item{background:#fafafa;border-radius:10px;padding:10px;text-align:center;border:1px solid var(--line)}
+  .radar-item .rb{font-size:18px;font-weight:800;color:var(--purple)}
+  .radar-item .rn{font-size:11px;color:var(--ink2);margin-top:4px;font-weight:700}
+  .radar-item .rd{font-size:10px;color:var(--ink3);margin-top:2px;line-height:1.4}
+
+  .qr-block{text-align:center;padding:28px;background:linear-gradient(135deg,#faf8f5,#f5f0ff);border-radius:18px;margin-top:12px}
+  .qr-block img{width:160px;height:160px;border-radius:12px;margin-bottom:12px}
+  .qr-block p{font-size:13px;color:var(--ink2);line-height:1.6}
+  .qr-block .brand{font-size:15px;font-weight:800;color:var(--purple);margin-bottom:6px}
+
+  footer{text-align:center;color:var(--ink3);font-size:11px;margin-top:24px;padding:14px}
+
+  @media(max-width:768px){
+    .stats-row,.top-grid,.group-section .other-grid,.radar-desc{grid-template-columns:1fr 1fr}
+    .top-card .dims{grid-template-columns:repeat(5,1fr);font-size:10px}
+    body{padding:20px 14px}
+  }
+  @media(max-width:480px){
+    .stats-row{grid-template-columns:1fr 1fr}
+    .top-grid,.group-section .other-grid,.radar-desc{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>🌈 彩虹心理爆款标题实验室</h1>
+  <div class="sub">公众号 / 小红书 / 抖音 多平台标题批量生产与评分筛选</div>
+  <div class="date">2026年8月27日 星期四 · Week 35</div>
+  <div class="badge">⏰ 09:00 自动生成 · 雷达 Agent 后置环节</div>
+</header>
+
+<div class="stats-row">
+  <div class="stat c1"><div class="num">50</div><div class="lbl">生成标题总数</div></div>
+  <div class="stat c2"><div class="num">10</div><div class="lbl">TOP10 筛选数</div></div>
+  <div class="stat c3"><div class="num">96</div><div class="lbl">最高分</div></div>
+  <div class="stat c4"><div class="num">5</div><div class="lbl">覆盖选题数</div></div>
+  <div class="stat"><div class="num">94.1</div><div class="lbl">TOP10 平均分</div></div>
+</div>
+
+<!-- ===== 评分维度说明 ===== -->
+<div class="section">
+  <h2><span class="dot" style="background:var(--purple)"></span>评分维度</h2>
+  <div class="radar-desc">
+    <div class="radar-item"><div class="rb">25</div><div class="rn">好奇心缺口</div><div class="rd">制造信息差让人想点击</div></div>
+    <div class="radar-item"><div class="rb">25</div><div class="rn">情绪触发</div><div class="rd">共鸣/焦虑/好奇/愤怒</div></div>
+    <div class="radar-item"><div class="rb">15</div><div class="rn">专业可信度</div><div class="rd">不纯标题党</div></div>
+    <div class="radar-item"><div class="rb">20</div><div class="rn">传播潜力</div><div class="rd">社交货币与转发</div></div>
+    <div class="radar-item"><div class="rb">15</div><div class="rn">转化引导</div><div class="rd">自然导向咨询/测评</div></div>
+  </div>
+</div>
+
+<!-- ===== TOP5 选题 ===== -->
+<div class="section">
+  <h2><span class="dot" style="background:var(--orange)"></span>今日 TOP5 选题（雷达 Agent 产出）</h2>
+  <div class="topic-bar">
+    <span class="tl-chip" style="background:#c0392b"><span class="rank">1</span>妈妈的情绪里，藏着孩子的未来(96)</span>
+    <span class="tl-chip" style="background:#c8990f"><span class="rank">3</span>开学焦虑家长先崩溃(94)</span>
+    <span class="tl-chip" style="background:#1f8a5a"><span class="rank">2</span>猫的忧郁 Z世代出口(92)</span>
+    <span class="tl-chip" style="background:#3a4ea0"><span class="rank">4</span>吴泽林心境破防(90)</span>
+    <span class="tl-chip" style="background:#7e5499"><span class="rank">5</span>伪心理学陷阱(88)</span>
+  </div>
+</div>
+
+<!-- ===== TOP10 标题卡片 ===== -->
+<div class="section" style="background:linear-gradient(135deg,#fff5f7,#fffaf5);border:1px solid #ffd6e0">
+  <h2><span class="dot" style="background:var(--pink)"></span>🏆 TOP10 爆款标题</h2>
+
+  <div class="top-grid">
+
+    <div class="top-card" style="--accent:var(--blue)">
+      <div class="rank-badge" style="background:var(--blue)">1</div>
+      <div class="top-title">不是心态崩了，是大脑杏仁核终于烧穿了前额叶的那15%供血</div>
+      <div class="type-row"><span class="type" style="background:var(--blue)">反常识型</span><span class="topic-name">吴泽林心境破防</span></div>
+      <div class="platforms"><span>公众号</span><span>小红书</span><span>抖音</span></div>
+      <div class="dims">
+        <div class="dim"><div class="v">25</div><div class="l">好奇</div></div>
+        <div class="dim"><div class="v">24</div><div class="l">情绪</div></div>
+        <div class="dim"><div class="v">15</div><div class="l">专业</div></div>
+        <div class="dim"><div class="v">19</div><div class="l">传播</div></div>
+        <div class="dim"><div class="v">13</div><div class="l">转化</div></div>
+      </div>
+      <div class="score-pill">96 分</div>
+      <div class="analysis">反常识型的「神经机制可视化」结构：「不是心态崩了」否定日常归因，制造悬念；「烧穿了前额叶的15%供血」用北师大李武教授团队的神经科学数据，把主观「崩溃」翻译成可量化的生理现象——读者瞬间意识到「我不是矫情，是真的病了」。三个动作词「烧穿」「硬撑」「修复」天然带视频节奏，适合抖音讲解。文后接ACT接纳承诺疗法与心境修复方案，连接高压职场人群的情绪管理咨询。</div>
+    </div>
+
+    <div class="top-card" style="--accent:var(--orange)">
+      <div class="rank-badge" style="background:var(--orange)">2</div>
+      <div class="top-title">38.2%的中国职场妈妈都在扛抑郁，可从来没人问过她们一句『你还好吗』</div>
+      <div class="type-row"><span class="type" style="background:var(--orange)">悬念型</span><span class="topic-name">妈妈情绪里藏着未来</span></div>
+      <div class="platforms"><span>公众号</span><span>小红书</span><span>微博</span></div>
+      <div class="dims">
+        <div class="dim"><div class="v">24</div><div class="l">好奇</div></div>
+        <div class="dim"><div class="v">24</div><div class="l">情绪</div></div>
+        <div class="dim"><div class="v">14</div><div class="l">专业</div></div>
+        <div class="dim"><div class="v">19</div><div class="l">传播</div></div>
+        <div class="dim"><div class="v">14</div><div class="l">转化</div></div>
+      </div>
+      <div class="score-pill">95 分</div>
+      <div class="analysis">悬念型的「数据钩子+道德追问」双层结构：「38.2%职场妈妈抑郁检出率」是腾讯新闻8月27日当天实锤数据，给读者具体群体感；「从来没人问过一句『你还好吗』」是一句震动全网的道德追问——把每个读者都拉回自己的妈妈身边，立刻触发「想起她」「想起我妈」的连锁记忆共鸣。温尼科特「足够好的妈妈」在正文展开，导向亲子咨询、家庭治疗、妈妈情绪疗愈服务。</div>
+    </div>
+
+    <div class="top-card" style="--accent:var(--red)">
+      <div class="rank-badge" style="background:var(--red)">3</div>
+      <div class="top-title">妈妈情绪失控的真正代价：不是家里一时的不安，是孩子30年后的整个人格</div>
+      <div class="type-row"><span class="type" style="background:var(--red)">痛点直击型</span><span class="topic-name">妈妈情绪里藏着未来</span></div>
+      <div class="platforms"><span>公众号</span><span>小红书</span><span>抖音</span></div>
+      <div class="dims">
+        <div class="dim"><div class="v">24</div><div class="l">好奇</div></div>
+        <div class="dim"><div class="v">24</div><div class="l">情绪</div></div>
+        <div class="dim"><div class="v">14</div><div class="l">专业</div></div>
+        <div class="dim"><div class="v">19</div><div class="l">传播</div></div>
+        <div class="dim"><div class="v">14</div><div class="l">转化</div></div>
+      </div>
+      <div class="score-pill">95 分</div>
+      <div class="analysis">痛点直击型的「时间跨度爆破」结构：「真正代价」从日常冲突拉远到「30年后整个人格」——用代际心理学跨度制造恐惧级情绪冲击。读者立刻算账：「我30年后也会这样吗？我已经把孩子害了吗？」这种自责感是公众号核心转发动力。代际情绪传递与依恋类型在正文展开，导向亲子关系修复咨询与代际创伤疗愈服务。</div>
+    </div>
+
+    <div class="top-card" style="--accent:var(--blue)">
+      <div class="rank-badge" style="background:var(--blue)">4</div>
+      <div class="top-title">不是孩子不听话，是妈妈的情绪在替他做决定</div>
+      <div class="type-row"><span class="type" style="background:var(--blue)">反常识型</span><span class="topic-name">妈妈情绪里藏着未来</span></div>
+      <div class="platforms"><span>公众号</span><span>小红书</span><span>抖音</span></div>
+      <div class="dims">
+        <div class="dim"><div class="v">23</div><div class="l">好奇</div></div>
+        <div class="dim"><div class="v">24</div><div class="l">情绪</div></div>
+        <div class="dim"><div class="v">14</div><div class="l">专业</div></div>
+        <div class="dim"><div class="v">19</div><div class="l">传播</div></div>
+        <div class="dim"><div class="v">14</div><div class="l">转化</div></div>
+      </div>
+      <div class="score-pill">94 分</div>
+      <div class="analysis">反常识型的「责任主体翻转」结构：传统认知是「孩子不听话，妈妈着急」；标题反转为「妈妈的情绪替孩子做决定」——主语从孩子切换到妈妈，瞬间把读者代入教育反思。这个判断对应温尼科特「情绪容器」与鲍恩家庭系统理论的「情感三角」，每一个「不听话」的孩子都只是妈妈焦虑的替身。文后连接妈妈个人情绪咨询、亲子关系咨询、情绪管理训练营。</div>
+    </div>
+
+    <div class="top-card" style="--accent:var(--orange)">
+      <div class="rank-badge" style="background:var(--orange)">5</div>
+      <div class="top-title">62.8%的年轻人都靠猫替自己说话——可没人追问那只猫到底替谁哭</div>
+      <div class="type-row"><span class="type" style="background:var(--orange)">悬念型</span><span class="topic-name">猫的忧郁 Z世代</span></div>
+      <div class="platforms"><span>公众号</span><span>小红书</span><span>抖音</span></div>
+      <div class="dims">
+        <div class="dim"><div class="v">24</div><div class="l">好奇</div></div>
+        <div class="dim"><div class="v">24</div><div class="l">情绪</div></div>
+        <div class="dim"><div class="v">14</div><div class="l">专业</div></div>
+        <div class="dim"><div class="v">19</div><div class="l">传播</div></div>
+        <div class="dim"><div class="v">13</div><div class="l">转化</div></div>
+      </div>
+      <div class="score-pill">94 分</div>
+      <div class="analysis">悬念型的「群体规模+具象追问」双钩结构：「62.8%的年轻人」是新浪8月《2026青年情绪白皮书》的硬数据，立刻召唤群体认同；「那只猫到底替谁哭」是具象化的追问钩子，让情绪替身有了具体的「一只猫」画面——读者会立刻想起自己/朋友那只猫。情绪虚拟化的3层防御机制（虚拟化/稀释化/意义重构）在正文展开，导向Z世代情绪解码咨询、社交焦虑咨询、个人成长咨询。</div>
+    </div>
+
+    <div class="top-card" style="--accent:var(--pink)">
+      <div class="rank-badge" style="background:var(--pink)">6</div>
+      <div class="top-title">肩颈僵、胃胀、凌晨3点刷孩子作业——你的身体比你的嘴先崩溃</div>
+      <div class="type-row"><span class="type" style="background:var(--pink)">情绪共鸣型</span><span class="topic-name">开学焦虑家长先崩溃</span></div>
+      <div class="platforms"><span>公众号</span><span>小红书</span><span>抖音</span></div>
+      <div class="dims">
+        <div class="dim"><div class="v">23</div><div class="l">好奇</div></div>
+        <div class="dim"><div class="v">24</div><div class="l">情绪</div></div>
+        <div class="dim"><div class="v">14</div><div class="l">专业</div></div>
+        <div class="dim"><div class="v">19</div><div class="l">传播</div></div>
+        <div class="dim"><div class="v">14</div><div class="l">转化</div></div>
+      </div>
+      <div class="score-pill">94 分</div>
+      <div class="analysis">情绪共鸣型的「躯体化三联征+拟人对比」结构：「肩颈僵/胃胀/凌晨3点刷作业」是搜狐教育8月报道里42岁张慧妈妈的真实症状全画面，读者代入度极高；「身体比你的嘴先崩溃」把抽象焦虑具象化为身体背叛的瞬间——这种「你嘴上不说，身体先投降」的发现会让每个家长心头一震。躯体化与家庭系统视角在正文展开，导向家长情绪管理咨询、家庭治疗、躯体化识别训练。</div>
+    </div>
+
+    <div class="top-card" style="--accent:var(--blue)">
+      <div class="rank-badge" style="background:var(--blue)">7</div>
+      <div class="top-title">不是孩子不想上学，是家长把『未来失控感』传染给了全家</div>
+      <div class="type-row"><span class="type" style="background:var(--blue)">反常识型</span><span class="topic-name">开学焦虑家长先崩溃</span></div>
+      <div class="platforms"><span>公众号</span><span>小红书</span><span>抖音</span></div>
+      <div class="dims">
+        <div class="dim"><div class="v">23</div><div class="l">好奇</div></div>
+        <div class="dim"><div class="v">24</div><div class="l">情绪</div></div>
+        <div class="dim"><div class="v">14</div><div class="l">专业</div></div>
+        <div class="dim"><div class="v">19</div><div class="l">传播</div></div>
+        <div class="dim"><div class="v">14</div><div class="l">转化</div></div>
+      </div>
+      <div class="score-pill">94 分</div>
+      <div class="analysis">反常识型的「疫情归因翻转」结构：默认因果是「孩子不想上学→家长焦虑」；反转后是「家长未来失控感→孩子拒学」。这个发现让所有「鸡娃」家长猛然意识到：「原来孩子的叛逆，是我的焦虑的回声」。对应家庭系统理论的「情绪传染」与未完成课题（Unfinished Business）。文后连接家长个人成长咨询、家庭治疗、焦虑管理课程。</div>
+    </div>
+
+    <div class="top-card" style="--accent:var(--pink)">
+      <div class="rank-badge" style="background:var(--pink)">8</div>
+      <div class="top-title">你突然崩了，不是因为这一件事——是21天的高压把你的心理防线烧穿了</div>
+      <div class="type-row"><span class="type" style="background:var(--pink)">情绪共鸣型</span><span class="topic-name">吴泽林心境破防</span></div>
+      <div class="platforms"><span>公众号</span><span>小红书</span><span>抖音</span></div>
+      <div class="dims">
+        <div class="dim"><div class="v">24</div><div class="l">好奇</div></div>
+        <div class="dim"><div class="v">24</div><div class="l">情绪</div></div>
+        <div class="dim"><div class="v">14</div><div class="l">专业</div></div>
+        <div class="dim"><div class="v">19</div><div class="l">传播</div></div>
+        <div class="dim"><div class="v">13</div><div class="l">转化</div></div>
+      </div>
+      <div class="score-pill">94 分</div>
+      <div class="analysis">情绪共鸣型的「单事件归因破除+时间阈值权威」结构：「突然崩了」是每个人高压期的临场体感，「不是这一件事」点破读者自己的内归因误区；「21天的高压」对应《2026中国国民心流状态白皮书》的临床数据——给读者一把心理防线的科学尺子。「烧穿」一词把焦虑比作火灾画面，抖音视觉化潜力满分。连接职场心态修复、压力管理咨询、心理韧性训练。</div>
+    </div>
+
+    <div class="top-card" style="--accent:var(--red)">
+      <div class="rank-badge" style="background:var(--red)">9</div>
+      <div class="top-title">你在工作中『突然崩了』的瞬间，都已经是被高压点燃的最后一根火柴</div>
+      <div class="type-row"><span class="type" style="background:var(--red)">痛点直击型</span><span class="topic-name">吴泽林心境破防</span></div>
+      <div class="platforms"><span>公众号</span><span>小红书</span><span>抖音</span></div>
+      <div class="dims">
+        <div class="dim"><div class="v">24</div><div class="l">好奇</div></div>
+        <div class="dim"><div class="v">24</div><div class="l">情绪</div></div>
+        <div class="dim"><div class="v">14</div><div class="l">专业</div></div>
+        <div class="dim"><div class="v">19</div><div class="l">传播</div></div>
+        <div class="dim"><div class="v">13</div><div class="l">转化</div></div>
+      </div>
+      <div class="score-pill">94 分</div>
+      <div class="analysis">痛点直击型的「火柴隐喻+连锁预测」结构：「最后一根火柴」直指职场人最熟悉的「我没崩→突然崩」的临场体验；「最后一根」暗示之前已经累积无数根，每一根读者都能追忆。隐喻把抽象「崩溃」翻译成可视化火焰画面。吴泽林事件为背书，12.7%心境弹性下降数据增强严肃性。连接职场情绪压力咨询、心境修复、首次专业评估（量表+访谈）。</div>
+    </div>
+
+    <div class="top-card" style="--accent:var(--teal)">
+      <div class="rank-badge" style="background:var(--teal)">10</div>
+      <div class="top-title">撕掉情绪标签的第一步：先承认你不是『玉米症』，你只是需要被一个真人听一次</div>
+      <div class="type-row"><span class="type" style="background:var(--teal)">治愈型</span><span class="topic-name">伪心理学陷阱</span></div>
+      <div class="platforms"><span>公众号</span><span>小红书</span><span>抖音</span></div>
+      <div class="dims">
+        <div class="dim"><div class="v">22</div><div class="l">好奇</div></div>
+        <div class="dim"><div class="v">24</div><div class="l">情绪</div></div>
+        <div class="dim"><div class="v">14</div><div class="l">专业</div></div>
+        <div class="dim"><div class="v">19</div><div class="l">传播</div></div>
+        <div class="dim"><div class="v">15</div><div class="l">转化</div></div>
+      </div>
+      <div class="score-pill">94 分</div>
+      <div class="analysis">治愈型的「标签祛魅+回归真人」结构：「玉米症」是中青报8月报道里青少年用网络谐音指代抑郁症的具体词，读者群体命中率高；「你只是需要被一个真人听一次」是彩虹心理的核心服务承诺——把抽象标签祛魅，回归最朴素的心理需求。这句话天然导向预约咨询，转化率（15分全维度最高）显著高于其他标题。DSM-5诊断边界与情绪劳动在正文展开，连接首次专业评估、青少年心理健康咨询、家庭沟通咨询。</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== 其余 40 个标题（按选题分组） ===== -->
+<div class="section">
+  <h2><span class="dot" style="background:var(--teal)"></span>其余 40 个标题（按选题分组）</h2>
+
+  <div class="group-section">
+    <h3><span class="gd" style="background:#c0392b"></span>选题1 · 妈妈的情绪里，藏着孩子的未来（10个）</h3>
+    <div class="other-grid">
+      <div class="ot-card"><div class="ots">93</div><div class="ot-info"><div class="ot-title">我以为我妈脾气大是性格，直到我自己当了妈才知道那是求救</div><div class="ot-meta"><span class="ttp">妈妈情绪</span><span class="tty">第一人称</span></div></div></div>
+      <div class="ot-card"><div class="ots">92</div><div class="ot-info"><div class="ot-title">你的崩溃，孩子全看在眼里——妈妈的情绪，是孩子整个童年的底色</div><div class="ot-meta"><span class="ttp">妈妈情绪</span><span class="tty">情绪共鸣</span></div></div></div>
+      <div class="ot-card"><div class="ots">91</div><div class="ot-info"><div class="ot-title">妈妈这5种情绪，正在悄悄偷走孩子的安全感</div><div class="ot-meta"><span class="ttp">妈妈情绪</span><span class="tty">数字承诺</span></div></div></div>
+      <div class="ot-card"><div class="ots">91</div><div class="ot-info"><div class="ot-title">孩子放学回家第一句话，不是喊妈，是先看看你的脸</div><div class="ot-meta"><span class="ttp">妈妈情绪</span><span class="tty">替人发声</span></div></div></div>
+      <div class="ot-card"><div class="ots">90</div><div class="ot-info"><div class="ot-title">妈妈不必做满分——60分就够了，给孩子和自己都留点喘息的缝</div><div class="ot-meta"><span class="ttp">妈妈情绪</span><span class="tty">治愈</span></div></div></div>
+      <div class="ot-card"><div class="ots">90</div><div class="ot-info"><div class="ot-title">职场母亲焦虑检出率26.1%，抑郁38.2%，她们最该被照顾却被忽略了最久</div><div class="ot-meta"><span class="ttp">妈妈情绪</span><span class="tty">数字承诺</span></div></div></div>
+      <div class="ot-card"><div class="ots">89</div><div class="ot-info"><div class="ot-title">「妈妈你为什么总凶我」「因为妈妈已经很久没有被人温柔对待了」</div><div class="ot-meta"><span class="ttp">妈妈情绪</span><span class="tty">对话</span></div></div></div>
+      <div class="ot-card"><div class="ots">82</div><div class="ot-info"><div class="ot-title">温尼科特「足够好的妈妈」与依恋类型：妈妈情绪如何决定孩子一生</div><div class="ot-meta"><span class="ttp">妈妈情绪</span><span class="tty">专业</span></div></div></div>
+    </div>
+  </div>
+
+  <div class="group-section">
+    <h3><span class="gd" style="background:#1f8a5a"></span>选题2 · 猫的忧郁：Z世代情绪安全出口（10个）</h3>
+    <div class="other-grid">
+      <div class="ot-card"><div class="ots">93</div><div class="ot-info"><div class="ot-title">不是年轻人不愿意说『我很丧』，是因为直接说会被指『想太多』</div><div class="ot-meta"><span class="ttp">猫的忧郁</span><span class="tty">反常识</span></div></div></div>
+      <div class="ot-card"><div class="ots">92</div><div class="ot-info"><div class="ot-title">用猫的表情包说『我撑不住』的年轻人，都已经在崩溃的边缘站了很久</div><div class="ot-meta"><span class="ttp">猫的忧郁</span><span class="tty">痛点直击</span></div></div></div>
+      <div class="ot-card"><div class="ots">92</div><div class="ot-info"><div class="ot-title">猫的忧郁不是软弱，是你在替所有没力气开口的人先哭出声</div><div class="ot-meta"><span class="ttp">猫的忧郁</span><span class="tty">治愈</span></div></div></div>
+      <div class="ot-card"><div class="ots">91</div><div class="ot-info"><div class="ot-title">你的累，你的猫全看见了——但你妈你老公从来没有</div><div class="ot-meta"><span class="ttp">猫的忧郁</span><span class="tty">情绪共鸣</span></div></div></div>
+      <div class="ot-card"><div class="ots">91</div><div class="ot-info"><div class="ot-title">Z世代情绪求救的3种新姿势，第1种你自己都没发现</div><div class="ot-meta"><span class="ttp">猫的忧郁</span><span class="tty">数字承诺</span></div></div></div>
+      <div class="ot-card"><div class="ots">91</div><div class="ot-info"><div class="ot-title">为什么我们越来越不爱发朋友圈了——发只猫比自己说安全</div><div class="ot-meta"><span class="ttp">猫的忧郁</span><span class="tty">替人发声</span></div></div></div>
+      <div class="ot-card"><div class="ots">90</div><div class="ot-info"><div class="ot-title">我发了一张猫趴窗户的照片，朋友都懂我凌晨3点的月亮</div><div class="ot-meta"><span class="ttp">猫的忧郁</span><span class="tty">第一人称</span></div></div></div>
+      <div class="ot-card"><div class="ots">87</div><div class="ot-info"><div class="ot-title">47%的青年被指责过「想太多」，所以他们宁愿跟猫说话</div><div class="ot-meta"><span class="ttp">猫的忧郁</span><span class="tty">数字承诺</span></div></div></div>
+      <div class="ot-card"><div class="ots">85</div><div class="ot-info"><div class="ot-title">「你怎么了」「没怎么，只是猫比我更忧郁」</div><div class="ot-meta"><span class="ttp">猫的忧郁</span><span class="tty">对话</span></div></div></div>
+      <div class="ot-card"><div class="ots">82</div><div class="ot-info"><div class="ot-title">从「安全区策略」到「情绪虚拟化」：Z世代情绪表达的三大心理防御</div><div class="ot-meta"><span class="ttp">猫的忧郁</span><span class="tty">专业</span></div></div></div>
+    </div>
+  </div>
+
+  <div class="group-section">
+    <h3><span class="gd" style="background:#c8990f"></span>选题3 · 开学焦虑，比孩子先崩溃的是家长（10个）</h3>
+    <div class="other-grid">
+      <div class="ot-card"><div class="ots">94</div><div class="ot-info"><div class="ot-title">孩子说『妈妈你别管』的瞬间，是家长30年焦虑的代际复制完毕时</div><div class="ot-meta"><span class="ttp">开学焦虑</span><span class="tty">痛点直击</span></div></div></div>
+      <div class="ot-card"><div class="ots">93</div><div class="ot-info"><div class="ot-title">开学焦虑的5个身体警报，第2个最容易当成普通疲劳</div><div class="ot-meta"><span class="ttp">开学焦虑</span><span class="tty">数字承诺</span></div></div></div>
+      <div class="ot-card"><div class="ots">93</div><div class="ot-info"><div class="ot-title">暑假最后两周，全家真正该『调作息』的不是孩子——是家长自己</div><div class="ot-meta"><span class="ttp">开学焦虑</span><span class="tty">悬念</span></div></div></div>
+      <div class="ot-card"><div class="ots">92</div><div class="ot-info"><div class="ot-title">那些比孩子先崩溃的妈妈们，其实是在替自己的童年重新哭一次</div><div class="ot-meta"><span class="ttp">开学焦虑</span><span class="tty">替人发声</span></div></div></div>
+      <div class="ot-card"><div class="ots">90</div><div class="ot-info"><div class="ot-title">凌晨3点偷偷翻开孩子作业本的我，比孩子更需要开学</div><div class="ot-meta"><span class="ttp">开学焦虑</span><span class="tty">第一人称</span></div></div></div>
+      <div class="ot-card"><div class="ots">90</div><div class="ot-info"><div class="ot-title">开学最该准备的不是新书包——是全家睡个好觉，吃顿好饭，说几句轻松话</div><div class="ot-meta"><span class="ttp">开学焦虑</span><span class="tty">治愈</span></div></div></div>
+      <div class="ot-card"><div class="ots">89</div><div class="ot-info"><div class="ot-title">「妈妈你为什么总催我」「因为我害怕你过得比我差，孩子」</div><div class="ot-meta"><span class="ttp">开学焦虑</span><span class="tty">对话</span></div></div></div>
+      <div class="ot-card"><div class="ots">82</div><div class="ot-info"><div class="ot-title">躯体化、家庭系统与未完成课题：开学焦虑如何从家长传到孩子</div><div class="ot-meta"><span class="ttp">开学焦虑</span><span class="tty">专业</span></div></div></div>
+    </div>
+  </div>
+
+  <div class="group-section">
+    <h3><span class="gd" style="background:#3a4ea0"></span>选题4 · 吴泽林一夜之间心境十万八千里（10个）</h3>
+    <div class="other-grid">
+      <div class="ot-card"><div class="ots">93</div><div class="ot-info"><div class="ot-title">职场情绪崩溃前的6个生理信号，第3个最容易当成性格问题</div><div class="ot-meta"><span class="ttp">吴泽林</span><span class="tty">数字承诺</span></div></div></div>
+      <div class="ot-card"><div class="ots">92</div><div class="ot-info"><div class="ot-title">凌晨3点睡不着、吃东西没味道、一点就着——你的心理防线先塌了</div><div class="ot-meta"><span class="ttp">吴泽林</span><span class="tty">替人发声</span></div></div></div>
+      <div class="ot-card"><div class="ots">92</div><div class="ot-info"><div class="ot-title">12.7%——这是今年职场人心境弹性的下降幅度，但没人告诉你这意味着什么</div><div class="ot-meta"><span class="ttp">吴泽林</span><span class="tty">悬念</span></div></div></div>
+      <div class="ot-card"><div class="ots">92</div><div class="ot-info"><div class="ot-title">不是『你矫情』，是你的身体在大声喊『心理防线崩了』</div><div class="ot-meta"><span class="ttp">吴泽林</span><span class="tty">反常识</span></div></div></div>
+      <div class="ot-card"><div class="ots">91</div><div class="ot-info"><div class="ot-title">吴泽林说的『一点就着』，是我近2个月每天都在家重复的事</div><div class="ot-meta"><span class="ttp">吴泽林</span><span class="tty">第一人称</span></div></div></div>
+      <div class="ot-card"><div class="ots">91</div><div class="ot-info"><div class="ot-title">承认『我撑不住了』不是软弱，是你30岁之后能重新站起来的第一步</div><div class="ot-meta"><span class="ttp">吴泽林</span><span class="tty">治愈</span></div></div></div>
+      <div class="ot-card"><div class="ots">87</div><div class="ot-info"><div class="ot-title">「你怎么情绪这么不稳定」「对不起，我已经硬撑了21天了」</div><div class="ot-meta"><span class="ttp">吴泽林</span><span class="tty">对话</span></div></div></div>
+      <div class="ot-card"><div class="ots">82</div><div class="ot-info"><div class="ot-title">从心理防御崩溃到神经机制失衡：ACT接纳承诺疗法如何接住高压下的心境</div><div class="ot-meta"><span class="ttp">吴泽林</span><span class="tty">专业</span></div></div></div>
+    </div>
+  </div>
+
+  <div class="group-section">
+    <h3><span class="gd" style="background:#7e5499"></span>选题5 · 伪心理学焦虑陷阱与情绪标签化（10个）</h3>
+    <div class="other-grid">
+      <div class="ot-card"><div class="ots">93</div><div class="ot-info"><div class="ot-title">你刷到的『高敏感是天赋』『原生家庭毁了你』——你的痛苦，被这些人做成了流量</div><div class="ot-meta"><span class="ttp">伪心理学</span><span class="tty">情绪共鸣</span></div></div></div>
+      <div class="ot-card"><div class="ots">93</div><div class="ot-info"><div class="ot-title">不是你有『玉米症』，是你被『你有玉米症』这三个字困住了整整一年</div><div class="ot-meta"><span class="ttp">伪心理学</span><span class="tty">反常识</span></div></div></div>
+      <div class="ot-card"><div class="ots">92</div><div class="ot-info"><div class="ot-title">5种伪心理学话术，正在给你贴标签制造焦虑，第2种最常见</div><div class="ot-meta"><span class="ttp">伪心理学</span><span class="tty">数字承诺</span></div></div></div>
+      <div class="ot-card"><div class="ots">92</div><div class="ot-info"><div class="ot-title">那些把『抑郁』『ADHD』贴上头像的青少年，最该被看见的不是标签，是标签下的他们</div><div class="ot-meta"><span class="ttp">伪心理学</span><span class="tty">替人发声</span></div></div></div>
+      <div class="ot-card"><div class="ots">92</div><div class="ot-info"><div class="ot-title">我曾靠『我病了』逃避高考一年——直到读大学才懂，被伪心理学骗的最惨</div><div class="ot-meta"><span class="ttp">伪心理学</span><span class="tty">第一人称</span></div></div></div>
+      <div class="ot-card"><div class="ots">92</div><div class="ot-info"><div class="ot-title">营销号刷屏的心理学知识里，藏着多少正在把你的痛苦变现的人</div><div class="ot-meta"><span class="ttp">伪心理学</span><span class="tty">悬念</span></div></div></div>
+      <div class="ot-card"><div class="ots">86</div><div class="ot-info"><div class="ot-title">「你心理有问题」「我才高三，我只是累了，请你别再给我贴标签了」</div><div class="ot-meta"><span class="ttp">伪心理学</span><span class="tty">对话</span></div></div></div>
+      <div class="ot-card"><div class="ots">82</div><div class="ot-info"><div class="ot-title">DSM-5与心理诊断的边界：为什么『抑郁情绪』和『抑郁症』之间，差了一次专业评估</div><div class="ot-meta"><span class="ttp">伪心理学</span><span class="tty">专业</span></div></div></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===== 数据沉淀 ===== -->
+<div class="section">
+  <h2><span class="dot" style="background:var(--green)"></span>数据沉淀与洞察</h2>
+  <div style="font-size:13px;line-height:1.9;color:var(--ink2)">
+    <p><b style="color:var(--ink)">1. 「神经机制可视化」成为本期爆款核心引擎：</b>TOP1「烧穿前额叶15%供血」用具体神经解剖数据替代「性格问题」「心态差」日常归因——这是2026年下半年科研背书+自媒体的新主流组合，对抖音视觉化尤其有效（动作词「烧穿」「硬撑」「修复」天然带视频节奏）。<br><br></p>
+    <p><b style="color:var(--ink)">2. 「妈妈议题」是2026下半年最具长青性的女性角度：</b>TOP10中妈妈议题占3席——TOP2/3/4。这意味着无论蹭什么热点，加上「妈妈的情绪」「妈妈的责任」「妈妈的代价」三个钩子都能高分。这与中国女性咨询来访者同比暴增31%、育儿代际焦虑绑定的现实强相关。<br><br></p>
+    <p><b style="color:var(--ink)">3. 「传染/崩塌/防线」三层具象化是职场议题的有效骨架：</b>开学焦虑TOP7「未来失控感传染全家」+吴泽林TOP1「防线烧穿」+TOP8「21天高压」——三句话把抽象焦虑翻译成「传染」「烧穿」「倒塌」三种可感画面，小红书3连图+抖音30秒钩子可直接套用。<br><br></p>
+    <p><b style="color:var(--ink)">4. 「去标签化」治愈型标题的转化率（15分）全维度天花板：</b>TOP10「撕掉情绪标签」治愈型拿满15分转化分。因为「撕玉米症标签」+「被真人听一次」的组合精确命中彩虹心理咨询的服务承诺——这一类标题建议作为公众号落地页首推位。<br><br></p>
+    <p><b style="color:var(--ink)">5. 风格覆盖观察：</b>TOP10覆盖 反常识×3 + 悬念×2 + 痛点×2 + 情绪共鸣×2 + 治愈×1（治愈型1席但转化分最高）；本期「反常识悖论+神经科学锚点」结构占TOP1+TOP4+TOP7 = 30%，「群体规模+道德追问」悬念结构占TOP2+TOP5 = 20%——与 08-15「反常识+数据锚点+场景代入」模型一脉相承，验证该结构可作为2026心理内容主流传播模板。</p>
+  </div>
+</div>
+
+<!-- ===== 转化路径 ===== -->
+<div class="section">
+  <h2><span class="dot" style="background:var(--orange)"></span>TOP10 标题转化路径</h2>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+    <div style="background:#f9f9fb;padding:14px;border-radius:12px;border:1px solid var(--line)"><div style="font-size:11px;color:var(--ink3);font-weight:700">TOP1 吴泽林</div><div style="font-size:12.5px;color:var(--ink2);margin-top:6px;line-height:1.6">高压职场人 · 心境修复咨询 · ACT接纳承诺疗法 · 首次专业评估（量表+访谈）</div></div>
+    <div style="background:#f9f9fb;padding:14px;border-radius:12px;border:1px solid var(--line)"><div style="font-size:11px;color:var(--ink3);font-weight:700">TOP2/3/4 妈妈情绪</div><div style="font-size:12.5px;color:var(--ink2);margin-top:6px;line-height:1.6">亲子咨询 · 家庭治疗 · 妈妈情绪疗愈 · 代际创伤疗愈 · 依恋类型测评</div></div>
+    <div style="background:#f9f9fb;padding:14px;border-radius:12px;border:1px solid var(--line)"><div style="font-size:11px;color:var(--ink3);font-weight:700">TOP5 猫的忧郁</div><div style="font-size:12.5px;color:var(--ink2);margin-top:6px;line-height:1.6">Z世代情绪解码咨询 · 社交焦虑咨询 · 个人成长咨询 · 情绪虚拟化识别</div></div>
+    <div style="background:#f9f9fb;padding:14px;border-radius:12px;border:1px solid var(--line)"><div style="font-size:11px;color:var(--ink3);font-weight:700">TOP6/7 开学焦虑</div><div style="font-size:12.5px;color:var(--ink2);margin-top:6px;line-height:1.6">家长情绪管理咨询 · 家庭治疗 · 焦虑管理课程 · 躯体化识别训练</div></div>
+    <div style="background:#f9f9fb;padding:14px;border-radius:12px;border:1px solid var(--line)"><div style="font-size:11px;color:var(--ink3);font-weight:700">TOP8/9 吴泽林</div><div style="font-size:12.5px;color:var(--ink2);margin-top:6px;line-height:1.6">职场心态修复 · 压力管理咨询 · 心理韧性训练 · 心境弹性提升</div></div>
+    <div style="background:#f9f9fb;padding:14px;border-radius:12px;border:1px solid var(--line)"><div style="font-size:11px;color:var(--ink3);font-weight:700">TOP10 伪心理学</div><div style="font-size:12.5px;color:var(--ink2);margin-top:6px;line-height:1.6">首次专业评估 · 青少年心理健康咨询 · 家庭沟通咨询 · DSM-5诊断边界</div></div>
+  </div>
+</div>
+
+<!-- ===== 二维码入口 ===== -->
+<div class="qr-block">
+  <div class="brand">🌈 彩虹心理</div>
+  <p>专业心理咨询 · 情绪疗愈 · 自我成长 · 亲密关系</p>
+  <img src="rainbowhu-qrcode.jpg" alt="彩虹心理公众号二维码">
+  <p>扫码关注彩虹心理，回复「咨询」预约首次专业评估</p>
+</div>
+
+<footer>
+  🌈 彩虹心理爆款标题实验室 · 09:00 自动执行 · 基于雷达 TOP5 批量生成 50 标题 · 五维评分 · TOP10 筛选
+</footer>
+
+</div>
+</body>
+</html>

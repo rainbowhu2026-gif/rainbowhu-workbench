@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>彩虹心理标题实验室报告 2026-08-26</title>
+<style>
+  :root{--bg:#f5f5f7;--card:#fff;--ink:#1d1d1f;--ink2:#6e6e73;--ink3:#a1a1a6;--line:#e5e5e7;--purple:#6b5b95;--shadow:0 4px 24px rgba(0,0,0,.06)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);font-size:14px;padding:32px 20px}
+  .wrap{max-width:960px;margin:0 auto}
+  header{text-align:center;margin-bottom:36px}
+  header h1{font-size:26px;font-weight:800;margin-bottom:8px}
+  header .sub{font-size:13px;color:var(--ink2)}
+  header .date{font-size:12px;color:var(--ink3);margin-top:6px}
+  .section{background:var(--card);border-radius:18px;padding:24px 28px;margin-bottom:24px;box-shadow:var(--shadow);border:1px solid var(--line)}
+  .section h2{font-size:17px;font-weight:800;margin-bottom:18px;display:flex;align-items:center;gap:10px}
+  .section h2 .dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
+  .stat{background:#f9f9fb;border-radius:12px;padding:16px;text-align:center}
+  .stat .num{font-size:28px;font-weight:800;color:var(--purple)}
+  .stat .label{font-size:11px;color:var(--ink3);margin-top:4px}
+  .dim-bar{display:flex;gap:3px;margin:4px 0}
+  .dim-bar .seg{height:6px;border-radius:3px;background:#e0e0e0}
+  .dim-bar .seg.f{background:var(--purple)}
+  .topic-group{margin-bottom:28px}
+  .topic-header{display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:10px;margin-bottom:14px;font-weight:700;font-size:15px}
+  .topic-num{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:13px;flex-shrink:0}
+  .title-card{display:flex;gap:12px;padding:12px 14px;background:#f9f9fb;border-radius:10px;margin-bottom:8px;align-items:flex-start}
+  .title-card.top{background:linear-gradient(135deg,#f5f0ff,#f0f8ff);border:1px solid #d4c5e0}
+  .title-rank{width:24px;height:24px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;flex-shrink:0;margin-top:2px}
+  .title-info{flex:1}
+  .title-text{font-size:14px;font-weight:600;line-height:1.5;margin-bottom:4px}
+  .title-meta{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .score-badge{font-size:12px;font-weight:800;color:var(--purple);background:#f5f0ff;padding:2px 8px;border-radius:8px}
+  .type-badge{font-size:11px;padding:2px 8px;border-radius:8px;color:#fff;font-weight:600}
+  .platform-badge{font-size:10px;padding:2px 6px;border-radius:6px;background:#e8e8ed;color:var(--ink2)}
+  .dims-row{font-size:10px;color:var(--ink3);margin-top:4px}
+  .analysis-box{font-size:12.5px;line-height:1.7;color:var(--ink2);background:#fff;border-radius:8px;padding:10px 12px;margin-top:6px;border-left:3px solid var(--purple)}
+  .analysis-box b{color:var(--ink)}
+  .dim-legend{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:14px}
+  .dim-item{text-align:center;padding:10px 6px;background:#f9f9fb;border-radius:8px}
+  .dim-item .dim-name{font-size:11px;font-weight:700;margin-bottom:2px}
+  .dim-item .dim-max{font-size:10px;color:var(--ink3)}
+  .dim-item .dim-desc{font-size:10px;color:var(--ink3);margin-top:2px}
+  .qr-block{text-align:center;padding:28px;background:linear-gradient(135deg,#faf8f5,#f5f0ff);border-radius:18px}
+  .qr-block img{width:160px;height:160px;border-radius:12px;margin-bottom:12px}
+  .qr-block p{font-size:13px;color:var(--ink2);line-height:1.6}
+  .qr-block .brand{font-size:15px;font-weight:800;color:var(--purple);margin-bottom:6px}
+  @media(max-width:640px){.stats{grid-template-columns:repeat(2,1fr)}.dim-legend{grid-template-columns:repeat(2,1fr)}body{padding:20px 14px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>🔬 彩虹心理标题实验室报告</h1>
+  <div class="sub">心理咨询机构 · 爆款标题批量生成与评分筛选</div>
+  <div class="date">2026年8月26日 星期三 · 基于今日雷达 TOP5 选题</div>
+</header>
+
+<!-- ===== 总览统计 ===== -->
+<div class="section">
+  <h2><span class="dot" style="background:#6b5b95"></span>今日标题实验室总览</h2>
+  <div class="stats">
+    <div class="stat"><div class="num">50</div><div class="label">生成标题总数</div></div>
+    <div class="stat"><div class="num">10</div><div class="label">TOP10 精选</div></div>
+    <div class="stat"><div class="num">5</div><div class="label">覆盖选题数</div></div>
+    <div class="stat"><div class="num">95.1</div><div class="label">TOP10 平均分</div></div>
+  </div>
+
+  <h3 style="font-size:14px;font-weight:700;margin:20px 0 10px">评分维度（满分 100）</h3>
+  <div class="dim-legend">
+    <div class="dim-item"><div class="dim-name" style="color:#e91e63">好奇心缺口</div><div class="dim-max">25分</div><div class="dim-desc">是否制造信息差</div></div>
+    <div class="dim-item"><div class="dim-name" style="color:#ff7043">情绪触发</div><div class="dim-max">25分</div><div class="dim-desc">是否触发强烈情绪</div></div>
+    <div class="dim-item"><div class="dim-name" style="color:#3f51b5">专业可信度</div><div class="dim-max">15分</div><div class="dim-desc">体现心理学专业性</div></div>
+    <div class="dim-item"><div class="dim-name" style="color:#00897b">传播潜力</div><div class="dim-max">20分</div><div class="dim-desc">社交货币属性</div></div>
+    <div class="dim-item"><div class="dim-name" style="color:#7b1fa2">转化引导</div><div class="dim-max">15分</div><div class="dim-desc">导向咨询转化</div></div>
+  </div>
+</div>
+
+<!-- ===== TOP10 精选 ===== -->
+<div class="section">
+  <h2><span class="dot" style="background:#ff6b6b"></span>TOP10 爆款标题精选</h2>
+
+  <!-- TOP1 -->
+  <div class="title-card top">
+    <div class="title-rank" style="background:#c0392b">1</div>
+    <div class="title-info">
+      <div class="title-text">焦虑是怕明天，抑郁是放弃今天——但90%的人同时拥有两种</div>
+      <div class="title-meta">
+        <span class="score-badge">97分</span>
+        <span class="type-badge" style="background:#3f51b5">反常识型</span>
+        <span class="platform-badge">焦虑和抑郁</span>
+        <span class="platform-badge">公众号</span><span class="platform-badge">小红书</span><span class="platform-badge">抖音</span>
+      </div>
+      <div class="dims-row">好奇25 · 情绪24 · 专业14 · 传播20 · 转化14</div>
+      <div class="dim-bar"><div class="seg f" style="width:25px"></div><div class="seg f" style="width:24px"></div><div class="seg f" style="width:14px"></div><div class="seg f" style="width:20px"></div><div class="seg f" style="width:14px"></div></div>
+      <div class="analysis-box"><b>分析：</b>反常识型的「二元对立+共病反转」黄金结构：用「怕明天 vs 放弃今天」一句说清焦虑与抑郁的本质差异，极具记忆点。「但90%的人同时拥有两种」是致命钩子——读者原本只想了解一种，却发现可能两种都有，点击动机翻倍。DSM-5鉴别诊断为正文奠定专业底色，3亿患者数据提供社会证据。自然导向焦虑-抑郁光谱评估与首次专业咨询。</div>
+    </div>
+  </div>
+
+  <!-- TOP2 -->
+  <div class="title-card top">
+    <div class="title-rank" style="background:#d98c3a">2</div>
+    <div class="title-info">
+      <div class="title-text">全职儿女最残酷的真相：不是你没本事上班，是爸妈开始怕孤独了</div>
+      <div class="title-meta">
+        <span class="score-badge">96分</span>
+        <span class="type-badge" style="background:#d32f2f">痛点直击型</span>
+        <span class="platform-badge">全职儿女</span>
+        <span class="platform-badge">公众号</span><span class="platform-badge">小红书</span><span class="platform-badge">微博</span>
+      </div>
+      <div class="dims-row">好奇24 · 情绪25 · 专业13 · 传播20 · 转化14</div>
+      <div class="dim-bar"><div class="seg f" style="width:24px"></div><div class="seg f" style="width:25px"></div><div class="seg f" style="width:13px"></div><div class="seg f" style="width:20px"></div><div class="seg f" style="width:14px"></div></div>
+      <div class="analysis-box"><b>分析：</b>痛点直击型的「道德翻转」利器：「没本事上班」是社会对全职儿女的默认指控，「爸妈怕孤独」瞬间翻转审判方向——问题不在年轻人的懒，在父母的衰老。「最残酷的真相」前置制造情绪预期。380万群体数据为背景支撑，分离个体化理论在正文展开，导向家庭边界评估与原生家庭咨询。</div>
+    </div>
+  </div>
+
+  <!-- TOP3 -->
+  <div class="title-card top">
+    <div class="title-rank" style="background:#8e44ad">3</div>
+    <div class="title-info">
+      <div class="title-text">3亿人在沉默中硬扛，但90%的人连自己得的是什么都不知道</div>
+      <div class="title-meta">
+        <span class="score-badge">96分</span>
+        <span class="type-badge" style="background:#ff7043">悬念型</span>
+        <span class="platform-badge">焦虑和抑郁</span>
+        <span class="platform-badge">公众号</span><span class="platform-badge">小红书</span><span class="platform-badge">抖音</span>
+      </div>
+      <div class="dims-row">好奇25 · 情绪24 · 专业13 · 传播20 · 转化14</div>
+      <div class="dim-bar"><div class="seg f" style="width:25px"></div><div class="seg f" style="width:24px"></div><div class="seg f" style="width:13px"></div><div class="seg f" style="width:20px"></div><div class="seg f" style="width:14px"></div></div>
+      <div class="analysis-box"><b>分析：</b>悬念型的「群体规模+认知缺口」双钩结构：「3亿人」制造群体共鸣，「90%不知道自己得了什么」制造信息缺口——读者立刻产生「我是不是那90%」的自检冲动。数据来自《柳叶刀·精神病学》与中国科学院，权威性极强。沉默硬扛的画面戳中每个内耗者日常，导向首次专业评估。</div>
+    </div>
+  </div>
+
+  <!-- TOP4 -->
+  <div class="title-card top">
+    <div class="title-rank" style="background:#27ae60">4</div>
+    <div class="title-info">
+      <div class="title-text">活得正确的残酷真相：你越对，越空——正确正在杀死你的感受</div>
+      <div class="title-meta">
+        <span class="score-badge">96分</span>
+        <span class="type-badge" style="background:#d32f2f">痛点直击型</span>
+        <span class="platform-badge">武志红×齐思钧</span>
+        <span class="platform-badge">公众号</span><span class="platform-badge">小红书</span><span class="platform-badge">抖音</span>
+      </div>
+      <div class="dims-row">好奇24 · 情绪25 · 专业13 · 传播20 · 转化14</div>
+      <div class="dim-bar"><div class="seg f" style="width:24px"></div><div class="seg f" style="width:25px"></div><div class="seg f" style="width:13px"></div><div class="seg f" style="width:20px"></div><div class="seg f" style="width:14px"></div></div>
+      <div class="analysis-box"><b>分析：</b>痛点直击型的「悖论爆破」结构：「越对越空」是武志红对谈核心洞察浓缩——打破「正确即幸福」的主流认知。「正确正在杀死你的感受」用「杀死」制造情绪冲击，把抽象内耗具象化为一场谋杀。50岁与30岁对话背景为权威背书，ACT认知解离在正文展开，导向思维认同强度自测与自我成长咨询。</div>
+    </div>
+  </div>
+
+  <!-- TOP5 -->
+  <div class="title-card top">
+    <div class="title-rank" style="background:#2980b9">5</div>
+    <div class="title-info">
+      <div class="title-text">你恨的不是父母，是被父母亲手训练出来的那个不敢愤怒的自己</div>
+      <div class="title-meta">
+        <span class="score-badge">95分</span>
+        <span class="type-badge" style="background:#e91e63">情绪共鸣型</span>
+        <span class="platform-badge">反感父母</span>
+        <span class="platform-badge">公众号</span><span class="platform-badge">小红书</span><span class="platform-badge">微博</span>
+      </div>
+      <div class="dims-row">好奇23 · 情绪25 · 专业13 · 传播20 · 转化14</div>
+      <div class="dim-bar"><div class="seg f" style="width:23px"></div><div class="seg f" style="width:25px"></div><div class="seg f" style="width:13px"></div><div class="seg f" style="width:20px"></div><div class="seg f" style="width:14px"></div></div>
+      <div class="analysis-box"><b>分析：</b>情绪共鸣型的「恨意翻转」精妙结构：把「恨父母」翻转为「恨被父母训练出的自己」——读者瞬间意识到愤怒对象被替换了，认知落差极强。「亲手训练」暗含教育方式批判，把无意伤害说成系统性训练，激发深层共鸣。鲍文家庭系统理论的情感三角在正文展开，导向原生家庭创伤自评与代际边界咨询。</div>
+    </div>
+  </div>
+
+  <!-- TOP6 -->
+  <div class="title-card top">
+    <div class="title-rank" style="background:#c0392b">6</div>
+    <div class="title-info">
+      <div class="title-text">焦虑和抑郁的5+5个信号，第3条最容易混淆</div>
+      <div class="title-meta">
+        <span class="score-badge">95分</span>
+        <span class="type-badge" style="background:#00897b">数字承诺型</span>
+        <span class="platform-badge">焦虑和抑郁</span>
+        <span class="platform-badge">公众号</span><span class="platform-badge">小红书</span><span class="platform-badge">抖音</span>
+      </div>
+      <div class="dims-row">好奇25 · 情绪22 · 专业14 · 传播20 · 转化14</div>
+      <div class="dim-bar"><div class="seg f" style="width:25px"></div><div class="seg f" style="width:22px"></div><div class="seg f" style="width:14px"></div><div class="seg f" style="width:20px"></div><div class="seg f" style="width:14px"></div></div>
+      <div class="analysis-box"><b>分析：</b>数字承诺型+信息缺口的组合拳：「5+5」给出明确清单价值，「第3条最容易混淆」制造精准信息缺口——读者直接跳到第3条自查，停留时长显著拉高。把两种情绪障碍的可识别行为数字化，让读者在阅读中完成自我初筛。DSM-5诊断标准为专业底色，导向焦虑-抑郁光谱自评与临床转介。</div>
+    </div>
+  </div>
+
+  <!-- TOP7 -->
+  <div class="title-card top">
+    <div class="title-rank" style="background:#d98c3a">7</div>
+    <div class="title-info">
+      <div class="title-text">我以为我只是累，直到医生说「你已经抑郁两年了」</div>
+      <div class="title-meta">
+        <span class="score-badge">95分</span>
+        <span class="type-badge" style="background:#7b1fa2">第一人称型</span>
+        <span class="platform-badge">焦虑和抑郁</span>
+        <span class="platform-badge">公众号</span><span class="platform-badge">小红书</span><span class="platform-badge">微博</span>
+      </div>
+      <div class="dims-row">好奇24 · 情绪25 · 专业12 · 传播20 · 转化14</div>
+      <div class="dim-bar"><div class="seg f" style="width:24px"></div><div class="seg f" style="width:25px"></div><div class="seg f" style="width:12px"></div><div class="seg f" style="width:20px"></div><div class="seg f" style="width:14px"></div></div>
+      <div class="analysis-box"><b>分析：</b>第一人称型的「时间落差+权威宣判」结构：「我只是累」是每个抑郁者的日常自我解释，「两年了」是医生的时间戳——两个信息之间的落差制造强烈情绪冲击。读者代入感极强，尤其长期内耗者。「医生说」提供专业权威同时暗示早识别重要性，导向抑郁筛查与临床心理转介。</div>
+    </div>
+  </div>
+
+  <!-- TOP8 -->
+  <div class="title-card top">
+    <div class="title-rank" style="background:#8e44ad">8</div>
+    <div class="title-info">
+      <div class="title-text">「女孩只有靠自己」不是独立宣言，是失望的成年礼</div>
+      <div class="title-meta">
+        <span class="score-badge">93分</span>
+        <span class="type-badge" style="background:#3f51b5">反常识型</span>
+        <span class="platform-badge">女孩靠自己</span>
+        <span class="platform-badge">公众号</span><span class="platform-badge">小红书</span><span class="platform-badge">微博</span>
+      </div>
+      <div class="dims-row">好奇24 · 情绪24 · 专业12 · 传播20 · 转化13</div>
+      <div class="dim-bar"><div class="seg f" style="width:24px"></div><div class="seg f" style="width:24px"></div><div class="seg f" style="width:12px"></div><div class="seg f" style="width:20px"></div><div class="seg f" style="width:13px"></div></div>
+      <div class="analysis-box"><b>分析：</b>反常识型的「口号去魅」结构：把3亿阅读的热搜金句从「独立宣言」翻转为「失望的成年礼」——一句让所有拼命独立的女性心头一颤。「成年礼」暗含成长代价，暗示独立不是选择而是被迫。温尼科特「足够好的母亲」与马勒分离个体化在正文展开，导向安全感三维度自评与女性成长咨询。</div>
+    </div>
+  </div>
+
+  <!-- TOP9 -->
+  <div class="title-card top">
+    <div class="title-rank" style="background:#27ae60">9</div>
+    <div class="title-info">
+      <div class="title-text">我辞职回家第三个月，发现我妈比我还怕我走</div>
+      <div class="title-meta">
+        <span class="score-badge">94分</span>
+        <span class="type-badge" style="background:#7b1fa2">第一人称型</span>
+        <span class="platform-badge">全职儿女</span>
+        <span class="platform-badge">公众号</span><span class="platform-badge">小红书</span><span class="platform-badge">抖音</span>
+      </div>
+      <div class="dims-row">好奇24 · 情绪25 · 专业12 · 传播20 · 转化13</div>
+      <div class="dim-bar"><div class="seg f" style="width:24px"></div><div class="seg f" style="width:25px"></div><div class="seg f" style="width:12px"></div><div class="seg f" style="width:20px"></div><div class="seg f" style="width:13px"></div></div>
+      <div class="analysis-box"><b>分析：</b>第一人称型的「视角反转+时间悬念」结构：「第三个月」给出时间锚点，「我妈比我还怕我走」是意想不到的视角翻转——读者预期全职儿女故事聚焦于自己，却发现母亲才是更焦虑的一方。这个发现直接挑战「啃老」的社会标签。童年富裕症与分离个体化在正文展开，导向家庭边界成熟度评估。</div>
+    </div>
+  </div>
+
+  <!-- TOP10 -->
+  <div class="title-card top">
+    <div class="title-rank" style="background:#2980b9">10</div>
+    <div class="title-info">
+      <div class="title-text">你活得那么累，不是因为选错了，是因为一直在替别人的「正确」活</div>
+      <div class="title-meta">
+        <span class="score-badge">94分</span>
+        <span class="type-badge" style="background:#e91e63">情绪共鸣型</span>
+        <span class="platform-badge">武志红×齐思钧</span>
+        <span class="platform-badge">公众号</span><span class="platform-badge">小红书</span><span class="platform-badge">抖音</span>
+      </div>
+      <div class="dims-row">好奇22 · 情绪25 · 专业13 · 传播20 · 转化14</div>
+      <div class="dim-bar"><div class="seg f" style="width:22px"></div><div class="seg f" style="width:25px"></div><div class="seg f" style="width:13px"></div><div class="seg f" style="width:20px"></div><div class="seg f" style="width:14px"></div></div>
+      <div class="analysis-box"><b>分析：</b>情绪共鸣型的「归因翻转」结构：把「累」的原因从「选错」翻转为「替别人的正确活」——读者瞬间意识到疲惫来源被重新定义了。「替别人活」是对社会规训的精准命名，每个被「应该」绑架的人都会被击中。ACT认知解离与武志红「向思维认同」在正文展开，导向思维认同强度自测。</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 按选题分组展示全部 50 标题 ===== -->
+<div class="section">
+  <h2><span class="dot" style="background:#feca57"></span>全部 50 标题（按选题分组）</h2>
+
+  <!-- 选题1 -->
+  <div class="topic-group">
+    <div class="topic-header" style="background:linear-gradient(90deg,#fff3e0,#fff)">
+      <div class="topic-num" style="background:#c0392b">1</div>
+      <span>全职儿女380万人的冰与火（雷达 97分）</span>
+    </div>
+    <div class="title-card top"><div class="title-rank" style="background:#d32f2f">2</div><div class="title-info"><div class="title-text">全职儿女最残酷的真相：不是你没本事上班，是爸妈开始怕孤独了</div><div class="title-meta"><span class="score-badge">96分</span><span class="type-badge" style="background:#d32f2f">痛点直击</span></div></div></div>
+    <div class="title-card top"><div class="title-rank" style="background:#7b1fa2">9</div><div class="title-info"><div class="title-text">我辞职回家第三个月，发现我妈比我还怕我走</div><div class="title-meta"><span class="score-badge">94分</span><span class="type-badge" style="background:#7b1fa2">第一人称</span></div></div></div>
+    <div class="title-card"><div class="title-rank" style="background:#e0e0e0">-</div><div class="title-info"><div class="title-text">你不是啃老，你是被爸妈的需要和你的无力同时困在了一个屋檐下</div><div class="title-meta"><span class="score-badge">93分</span><span class="type-badge" style="background:#e91e63">情绪共鸣</span></div></div></div>
+    <div class="title-card"><div class="title-rank" style="background:#e0e0e0">-</div><div class="title-info"><div class="title-text">380万「全职儿女」的3种活法，第2种最危险</div><div class="title-meta"><span class="score-badge">92分</span><span class="type-badge" style="background:#00897b">数字承诺</span></div></div></div>
+    <div class="title-card"><div class="title-rank" style="background:#e0e0e0">-</div><div class="title-info"><div class="title-text">全职儿女不是啃老，是全家在用体温互相给彼此续命</div><div class="title-meta"><span class="score-badge">92分</span><span class="type-badge" style="background:#3f51b5">反常识</span></div></div></div>
+    <div class="title-card"><div class="title-rank" style="background:#e0e0e0">-</div><div class="title-info"><div class="title-text">380万人回家「蹲」着，他们到底在等什么？</div><div class="title-meta"><span class="score-badge">91分</span><span class="type-badge" style="background:#ff7043">悬念</span></div></div></div>
+    <div class="title-card"><div class="title-rank" style="background:#e0e0e0">-</div><div class="title-info"><div class="title-text">那些被骂「啃老」的人，其实每天都在替爸妈扛着衰老的重量</div><div class="title-meta"><span class="score-badge">90分</span><span class="type-badge" style="background:#ff7043">替人发声</span></div></div></div>
+    <div class="title-card"><div class="title-rank" style="background:#e0e0e0">-</div><div class="title-info"><div class="title-text">「你怎么不上班」「你老了才发现，家里需要一个人待着」</div><div class="title-meta"><span class="score-badge">88分</span><span class="type-badge" style="background:#5e35b1">对话</span></div></div></div>
+    <div class="title-card"><div class="title-rank" style="background:#e0e0e0">-</div><div class="title-info"><div class="title-text">回家不是逃跑，是全家重新学会怎么好好待在一起</div><div class="title-meta"><span class="score-badge">83分</span><span class="type-badge" style="background:#4caf50">治愈</span></div></div></div>
+    <div class="title-card"><div class="title-rank" style="background:#e0e0e0">-</div><div class="title-info"><div class="title-text">分离个体化停滞与童年富裕症：全职儿女的家庭系统视角</div><div class="title-meta"><span class="score-badge">77分</span><span class="type-badge" style="background:#607d8b">专业</span></div></div></div>
+  </div>
+
+  <!-- 选题2 -->
+  <div class="topic-group">
+    <div class="topic-header" style="background:linear-gradient(90deg,#fce4ec,#fff)">
+      <div class="topic-num" style="background:#8e44ad">2</div>
+      <span>反感父母登上热搜（雷达 95分）</span>
+    </div>
+    <div class="title-card top"><div class="title-rank" style="background:#e91e63">5</div><div class="title-info"><div class="title-text">你恨的不是父母，是被父母亲手训练出来的那个不敢愤怒的自己</div><div class="title-meta"><span class="score-badge">95分</span><span class="type-badge" style="background:#e91e63">情绪共鸣</span></div></div></div>
+    <div class="title-card"><div class="title-rank" style="background:#e0e0e0">-</div><div class="title-info"><div class="title-text">「反感父母」的5个心理阶段，第3阶段最危险</div><div class="title-meta"><span class="score-badge">93分</span><span class="type-badge" style="background:#00897b">数字承诺</span></div></div></div>
+    <div class="title-card"><div class="title-rank" style="background:#e0e0e0">-</div><div class="title-info"><div class="title-text">我拉黑我妈那天，才第一次感觉自己是个人</div><div class="title-meta"><span class="score-badge">93分</span><span class="type-badge" style="background:#7b1fa2">第一人称</span></div></div></div>
+    <div class="title-card"><div class="title-rank" style="background:#e0e0e0">-</div><div class="title-info"><div class="title-text">40万点赞的长文说：妈妈最成功的作品，是把我训练成连愤怒都不敢有的人</div><div class="title-meta"><span class="score-badge">93分</span><span class="type-badge" style="background:#ff7043">悬念</span></div></div></div>
+    <div class="title-card"><div class="title-rank" style="background:#e0e0e0">-</div><div class="title-info"><div class="title-text">反感父母不是不孝，是你的自我在替你说「够了」</div><div class="title-meta"><span class="score-badge">92分</span><span class="type-badge" style="background:#3f51b5">反常识</span></div></div></div>
+    <div class="title-card"><div class="title-rank" style="background:#e0e0e0">-</div><div class="title-info"><div class="title-text">你不是不孝，是你的自我正在被父母的焦虑一点点吞噬</div><div class="title-meta"><span class="score-badge">91分</span><span class="type-badge" style="background:#d32f2f">痛点直击</span></div></div></div>
+    <div class="title-card"><div class="title-rank" style="background:#e0e0e0">-</div><div class="title-info"><div class="title-text">那些主动断联父母的人，不是冷血，是在替三代人止血</div><div class="title-meta"><span class="score-badge">90分</span><span class="type-badge" style="background:#ff7043">替人发声</span></div></div></div>
+    <div class="title-card"><div class="title-rank" style="background:#e0e0e0">-</div><div class="title-info"><div class="title-text">和父母和解不是原谅他们，是放过那个一直在替他们扛内疚的自己</div><div class="title-meta"><span class="score-badge">90分</span><span class="type-badge" style="background:#4caf50">治愈</span></div></div></div>
+    <div class="title-card"><div class="title-rank" style="background:#e0e0e0">-</div><div class="title-info"><div class="title-text">「你怎么能对你妈这样」「你不知道她对我做过什么」</div><div class="title-meta"><span class="score-badge">89分</span><span class="type-badge" style="background:#5e35b1">对话</span></div></div></div>
+    <div class="title-card"><div class="title-rank" style="background:#e0e0e0">-</div><div class="title-info"><div class="title-text">鲍文家庭系统理论下的「情感三角」与健康的代际边界</div><div class="title-meta"><span class="score-badge">74分</span><span class="type-badge" style="background:#607d8b">专业</span></div></div></div>
+  </div>
+
+  <!-- 选题3 -->
+  <div class="topic-group">
+    <div class="topic-header" style="background:linear-gradient(90deg,#e8f5e9,#fff)">
+      <div class="topic-num" style="background:#27ae60">3</div>
+      <span>女孩只有靠自己跨圈层引爆（雷达 93分）</span>
+    </div>
+    <div class="title-card top"><div class="title-rank" style="background:#3f51b5">8</div><div class="title-info"><div class="title-text">「女孩只有靠自己」不是独立宣言，是失望的成年礼</div><div class="title-meta"><span class="score-badge">93分</span><span class="type-badge" style="background:#3f51b5">反常识</span></div></div></div>
+    <div class="title-card"><div class="title-rank" style="background:#e0e0e0">-</div><div class="title-info"><div class="title-text">女孩拼命独立的残酷真相：不是不想依靠，是每次依赖都摔得太惨</div><div class="title-meta"><span class="score-badge">93分</span><span class="type-badge" style="background:#d32f2f">痛点直击</span></div></div></div>
+    <div class="title-card"><div class="title-rank" style="background:#e0e0e0">-</div><div class="title-info"><div class="title-text">女性安全感的3个维度，90%的人只做到了第1层</div><div class="title-meta"><span class="score-badge">92分</span><span class="type-badge" style="background:#00897b">数字承诺</span></div></div></div>
+    <div class="title-card"><div class="title-rank" style="background:#e0e0e0">-</div><div class="title-info"><div class="title-text">她说「女孩只有靠自己」，不是因为男人不可靠，是因为她试过了</div><div class="title-meta"><span class="score-badge">90分</span><span class="type-badge" style="background:#e91e63">情绪共鸣</span></div></div></div>
+    <div class="title-card"><div class="title-rank" style="background:#e0e0e0">-</div><div class="title-info"><div class="title-text">3亿阅读讨论的「女孩靠自己」，到底在靠什么？</div><div class="title-meta"><span class="score-badge">90分</span><span class="type-badge" style="background:#ff7043">悬念</span></div></div></div>
+    <div class="title-card"><div class="title-rank" style="background:#e0e0e0">-</div><div class="title-info"><div class="title-text">「你怎么什么都不靠我」「因为靠过，靠塌了」</div><div class="title-meta"><span class="score-badge">89分</span><span class="type-badge" style="background:#5e35b1">对话</span></div></div></div>
+    <div class="title-card"><div class="title-rank" style="background:#e0e0e0">-</div><div class="title-info"><div class="title-text">那些拼命自强的女孩，其实每根骨头里都在等一个人来接</div><div class="title-meta"><span class="score-badge">88分</span><span class="type-badge" style="background:#ff7043">替人发声</span></div></div></div>
+    <div class="title-card"><div class="title-rank" style="background:#e0e0e0">-</div><div class="title-info"><div class="title-text">我以为靠自己是选择，后来才知道，是我没得选</div><div class="title-meta"><span class="score-badge">88分</span><span class="type-badge" style="background:#7b1fa2">第一人称</span></div></div></div>
+    <div class="title-card"><div class="title-rank" style="background:#e0e0e0">-</div><div class="title-info"><div class="title-text">靠自己不是关上心门，是先站稳了，再决定要不要让人靠近</div><div class="title-meta"><span class="score-badge">86分</span><span class="type-badge" style="background:#4caf50">治愈</span></div></div></div>
+    <div class="title-card"><div class="title-rank" style="background:#e0e0e0">-</div><div class="title-info"><div class="title-text">温尼科特「足够好的母亲」与马勒「分离个体化」：女性内在安全感发展路径</div><div class="title-meta"><span class="score-badge">74分</span><span class="type-badge" style="background:#607d8b">专业</span></div></div></div>
+  </div>
+
+  <!-- 选题4 -->
+  <div class="topic-group">
+    <div class="topic-header" style="background:linear-gradient(90deg,#e3f2fd,#fff)">
+      <div class="topic-num" style="background:#2980b9">4</div>
+      <span>焦虑和抑郁根本不是一回事（雷达 90分）</span>
+    </div>
+    <div class="title-card top"><div class="title-rank" style="background:#c0392b">1</div><div class="title-info"><div class="title-text">焦虑是怕明天，抑郁是放弃今天——但90%的人同时拥有两种</div><div class="title-meta"><span class="score-badge">97分</span><span class="type-badge" style="background:#3f51b5">反常识</span></div></div></div>
+    <div class="title-card top"><div class="title-rank" style="background:#8e44ad">3</div><div class="title-info"><div class="title-text">3亿人在沉默中硬扛，但90%的人连自己得的是什么都不知道</div><div class="title-meta"><span class="score-badge">96分</span><span class="type-badge" style="background:#ff7043">悬念</span></div></div></div>
+    <div class="title-card top"><div class="title-rank" style="background:#c0392b">6</div><div class="title-info"><div class="title-text">焦虑和抑郁的5+5个信号，第3条最容易混淆</div><div class="title-meta"><span class="score-badge">95分</span><span class="type-badge" style="background:#00897b">数字承诺</span></div></div></div>
+    <div class="title-card top"><div class="title-rank" style="background:#d98c3a">7</div><div class="title-info"><div class="title-text">我以为我只是累，直到医生说「你已经抑郁两年了」</div><div class="title-meta"><span class="score-badge">95分</span><span class="type-badge" style="background:#7b1fa2">第一人称</span></div></div></div>
+    <div class="title-card"><div class="title-rank" style="background:#e0e0e0">-</div><div class="title-info"><div class="title-text">把抑郁当懒、把焦虑当矫情——这才是3亿人最大的病</div><div class="title-meta"><span class="score-badge">95分</span><span class="type-badge" style="background:#d32f2f">痛点直击</span></div></div></div>
+    <div class="title-card"><div class="title-rank" style="background:#e0e0e0">-</div><div class="title-info"><div class="title-text">你说「我没事」，可你的身体已经在替你喊救命了</div><div class="title-meta"><span class="score-badge">94分</span><span class="type-badge" style="background:#e91e63">情绪共鸣</span></div></div></div>
+    <div class="title-card"><div class="title-rank" style="background:#e0e0e0">-</div><div class="title-info"><div class="title-text">「你就是想太多」「不，是我的大脑已经病了」</div><div class="title-meta"><span class="score-badge">92分</span><span class="type-badge" style="background:#5e35b1">对话</span></div></div></div>
+    <div class="title-card"><div class="title-rank" style="background:#e0e0e0">-</div><div class="title-info"><div class="title-text">那些说「我可能有点矫情」的人，其实已经扛了很久了</div><div class="title-meta"><span class="score-badge">90分</span><span class="type-badge" style="background:#ff7043">替人发声</span></div></div></div>
+    <div class="title-card"><div class="title-rank" style="background:#e0e0e0">-</div><div class="title-info"><div class="title-text">分清焦虑和抑郁不是贴标签，是终于知道往哪个方向走才能好起来</div><div class="title-meta"><span class="score-badge">87分</span><span class="type-badge" style="background:#4caf50">治愈</span></div></div></div>
+    <div class="title-card"><div class="title-rank" style="background:#e0e0e0">-</div><div class="title-info"><div class="title-text">从DSM-5看焦虑与抑郁的鉴别诊断：持续性担忧 vs 情绪低落</div><div class="title-meta"><span class="score-badge">74分</span><span class="type-badge" style="background:#607d8b">专业</span></div></div></div>
+  </div>
+
+  <!-- 选题5 -->
+  <div class="topic-group">
+    <div class="topic-header" style="background:linear-gradient(90deg,#fff3e0,#fff)">
+      <div class="topic-num" style="background:#e67e22">5</div>
+      <span>武志红×齐思钧跨年龄对谈（雷达 88分）</span>
+    </div>
+    <div class="title-card top"><div class="title-rank" style="background:#27ae60">4</div><div class="title-info"><div class="title-text">活得正确的残酷真相：你越对，越空——正确正在杀死你的感受</div><div class="title-meta"><span class="score-badge">96分</span><span class="type-badge" style="background:#d32f2f">痛点直击</span></div></div></div>
+    <div class="title-card top"><div class="title-rank" style="background:#2980b9">10</div><div class="title-info"><div class="title-text">你活得那么累，不是因为选错了，是因为一直在替别人的「正确」活</div><div class="title-meta"><span class="score-badge">94分</span><span class="type-badge" style="background:#e91e63">情绪共鸣</span></div></div></div>
+    <div class="title-card"><div class="title-rank" style="background:#e0e0e0">-</div><div class="title-info"><div class="title-text">武志红说的人生2条路，90%的人选错了还以为是对的</div><div class="title-meta"><span class="score-badge">93分</span><span class="type-badge" style="background:#00897b">数字承诺</span></div></div></div>
+    <div class="title-card"><div class="title-rank" style="background:#e0e0e0">-</div><div class="title-info"><div class="title-text">让你内耗的不是选择太多，是你太想选「正确」的那一个</div><div class="title-meta"><span class="score-badge">93分</span><span class="type-badge" style="background:#3f51b5">反常识</span></div></div></div>
+    <div class="title-card"><div class="title-rank" style="background:#e0e0e0">-</div><div class="title-info"><div class="title-text">我活了30年才明白，让我痛苦的从来不是选错，是不知道自己想要什么</div><div class="title-meta"><span class="score-badge">91分</span><span class="type-badge" style="background:#7b1fa2">第一人称</span></div></div></div>
+    <div class="title-card"><div class="title-rank" style="background:#e0e0e0">-</div><div class="title-info"><div class="title-text">50岁与30岁的对话，为什么让千万人在凌晨失眠时沉默？</div><div class="title-meta"><span class="score-badge">91分</span><span class="type-badge" style="background:#ff7043">悬念</span></div></div></div>
+    <div class="title-card"><div class="title-rank" style="background:#e0e0e0">-</div><div class="title-info"><div class="title-text">那些30岁还在迷茫的人，不是没努力，是一直在替别人的标准活</div><div class="title-meta"><span class="score-badge">89分</span><span class="type-badge" style="background:#ff7043">替人发声</span></div></div></div>
+    <div class="title-card"><div class="title-rank" style="background:#e0e0e0">-</div><div class="title-info"><div class="title-text">「我怎么感觉越努力越空」「因为你一直在替别人的正确活着」</div><div class="title-meta"><span class="score-badge">88分</span><span class="type-badge" style="background:#5e35b1">对话</span></div></div></div>
+    <div class="title-card"><div class="title-rank" style="background:#e0e0e0">-</div><div class="title-info"><div class="title-text">别再问什么是对的，问自己愿不愿意，就够了</div><div class="title-meta"><span class="score-badge">86分</span><span class="type-badge" style="background:#4caf50">治愈</span></div></div></div>
+    <div class="title-card"><div class="title-rank" style="background:#e0e0e0">-</div><div class="title-info"><div class="title-text">ACT接纳承诺疗法中的「认知解离」与武志红「向体验投入」</div><div class="title-meta"><span class="score-badge">74分</span><span class="type-badge" style="background:#607d8b">专业</span></div></div></div>
+  </div>
+</div>
+
+<!-- ===== 二维码入口 ===== -->
+<div class="qr-block">
+  <div class="brand">🌈 彩虹心理</div>
+  <p>专业心理咨询 · 情绪疗愈 · 自我成长 · 亲密关系</p>
+  <img src="rainbowhu-qrcode.jpg" alt="彩虹心理公众号二维码">
+  <p>扫码关注彩虹心理，回复「咨询」预约首次评估</p>
+</div>
+
+</div>
+</body>
+</html>
