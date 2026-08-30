@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>彩虹心理爆款标题实验室报告 | 2026-08-30</title>
+<style>
+:root{--brand:#134B43;--cream:#F7F3EA;--green-bg:#E8F0EA;--gold:#C89B52;--text:#42665B;--ink:#2c3e50;--line:#e0e0e0}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--cream);color:var(--ink);line-height:1.8;font-size:15px}
+.wrap{max-width:920px;margin:0 auto;padding:40px 24px 60px}
+.header{text-align:center;margin-bottom:36px;padding-bottom:28px;border-bottom:3px solid var(--brand)}
+.brand-tag{display:inline-block;background:var(--brand);color:var(--cream);padding:6px 18px;border-radius:20px;font-size:13px;font-weight:700;letter-spacing:1px;margin-bottom:14px}
+.header h1{font-size:28px;color:var(--brand);font-weight:800;margin-bottom:8px}
+.header .sub{font-size:14px;color:var(--text)}
+.header .date{font-size:15px;color:var(--brand);margin-top:8px;font-weight:700}
+.meta-bar{display:flex;justify-content:space-between;align-items:center;background:var(--green-bg);border-radius:12px;padding:14px 20px;margin-bottom:28px;flex-wrap:wrap;gap:10px}
+.meta-bar .item{font-size:13px;color:var(--text)}
+.meta-bar .item b{color:var(--brand)}
+.section{margin-bottom:36px}
+.section-title{font-size:20px;font-weight:800;color:var(--brand);margin-bottom:18px;padding-left:14px;border-left:5px solid var(--gold);line-height:1.4}
+.score-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:24px}
+.score-card{background:#fff;border-radius:14px;padding:18px 20px;box-shadow:0 2px 10px rgba(19,75,67,.06);border:1px solid var(--line)}
+.score-card .label{font-size:13px;color:var(--text);margin-bottom:6px}
+.score-card .num{font-size:30px;font-weight:800;color:var(--brand);line-height:1}
+.score-card .sub{font-size:11px;color:var(--gold);margin-top:4px;font-weight:600}
+.dim-explain{background:#fff;border-radius:14px;padding:20px 24px;margin-bottom:30px;border:1px solid var(--line)}
+.dim-explain h4{font-size:15px;color:var(--brand);margin-bottom:14px;font-weight:700}
+.dim-row{display:grid;grid-template-columns:120px 1fr;gap:12px;margin-bottom:10px;font-size:13px;align-items:center}
+.dim-row .dn{color:var(--brand);font-weight:800;font-size:14px}
+.dim-row .dt{color:var(--text);line-height:1.6}
+.dim-row .dw{display:inline-block;background:var(--gold);color:#fff;font-size:11px;padding:2px 8px;border-radius:10px;margin-left:6px;font-weight:700}
+.top-card{background:#fff;border-radius:16px;padding:24px 28px;margin-bottom:20px;box-shadow:0 2px 14px rgba(19,75,67,.08);border:1px solid var(--line);position:relative}
+.top-card .rank-badge{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:12px;color:#fff;font-weight:800;font-size:20px;margin-bottom:12px}
+.top-card h3{font-size:18px;font-weight:800;color:var(--ink);line-height:1.5;margin-bottom:10px}
+.top-card .meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;font-size:12.5px;align-items:center}
+.top-card .type{font-size:11.5px;padding:3px 10px;border-radius:10px;color:#fff;font-weight:700}
+.top-card .topic-tag{font-size:11.5px;padding:3px 10px;border-radius:10px;background:var(--green-bg);color:var(--brand);font-weight:600}
+.top-card .score-badge{display:inline-block;background:var(--brand);color:var(--cream);padding:4px 14px;border-radius:14px;font-size:14px;font-weight:800;margin-bottom:12px}
+.top-card .dims-bar{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:14px;padding:12px;background:var(--green-bg);border-radius:10px}
+.top-card .dim-cell{text-align:center;font-size:11.5px;color:var(--text)}
+.top-card .dim-cell .v{font-size:18px;font-weight:800;color:var(--brand);line-height:1.2;display:block;margin-bottom:2px}
+.top-card .dim-cell .l{font-size:10px;color:var(--gold);font-weight:700}
+.top-card .analysis{font-size:13.5px;color:var(--text);line-height:1.75;padding:14px 18px;background:var(--cream);border-radius:10px;border-left:4px solid var(--brand)}
+.top-card .analysis b{color:var(--brand)}
+.topic-block{background:#fff;border-radius:14px;padding:20px 24px;margin-bottom:18px;border:1px solid var(--line)}
+.topic-block h4{font-size:16px;color:var(--brand);margin-bottom:12px;font-weight:800;display:flex;align-items:center;gap:10px}
+.topic-block h4 .tn{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:8px;background:var(--brand);color:var(--cream);font-size:13px;font-weight:800}
+.topic-block h4 .ts{background:var(--gold);color:#fff;font-size:11.5px;padding:2px 10px;border-radius:10px;margin-left:auto;font-weight:700}
+.tt-row{display:grid;grid-template-columns:30px 1fr 90px 90px;gap:10px;padding:10px 0;border-bottom:1px dashed var(--line);font-size:13.5px;align-items:center}
+.tt-row:last-child{border-bottom:none}
+.tt-row .idx{color:var(--gold);font-weight:800;font-size:13px}
+.tt-row .ttl{color:var(--ink);line-height:1.5;font-weight:500}
+.tt-row .t-score{color:var(--brand);font-weight:800;font-size:14px;text-align:right}
+.tt-row .t-type{font-size:11.5px;color:#fff;padding:2px 8px;border-radius:8px;text-align:center;font-weight:600}
+.qr-section{text-align:center;margin-top:40px;padding:30px;background:var(--brand);border-radius:20px}
+.qr-section h3{color:var(--cream);font-size:18px;margin-bottom:8px;font-weight:700}
+.qr-section p{color:rgba(247,243,234,.85);font-size:14px;margin-bottom:20px}
+.qr-section .qr-img{width:200px;height:200px;border-radius:12px;background:#fff;margin:0 auto 16px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.qr-section .qr-img img{width:100%;height:100%;object-fit:cover}
+.qr-section .qr-cta{color:var(--gold);font-size:15px;font-weight:700}
+.footer{text-align:center;margin-top:30px;font-size:12px;color:#999}
+.legend{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px;font-size:12px}
+.legend .lp{display:inline-flex;align-items:center;gap:5px;color:var(--text)}
+.legend .lp::before{content:"";width:10px;height:10px;border-radius:3px;background:var(--brand)}
+.topics-summary{background:var(--green-bg);border-radius:12px;padding:16px 20px;margin-bottom:20px;font-size:13px;color:var(--text);line-height:1.8}
+.topics-summary b{color:var(--brand)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="header">
+  <span class="brand-tag">彩虹心理 · 爆款标题实验室</span>
+  <h1>每日爆款标题实验室报告</h1>
+  <div class="sub">基于今日 TOP5 选题 × 10 风格 × 5 维度评分</div>
+  <div class="date">2026年8月30日 星期日 · Week 35</div>
+</div>
+
+<div class="meta-bar">
+  <span class="item">生成日期：<b>2026-08-30</b></span>
+  <span class="item">选题来源：<b>雷达 TOP5</b></span>
+  <span class="item">生成总数：<b>50 个标题</b></span>
+  <span class="item">TOP10 平均分：<b>95.3</b></span>
+  <span class="item">覆盖选题：<b>5 / 5 全覆盖</b></span>
+</div>
+
+<div class="section">
+  <div class="section-title">评分总览</div>
+  <div class="score-grid"><div class="score-card"><div class="label">生成总数</div><div class="num">50</div><div class="sub">50 个候选</div></div><div class="score-card"><div class="label">TOP10 入选</div><div class="num">10</div><div class="sub">精选 10 个</div></div><div class="score-card"><div class="label">TOP10 平均分</div><div class="num">95.3</div><div class="sub">满分 100</div></div><div class="score-card"><div class="label">最高分</div><div class="num">98</div><div class="sub">TOP1 标题</div></div><div class="score-card"><div class="label">最低分</div><div class="num">83</div><div class="sub">otherTitles 末位</div></div><div class="score-card"><div class="label">覆盖选题</div><div class="num">5 / 5</div><div class="sub">TOP5 全选</div></div>  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">评分维度说明（5 维度 · 满分 100）</div>
+  <div class="dim-explain">
+    <h4>每个标题都从以下 5 个维度独立评分，最后求和得到总分</h4>
+    <div class="dim-row"><span class="dn">好奇心缺口 <span class="dw">25 分</span></span><span class="dt">是否制造信息差让人想点击？悬念/反常识/数据缺口都属于此维度</span></div>
+    <div class="dim-row"><span class="dn">情绪触发 <span class="dw">25 分</span></span><span class="dt">是否触发强烈情绪（共鸣/焦虑/好奇/愤怒/委屈）？情绪强度直接决定打开率</span></div>
+    <div class="dim-row"><span class="dn">专业可信度 <span class="dw">15 分</span></span><span class="dt">是否体现心理学专业性，不像纯标题党？理论/数据/科学术语可加分</span></div>
+    <div class="dim-row"><span class="dn">传播潜力 <span class="dw">20 分</span></span><span class="dt">是否容易被转发？是否有社交货币属性？场景代入/替人发声/对比反差是核心</span></div>
+    <div class="dim-row"><span class="dn">转化引导 <span class="dw">15 分</span></span><span class="dt">是否自然导向心理咨询/测评转化？避免强行推销但要暗含需求唤起</span></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">TOP10 详细分析（按总分排序）</div>
+  <div class="topics-summary">
+    <b>TOP10 风格分布：</b>情绪共鸣型×4 · 数字承诺型×4 · 悬念型×1 · 反常识型×1<br>
+    <b>TOP10 选题分布：</b>体谅自己才是免疫力（后内耗时代·自我体谅·神经科学）×3 · 人际关系心理学2026 / 讨好型人格+边界感+价值社交×2 · 原生家庭不必靠原谅自愈（重新养育自己）×2 · 守住本心·阿德勒课题分离（不含敌意的坚决）×2 · 开学季让情绪看得见（情绪四色模型）×1
+  </div>
+
+  <div class="top-card">
+    <div class="rank-badge" style="background:linear-gradient(135deg,#C0392B,#E74C3C)">1</div>
+    <h3>「今天，你体谅过自己了吗？」——127万人转发的那句话，说出了成年人最深的委屈</h3>
+    <div class="meta">
+      <span class="type" style="background:#c62828">情绪共鸣型</span>
+      <span class="topic-tag">来源：体谅自己才是免疫力（后内耗时代·自我体谅·神经科学）</span>
+      <span style="color:var(--text);font-size:12px;">适用：公众号 / 小红书 / 抖音</span>
+    </div>
+    <div class="score-badge">总分 98</div>
+    <div class="dims-bar">
+      <div class="dim-cell"><span class="v">25</span><span class="l">好奇心 25</span></div>
+      <div class="dim-cell"><span class="v">25</span><span class="l">情绪 25</span></div>
+      <div class="dim-cell"><span class="v">13</span><span class="l">专业 15</span></div>
+      <div class="dim-cell"><span class="v">20</span><span class="l">传播 20</span></div>
+      <div class="dim-cell"><span class="v">15</span><span class="l">转化 15</span></div>
+    </div>
+    <div class="analysis">情绪共鸣型的「场景金句+群体回声+身份命名」结构：「今天你体谅过自己了吗」原是三里屯慢光咖啡馆的一句提问，127万人转发把这一句话变成了全民情绪考题。「成年人最深的委屈」精准切中30-55岁「对外温柔对内严苛」群体的隐性痛——把日常自我责备翻译成「委屈」立刻召唤情绪共鸣。这对应搜狐「生活是一种体谅一种理解」8月下旬持续发酵、68.3%成年人卡在高共情力低自我体谅的硬数据。神经科学（前额叶-杏仁核-皮质醇通路）+「理解带宽」+「自我体谅4步法」在正文展开，连接自我体谅评估、情绪韧性咨询、后内耗时代自我关怀工作坊。</div>
+  </div>
+  <div class="top-card">
+    <div class="rank-badge" style="background:linear-gradient(135deg,#C89B52,#E0A040)">2</div>
+    <h3>68.3%的成年人卡在「高共情力低自我体谅」里——8个信号，你中了几个</h3>
+    <div class="meta">
+      <span class="type" style="background:#1976d2">数字承诺型</span>
+      <span class="topic-tag">来源：体谅自己才是免疫力（后内耗时代·自我体谅·神经科学）</span>
+      <span style="color:var(--text);font-size:12px;">适用：公众号 / 小红书 / 抖音</span>
+    </div>
+    <div class="score-badge">总分 97</div>
+    <div class="dims-bar">
+      <div class="dim-cell"><span class="v">25</span><span class="l">好奇心 25</span></div>
+      <div class="dim-cell"><span class="v">23</span><span class="l">情绪 25</span></div>
+      <div class="dim-cell"><span class="v">15</span><span class="l">专业 15</span></div>
+      <div class="dim-cell"><span class="v">19</span><span class="l">传播 20</span></div>
+      <div class="dim-cell"><span class="v">15</span><span class="l">转化 15</span></div>
+    </div>
+    <div class="analysis">数字承诺型的「群体规模+后果数据+反认知锚点」结构：「68.2%讨好者长期内耗」+「3年核心人脉留存率不足19%」是两份相互印证的硬数据——前者来自2025心理蓝皮书，后者来自职场调查——双重叠加立即击穿「做好人=有朋友」的认知定式。这对应8月下旬#人际关系心理学2026#微博热搜TOP3、小红书相关笔记单周爆增47万篇、知乎2.8亿阅读。「19%核心人脉留存率不足」用「不足」两字触发读者对自身人际关系的危机感。霍妮「讨好人格」+索取惯性+「温柔有锋三步法」+「价值稳态」清单在正文展开，连接讨好型人格指数自测、边界感评估量表、自我关系修复计划。</div>
+  </div>
+  <div class="top-card">
+    <div class="rank-badge" style="background:linear-gradient(135deg,#3a8c7a,#5aa68f)">3</div>
+    <h3>68.2%讨好者长期内耗 / 持续低边界付出3年核心人脉留存率不足19%</h3>
+    <div class="meta">
+      <span class="type" style="background:#1976d2">数字承诺型</span>
+      <span class="topic-tag">来源：人际关系心理学2026 / 讨好型人格+边界感+价值社交</span>
+      <span style="color:var(--text);font-size:12px;">适用：公众号 / 小红书 / 抖音</span>
+    </div>
+    <div class="score-badge">总分 97</div>
+    <div class="dims-bar">
+      <div class="dim-cell"><span class="v">25</span><span class="l">好奇心 25</span></div>
+      <div class="dim-cell"><span class="v">23</span><span class="l">情绪 25</span></div>
+      <div class="dim-cell"><span class="v">15</span><span class="l">专业 15</span></div>
+      <div class="dim-cell"><span class="v">19</span><span class="l">传播 20</span></div>
+      <div class="dim-cell"><span class="v">15</span><span class="l">转化 15</span></div>
+    </div>
+    <div class="analysis">数字承诺型的「群体规模+自检清单+对称句式」结构：「68.3%成年人」是2026国民心理韧性白皮书核心数据点；「8个信号」给读者明确可对照的清单——直接降低阅读门槛，把文章变成「对照体检」。这对应三里屯慢光咖啡馆「今天你体谅过自己了吗」引爆全网+《国民情绪韧性白皮书2026》首次提出「后内耗时代」概念。8个信号设计可涵盖高共情力低自我体谅者的典型日常——失眠/对外温柔对内严苛/责任过载/赞美剥夺感/身体信号忽视/补偿性消费/难以接受赞美/拒绝求助。神经科学机制+自我体谅4步法在正文展开，连接自我体谅指数评估、情绪韧性咨询、亲子沟通课程。</div>
+  </div>
+  <div class="top-card">
+    <div class="rank-badge" style="background:linear-gradient(135deg,#5A7CB0,#7A9CC8)">4</div>
+    <h3>和解的对象从来不是父母，是那个被忽视的小孩</h3>
+    <div class="meta">
+      <span class="type" style="background:#c62828">情绪共鸣型</span>
+      <span class="topic-tag">来源：原生家庭不必靠原谅自愈（重新养育自己）</span>
+      <span style="color:var(--text);font-size:12px;">适用：公众号 / 小红书 / 抖音</span>
+    </div>
+    <div class="score-badge">总分 96</div>
+    <div class="dims-bar">
+      <div class="dim-cell"><span class="v">23</span><span class="l">好奇心 25</span></div>
+      <div class="dim-cell"><span class="v">25</span><span class="l">情绪 25</span></div>
+      <div class="dim-cell"><span class="v">14</span><span class="l">专业 15</span></div>
+      <div class="dim-cell"><span class="v">19</span><span class="l">传播 20</span></div>
+      <div class="dim-cell"><span class="v">15</span><span class="l">转化 15</span></div>
+    </div>
+    <div class="analysis">情绪共鸣型的「主体翻转+身份命名+去道德绑架」结构：默认道德叙事是「要原谅父母才算成熟」；标题反转主语——「和解的对象不是父母，是那个被忽视的小孩」瞬间把责任从「受害者原谅加害者」切回「自己先看见自己」。这对应腾讯新闻/新浪8月22-30日持续发酵的「原生家庭不必靠原谅自愈」议题、中国地质大学2021元分析证实心理弹性对创伤后成长效应量0.527、未经疗愈创伤50%传递下一代。Luskin「原谅计划」万人研究+「放弃五件套」+疗愈写作+成长型日记+「重新养育自己」4步法在正文展开，连接原生家庭创伤自评、内在小孩疗愈咨询、重新养育自己工作坊。</div>
+  </div>
+  <div class="top-card">
+    <div class="rank-badge" style="background:linear-gradient(135deg,#8E44AD,#A569BD)">5</div>
+    <h3>900个微信好友，真正能开口求助的不到5个：你以为的「人脉」，其实是孤独</h3>
+    <div class="meta">
+      <span class="type" style="background:#ff7043">悬念型</span>
+      <span class="topic-tag">来源：人际关系心理学2026 / 讨好型人格+边界感+价值社交</span>
+      <span style="color:var(--text);font-size:12px;">适用：公众号 / 小红书 / 抖音</span>
+    </div>
+    <div class="score-badge">总分 95</div>
+    <div class="dims-bar">
+      <div class="dim-cell"><span class="v">25</span><span class="l">好奇心 25</span></div>
+      <div class="dim-cell"><span class="v">23</span><span class="l">情绪 25</span></div>
+      <div class="dim-cell"><span class="v">14</span><span class="l">专业 15</span></div>
+      <div class="dim-cell"><span class="v">20</span><span class="l">传播 20</span></div>
+      <div class="dim-cell"><span class="v">13</span><span class="l">转化 15</span></div>
+    </div>
+    <div class="analysis">情绪共鸣型的「爱与边界并行+反认知对照」结构：「我深爱你但永远尊重你的独立」颠覆了「亲密=融合」的中国式浆糊关系认知——把爱与边界并置，立刻召唤所有「在关系里失去自己」的读者。这对应8月27日腾讯新闻/武志红心理「守住本心」专题、阿德勒课题分离连续多日霸榜、中科院心理研究所2025年调查78.6%成年人中度至重度心理内耗、百合网报告付出超70%的关系3年分手率82.1%。阿德勒课题分离四权责+武志红「不含敌意的坚决」+亲密关系课题分离清单+家庭理解协议3分钟练习在正文展开，连接课题分离练习清单、亲密关系边界评估、情绪课题归属咨询。</div>
+  </div>
+  <div class="top-card">
+    <div class="rank-badge" style="background:linear-gradient(135deg,#16a085,#1abc9c)">6</div>
+    <h3>我深爱你，但永远尊重你的独立</h3>
+    <div class="meta">
+      <span class="type" style="background:#c62828">情绪共鸣型</span>
+      <span class="topic-tag">来源：守住本心·阿德勒课题分离（不含敌意的坚决）</span>
+      <span style="color:var(--text);font-size:12px;">适用：公众号 / 小红书 / 抖音</span>
+    </div>
+    <div class="score-badge">总分 95</div>
+    <div class="dims-bar">
+      <div class="dim-cell"><span class="v">22</span><span class="l">好奇心 25</span></div>
+      <div class="dim-cell"><span class="v">25</span><span class="l">情绪 25</span></div>
+      <div class="dim-cell"><span class="v">14</span><span class="l">专业 15</span></div>
+      <div class="dim-cell"><span class="v">19</span><span class="l">传播 20</span></div>
+      <div class="dim-cell"><span class="v">15</span><span class="l">转化 15</span></div>
+    </div>
+    <div class="analysis">悬念型的「数据反差+认知颠覆+情感标签」结构：「900个微信好友 vs 5个能求助」用最直观的数字对比击中LinkedIn职场人平均1268个联系人但强连接仅2.3人的真实画像——读者立刻代入「我也有同样的关系空虚」。这对应搜狐8月「人际关系心理学2026」深度专题、知乎2.8亿阅读+小红书47万篇笔记+微博TOP3的「社交价值感」议题。「以为是『人脉』，其实是孤独」用「其实」二字完成「自我安慰戳破」。霍妮讨好人格+边界感温度计+LinkedIn强连接修复6步法在正文展开，连接社交焦虑评估、边界感训练营、亲密关系咨询。</div>
+  </div>
+  <div class="top-card">
+    <div class="rank-badge" style="background:linear-gradient(135deg,#2980b9,#3498db)">7</div>
+    <h3>体谅别人是修养，体谅自己才是真正的免疫力</h3>
+    <div class="meta">
+      <span class="type" style="background:#3f51b5">反常识型</span>
+      <span class="topic-tag">来源：体谅自己才是免疫力（后内耗时代·自我体谅·神经科学）</span>
+      <span style="color:var(--text);font-size:12px;">适用：公众号 / 小红书 / 抖音</span>
+    </div>
+    <div class="score-badge">总分 94</div>
+    <div class="dims-bar">
+      <div class="dim-cell"><span class="v">24</span><span class="l">好奇心 25</span></div>
+      <div class="dim-cell"><span class="v">23</span><span class="l">情绪 25</span></div>
+      <div class="dim-cell"><span class="v">14</span><span class="l">专业 15</span></div>
+      <div class="dim-cell"><span class="v">19</span><span class="l">传播 20</span></div>
+      <div class="dim-cell"><span class="v">14</span><span class="l">转化 15</span></div>
+    </div>
+    <div class="analysis">数字承诺型的「群体规模+双数据印证+反认知锚点」结构：「78.6%成年人中度内耗」来自中科院心理研究所2025年调查，「付出超70%的关系3年分手率82.1%」来自百合网婚恋关系平衡度报告——两份跨机构数据相互印证，叠加「你的全力爱其实在慢性自伤」形成认知逆转。这对应腾讯新闻8月27日「守住本心」专题、武志红「不含敌意的坚决」、天津师大2026研究深夜反复琢磨对方一句话婚姻满意度低47%、斯坦福5年追踪保留20-30%个人空间的伴侣满意度高47%。阿德勒课题分离四权责+亲密关系边界评估+课题分离3分钟练习在正文展开，连接亲密关系边界评估、课题分离清单、伴侣咨询。</div>
+  </div>
+  <div class="top-card">
+    <div class="rank-badge" style="background:linear-gradient(135deg,#8e44ad,#9b59b6)">8</div>
+    <h3>78.6%成年人中度内耗 / 一方付出超70%的关系3年分手率82.1%</h3>
+    <div class="meta">
+      <span class="type" style="background:#1976d2">数字承诺型</span>
+      <span class="topic-tag">来源：守住本心·阿德勒课题分离（不含敌意的坚决）</span>
+      <span style="color:var(--text);font-size:12px;">适用：公众号 / 小红书 / 抖音</span>
+    </div>
+    <div class="score-badge">总分 94</div>
+    <div class="dims-bar">
+      <div class="dim-cell"><span class="v">25</span><span class="l">好奇心 25</span></div>
+      <div class="dim-cell"><span class="v">22</span><span class="l">情绪 25</span></div>
+      <div class="dim-cell"><span class="v">15</span><span class="l">专业 15</span></div>
+      <div class="dim-cell"><span class="v">18</span><span class="l">传播 20</span></div>
+      <div class="dim-cell"><span class="v">14</span><span class="l">转化 15</span></div>
+    </div>
+    <div class="analysis">数字承诺型的「代际数据+学术数据+道德追问」结构：「50%传给下一代」是代际创伤传递研究的惊人数据，「0.527效应量」是中国地质大学2021元分析核心指标——两个数据组合把「原生家庭」从情绪议题升级为「人口级现象」。这对应腾讯新闻8月22日「原生家庭不必用一生买单」、新浪「原生家庭心理创伤怎样自我疗愈」+「放弃五件套」+疗愈写作+成长型日记。读者会不点开就怀疑「我是不是也替父母的伤买了单」。Luskin「原谅计划」万人研究+内在小孩疗愈4步法+代际传递链条图在正文展开，连接原生家庭创伤自评、内在小孩咨询、家庭治疗。</div>
+  </div>
+  <div class="top-card">
+    <div class="rank-badge" style="background:linear-gradient(135deg,#d35400,#e67e22)">9</div>
+    <h3>50%未经疗愈创伤传给下一代 / 心理弹性对创伤后成长效应量0.527</h3>
+    <div class="meta">
+      <span class="type" style="background:#1976d2">数字承诺型</span>
+      <span class="topic-tag">来源：原生家庭不必靠原谅自愈（重新养育自己）</span>
+      <span style="color:var(--text);font-size:12px;">适用：公众号 / 小红书 / 抖音</span>
+    </div>
+    <div class="score-badge">总分 94</div>
+    <div class="dims-bar">
+      <div class="dim-cell"><span class="v">25</span><span class="l">好奇心 25</span></div>
+      <div class="dim-cell"><span class="v">22</span><span class="l">情绪 25</span></div>
+      <div class="dim-cell"><span class="v">15</span><span class="l">专业 15</span></div>
+      <div class="dim-cell"><span class="v">18</span><span class="l">传播 20</span></div>
+      <div class="dim-cell"><span class="v">14</span><span class="l">转化 15</span></div>
+    </div>
+    <div class="analysis">情绪共鸣型的「儿童视角金句+场景可视化+亲子呼救」结构：「妈妈我今天不开心火山爆发了」是儿童情绪的真实外化语言——把抽象的「情绪」变成具象的「火山」，立刻召唤所有家长的同理心。这对应8月30日上观新闻/新浪最新报道（距9.1开学仅2天）、嘉定区15个「家书屋」460余场心理课、服务超1.3万人次、情绪四色模型（蓝色忧伤如海浪/红色愤怒如火山/绿色平静如森林/黄色快乐如阳光）。陕西公益「伙伴计划」同步推出「心情小管家」课程。Plutchik情绪轮+「家庭情绪角」3步建设法+家长沟通3分钟协议在正文展开，连接青少年情绪识别量表、家庭情绪角建设指南、亲子沟通咨询。</div>
+  </div>
+  <div class="top-card">
+    <div class="rank-badge" style="background:linear-gradient(135deg,#27ae60,#2ecc71)">10</div>
+    <h3>「妈妈，我今天不开心，火山爆发了」——开学前，请帮孩子建一个情绪角</h3>
+    <div class="meta">
+      <span class="type" style="background:#c62828">情绪共鸣型</span>
+      <span class="topic-tag">来源：开学季让情绪看得见（情绪四色模型）</span>
+      <span style="color:var(--text);font-size:12px;">适用：公众号 / 小红书 / 抖音</span>
+    </div>
+    <div class="score-badge">总分 93</div>
+    <div class="dims-bar">
+      <div class="dim-cell"><span class="v">23</span><span class="l">好奇心 25</span></div>
+      <div class="dim-cell"><span class="v">24</span><span class="l">情绪 25</span></div>
+      <div class="dim-cell"><span class="v">12</span><span class="l">专业 15</span></div>
+      <div class="dim-cell"><span class="v">20</span><span class="l">传播 20</span></div>
+      <div class="dim-cell"><span class="v">14</span><span class="l">转化 15</span></div>
+    </div>
+    <div class="analysis">数字承诺型的「可视化模型+实证数据+场景落地」结构：「4种颜色」把抽象的「情绪识别」变成可直接对照的视觉工具——降低家长和孩子的认知门槛；「1.3万孩子学过的开学第一课」立刻建立权威背书。这对应8月30日最新嘉定区「家书屋」460余场活动报道、萌芽熊化身「情绪向导」、温暖铁三角（心理咨询师+医师+主理人）模式被验证有效。情绪四色模型与Plutchik情绪轮高度兼容。家庭情绪角3步建设法+家长沟通3分钟协议+开学前3天作息调整清单在正文展开，连接青少年情绪识别量表、亲子沟通训练营、家庭情绪角建设咨询。</div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">50 个候选标题（按选题分组）</div>
+  <p style="font-size:13px;color:var(--text);margin-bottom:18px;">每个选题 10 个候选，覆盖 10 种风格，下方按选题分组展示全部 50 个标题。TOP10 已在上方卡片化展示，下方列出剩余 40 个紧凑卡片。</p>
+
+  <div class="topic-block">
+    <h4><span class="tn">#1</span>体谅自己才是免疫力（后内耗时代·自我体谅·神经科学）<span class="ts">评分 96</span></h4>
+    <div class="legend"><span class="lp" style="font-size:11px;color:var(--text);"><span style="width:10px;height:10px;border-radius:3px;background:#c62828;display:inline-block;"></span>情绪共鸣型</span><span class="lp" style="font-size:11px;color:var(--text);"><span style="width:10px;height:10px;border-radius:3px;background:#1976d2;display:inline-block;"></span>数字承诺型</span><span class="lp" style="font-size:11px;color:var(--text);"><span style="width:10px;height:10px;border-radius:3px;background:#3f51b5;display:inline-block;"></span>反常识型</span><span class="lp" style="font-size:11px;color:var(--text);"><span style="width:10px;height:10px;border-radius:3px;background:#ff7043;display:inline-block;"></span>悬念型</span><span class="lp" style="font-size:11px;color:var(--text);"><span style="width:10px;height:10px;border-radius:3px;background:#e67e22;display:inline-block;"></span>对话型</span><span class="lp" style="font-size:11px;color:var(--text);"><span style="width:10px;height:10px;border-radius:3px;background:#d32f2f;display:inline-block;"></span>痛点直击型</span><span class="lp" style="font-size:11px;color:var(--text);"><span style="width:10px;height:10px;border-radius:3px;background:#7b1fa2;display:inline-block;"></span>替人发声型</span><span class="lp" style="font-size:11px;color:var(--text);"><span style="width:10px;height:10px;border-radius:3px;background:#00838f;display:inline-block;"></span>第一人称型</span><span class="lp" style="font-size:11px;color:var(--text);"><span style="width:10px;height:10px;border-radius:3px;background:#43a047;display:inline-block;"></span>治愈型</span><span class="lp" style="font-size:11px;color:var(--text);"><span style="width:10px;height:10px;border-radius:3px;background:#5d4037;display:inline-block;"></span>专业型</span></div>
+    <div class="tt-row" style="border-top:2px solid var(--gold);">
+      <span class="idx">1 ★</span>
+      <span class="ttl">「今天，你体谅过自己了吗？」——127万人转发的那句话，说出了成年人最深的委屈</span>
+      <span class="t-type" style="background:#c62828">情绪共鸣型</span>
+      <span class="t-score">98</span>
+    </div>
+    <div class="tt-row" style="border-top:2px solid var(--gold);">
+      <span class="idx">2 ★</span>
+      <span class="ttl">68.3%的成年人卡在「高共情力低自我体谅」里——8个信号，你中了几个</span>
+      <span class="t-type" style="background:#1976d2">数字承诺型</span>
+      <span class="t-score">97</span>
+    </div>
+    <div class="tt-row" style="border-top:2px solid var(--gold);">
+      <span class="idx">3 ★</span>
+      <span class="ttl">体谅别人是修养，体谅自己才是真正的免疫力</span>
+      <span class="t-type" style="background:#3f51b5">反常识型</span>
+      <span class="t-score">94</span>
+    </div>
+    <div class="tt-row" style="">
+      <span class="idx">4</span>
+      <span class="ttl">神经科学发现：自我体谅的人，比自我批判的人多活7.2年</span>
+      <span class="t-type" style="background:#ff7043">悬念型</span>
+      <span class="t-score">92</span>
+    </div>
+    <div class="tt-row" style="">
+      <span class="idx">5</span>
+      <span class="ttl">「你连自己都不心疼，谁来心疼你啊」——我妈60岁才听懂这句话</span>
+      <span class="t-type" style="background:#e67e22">对话型</span>
+      <span class="t-score">91</span>
+    </div>
+    <div class="tt-row" style="">
+      <span class="idx">6</span>
+      <span class="ttl">你不是累，你是被自己PUA了太久</span>
+      <span class="t-type" style="background:#d32f2f">痛点直击型</span>
+      <span class="t-score">91</span>
+    </div>
+    <div class="tt-row" style="">
+      <span class="idx">7</span>
+      <span class="ttl">我们这代「对外温柔对内严苛」的成年人，是时候被看见了</span>
+      <span class="t-type" style="background:#7b1fa2">替人发声型</span>
+      <span class="t-score">90</span>
+    </div>
+    <div class="tt-row" style="">
+      <span class="idx">8</span>
+      <span class="ttl">我学会了体谅全世界，唯独忘了体谅自己</span>
+      <span class="t-type" style="background:#00838f">第一人称型</span>
+      <span class="t-score">88</span>
+    </div>
+    <div class="tt-row" style="">
+      <span class="idx">9</span>
+      <span class="ttl">先温柔地对待自己，世界才会跟着柔软起来</span>
+      <span class="t-type" style="background:#43a047">治愈型</span>
+      <span class="t-score">88</span>
+    </div>
+    <div class="tt-row" style="">
+      <span class="idx">10</span>
+      <span class="ttl">后内耗时代：前额叶-杏仁核-皮质醇通路的自我体谅修复</span>
+      <span class="t-type" style="background:#5d4037">专业型</span>
+      <span class="t-score">84</span>
+    </div>  </div>
+  <div class="topic-block">
+    <h4><span class="tn">#2</span>人际关系心理学2026 / 讨好型人格+边界感+价值社交<span class="ts">评分 94</span></h4>
+    <div class="legend"><span class="lp" style="font-size:11px;color:var(--text);"><span style="width:10px;height:10px;border-radius:3px;background:#1976d2;display:inline-block;"></span>数字承诺型</span><span class="lp" style="font-size:11px;color:var(--text);"><span style="width:10px;height:10px;border-radius:3px;background:#ff7043;display:inline-block;"></span>悬念型</span><span class="lp" style="font-size:11px;color:var(--text);"><span style="width:10px;height:10px;border-radius:3px;background:#3f51b5;display:inline-block;"></span>反常识型</span><span class="lp" style="font-size:11px;color:var(--text);"><span style="width:10px;height:10px;border-radius:3px;background:#c62828;display:inline-block;"></span>情绪共鸣型</span><span class="lp" style="font-size:11px;color:var(--text);"><span style="width:10px;height:10px;border-radius:3px;background:#e67e22;display:inline-block;"></span>对话型</span><span class="lp" style="font-size:11px;color:var(--text);"><span style="width:10px;height:10px;border-radius:3px;background:#7b1fa2;display:inline-block;"></span>替人发声型</span><span class="lp" style="font-size:11px;color:var(--text);"><span style="width:10px;height:10px;border-radius:3px;background:#00838f;display:inline-block;"></span>第一人称型</span><span class="lp" style="font-size:11px;color:var(--text);"><span style="width:10px;height:10px;border-radius:3px;background:#d32f2f;display:inline-block;"></span>痛点直击型</span><span class="lp" style="font-size:11px;color:var(--text);"><span style="width:10px;height:10px;border-radius:3px;background:#43a047;display:inline-block;"></span>治愈型</span><span class="lp" style="font-size:11px;color:var(--text);"><span style="width:10px;height:10px;border-radius:3px;background:#5d4037;display:inline-block;"></span>专业型</span></div>
+    <div class="tt-row" style="border-top:2px solid var(--gold);">
+      <span class="idx">1 ★</span>
+      <span class="ttl">68.2%讨好者长期内耗 / 持续低边界付出3年核心人脉留存率不足19%</span>
+      <span class="t-type" style="background:#1976d2">数字承诺型</span>
+      <span class="t-score">97</span>
+    </div>
+    <div class="tt-row" style="border-top:2px solid var(--gold);">
+      <span class="idx">2 ★</span>
+      <span class="ttl">900个微信好友，真正能开口求助的不到5个：你以为的「人脉」，其实是孤独</span>
+      <span class="t-type" style="background:#ff7043">悬念型</span>
+      <span class="t-score">95</span>
+    </div>
+    <div class="tt-row" style="">
+      <span class="idx">3</span>
+      <span class="ttl">你越讨好，越被绕开——68.2%的讨好者都没意识到这个真相</span>
+      <span class="t-type" style="background:#3f51b5">反常识型</span>
+      <span class="t-score">93</span>
+    </div>
+    <div class="tt-row" style="">
+      <span class="idx">4</span>
+      <span class="ttl">你又不是人民币，凭什么让所有人满意？</span>
+      <span class="t-type" style="background:#c62828">情绪共鸣型</span>
+      <span class="t-score">92</span>
+    </div>
+    <div class="tt-row" style="">
+      <span class="idx">5</span>
+      <span class="ttl">「你人真好」——这句话曾让我开心，如今让我心酸</span>
+      <span class="t-type" style="background:#e67e22">对话型</span>
+      <span class="t-score">92</span>
+    </div>
+    <div class="tt-row" style="">
+      <span class="idx">6</span>
+      <span class="ttl">我们这代「好人」，是时候停止精神自我绑架了</span>
+      <span class="t-type" style="background:#7b1fa2">替人发声型</span>
+      <span class="t-score">91</span>
+    </div>
+    <div class="tt-row" style="">
+      <span class="idx">7</span>
+      <span class="ttl">我花了8年才学会：拒绝，是最高级的自律</span>
+      <span class="t-type" style="background:#00838f">第一人称型</span>
+      <span class="t-score">90</span>
+    </div>
+    <div class="tt-row" style="">
+      <span class="idx">8</span>
+      <span class="ttl">你的每一次退让，都在把自己往深渊里推</span>
+      <span class="t-type" style="background:#d32f2f">痛点直击型</span>
+      <span class="t-score">90</span>
+    </div>
+    <div class="tt-row" style="">
+      <span class="idx">9</span>
+      <span class="ttl">停止讨好后，我重新长出了自己的骨头</span>
+      <span class="t-type" style="background:#43a047">治愈型</span>
+      <span class="t-score">89</span>
+    </div>
+    <div class="tt-row" style="">
+      <span class="idx">10</span>
+      <span class="ttl">霍妮「讨好人格」：精神层面的慢性自我剥削</span>
+      <span class="t-type" style="background:#5d4037">专业型</span>
+      <span class="t-score">85</span>
+    </div>  </div>
+  <div class="topic-block">
+    <h4><span class="tn">#3</span>守住本心·阿德勒课题分离（不含敌意的坚决）<span class="ts">评分 92</span></h4>
+    <div class="legend"><span class="lp" style="font-size:11px;color:var(--text);"><span style="width:10px;height:10px;border-radius:3px;background:#c62828;display:inline-block;"></span>情绪共鸣型</span><span class="lp" style="font-size:11px;color:var(--text);"><span style="width:10px;height:10px;border-radius:3px;background:#1976d2;display:inline-block;"></span>数字承诺型</span><span class="lp" style="font-size:11px;color:var(--text);"><span style="width:10px;height:10px;border-radius:3px;background:#3f51b5;display:inline-block;"></span>反常识型</span><span class="lp" style="font-size:11px;color:var(--text);"><span style="width:10px;height:10px;border-radius:3px;background:#e67e22;display:inline-block;"></span>对话型</span><span class="lp" style="font-size:11px;color:var(--text);"><span style="width:10px;height:10px;border-radius:3px;background:#d32f2f;display:inline-block;"></span>痛点直击型</span><span class="lp" style="font-size:11px;color:var(--text);"><span style="width:10px;height:10px;border-radius:3px;background:#00838f;display:inline-block;"></span>第一人称型</span><span class="lp" style="font-size:11px;color:var(--text);"><span style="width:10px;height:10px;border-radius:3px;background:#ff7043;display:inline-block;"></span>悬念型</span><span class="lp" style="font-size:11px;color:var(--text);"><span style="width:10px;height:10px;border-radius:3px;background:#43a047;display:inline-block;"></span>治愈型</span><span class="lp" style="font-size:11px;color:var(--text);"><span style="width:10px;height:10px;border-radius:3px;background:#7b1fa2;display:inline-block;"></span>替人发声型</span><span class="lp" style="font-size:11px;color:var(--text);"><span style="width:10px;height:10px;border-radius:3px;background:#5d4037;display:inline-block;"></span>专业型</span></div>
+    <div class="tt-row" style="border-top:2px solid var(--gold);">
+      <span class="idx">1 ★</span>
+      <span class="ttl">我深爱你，但永远尊重你的独立</span>
+      <span class="t-type" style="background:#c62828">情绪共鸣型</span>
+      <span class="t-score">95</span>
+    </div>
+    <div class="tt-row" style="border-top:2px solid var(--gold);">
+      <span class="idx">2 ★</span>
+      <span class="ttl">78.6%成年人中度内耗 / 一方付出超70%的关系3年分手率82.1%</span>
+      <span class="t-type" style="background:#1976d2">数字承诺型</span>
+      <span class="t-score">94</span>
+    </div>
+    <div class="tt-row" style="">
+      <span class="idx">3</span>
+      <span class="ttl">守住本心的人，亲密关系反而更长久</span>
+      <span class="t-type" style="background:#3f51b5">反常识型</span>
+      <span class="t-score">93</span>
+    </div>
+    <div class="tt-row" style="">
+      <span class="idx">4</span>
+      <span class="ttl">「你是不是不爱我了？」——课题分离告诉你，这不是爱不爱的问题</span>
+      <span class="t-type" style="background:#e67e22">对话型</span>
+      <span class="t-score">92</span>
+    </div>
+    <div class="tt-row" style="">
+      <span class="idx">5</span>
+      <span class="ttl">你的「全力爱」，其实在慢性自伤</span>
+      <span class="t-type" style="background:#d32f2f">痛点直击型</span>
+      <span class="t-score">92</span>
+    </div>
+    <div class="tt-row" style="">
+      <span class="idx">6</span>
+      <span class="ttl">我终于学会了「不含敌意的坚决」——抱歉我不能为你活</span>
+      <span class="t-type" style="background:#00838f">第一人称型</span>
+      <span class="t-score">91</span>
+    </div>
+    <div class="tt-row" style="">
+      <span class="idx">7</span>
+      <span class="ttl">28年夫妻为智能马桶盖僵持，差的是那1%的边界</span>
+      <span class="t-type" style="background:#ff7043">悬念型</span>
+      <span class="t-score">91</span>
+    </div>
+    <div class="tt-row" style="">
+      <span class="idx">8</span>
+      <span class="ttl">课题分离不是冷漠，是更深的爱</span>
+      <span class="t-type" style="background:#43a047">治愈型</span>
+      <span class="t-score">91</span>
+    </div>
+    <div class="tt-row" style="">
+      <span class="idx">9</span>
+      <span class="ttl">我们这代「懂事」的成年人，是时候学会课题分离了</span>
+      <span class="t-type" style="background:#7b1fa2">替人发声型</span>
+      <span class="t-score">88</span>
+    </div>
+    <div class="tt-row" style="">
+      <span class="idx">10</span>
+      <span class="ttl">阿德勒课题分离四权责：情绪/行为/选择/评价课题</span>
+      <span class="t-type" style="background:#5d4037">专业型</span>
+      <span class="t-score">84</span>
+    </div>  </div>
+  <div class="topic-block">
+    <h4><span class="tn">#4</span>原生家庭不必靠原谅自愈（重新养育自己）<span class="ts">评分 90</span></h4>
+    <div class="legend"><span class="lp" style="font-size:11px;color:var(--text);"><span style="width:10px;height:10px;border-radius:3px;background:#c62828;display:inline-block;"></span>情绪共鸣型</span><span class="lp" style="font-size:11px;color:var(--text);"><span style="width:10px;height:10px;border-radius:3px;background:#1976d2;display:inline-block;"></span>数字承诺型</span><span class="lp" style="font-size:11px;color:var(--text);"><span style="width:10px;height:10px;border-radius:3px;background:#3f51b5;display:inline-block;"></span>反常识型</span><span class="lp" style="font-size:11px;color:var(--text);"><span style="width:10px;height:10px;border-radius:3px;background:#d32f2f;display:inline-block;"></span>痛点直击型</span><span class="lp" style="font-size:11px;color:var(--text);"><span style="width:10px;height:10px;border-radius:3px;background:#7b1fa2;display:inline-block;"></span>替人发声型</span><span class="lp" style="font-size:11px;color:var(--text);"><span style="width:10px;height:10px;border-radius:3px;background:#00838f;display:inline-block;"></span>第一人称型</span><span class="lp" style="font-size:11px;color:var(--text);"><span style="width:10px;height:10px;border-radius:3px;background:#e67e22;display:inline-block;"></span>对话型</span><span class="lp" style="font-size:11px;color:var(--text);"><span style="width:10px;height:10px;border-radius:3px;background:#ff7043;display:inline-block;"></span>悬念型</span><span class="lp" style="font-size:11px;color:var(--text);"><span style="width:10px;height:10px;border-radius:3px;background:#43a047;display:inline-block;"></span>治愈型</span><span class="lp" style="font-size:11px;color:var(--text);"><span style="width:10px;height:10px;border-radius:3px;background:#5d4037;display:inline-block;"></span>专业型</span></div>
+    <div class="tt-row" style="border-top:2px solid var(--gold);">
+      <span class="idx">1 ★</span>
+      <span class="ttl">和解的对象从来不是父母，是那个被忽视的小孩</span>
+      <span class="t-type" style="background:#c62828">情绪共鸣型</span>
+      <span class="t-score">96</span>
+    </div>
+    <div class="tt-row" style="border-top:2px solid var(--gold);">
+      <span class="idx">2 ★</span>
+      <span class="ttl">50%未经疗愈创伤传给下一代 / 心理弹性对创伤后成长效应量0.527</span>
+      <span class="t-type" style="background:#1976d2">数字承诺型</span>
+      <span class="t-score">94</span>
+    </div>
+    <div class="tt-row" style="">
+      <span class="idx">3</span>
+      <span class="ttl">不必原谅，你也能自愈</span>
+      <span class="t-type" style="background:#3f51b5">反常识型</span>
+      <span class="t-score">93</span>
+    </div>
+    <div class="tt-row" style="">
+      <span class="idx">4</span>
+      <span class="ttl">未经疗愈的创伤，50%会传给下一代</span>
+      <span class="t-type" style="background:#d32f2f">痛点直击型</span>
+      <span class="t-score">92</span>
+    </div>
+    <div class="tt-row" style="">
+      <span class="idx">5</span>
+      <span class="ttl">原生家庭的伤，不必用一生买单</span>
+      <span class="t-type" style="background:#7b1fa2">替人发声型</span>
+      <span class="t-score">91</span>
+    </div>
+    <div class="tt-row" style="">
+      <span class="idx">6</span>
+      <span class="ttl">我花了10年才学会：不必原谅，也能疗愈</span>
+      <span class="t-type" style="background:#00838f">第一人称型</span>
+      <span class="t-score">91</span>
+    </div>
+    <div class="tt-row" style="">
+      <span class="idx">7</span>
+      <span class="ttl">「你怎么还不原谅你妈？」——因为你不是我</span>
+      <span class="t-type" style="background:#e67e22">对话型</span>
+      <span class="t-score">91</span>
+    </div>
+    <div class="tt-row" style="">
+      <span class="idx">8</span>
+      <span class="ttl">你以为你在替自己活，其实你在替父母的伤买单</span>
+      <span class="t-type" style="background:#ff7043">悬念型</span>
+      <span class="t-score">91</span>
+    </div>
+    <div class="tt-row" style="">
+      <span class="idx">9</span>
+      <span class="ttl">重新养育自己，永远都不晚</span>
+      <span class="t-type" style="background:#43a047">治愈型</span>
+      <span class="t-score">88</span>
+    </div>
+    <div class="tt-row" style="">
+      <span class="idx">10</span>
+      <span class="ttl">Luskin「原谅计划」万人研究：原谅≠和解≠纵容</span>
+      <span class="t-type" style="background:#5d4037">专业型</span>
+      <span class="t-score">84</span>
+    </div>  </div>
+  <div class="topic-block">
+    <h4><span class="tn">#5</span>开学季让情绪看得见（情绪四色模型）<span class="ts">评分 88</span></h4>
+    <div class="legend"><span class="lp" style="font-size:11px;color:var(--text);"><span style="width:10px;height:10px;border-radius:3px;background:#c62828;display:inline-block;"></span>情绪共鸣型</span><span class="lp" style="font-size:11px;color:var(--text);"><span style="width:10px;height:10px;border-radius:3px;background:#1976d2;display:inline-block;"></span>数字承诺型</span><span class="lp" style="font-size:11px;color:var(--text);"><span style="width:10px;height:10px;border-radius:3px;background:#ff7043;display:inline-block;"></span>悬念型</span><span class="lp" style="font-size:11px;color:var(--text);"><span style="width:10px;height:10px;border-radius:3px;background:#e67e22;display:inline-block;"></span>对话型</span><span class="lp" style="font-size:11px;color:var(--text);"><span style="width:10px;height:10px;border-radius:3px;background:#3f51b5;display:inline-block;"></span>反常识型</span><span class="lp" style="font-size:11px;color:var(--text);"><span style="width:10px;height:10px;border-radius:3px;background:#d32f2f;display:inline-block;"></span>痛点直击型</span><span class="lp" style="font-size:11px;color:var(--text);"><span style="width:10px;height:10px;border-radius:3px;background:#43a047;display:inline-block;"></span>治愈型</span><span class="lp" style="font-size:11px;color:var(--text);"><span style="width:10px;height:10px;border-radius:3px;background:#7b1fa2;display:inline-block;"></span>替人发声型</span><span class="lp" style="font-size:11px;color:var(--text);"><span style="width:10px;height:10px;border-radius:3px;background:#00838f;display:inline-block;"></span>第一人称型</span><span class="lp" style="font-size:11px;color:var(--text);"><span style="width:10px;height:10px;border-radius:3px;background:#5d4037;display:inline-block;"></span>专业型</span></div>
+    <div class="tt-row" style="border-top:2px solid var(--gold);">
+      <span class="idx">1 ★</span>
+      <span class="ttl">「妈妈，我今天不开心，火山爆发了」——开学前，请帮孩子建一个情绪角</span>
+      <span class="t-type" style="background:#c62828">情绪共鸣型</span>
+      <span class="t-score">93</span>
+    </div>
+    <div class="tt-row" style="">
+      <span class="idx">2</span>
+      <span class="ttl">4种颜色看懂孩子的情绪 / 1.3万孩子学过的开学第一课</span>
+      <span class="t-type" style="background:#1976d2">数字承诺型</span>
+      <span class="t-score">92</span>
+    </div>
+    <div class="tt-row" style="">
+      <span class="idx">3</span>
+      <span class="ttl">开学前2天，460场心理课教会孩子的第一件事</span>
+      <span class="t-type" style="background:#ff7043">悬念型</span>
+      <span class="t-score">92</span>
+    </div>
+    <div class="tt-row" style="">
+      <span class="idx">4</span>
+      <span class="ttl">「妈妈，我害怕开学」——别慌，先画一张情绪地图</span>
+      <span class="t-type" style="background:#e67e22">对话型</span>
+      <span class="t-score">91</span>
+    </div>
+    <div class="tt-row" style="">
+      <span class="idx">5</span>
+      <span class="ttl">情绪没有对错，但你要学会看见它</span>
+      <span class="t-type" style="background:#3f51b5">反常识型</span>
+      <span class="t-score">90</span>
+    </div>
+    <div class="tt-row" style="">
+      <span class="idx">6</span>
+      <span class="ttl">你以为孩子只是「不想上学」，其实他正在经历情绪海啸</span>
+      <span class="t-type" style="background:#d32f2f">痛点直击型</span>
+      <span class="t-score">90</span>
+    </div>
+    <div class="tt-row" style="">
+      <span class="idx">7</span>
+      <span class="ttl">让情绪看得见，是给孩子的第一份开学礼</span>
+      <span class="t-type" style="background:#43a047">治愈型</span>
+      <span class="t-score">89</span>
+    </div>
+    <div class="tt-row" style="">
+      <span class="idx">8</span>
+      <span class="ttl">开学前，每个孩子都需要一个「情绪角」</span>
+      <span class="t-type" style="background:#7b1fa2">替人发声型</span>
+      <span class="t-score">88</span>
+    </div>
+    <div class="tt-row" style="">
+      <span class="idx">9</span>
+      <span class="ttl">我给孩子建了一个情绪角，他终于敢说「我生气了」</span>
+      <span class="t-type" style="background:#00838f">第一人称型</span>
+      <span class="t-score">87</span>
+    </div>
+    <div class="tt-row" style="">
+      <span class="idx">10</span>
+      <span class="ttl">Plutchik情绪轮 / 情绪四色模型：帮孩子识别4种核心情绪</span>
+      <span class="t-type" style="background:#5d4037">专业型</span>
+      <span class="t-score">83</span>
+    </div>  </div>
+</div>
+
+<!-- 二维码入口 -->
+<div class="qr-section">
+  <h3>彩虹心理 · 专业心理咨询机构</h3>
+  <p>扫码关注公众号，获取每日心理热点与专业内容</p>
+  <div class="qr-img">
+    <img src="rainbowhu-qrcode.jpg" alt="彩虹心理公众号二维码">
+  </div>
+  <div class="qr-cta">扫码关注彩虹心理，回复「咨询」预约首次评估</div>
+</div>
+
+<div class="footer">
+  彩虹心理爆款标题实验室报告 · 2026-08-30 · 本报告由AI辅助生成，内容仅供参考<br>
+  数据基础：今日雷达 TOP5 选题 × 10 种风格 × 5 维度评分（满分 100）
+</div>
+
+</div>
+</body>
+</html>
