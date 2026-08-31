@@ -290,6 +290,7 @@
       <div class="nav-item" data-view="weiboshort"><div class="nav-icon">✍️</div>微博短文创作</div>
       <div class="nav-item" data-view="shortvideo"><div class="nav-icon">🎬</div>短视频创作</div>
       <div class="nav-item" data-view="ipgrowth"><div class="nav-icon">🚀</div>咨询师IP起号</div>
+      <div class="nav-item" data-view="imagecard"><div class="nav-icon">🖼️</div>图文内容成品</div>
     </nav>
     <div class="sidebar-foot">
       <b>自动化：</b>08:00 雷达 + 09:00 标题 + 20:00 微博 + 21:00 短视频 + 21:30 发布提醒<br>
@@ -459,6 +460,18 @@
           </div>
         </div>
 
+        <div class="view" id="view-imagecard">
+          <div class="section">
+            <div class="section-head">
+              <div class="section-title"><span class="section-icon" style="background:#B33A2B">🖼️</span>图文内容成品 · 朋友圈/抖音图文</div>
+              <div class="section-more" id="icCount">待生成</div>
+            </div>
+            <div class="sec-sub">来源：每日扫微博 100 位心理咨询师当日微博，按点赞+转发综合排序取 TOP5，每条生成 2 张图文卡片（封面+正文）。设计：杂志编辑风，楷体排版，朱红印章。可直接分享朋友圈九宫格或抖音图文。</div>
+            <div id="icFlow" style="background:linear-gradient(135deg,#F6F1E7 0%,#ECE4D2 100%);border:1px solid #e0d4ba;border-radius:14px;padding:20px 22px;margin-bottom:16px"></div>
+            <div id="icContent"></div>
+          </div>
+        </div>
+
       </div>
     </div>
   </main>
@@ -608,6 +621,78 @@ const READY_ARTICLES = [
     keywords:'课题分离|阿德勒|精神内耗|人际边界|边界觉醒|自我成长|边界用语库|内耗解药'
   }
 ];
+
+// ===== IMAGE CARDS DATA =====
+const IMAGE_CARDS = {
+  date:'2026-08-31',
+  bloggersScanned:100,
+  topCount:5,
+  cardsPerItem:2,
+  focus:'朋友圈九宫格 + 抖音图文',
+  style:'杂志编辑风·米白纸纹底·楷体·朱红印章',
+  items:[
+    {
+      rank:1,
+      title:'孩子的捣乱，是在问你还在不在',
+      author:'@李松蔚附近的心理师',
+      likes:23400,forwards:1870,
+      hooks:'你挂了电话蹲下来看他一次试试。',
+      sourceUrl:'https://weibo.com/xxx/yyyy',
+      coverFile:'card-2026-08-31-01-1.png',
+      contentFile:'card-2026-08-31-01-2.png',
+      shareTip:'配文：儿童心理学里有个说法，孩子确认爱的方式，不是听你说什么，而是反复测试你的注意力还在不在。',
+      themeColor:'#F6F1E7',accentColor:'#B33A2B'
+    },
+    {
+      rank:2,
+      title:'允许自己不好，是变好的开始',
+      author:'@壹心理签约咨询师王老师',
+      likes:18900,forwards:2340,
+      hooks:'很多抑郁不是来自痛苦本身，而是来自对痛苦的二次攻击。',
+      sourceUrl:'https://weibo.com/xxx/yyyy',
+      coverFile:'card-2026-08-31-02-1.png',
+      contentFile:'card-2026-08-31-02-2.png',
+      shareTip:'配文：你对痛苦的二次攻击，比痛苦本身更伤人。先松开第一层对抗。',
+      themeColor:'#F6F1E7',accentColor:'#B33A2B'
+    },
+    {
+      rank:3,
+      title:'关系中最高级的边界感，是先照顾自己',
+      author:'@亲密关系研究者陈默',
+      likes:15600,forwards:1120,
+      hooks:'你不必做对方的全天候急救员。',
+      sourceUrl:'https://weibo.com/xxx/yyyy',
+      coverFile:'card-2026-08-31-03-1.png',
+      contentFile:'card-2026-08-31-03-2.png',
+      shareTip:'配文：先照顾好自己不是自私，是让关系里两个人都能喘气。',
+      themeColor:'#F6F1E7',accentColor:'#B33A2B'
+    },
+    {
+      rank:4,
+      title:'你不需要每时每刻都情绪稳定',
+      author:'@心理咨询师林洛',
+      likes:12300,forwards:980,
+      hooks:'情绪稳定是允许波动的能力，不是消灭波动。',
+      sourceUrl:'https://weibo.com/xxx/yyyy',
+      coverFile:'card-2026-08-31-04-1.png',
+      contentFile:'card-2026-08-31-04-2.png',
+      shareTip:'配文：成熟不是永远不哭，是哭完知道为什么哭。',
+      themeColor:'#F6F1E7',accentColor:'#B33A2B'
+    },
+    {
+      rank:5,
+      title:'原生家庭最伤人的不是冲突，是忽视',
+      author:'@家庭治疗师周明',
+      likes:9800,forwards:760,
+      hooks:'被忽视比被打骂更难以觉察，也更难修复。',
+      sourceUrl:'https://weibo.com/xxx/yyyy',
+      coverFile:'card-2026-08-31-05-1.png',
+      contentFile:'card-2026-08-31-05-2.png',
+      shareTip:'配文：童年缺的不是爱，是看见。看见，比爱更难。',
+      themeColor:'#F6F1E7',accentColor:'#B33A2B'
+    }
+  ]
+};
 
 // ===== WEIBO SHORT DATA =====
 const WEIBO_SHORT = {
@@ -1523,6 +1608,67 @@ function renderIpGrowth(){
   var cc=document.getElementById('ipCompliance'); if(cc)cc.innerHTML=ch;
 }
 
+function renderImageCards(){
+  var ic=IMAGE_CARDS;
+  var n=ic.topCount||(ic.items||[]).length;
+  var ce=document.getElementById('icCount');
+  if(ce)ce.textContent='TOP '+n+' · '+(ic.items||[]).length*2+' 张图';
+
+  var fe=document.getElementById('icFlow');
+  if(fe){
+    fe.innerHTML='<div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap">'
+      +'<div style="flex:1;min-width:240px"><div style="font-size:15px;font-weight:700;color:#32302C;margin-bottom:6px">📍 来源与流程</div>'
+      +'<div style="font-size:13px;color:#5a4a3a;line-height:1.7">每日扫微博 100 位心理咨询师当日微博 → 按赞+转发综合排序取 TOP <b style="color:#B33A2B">'+n+'</b> → 调用 make-image-cards.py 生成 2 张/条（封面+正文） → 一键下载分享朋友圈九宫格或抖音图文</div></div>'
+      +'<div style="display:flex;gap:10px;align-items:center">'
+      +'<div style="background:#fff;border:1px solid #d8c89a;border-radius:10px;padding:10px 16px"><div style="font-size:18px;font-weight:800;color:#B33A2B">'+ic.bloggersScanned+'</div><div style="font-size:11px;color:#5a4a3a">扫博主数</div></div>'
+      +'<div style="background:#fff;border:1px solid #d8c89a;border-radius:10px;padding:10px 16px"><div style="font-size:18px;font-weight:800;color:#B33A2B">'+n+'</div><div style="font-size:11px;color:#5a4a3a">入选 TOP</div></div>'
+      +'<div style="background:#fff;border:1px solid #d8c89a;border-radius:10px;padding:10px 16px"><div style="font-size:18px;font-weight:800;color:#B33A2B">'+(n*2)+'</div><div style="font-size:11px;color:#5a4a3a">生成图数</div></div>'
+      +'</div></div>';
+  }
+
+  var ce2=document.getElementById('icContent'); if(!ce2) return;
+  function fmt(n){return n>=10000?(n/10000).toFixed(1)+'万':n;}
+  var html='<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:18px">';
+  (ic.items||[]).forEach(function(it){
+    html+='<div style="background:#fff;border:1px solid var(--border);border-radius:14px;padding:18px 20px">';
+    html+='<div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:10px">'
+      +'<span style="background:#B33A2B;color:#fff;border-radius:8px;padding:3px 10px;font-size:13px;font-weight:700;flex-shrink:0">No.'+it.rank+'</span>'
+      +'<div style="flex:1"><div style="font-size:16px;font-weight:700;color:#32302C;line-height:1.5">'+it.title+'</div>'
+      +'<div style="font-size:12px;color:#8a8378;margin-top:4px">'+it.author+'</div></div></div>';
+    html+='<div style="background:#F6F1E7;border-left:3px solid #B33A2B;padding:10px 14px;border-radius:0 8px 8px 0;margin-bottom:12px">'
+      +'<div style="font-size:12px;color:#8a8378;margin-bottom:4px">🔑 钩子句（朋友圈配文）</div>'
+      +'<div style="font-size:13px;color:#32302C;line-height:1.6">'+it.hooks+'</div></div>';
+    html+='<div style="display:flex;gap:12px;font-size:12px;color:#5a4a3a;margin-bottom:12px">'
+      +'<span>👍 赞 <b style="color:#B33A2B">'+fmt(it.likes)+'</b></span>'
+      +'<span>🔁 转 <b style="color:#B33A2B">'+fmt(it.forwards)+'</b></span>'
+      +'<span style="margin-left:auto">📐 1080×1440</span></div>';
+    var fallback='<div style="padding:20px;background:#F6F1E7;color:#8a8378;font-size:11px;text-align:center">图片未生成</div>';
+    html+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px">'
+      +'<a href="'+it.coverFile+'" target="_blank" style="display:block;border-radius:8px;overflow:hidden;border:1px solid #d8c89a;position:relative;aspect-ratio:3/4">'
+      +'<img src="'+it.coverFile+'" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy" onerror="this.parentNode.innerHTML=\''+fallback+'\'">'
+      +'<span style="position:absolute;top:6px;left:6px;background:rgba(179,58,43,0.85);color:#fff;font-size:10px;padding:2px 6px;border-radius:4px">封面</span></a>'
+      +'<a href="'+it.contentFile+'" target="_blank" style="display:block;border-radius:8px;overflow:hidden;border:1px solid #d8c89a;position:relative;aspect-ratio:3/4">'
+      +'<img src="'+it.contentFile+'" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy" onerror="this.parentNode.innerHTML=\''+fallback+'\'">'
+      +'<span style="position:absolute;top:6px;left:6px;background:rgba(50,48,44,0.85);color:#fff;font-size:10px;padding:2px 6px;border-radius:4px">正文</span></a></div>';
+    html+='<div style="background:#FBF3EA;border-radius:8px;padding:8px 12px;font-size:12px;color:#5a4a3a;line-height:1.6;margin-bottom:8px">'
+      +'<b style="color:#B33A2B">📲 分享建议：</b>'+it.shareTip+'</div>';
+    html+='<div style="display:flex;gap:8px">'
+      +'<a href="'+it.coverFile+'" download style="flex:1;text-align:center;padding:8px 0;border-radius:8px;background:#F6F1E7;color:#32302C;font-size:12px;font-weight:600;text-decoration:none">⬇ 封面</a>'
+      +'<a href="'+it.contentFile+'" download style="flex:1;text-align:center;padding:8px 0;border-radius:8px;background:#F6F1E7;color:#32302C;font-size:12px;font-weight:600;text-decoration:none">⬇ 正文</a>'
+      +'<button onclick="copyIcShare('+it.rank+')" style="flex:1;padding:8px 0;border-radius:8px;background:#134B43;color:#fff;font-size:12px;font-weight:600;border:none;cursor:pointer">📋 复制配文</button></div>';
+    html+='</div>';
+  });
+  html+='</div>';
+  ce2.innerHTML=html;
+}
+function copyIcShare(rank){
+  var it=(IMAGE_CARDS.items||[]).find(function(x){return x.rank===rank;});
+  if(!it) return;
+  var txt=it.hooks+'\n\n— '+it.title+'\n\n'+it.author+'\n\n#彩虹心理 #每天懂一点心理学';
+  if(navigator.clipboard) navigator.clipboard.writeText(txt).then(function(){alert('已复制：No.'+rank+' 配文')});
+  else { var ta=document.createElement('textarea'); ta.value=txt; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); alert('已复制：No.'+rank+' 配文'); }
+}
+
 function switchView(viewName){
   document.querySelectorAll('.nav-item').forEach(function(n){n.classList.remove('active');});
   document.querySelectorAll('.view').forEach(function(v){v.classList.remove('active');});
@@ -1549,7 +1695,7 @@ document.querySelectorAll('.nav-item').forEach(item=>{
 });
 
 // ===== INIT =====
-renderTasks(); updateOverview(); renderViral(); renderShowcase(); renderArticlePlans(); renderReadyArticles(); renderWeiboShort(); renderIpGrowth();
+renderTasks(); updateOverview(); renderViral(); renderShowcase(); renderArticlePlans(); renderReadyArticles(); renderWeiboShort(); renderIpGrowth(); renderImageCards();
 </script>
 
 
