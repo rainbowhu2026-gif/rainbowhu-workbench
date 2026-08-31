@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>彩虹心理每日心理热点报告 · 2026-08-31</title>
+  <link rel="icon" href="rainbowhu-cover.ico" type="image/x-icon">
+  <style>
+    :root {
+      --brand-dark: #134B43;
+      --brand-gold: #C89B52;
+      --bg-cream: #F7F3EA;
+      --bg-light: #E8F0EA;
+      --text-main: #42665B;
+      --text-dark: #1A3C34;
+      --card-shadow: 0 4px 20px rgba(19, 75, 67, 0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg-cream);
+      color: var(--text-main);
+      line-height: 1.75;
+    }
+    .container { max-width: 920px; margin: 0 auto; padding: 32px 20px 64px; }
+    header {
+      background: linear-gradient(135deg, var(--brand-dark) 0%, #1A5A50 100%);
+      color: #fff;
+      padding: 48px 32px;
+      border-radius: 16px;
+      margin-bottom: 32px;
+      box-shadow: var(--card-shadow);
+    }
+    header h1 { font-size: 28px; font-weight: 700; margin-bottom: 12px; letter-spacing: 0.5px; }
+    header .subtitle { font-size: 15px; opacity: 0.92; margin-bottom: 20px; }
+    header .meta { display: flex; flex-wrap: wrap; gap: 16px; font-size: 13px; opacity: 0.85; }
+    header .meta span { background: rgba(255,255,255,0.12); padding: 4px 12px; border-radius: 20px; }
+
+    .section { background: #fff; border-radius: 14px; padding: 28px; margin-bottom: 24px; box-shadow: var(--card-shadow); }
+    .section h2 { color: var(--brand-dark); font-size: 20px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+    .section h2 .icon { width: 32px; height: 32px; background: var(--bg-light); border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; font-size: 16px; }
+
+    .top5-list { display: flex; flex-direction: column; gap: 20px; }
+    .topic-card {
+      border: 1px solid #E5E5E5;
+      border-radius: 12px;
+      padding: 22px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .topic-card:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(19,75,67,0.1); }
+    .topic-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 14px; flex-wrap: wrap; }
+    .topic-rank { width: 36px; height: 36px; background: var(--brand-dark); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 15px; flex-shrink: 0; }
+    .topic-title { flex: 1; min-width: 200px; }
+    .topic-title h3 { color: var(--text-dark); font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+    .topic-score { text-align: right; }
+    .topic-score .score { font-size: 26px; font-weight: 800; color: var(--brand-gold); }
+    .topic-score .score-label { font-size: 12px; color: #999; }
+    .topic-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+    .topic-meta span { font-size: 12px; padding: 3px 10px; border-radius: 4px; background: var(--bg-light); color: var(--brand-dark); }
+    .topic-meta .tag-source { background: #FFF8E7; color: #B8860B; }
+    .topic-body { font-size: 14px; }
+    .topic-body p { margin-bottom: 10px; }
+    .topic-body strong { color: var(--brand-dark); }
+    .four-questions { background: var(--bg-light); border-radius: 10px; padding: 16px; margin-top: 14px; }
+    .four-questions h4 { color: var(--brand-dark); font-size: 14px; margin-bottom: 10px; }
+    .four-questions ol { padding-left: 18px; font-size: 13.5px; }
+    .four-questions li { margin-bottom: 6px; }
+
+    .analysis-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+    .analysis-card { background: #FAFAFA; border-radius: 10px; padding: 18px; border-left: 4px solid var(--brand-gold); }
+    .analysis-card h4 { color: var(--brand-dark); font-size: 15px; margin-bottom: 10px; }
+    .analysis-card ul { padding-left: 18px; font-size: 13.5px; }
+    .analysis-card li { margin-bottom: 6px; }
+
+    .adapt-card { background: #FAFAFA; border-radius: 10px; padding: 18px; margin-bottom: 14px; }
+    .adapt-card h4 { color: var(--brand-dark); font-size: 15px; margin-bottom: 12px; }
+    .title-versions { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
+    .title-version { padding: 10px 14px; border-radius: 8px; font-size: 14px; }
+    .title-version.pro { background: var(--bg-light); color: var(--brand-dark); }
+    .title-version.emo { background: #FFF0F0; color: #8B3A3A; }
+    .title-version.bao { background: #FFF8E7; color: #8B6914; }
+    .title-version .label { font-size: 11px; font-weight: 700; margin-right: 8px; opacity: 0.8; }
+    .direction-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .direction-tags span { font-size: 12px; padding: 4px 10px; border-radius: 20px; border: 1px solid #DDD; color: #666; }
+
+    .category-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .category-table th, .category-table td { padding: 12px; text-align: left; border-bottom: 1px solid #EEE; }
+    .category-table th { background: var(--bg-light); color: var(--brand-dark); font-weight: 600; }
+    .category-table tr:hover { background: #FAFAFA; }
+
+    .qrcode-section {
+      background: linear-gradient(135deg, var(--brand-dark) 0%, #1A5A50 100%);
+      color: #fff;
+      border-radius: 16px;
+      padding: 40px 32px;
+      text-align: center;
+      margin-top: 32px;
+    }
+    .qrcode-section h2 { color: #fff; justify-content: center; margin-bottom: 12px; }
+    .qrcode-section p { opacity: 0.92; margin-bottom: 20px; }
+    .qrcode-section img { width: 160px; height: 160px; border-radius: 12px; background: #fff; padding: 8px; margin-bottom: 16px; }
+    .qrcode-section .cta { font-size: 18px; font-weight: 700; color: var(--brand-gold); }
+
+    footer { text-align: center; padding: 32px 0 0; font-size: 12px; color: #999; }
+
+    @media (max-width: 640px) {
+      header { padding: 32px 20px; }
+      header h1 { font-size: 22px; }
+      .topic-header { flex-direction: column; }
+      .topic-score { text-align: left; }
+      .section { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>彩虹心理每日心理热点报告</h1>
+      <div class="subtitle">基于微信公众号、微博、小红书、知乎四大平台近 24-72 小时高热内容筛选</div>
+      <div class="meta">
+        <span>📅 2026-08-31（周一）</span>
+        <span>🎯 TOP5 精选</span>
+        <span>📊 评分维度：痛点30 + 共鸣25 + 传播25 + 商业20</span>
+        <span>✍️ 内容总监：彩虹心理自媒体内容中心</span>
+      </div>
+    </header>
+
+    <section class="section">
+      <h2><span class="icon">🔥</span>今日 TOP5 高价值选题</h2>
+      <div class="top5-list">
+
+        <div class="topic-card">
+          <div class="topic-header">
+            <div class="topic-rank">1</div>
+            <div class="topic-title">
+              <h3>产后抑郁被当“矫情”：一个拥抱治不了病，但能接住她</h3>
+            </div>
+            <div class="topic-score">
+              <div class="score">95</div>
+              <div class="score-label">综合评分</div>
+            </div>
+          </div>
+          <div class="topic-meta">
+            <span class="tag-source">来源：重庆广电第1眼 / 微博热搜</span>
+            <span>平台：微博 / 今日头条</span>
+            <span>作者/账号：小丽医生的卫生科普 / 重庆广电第1眼</span>
+            <span>发布时间：2026-08-30</span>
+            <span>数据表现：34秒视频播放量超81万次；微博话题“妻子产后抑郁被丈夫紧紧抱住痛哭”登上热搜</span>
+            <span>分类：身心健康 / 女性心理</span>
+          </div>
+          <div class="topic-body">
+            <p><strong>爆款原因：</strong>真实家庭监控画面极具冲击力，完美触发“后怕—心疼—共鸣”情绪曲线。评论区高赞“这种丈夫太稀缺”直接切中产后女性“不被看见”的集体创伤。每5个产妇就有1个遭遇产后抑郁，但社会普遍误读为“矫情”。</p>
+            <p><strong>数据补充：</strong>全球产后抑郁发生率约10%-15%，中国部分研究检出率在10%-20%之间。产后激素断崖、睡眠剥夺、身份撕裂三重叠加，是典型生物-心理-社会综合模型。</p>
+            <div class="four-questions">
+              <h4>四个核心问题</h4>
+              <ol>
+                <li><strong>为什么值得做：</strong>高社会关注度+强情绪共鸣+女性心理服务高转化场景，能直接链接产后/新手妈妈群体。</li>
+                <li><strong>用户为什么会看：</strong>画面感强、代入感强，新手妈妈能从中看到自己的无助，家人能学到如何正确回应。</li>
+                <li><strong>彩虹心理如何差异化：</strong>不止于“产后抑郁不是矫情”的科普，而是给出家庭支持清单+产后情绪自测+新手妈妈自我关怀四步法。</li>
+                <li><strong>如何转化为咨询客户：</strong>文末提供“产后情绪评估”预约入口，引导新手妈妈及伴侣进行首次家庭/个体咨询评估。</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-card">
+          <div class="topic-header">
+            <div class="topic-rank">2</div>
+            <div class="topic-title">
+              <h3>失望性情感隔离：你不是冷漠，是心死后的自我保护</h3>
+            </div>
+            <div class="topic-score">
+              <div class="score">94</div>
+              <div class="score-label">综合评分</div>
+            </div>
+          </div>
+          <div class="topic-meta">
+            <span class="tag-source">来源：新浪心理疗愈室 / 社交平台热议</span>
+            <span>平台：微博 / 小红书 / 知乎</span>
+            <span>作者/账号：多个心理自媒体账号</span>
+            <span>发布时间：2026-08月下旬集中爆发</span>
+            <span>数据表现：#失望性情感隔离# 话题在多平台引发广泛讨论，相关解读文章高频出现</span>
+            <span>分类：原生家庭 / 亲密关系</span>
+          </div>
+          <div class="topic-body">
+            <p><strong>爆款原因：</strong>精准命名了一种长期存在却被误读为“冷漠/不孝/薄情”的心理状态。用户读后产生强烈“被命名”的释放感——原来我不是天生冷血，只是期待耗尽了。原生家庭与亲密关系双场景覆盖，话题延展性强。</p>
+            <p><strong>理论支撑：</strong>属于心理防御机制中的情感隔离（Isolation of Affect），反复经历“期待→落空→难过”循环后，大脑形成“不期待就不会受伤”的习得性信念。</p>
+            <div class="four-questions">
+              <h4>四个核心问题</h4>
+              <ol>
+                <li><strong>为什么值得做：</strong>概念新颖、解释力强，能同时触达原生家庭与亲密关系两大高咨询转化板块。</li>
+                <li><strong>用户为什么会看：</strong>用户对号入座感极强，能解释自己“不想回家”“吵架都懒得吵”“对谁都客气疏离”的状态。</li>
+                <li><strong>彩虹心理如何差异化：</strong>不仅解释现象，更给出“解冻三步法”：识别隔离信号→允许微小期待→在安全关系中重建信任。</li>
+                <li><strong>如何转化为咨询客户：</strong>引导用户做“情感隔离程度自测”，对中重度用户推荐依恋取向心理咨询。</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-card">
+          <div class="topic-header">
+            <div class="topic-rank">3</div>
+            <div class="topic-title">
+              <h3>课题分离：把别人的课题还回去，内耗就少了一大半</h3>
+            </div>
+            <div class="topic-score">
+              <div class="score">92</div>
+              <div class="score-label">综合评分</div>
+            </div>
+          </div>
+          <div class="topic-meta">
+            <span class="tag-source">来源：阿德勒心理学 / 社交平台热议</span>
+            <span>平台：小红书 / 知乎 / 微博</span>
+            <span>作者/账号：多个心理学自媒体</span>
+            <span>发布时间：2026-08月下旬</span>
+            <span>数据表现：#给内耗人的一句终极解药# 冲上热搜，课题分离被高频引用为内耗解药</span>
+            <span>分类：自我成长 / 精神内耗</span>
+          </div>
+          <div class="topic-body">
+            <p><strong>爆款原因：</strong>阿德勒经典概念被重新激活，完美契合2026年“边界觉醒”情绪。一句“把别人的课题还回去”降低认知门槛，可操作性强，用户能立即在职场、家庭、亲密关系中应用。</p>
+            <p><strong>理论支撑：</strong>阿德勒个体心理学核心命题：一切烦恼都来自人际关系，而课题分离是厘清人际边界的关键技术。判定标准——“这件事的最终后果由谁承担，就是谁的课题”。</p>
+            <div class="four-questions">
+              <h4>四个核心问题</h4>
+              <ol>
+                <li><strong>为什么值得做：</strong>自带方法论属性，传播力强，容易引发收藏和转发，适合做成系列化内容。</li>
+                <li><strong>用户为什么会看：</strong>直接解决“想太多”“太在意别人评价”“总为别人操心”的普遍痛点。</li>
+                <li><strong>彩虹心理如何差异化：</strong>不止讲理论，而是给出“课题分离三步法”+“边界用语库”+常见场景对照表。</li>
+                <li><strong>如何转化为咨询客户：</strong>对“边界模糊导致长期焦虑/关系耗竭”的用户，推荐人际边界主题咨询或团体成长小组。</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-card">
+          <div class="topic-header">
+            <div class="topic-rank">4</div>
+            <div class="topic-title">
+              <h3>“只有你懂妈妈”：情感倒置如何养出过度拯救者</h3>
+            </div>
+            <div class="topic-score">
+              <div class="score">90</div>
+              <div class="score-label">综合评分</div>
+            </div>
+          </div>
+          <div class="topic-meta">
+            <span class="tag-source">来源：网易 / 今日头条</span>
+            <span>平台：微信公众号 / 今日头条</span>
+            <span>作者/账号：湘巴佬 / 爱家心理张丽</span>
+            <span>发布时间：2026-08-30 / 2026-08-25</span>
+            <span>数据表现：网易文章引发原生家庭话题热议，亲职化（Parentification）概念被广泛讨论</span>
+            <span>分类：原生家庭 / 亲子关系</span>
+          </div>
+          <div class="topic-body">
+            <p><strong>爆款原因：</strong>戳破“亲密无间”的伦理绑架，把“孩子成为父母情绪配偶”的现象命名化。典型语句如“只有你懂妈妈”“妈妈以后全靠你了”极具传播力，容易引发用户回忆与自我觉察。</p>
+            <p><strong>理论支撑：</strong>亲职化（Parentification）指孩子过早承担父母的情绪照顾、生活照顾或决策功能，破坏家庭序位，成年后易形成“过度拯救者”模式，反复进入不平等关系。</p>
+            <div class="four-questions">
+              <h4>四个核心问题</h4>
+              <ol>
+                <li><strong>为什么值得做：</strong>原生家庭赛道高转化内容，能触达大量有亲子边界困扰的成年子女及家长。</li>
+                <li><strong>用户为什么会看：</strong>标题犀利、概念精准，能解释“我为什么总爱上需要拯救的人”“为什么无法建立平等关系”。</li>
+                <li><strong>彩虹心理如何差异化：</strong>结合家庭系统理论，给出“角色归还”练习——把父母的情绪还给父母，把自己当孩子重新养一遍。</li>
+                <li><strong>如何转化为咨询客户：</strong>推荐原生家庭议题个体咨询，尤其适合反复进入耗竭型关系的来访者。</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <div class="topic-card">
+          <div class="topic-header">
+            <div class="topic-rank">5</div>
+            <div class="topic-title">
+              <h3>危险关系的迷人张力：为什么“错的人”更让人念念不忘</h3>
+            </div>
+            <div class="topic-score">
+              <div class="score">86</div>
+              <div class="score-label">综合评分</div>
+            </div>
+          </div>
+          <div class="topic-meta">
+            <span class="tag-source">来源：简单心理</span>
+            <span>平台：微信公众号 / 今日头条</span>
+            <span>作者/账号：简单心理</span>
+            <span>发布时间：2026-08-30</span>
+            <span>数据表现：简单心理公众号发布，从精神分析角度解读危险关系吸引力</span>
+            <span>分类：亲密关系</span>
+          </div>
+          <div class="topic-body">
+            <p><strong>爆款原因：</strong>经典议题“为什么明知不合适却放不下”的新解读，结合禁忌效应、蔡格尼克效应、依恋焦虑等理论，满足用户对自我理解的需求。</p>
+            <p><strong>理论支撑：</strong>禁忌效应（Forbidden Fruit Effect）提升好奇心；未完成事件（蔡格尼克效应）增强记忆黏性；焦虑型依恋者将不稳定解读为“更深刻的爱”。</p>
+            <div class="four-questions">
+              <h4>四个核心问题</h4>
+              <ol>
+                <li><strong>为什么值得做：</strong>亲密关系是咨询转化率高、用户付费意愿强的赛道，适合深度系列内容。</li>
+                <li><strong>用户为什么会看：</strong>帮助用户理解自己的情感模式，减少自责，产生“被理解”的疗愈感。</li>
+                <li><strong>彩虹心理如何差异化：</strong>不只解释“为什么上头”，更给出“识别危险关系信号清单”和“安全型关系重建练习”。</li>
+                <li><strong>如何转化为咨询客户：</strong>文末提供亲密关系模式评估，引导反复陷入类似关系的用户预约咨询。</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section">
+      <h2><span class="icon">📊</span>爆款原因分析</h2>
+      <div class="analysis-grid">
+        <div class="analysis-card">
+          <h4>情绪共鸣点</h4>
+          <ul>
+            <li>TOP1 击中“不被看见的产后崩溃”，唤醒女性集体记忆</li>
+            <li>TOP2 命名“失望性隔离”，给用户一种“终于被理解”的释放感</li>
+            <li>TOP3 提供“把别人的课题还回去”的爽感表达</li>
+            <li>TOP4 用“只有你懂妈妈”等金句触发回忆杀</li>
+            <li>TOP5 满足用户对“自己为什么上头”的解释需求</li>
+          </ul>
+        </div>
+        <div class="analysis-card">
+          <h4>传播机制</h4>
+          <ul>
+            <li>真实画面/监控片段自带病毒传播属性</li>
+            <li>新概念命名降低理解成本，易被截图转发</li>
+            <li>方法论型内容（课题分离）收藏率高</li>
+            <li>原生家庭话题评论区互动意愿强</li>
+            <li>情感话题自带争议性，易引发讨论</li>
+          </ul>
+        </div>
+        <div class="analysis-card">
+          <h4>内容趋势</h4>
+          <ul>
+            <li>从“反内耗”转向“边界觉醒”</li>
+            <li>从“原生家庭决定论”转向“成年自我再养育”</li>
+            <li>从“情绪压抑”转向“允许崩溃+科学承接”</li>
+            <li>从“责怪伴侣”转向“识别关系模式”</li>
+            <li>女性心理健康议题持续升温</li>
+          </ul>
+        </div>
+        <div class="analysis-card">
+          <h4>商业转化机会</h4>
+          <ul>
+            <li>产后情绪评估 → 女性心理/家庭咨询</li>
+            <li>情感隔离自测 → 依恋取向个体咨询</li>
+            <li>课题分离练习 → 边界主题团体小组</li>
+            <li>原生家庭议题 → 长期深度心理咨询</li>
+            <li>亲密关系评估 → 伴侣/个体咨询</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2><span class="icon">🎨</span>彩虹心理改编建议</h2>
+
+      <div class="adapt-card">
+        <h4>TOP1 产后抑郁被当“矫情”</h4>
+        <div class="title-versions">
+          <div class="title-version pro"><span class="label">专业版</span>产后抑郁：不是矫情，是激素、睡眠与身份三重崩塌</div>
+          <div class="title-version emo"><span class="label">共鸣版</span>那个被说“想太多”的新手妈妈，可能正在产后抑郁里挣扎</div>
+          <div class="title-version bao"><span class="label">爆款版</span>每5个妈妈就有1个：产后抑郁不是矫情，家人这3句话最伤人</div>
+        </div>
+        <p><strong>内容方向：</strong>从社会误读切入，科普产后抑郁的生理-心理-社会成因，给出家人支持清单和新手妈妈自我关怀四步法。</p>
+        <p><strong>内容形式：</strong>公众号长文 + 小红书图文笔记 + 短视频情景演绎</p>
+        <p><strong>视觉方向：</strong>柔和米白+雾蓝，清晨婴儿房场景，温暖但不过度煽情</p>
+        <div class="direction-tags">
+          <span>#产后心理</span>
+          <span>#新手妈妈</span>
+          <span>#家庭支持</span>
+          <span>#女性心理健康</span>
+        </div>
+      </div>
+
+      <div class="adapt-card">
+        <h4>TOP2 失望性情感隔离</h4>
+        <div class="title-versions">
+          <div class="title-version pro"><span class="label">专业版</span>失望性情感隔离：当期待耗尽，心会自己关上门的防御机制</div>
+          <div class="title-version emo"><span class="label">共鸣版</span>你不是冷漠，只是失望太多次，学会了不期待</div>
+          <div class="title-version bao"><span class="label">爆款版</span>“连架都懒得吵”的人，心里早就失望透顶了</div>
+        </div>
+        <p><strong>内容方向：</strong>解释情感隔离的心理机制，区分冷漠/回避型依恋/失望性隔离，给出“情感解冻三步法”。</p>
+        <p><strong>内容形式：</strong>公众号长文 + 知乎回答 + 短视频口播</p>
+        <p><strong>视觉方向：</strong>深绿+暖金，一扇半开的门意象，象征“在保护中重新打开”</p>
+        <div class="direction-tags">
+          <span>#失望性情感隔离</span>
+          <span>#原生家庭</span>
+          <span>#亲密关系</span>
+          <span>#心理防御</span>
+        </div>
+      </div>
+
+      <div class="adapt-card">
+        <h4>TOP3 课题分离</h4>
+        <div class="title-versions">
+          <div class="title-version pro"><span class="label">专业版</span>阿德勒课题分离：厘清边界，是停止内耗的关键技术</div>
+          <div class="title-version emo"><span class="label">共鸣版</span>你的焦虑，90%是因为你把别人的课题背在了身上</div>
+          <div class="title-version bao"><span class="label">爆款版</span>“关我屁事”的高级说法：课题分离</div>
+        </div>
+        <p><strong>内容方向：</strong>用生活场景解释课题分离，给出判定标准和边界用语库，破除“课题分离=冷漠”的误解。</p>
+        <p><strong>内容形式：</strong>公众号长文 + 小红书清单体 + 短视频3个场景演绎</p>
+        <p><strong>视觉方向：</strong>浅绿+白色，清晰边界线意象，简洁有力</p>
+        <div class="direction-tags">
+          <span>#课题分离</span>
+          <span>#精神内耗</span>
+          <span>#人际边界</span>
+          <span>#阿德勒</span>
+        </div>
+      </div>
+
+      <div class="adapt-card">
+        <h4>TOP4 情感倒置/亲职化</h4>
+        <div class="title-versions">
+          <div class="title-version pro"><span class="label">专业版</span>亲职化：当孩子被迫成为父母的“情绪配偶”</div>
+          <div class="title-version emo"><span class="label">共鸣版</span>“只有你懂妈妈”这句话，压垮了多少孩子</div>
+          <div class="title-version bao"><span class="label">爆款版</span>从小被当“小大人”养大的孩子，长大后都活得很累</div>
+        </div>
+        <p><strong>内容方向：</strong>解释亲职化/情感倒置的形成机制与长期影响，给出“角色归还”练习和自我再养育方法。</p>
+        <p><strong>内容形式：</strong>公众号深度长文 + 知乎回答 + 短视频情绪向</p>
+        <p><strong>视觉方向：</strong>暖灰+深绿，小孩穿大人衣服的隐喻画面</p>
+        <div class="direction-tags">
+          <span>#亲职化</span>
+          <span>#情感倒置</span>
+          <span>#原生家庭</span>
+          <span>#自我再养育</span>
+        </div>
+      </div>
+
+      <div class="adapt-card">
+        <h4>TOP5 危险关系的迷人张力</h4>
+        <div class="title-versions">
+          <div class="title-version pro"><span class="label">专业版</span>危险关系吸引力：禁忌效应、未完成感与依恋焦虑的共谋</div>
+          <div class="title-version emo"><span class="label">共鸣版</span>明知道是错的人，为什么就是放不下？</div>
+          <div class="title-version bao"><span class="label">爆款版</span>“错的人”更让人上瘾的3个心理陷阱</div>
+        </div>
+        <p><strong>内容方向：</strong>从精神分析视角解释危险关系吸引力，给出识别信号清单和安全型关系重建练习。</p>
+        <p><strong>内容形式：</strong>公众号长文 + 小红书图文 + 短视频口播</p>
+        <p><strong>视觉方向：</strong>暗红+黑色，危险又迷人的氛围，如玫瑰与荆棘</p>
+        <div class="direction-tags">
+          <span>#危险关系</span>
+          <span>#亲密关系</span>
+          <span>#依恋焦虑</span>
+          <span>#情感模式</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2><span class="icon">📚</span>选题库分类</h2>
+      <table class="category-table">
+        <thead>
+          <tr>
+            <th>分类</th>
+            <th>今日入选选题</th>
+            <th>内容形式建议</th>
+            <th>转化路径</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>身心健康</td>
+            <td>产后抑郁被当“矫情”</td>
+            <td>长文 / 图文 / 短视频</td>
+            <td>产后情绪评估 → 女性心理咨询</td>
+          </tr>
+          <tr>
+            <td>原生家庭</td>
+            <td>失望性情感隔离 / 情感倒置与亲职化</td>
+            <td>深度长文 / 知乎 / 短视频</td>
+            <td>依恋评估 → 个体心理咨询</td>
+          </tr>
+          <tr>
+            <td>自我成长</td>
+            <td>课题分离</td>
+            <td>清单体 / 短视频 / 长文</td>
+            <td>边界主题团体小组 / 个体咨询</td>
+          </tr>
+          <tr>
+            <td>亲密关系</td>
+            <td>危险关系的迷人张力</td>
+            <td>长文 / 图文 / 口播</td>
+            <td>亲密关系模式评估 → 伴侣/个体咨询</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="qrcode-section">
+      <h2>关注彩虹心理，预约首次评估</h2>
+      <img src="rainbowhu-qrcode.jpg" alt="彩虹心理公众号二维码">
+      <p class="cta">扫码关注彩虹心理，回复「咨询」预约首次评估</p>
+      <p>专业心理咨询师一对一评估 · 情绪困扰 · 亲密关系 · 原生家庭 · 个人成长</p>
+    </section>
+
+    <footer>
+      <p>彩虹心理自媒体内容中心 · 每日心理热点选题雷达 · 2026-08-31</p>
+      <p>数据来源：微信公众号、微博、小红书、知乎公开内容；未获取到精确数据处已如实标注</p>
+    </footer>
+  </div>
+</body>
+</html>

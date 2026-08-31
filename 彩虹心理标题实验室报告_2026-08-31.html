@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>彩虹心理标题实验室报告_2026-08-31</title>
+<style>
+  :root{--bg:#f5f5f7;--card:#fff;--ink:#1d1d1f;--ink2:#6e6e73;--ink3:#a1a1a6;--line:#e5e5e7;--accent:#34c759;--accent2:#c06c84;--accent3:#f6a957;--purple:#6b5b95;--blue:#5a7cb0;--shadow:0 4px 24px rgba(0,0,0,.06);}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;background:var(--bg);color:var(--ink);font-size:14px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:960px;margin:0 auto;padding:28px 20px}
+  .header{text-align:center;margin-bottom:32px}
+  .header h1{font-size:22px;font-weight:800;margin-bottom:6px}
+  .header .sub{font-size:13px;color:var(--ink2)}
+  .header .date{font-size:12px;color:var(--ink3);margin-top:4px}
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:28px}
+  .stat{background:var(--card);border-radius:14px;padding:16px;text-align:center;border:1px solid var(--line)}
+  .stat .num{font-size:30px;font-weight:800;line-height:1.1}
+  .stat .label{font-size:11px;color:var(--ink3);margin-top:4px;font-weight:600}
+
+  .section{background:var(--card);border-radius:16px;padding:22px 24px;margin-bottom:20px;border:1px solid var(--line)}
+  .section-title{font-size:15px;font-weight:800;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+  .section-title .dot{width:8px;height:8px;border-radius:50%;background:var(--accent)}
+
+  .topic-label{font-size:12px;font-weight:700;color:var(--ink2);margin:18px 0 10px;padding-bottom:6px;border-bottom:1px solid #f0f0f0}
+  .topic-label:first-child{margin-top:0}
+
+  .top-card{background:linear-gradient(135deg,#fafafa,#f5f0ff);border:1.5px solid #e0d4f0;border-radius:14px;padding:16px 18px;margin-bottom:10px}
+  .top-header{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+  .top-rank{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:12px;flex-shrink:0}
+  .top-title{font-size:14px;font-weight:700;flex:1;line-height:1.4}
+  .top-score{font-size:18px;font-weight:800;color:var(--purple);flex-shrink:0}
+  .top-meta{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+  .top-type{font-size:10px;padding:3px 8px;border-radius:10px;font-weight:700}
+  .top-dims{display:flex;gap:10px;flex-wrap:wrap;font-size:11px;color:var(--ink3);margin-bottom:6px}
+  .top-dim{display:flex;align-items:center;gap:3px}
+  .top-dim b{color:var(--ink2)}
+  .top-analysis{font-size:12px;color:var(--ink2);line-height:1.5;padding:8px 10px;background:#fff;border-radius:8px}
+
+  .compact{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+  .compact-item{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;background:#f9f9fb;font-size:12px}
+  .compact-score{font-size:13px;font-weight:800;color:var(--purple);flex-shrink:0;width:28px;text-align:center}
+  .compact-title{flex:1;color:var(--ink2);font-weight:500;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+  .dim-legend{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:16px}
+  .dim-item{background:#f9f9fb;border-radius:10px;padding:10px;text-align:center;font-size:12px}
+  .dim-item b{display:block;color:var(--purple);font-size:13px;margin-bottom:2px}
+
+  .qrcode{text-align:center;margin-top:24px;padding:24px;background:var(--card);border-radius:16px;border:1px solid var(--line)}
+  .qrcode img{width:160px;height:160px;border-radius:12px}
+  .qrcode p{font-size:12px;color:var(--ink3);margin-top:10px}
+
+  .footer{text-align:center;margin-top:24px;font-size:12px;color:var(--ink3)}
+
+  @media(max-width:700px){
+    .stats{grid-template-columns:repeat(2,1fr)}
+    .compact{grid-template-columns:1fr}
+    .dim-legend{grid-template-columns:repeat(3,1fr)}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="header">
+    <h1>彩虹心理爆款标题实验室报告</h1>
+    <div class="sub">基于雷达 TOP5 选题 · 50 个标题批量生成 · 5 维度评分筛选</div>
+    <div class="date">2026年8月31日 星期一 · 数据来源：WebSearch 当日热点（雷达报告未生成，走备选路径）</div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="num" style="color:var(--purple)">50</div><div class="label">生成标题总数</div></div>
+    <div class="stat"><div class="num" style="color:var(--accent)">10</div><div class="label">精选 TOP</div></div>
+    <div class="stat"><div class="num" style="color:var(--accent2)">92.7</div><div class="label">TOP10 均分</div></div>
+    <div class="stat"><div class="num" style="color:var(--accent3)">94</div><div class="label">最高分</div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title"><span class="dot"></span>评分维度说明（满分 100）</div>
+    <div class="dim-legend">
+      <div class="dim-item"><b>好奇心缺口</b>25分 · 信息差</div>
+      <div class="dim-item"><b>情绪触发</b>25分 · 共鸣/焦虑</div>
+      <div class="dim-item"><b>专业可信度</b>15分 · 心理学专业</div>
+      <div class="dim-item"><b>传播潜力</b>20分 · 转发/社交货币</div>
+      <div class="dim-item"><b>转化引导</b>15分 · 咨询/测评</div>
+    </div>
+    <div style="font-size:12px;color:var(--ink2)">今日 TOP5 选题：①开学焦虑/假期戒断反应（96分）②冉莹颖原生家庭重男轻女创伤（95分）③景甜原生家庭/父母常吵架（92分）④成年人「两个我」的分裂感（91分）⑤OECD青少年社会与情感福祉（89分）</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title"><span class="dot" style="background:#c0392b"></span>TOP 10 精选标题</div>
+
+    <div class="top-card">
+      <div class="top-header">
+        <div class="top-rank" style="background:#c0392b">1</div>
+        <div class="top-title">「哦，女儿」——三个字，毁掉了一个女孩的前半生</div>
+        <div class="top-score">94</div>
+      </div>
+      <div class="top-meta">
+        <span class="top-type" style="background:#fce4ec;color:#c62828">情绪共鸣型</span>
+        <span style="font-size:11px;color:var(--ink3)">来源：冉莹颖原生家庭重男轻女创伤</span>
+        <span style="font-size:11px;color:var(--ink3)">公众号 · 小红书 · 抖音</span>
+      </div>
+      <div class="top-dims">
+        <span class="top-dim">好奇 <b>23</b>/25</span>
+        <span class="top-dim">情绪 <b>25</b>/25</span>
+        <span class="top-dim">专业 <b>13</b>/15</span>
+        <span class="top-dim">传播 <b>20</b>/20</span>
+        <span class="top-dim">转化 <b>13</b>/15</span>
+      </div>
+      <div class="top-analysis">情绪共鸣型的「致命细节+身份命名+代际创伤」结构：「哦，女儿」三个字是冉莹颖父亲出生时的全部反应——极简却极具画面感，把重男轻女的冷漠浓缩成一个瞬间。标题用引号包裹原话，让读者仿佛听到那个转身的脚步声。「毁掉了一个女孩的前半生」把个体创伤升代际议题，精准命中所有曾在原生家庭中被忽视的女性读者。</div>
+    </div>
+
+    <div class="top-card">
+      <div class="top-header">
+        <div class="top-rank" style="background:#d98c3a">2</div>
+        <div class="top-title">不是冉莹颖不想原谅，是「没资格替母亲原谅」才是最清醒的认知</div>
+        <div class="top-score">94</div>
+      </div>
+      <div class="top-meta">
+        <span class="top-type" style="background:#e8eaf6;color:#3f51b5">反常识型</span>
+        <span style="font-size:11px;color:var(--ink3)">来源：冉莹颖原生家庭重男轻女创伤</span>
+        <span style="font-size:11px;color:var(--ink3)">公众号 · 小红书 · 抖音</span>
+      </div>
+      <div class="top-dims">
+        <span class="top-dim">好奇 <b>23</b>/25</span>
+        <span class="top-dim">情绪 <b>24</b>/25</span>
+        <span class="top-dim">专业 <b>15</b>/15</span>
+        <span class="top-dim">传播 <b>19</b>/20</span>
+        <span class="top-dim">转化 <b>13</b>/15</span>
+      </div>
+      <div class="top-analysis">反常识型的「主体翻转+道德解构+代际正义」结构：默认叙事是「子女应该原谅病危父亲」；标题把主语从「冉莹颖」切到「没资格替母亲原谅」——瞬间颠覆「孝道绑架」的逻辑。这不是关于原谅与否，是关于「谁有权利代表受害者发言」。</div>
+    </div>
+
+    <div class="top-card">
+      <div class="top-header">
+        <div class="top-rank" style="background:#8e44ad">3</div>
+        <div class="top-title">父亲三次再婚只为生儿子，最后却只剩一个他不想要的女儿</div>
+        <div class="top-score">93</div>
+      </div>
+      <div class="top-meta">
+        <span class="top-type" style="background:#e0f7fa;color:#00838f">悬念型</span>
+        <span style="font-size:11px;color:var(--ink3)">来源：冉莹颖原生家庭重男轻女创伤</span>
+        <span style="font-size:11px;color:var(--ink3)">公众号 · 小红书 · 抖音</span>
+      </div>
+      <div class="top-dims">
+        <span class="top-dim">好奇 <b>25</b>/25</span>
+        <span class="top-dim">情绪 <b>23</b>/25</span>
+        <span class="top-dim">专业 <b>13</b>/15</span>
+        <span class="top-dim">传播 <b>20</b>/20</span>
+        <span class="top-dim">转化 <b>12</b>/15</span>
+      </div>
+      <div class="top-analysis">悬念型的「因果反转+命运讽刺+道德追问」结构：「三次再婚只为生儿子」是执念的极致——数字「三」形成强烈的重复感；「最后却只剩一个他不想要的女儿」是命运的反讽，把重男轻女的荒谬性推向高潮。读者会不点开就想知道：这个父亲现在后悔了吗？</div>
+    </div>
+
+    <div class="top-card">
+      <div class="top-header">
+        <div class="top-rank" style="background:#27ae60">4</div>
+        <div class="top-title">山东省精神卫生中心300张床位全部满床，开学前发生了什么？</div>
+        <div class="top-score">93</div>
+      </div>
+      <div class="top-meta">
+        <span class="top-type" style="background:#e0f7fa;color:#00838f">悬念型</span>
+        <span style="font-size:11px;color:var(--ink3)">来源：开学焦虑/假期戒断反应</span>
+        <span style="font-size:11px;color:var(--ink3)">公众号 · 小红书 · 抖音</span>
+      </div>
+      <div class="top-dims">
+        <span class="top-dim">好奇 <b>25</b>/25</span>
+        <span class="top-dim">情绪 <b>23</b>/25</span>
+        <span class="top-dim">专业 <b>14</b>/15</span>
+        <span class="top-dim">传播 <b>20</b>/20</span>
+        <span class="top-dim">转化 <b>11</b>/15</span>
+      </div>
+      <div class="top-analysis">悬念型的「权威数据+场景震惊+时间紧迫」结构：「300张床位全部满床」是具象的危机信号——不是抽象的数字，而是「连医院都没位置了」的恐慌感。「开学前」锚定8月31日距9月1日仅1天的极致时效。</div>
+    </div>
+
+    <div class="top-card">
+      <div class="top-header">
+        <div class="top-rank" style="background:#2980b9">5</div>
+        <div class="top-title">不是离婚最伤孩子，是「不离婚但天天吵」更毁安全感</div>
+        <div class="top-score">92</div>
+      </div>
+      <div class="top-meta">
+        <span class="top-type" style="background:#e8eaf6;color:#3f51b5">反常识型</span>
+        <span style="font-size:11px;color:var(--ink3)">来源：景甜原生家庭/父母常吵架</span>
+        <span style="font-size:11px;color:var(--ink3)">公众号 · 小红书 · 抖音</span>
+      </div>
+      <div class="top-dims">
+        <span class="top-dim">好奇 <b>23</b>/25</span>
+        <span class="top-dim">情绪 <b>23</b>/25</span>
+        <span class="top-dim">专业 <b>14</b>/15</span>
+        <span class="top-dim">传播 <b>19</b>/20</span>
+        <span class="top-dim">转化 <b>13</b>/15</span>
+      </div>
+      <div class="top-analysis">反常识型的「认知翻转+日常场景+依恋理论」结构：默认观念是「离婚对孩子伤害最大」；标题翻转——「不离婚但天天吵」才是更隐蔽的杀手。这切中中国家庭「为了孩子忍忍吧」的集体迷思，立刻召唤所有在争吵家庭中长大的读者。</div>
+    </div>
+
+    <div class="top-card">
+      <div class="top-header">
+        <div class="top-rank" style="background:#c0392b">6</div>
+        <div class="top-title">一个想浪迹天涯看晚霞，一个困在厨房算柴米油盐——这是你吗？</div>
+        <div class="top-score">92</div>
+      </div>
+      <div class="top-meta">
+        <span class="top-type" style="background:#fce4ec;color:#c62828">情绪共鸣型</span>
+        <span style="font-size:11px;color:var(--ink3)">来源：成年人「两个我」的分裂感</span>
+        <span style="font-size:11px;color:var(--ink3)">公众号 · 小红书 · 抖音</span>
+      </div>
+      <div class="top-dims">
+        <span class="top-dim">好奇 <b>23</b>/25</span>
+        <span class="top-dim">情绪 <b>24</b>/25</span>
+        <span class="top-dim">专业 <b>12</b>/15</span>
+        <span class="top-dim">传播 <b>20</b>/20</span>
+        <span class="top-dim">转化 <b>13</b>/15</span>
+      </div>
+      <div class="top-analysis">情绪共鸣型的「画面并置+身份确认+季节锚定」结构：「浪迹天涯看晚霞」vs「厨房算柴米油盐」是两个极端画面的碰撞——理想与现实的撕裂感瞬间可视化。「这是你吗？」用问句直接邀请读者对号入座。</div>
+    </div>
+
+    <div class="top-card">
+      <div class="top-header">
+        <div class="top-rank" style="background:#d98c3a">7</div>
+        <div class="top-title">开学前72小时，60%的孩子会出现这5种躯体化反应</div>
+        <div class="top-score">92</div>
+      </div>
+      <div class="top-meta">
+        <span class="top-type" style="background:#fff3e0;color:#e67c22">数字承诺型</span>
+        <span style="font-size:11px;color:var(--ink3)">来源：开学焦虑/假期戒断反应</span>
+        <span style="font-size:11px;color:var(--ink3)">公众号 · 小红书 · 抖音</span>
+      </div>
+      <div class="top-dims">
+        <span class="top-dim">好奇 <b>24</b>/25</span>
+        <span class="top-dim">情绪 <b>22</b>/25</span>
+        <span class="top-dim">专业 <b>14</b>/15</span>
+        <span class="top-dim">传播 <b>19</b>/20</span>
+        <span class="top-dim">转化 <b>13</b>/15</span>
+      </div>
+      <div class="top-analysis">数字承诺型的「时间锚定+群体规模+自检清单」结构：「72小时」制造紧迫感——距离开学只剩3天；「60%」来自山东省精卫中心数据——躯体化反应不是个别现象；「5种」给家长明确的自查清单。</div>
+    </div>
+
+    <div class="top-card">
+      <div class="top-header">
+        <div class="top-rank" style="background:#8e44ad">8</div>
+        <div class="top-title">开学焦虑正在毁掉孩子，而家长还在说「就是懒」</div>
+        <div class="top-score">92</div>
+      </div>
+      <div class="top-meta">
+        <span class="top-type" style="background:#ffebee;color:#c62828">痛点直击型</span>
+        <span style="font-size:11px;color:var(--ink3)">来源：开学焦虑/假期戒断反应</span>
+        <span style="font-size:11px;color:var(--ink3)">公众号 · 小红书 · 抖音</span>
+      </div>
+      <div class="top-dims">
+        <span class="top-dim">好奇 <b>22</b>/25</span>
+        <span class="top-dim">情绪 <b>24</b>/25</span>
+        <span class="top-dim">专业 <b>13</b>/15</span>
+        <span class="top-dim">传播 <b>20</b>/20</span>
+        <span class="top-dim">转化 <b>13</b>/15</span>
+      </div>
+      <div class="top-analysis">痛点直击型的「残酷真相+代际错位+道德追问」结构：「正在毁掉孩子」是强烈的后果预警；「家长还在说就是懒」直接点名最常见的错误归因——把心理问题道德化。对应8月31日头条报道、89.4%家长因用网问题与孩子冲突。</div>
+    </div>
+
+    <div class="top-card">
+      <div class="top-header">
+        <div class="top-rank" style="background:#27ae60">9</div>
+        <div class="top-title">不是孩子不想上学，是大脑还没从「假期模式」切换过来</div>
+        <div class="top-score">92</div>
+      </div>
+      <div class="top-meta">
+        <span class="top-type" style="background:#e8eaf6;color:#3f51b5">反常识型</span>
+        <span style="font-size:11px;color:var(--ink3)">来源：开学焦虑/假期戒断反应</span>
+        <span style="font-size:11px;color:var(--ink3)">公众号 · 小红书 · 抖音</span>
+      </div>
+      <div class="top-dims">
+        <span class="top-dim">好奇 <b>23</b>/25</span>
+        <span class="top-dim">情绪 <b>23</b>/25</span>
+        <span class="top-dim">专业 <b>14</b>/15</span>
+        <span class="top-dim">传播 <b>19</b>/20</span>
+        <span class="top-dim">转化 <b>13</b>/15</span>
+      </div>
+      <div class="top-analysis">反常识型的「归因翻转+神经科学+去道德化」结构：默认叙事是「孩子不想上学=懒惰/逃避」；标题翻转——不是态度问题，是大脑神经调节系统的切换失灵。把行为问题重新定义为神经生物适应问题。</div>
+    </div>
+
+    <div class="top-card">
+      <div class="top-header">
+        <div class="top-rank" style="background:#2980b9">10</div>
+        <div class="top-title">3次再婚、78岁、17年肠癌：一个重男轻女父亲的执念代价</div>
+        <div class="top-score">91</div>
+      </div>
+      <div class="top-meta">
+        <span class="top-type" style="background:#fff3e0;color:#e67c22">数字承诺型</span>
+        <span style="font-size:11px;color:var(--ink3)">来源：冉莹颖原生家庭重男轻女创伤</span>
+        <span style="font-size:11px;color:var(--ink3)">公众号 · 小红书 · 抖音</span>
+      </div>
+      <div class="top-dims">
+        <span class="top-dim">好奇 <b>24</b>/25</span>
+        <span class="top-dim">情绪 <b>22</b>/25</span>
+        <span class="top-dim">专业 <b>13</b>/15</span>
+        <span class="top-dim">传播 <b>19</b>/20</span>
+        <span class="top-dim">转化 <b>13</b>/15</span>
+      </div>
+      <div class="top-analysis">数字承诺型的「三重数据+命运算账+道德追问」结构：「3次再婚」是执念的重复；「78岁」是时间跨度；「17年肠癌」是身体代价。三个数字叠加出一个重男轻女父亲的人生总账——折腾一生，求子不得，孤独终老。</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title"><span class="dot" style="background:var(--ink3)"></span>其余 40 个标题（按选题分组）</div>
+
+    <div class="topic-label">选题1：开学焦虑/假期戒断反应（距9.1仅1天·山东精卫中心300床满床）</div>
+    <div class="compact">
+      <div class="compact-item"><span class="compact-score">90</span><span class="compact-title">「我不想开学」——这句话背后，是300个孩子说不出口的情绪</span></div>
+      <div class="compact-item"><span class="compact-score">90</span><span class="compact-title">「别人家孩子都能上学，怎么就你不行？」——这句话伤了多少人</span></div>
+      <div class="compact-item"><span class="compact-score">88</span><span class="compact-title">那些说「开学焦虑是矫情」的人，根本不懂孩子在经历什么</span></div>
+      <div class="compact-item"><span class="compact-score">88</span><span class="compact-title">开学前的情绪低谷，是孩子在向你发送求助信号</span></div>
+      <div class="compact-item"><span class="compact-score">83</span><span class="compact-title">我16岁那年，开学前失眠了整整一周</span></div>
+      <div class="compact-item"><span class="compact-score">81</span><span class="compact-title">假期戒断反应的神经科学：前额叶皮层与杏仁核的切换失灵</span></div>
+    </div>
+
+    <div class="topic-label">选题2：冉莹颖原生家庭重男轻女创伤（3次再婚·78岁患癌·没资格替母亲原谅）</div>
+    <div class="compact">
+      <div class="compact-item"><span class="compact-score">90</span><span class="compact-title">「我是收垃圾的吗？」——一个母亲对前夫最狠的拒绝</span></div>
+      <div class="compact-item"><span class="compact-score">90</span><span class="compact-title">出生时被父亲嫌弃的女孩，后来都怎么样了？</span></div>
+      <div class="compact-item"><span class="compact-score">88</span><span class="compact-title">那些劝你「毕竟是你爸」的人，从来不知道你经历了什么</span></div>
+      <div class="compact-item"><span class="compact-score">87</span><span class="compact-title">不原谅，也是一种体面</span></div>
+      <div class="compact-item"><span class="compact-score">86</span><span class="compact-title">重男轻女创伤的代际传递：从「被嫌弃的女儿」到「自我否定」</span></div>
+      <div class="compact-item"><span class="compact-score">85</span><span class="compact-title">我花了30年才明白，父亲的缺席不是我的错</span></div>
+    </div>
+
+    <div class="topic-label">选题3：景甜原生家庭/父母常吵架（独生女·从小缺乏安全感）</div>
+    <div class="compact">
+      <div class="compact-item"><span class="compact-score">90</span><span class="compact-title">父母每吵一次架，孩子的大脑就经历一次「微创伤」</span></div>
+      <div class="compact-item"><span class="compact-score">89</span><span class="compact-title">「父母常吵架」——这四个字，是我童年最重的阴影</span></div>
+      <div class="compact-item"><span class="compact-score">89</span><span class="compact-title">父母吵架时，孩子正在经历什么？</span></div>
+      <div class="compact-item"><span class="compact-score">89</span><span class="compact-title">「我们没离婚，你怎么会没有安全感？」——父母最常犯的错</span></div>
+      <div class="compact-item"><span class="compact-score">88</span><span class="compact-title">景甜谈原生家庭：父母常吵架，独生女从小没有安全感</span></div>
+      <div class="compact-item"><span class="compact-score">88</span><span class="compact-title">那些说「为了孩子忍忍吧」的人，不知道孩子早就碎了</span></div>
+      <div class="compact-item"><span class="compact-score">85</span><span class="compact-title">安全感不是父母给的，是自己长大后重新建起来的</span></div>
+      <div class="compact-item"><span class="compact-score">84</span><span class="compact-title">父母冲突对儿童依恋系统的破坏：从「安全基地」到「警报状态」</span></div>
+      <div class="compact-item"><span class="compact-score">83</span><span class="compact-title">我从小学会的第一件事，是屏住呼吸听门外的争吵声</span></div>
+    </div>
+
+    <div class="topic-label">选题4：成年人「两个我」的分裂感（入秋情绪波动·理想我vs现实我）</div>
+    <div class="compact">
+      <div class="compact-item"><span class="compact-score">90</span><span class="compact-title">我们这一代人的崩溃，从不敢承认「两个我」开始</span></div>
+      <div class="compact-item"><span class="compact-score">90</span><span class="compact-title">每年入秋，为什么总有人突然觉得自己「活错了」？</span></div>
+      <div class="compact-item"><span class="compact-score">89</span><span class="compact-title">不是你不安于现状，是秋天本身就会让人产生「分裂感」</span></div>
+      <div class="compact-item"><span class="compact-score">88</span><span class="compact-title">成年人的崩溃，从「两个我」互相看不起开始</span></div>
+      <div class="compact-item"><span class="compact-score">87</span><span class="compact-title">入秋后68%的成年人会经历「两个我」的情绪分裂</span></div>
+      <div class="compact-item"><span class="compact-score">87</span><span class="compact-title">「你不是过得挺好吗，怎么还不开心？」——因为有两个我在打架</span></div>
+      <div class="compact-item"><span class="compact-score">85</span><span class="compact-title">承认「两个我」都存在，本身就是一种和解</span></div>
+      <div class="compact-item"><span class="compact-score">83</span><span class="compact-title">我今年35岁，一边想辞职看世界，一边怕房贷断供</span></div>
+      <div class="compact-item"><span class="compact-score">82</span><span class="compact-title">季节性情绪失调与自我分化：当「理想我」和「现实我」开始撕裂</span></div>
+    </div>
+
+    <div class="topic-label">选题5：OECD青少年社会与情感福祉（1/3青少年与父母沟通障碍）</div>
+    <div class="compact">
+      <div class="compact-item"><span class="compact-score">90</span><span class="compact-title">不是孩子叛逆，是父母的沟通方式还停留在20年前</span></div>
+      <div class="compact-item"><span class="compact-score">90</span><span class="compact-title">OECD罕见发声：青少年福祉危机，1/3家庭沟通已断裂</span></div>
+      <div class="compact-item"><span class="compact-score">88</span><span class="compact-title">「我没法跟父母沟通」——1/3青少年的共同秘密</span></div>
+      <div class="compact-item"><span class="compact-score">88</span><span class="compact-title">OECD报告：1/3青少年与父母存在沟通障碍，女生更严重</span></div>
+      <div class="compact-item"><span class="compact-score">88</span><span class="compact-title">当1/3青少年说「和父母没法沟通」，问题出在哪？</span></div>
+      <div class="compact-item"><span class="compact-score">87</span><span class="compact-title">那些说「现在孩子太脆弱」的人，没看过OECD这份报告</span></div>
+      <div class="compact-item"><span class="compact-score">87</span><span class="compact-title">「你有什么不能跟爸妈说的？」——这句话本身就是问题</span></div>
+      <div class="compact-item"><span class="compact-score">84</span><span class="compact-title">改善亲子沟通，从父母学会「闭嘴听」开始</span></div>
+      <div class="compact-item"><span class="compact-score">82</span><span class="compact-title">我16岁，有话宁愿跟网友说，也不跟爸妈说</span></div>
+      <div class="compact-item"><span class="compact-score">80</span><span class="compact-title">经合组织《提升青少年社会与情感福祉》：家庭沟通障碍的性别差异</span></div>
+    </div>
+  </div>
+
+  <div class="qrcode">
+    <img src="rainbowhu-qrcode.jpg" alt="彩虹心理公众号二维码">
+    <p>扫码关注彩虹心理，回复「咨询」预约首次评估</p>
+  </div>
+
+  <div class="footer">
+    彩虹心理爆款标题实验室 · 每日 09:00 自动执行 · 与雷达 Agent 08:00 串联运行
+  </div>
+</div>
+</body>
+</html>
