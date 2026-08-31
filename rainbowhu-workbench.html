@@ -292,6 +292,7 @@
       <div class="nav-item" data-view="titlelab"><div class="nav-icon">🔬</div>爆款标题实验室</div>
       <div class="nav-item" data-view="weiboshort"><div class="nav-icon">✍️</div>微博短文创作</div>
       <div class="nav-item" data-view="shortvideo"><div class="nav-icon">🎬</div>短视频创作</div>
+      <div class="nav-item" data-view="ipgrowth"><div class="nav-icon">🚀</div>咨询师IP起号</div>
     </nav>
     <div class="sidebar-foot">
       <b>自动化：</b>08:00 雷达 + 09:00 标题 + 20:00 微博 + 21:00 短视频 + 21:30 发布提醒<br>
@@ -490,6 +491,21 @@
               </div>
             </div>
             <div id="shortVideoContent"></div>
+          </div>
+        </div>
+
+        <div class="view" id="view-ipgrowth">
+          <div class="section">
+            <div class="section-head">
+              <div class="section-title"><span class="section-icon" style="background:#134B43">🚀</span>咨询师IP起号 · 6个月增长计划</div>
+              <div class="section-more" id="ipStage">阶段1 · 起号期</div>
+            </div>
+            <div class="sec-sub">目标：月涨粉 5000、月转化咨询 10 单。核心逻辑：外部平台引流（视频号/抖音/小红书）→ 公众号沉淀 → 测评破冰 → 私域转化。目标人群：25-38 岁一二线女性，聚焦亲密关系 + 原生家庭。</div>
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px" id="ipStats"></div>
+            <div id="ipMilestones" style="background:#fff;border:1px solid var(--border);border-radius:14px;padding:18px 20px;margin-bottom:16px"></div>
+            <div id="ipFunnel" style="background:#fff;border:1px solid var(--border);border-radius:14px;padding:18px 20px;margin-bottom:16px"></div>
+            <div id="ipWeekly" style="background:#fff;border:1px solid var(--border);border-radius:14px;padding:18px 20px;margin-bottom:16px"></div>
+            <div id="ipCompliance" style="background:#fff;border:1px solid #e8c8b0;border-radius:14px;padding:18px 20px"></div>
           </div>
         </div>
 
@@ -1839,6 +1855,91 @@ function toggleSvPublish(file){
   renderShortVideo();
 }
 
+// ===== 咨询师IP起号 =====
+var IP_START = localStorage.getItem('rh_ip_start') || '2026-09-01';
+var IP_FUNNEL_KEYS = ['followers','private','assessment','light','formal'];
+var IP_FUNNEL_LABELS = {followers:'公众号粉丝',private:'私域微信',assessment:'测评完成',light:'轻咨询(99元)',formal:'正式咨询'};
+function getIpFunnel(){
+  try{return JSON.parse(localStorage.getItem('rh_ip_funnel'))||{};}catch(e){return {};}
+}
+function ipMonth(){
+  var days=(Date.now()-new Date(IP_START).getTime())/86400000;
+  return Math.max(1,Math.floor(days/30)+1);
+}
+function saveIpFunnel(){
+  var d={};
+  IP_FUNNEL_KEYS.forEach(function(k){
+    var v=parseInt(document.getElementById('ipf_'+k).value,10);
+    d[k]=isNaN(v)?0:v;
+  });
+  localStorage.setItem('rh_ip_funnel',JSON.stringify(d));
+  renderIpGrowth();
+}
+function renderIpGrowth(){
+  var m=ipMonth();
+  var stage=m<=2?'阶段1 · 起号期':(m<=4?'阶段2 · 爬坡期':'阶段3 · 变现期');
+  var el=document.getElementById('ipStage'); if(el)el.textContent=stage+' · 第'+m+'个月';
+  var f=getIpFunnel();
+  var stats=[
+    {v:'5000/月',l:'涨粉目标'},
+    {v:'10单/月',l:'咨询转化目标'},
+    {v:'25-38岁女性',l:'核心人群'},
+    {v:'亲密关系+原生家庭',l:'核心议题'}
+  ];
+  var sh='';
+  stats.forEach(function(s){
+    sh+='<div style="background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px"><div style="font-size:20px;font-weight:800;color:#134B43">'+s.v+'</div><div style="font-size:12px;color:#66717d;margin-top:4px">'+s.l+'</div></div>';
+  });
+  var se=document.getElementById('ipStats'); if(se)se.innerHTML=sh;
+
+  var ms=[
+    {t:'M1-2 起号期',fans:'累计 1500 粉',conv:'0-2 单/月',key:'跑通内容线 + 测评工具 + 人设文',done:m>2},
+    {t:'M3-4 爬坡期',fans:'月增 3000-4000',conv:'4-6 单/月',key:'直播常态化 + 私域 500+',done:m>4},
+    {t:'M5-6 变现期',fans:'月增 5000+',conv:'稳定 10 单/月',key:'私域 1500+ + 代表作破圈',done:false}
+  ];
+  var mh='<div style="font-weight:700;font-size:15px;margin-bottom:12px">📈 月度里程碑</div>';
+  ms.forEach(function(x){
+    mh+='<div style="display:flex;gap:12px;align-items:center;padding:9px 12px;border-radius:10px;margin-bottom:8px;'+(x.done?'background:#E8F0EA;opacity:0.75':'background:#F7F3EA')+'">'
+      +'<span style="font-size:16px">'+(x.done?'✅':'⏳')+'</span>'
+      +'<div style="flex:1"><b style="font-size:13px">'+x.t+'</b>'
+      +'<div style="font-size:12px;color:#66717d;margin-top:2px">粉丝：'+x.fans+' · 咨询转化：'+x.conv+' · 重点：'+x.key+'</div></div></div>';
+  });
+  var c=document.getElementById('ipMilestones'); if(c)c.innerHTML=mh;
+
+  var rates=[['private','followers'],['assessment','private'],['light','assessment'],['formal','light']];
+  var fh='<div style="font-weight:700;font-size:15px;margin-bottom:4px">🎚️ 转化漏斗看板</div><div style="font-size:12px;color:#66717d;margin-bottom:12px">每周一录入数据，自动计算相邻环节转化率。目标参考：关注→私域 5-10%，私域→轻咨询 5-8%，轻咨询→正式 30-40%。</div><div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px">';
+  IP_FUNNEL_KEYS.forEach(function(k){
+    fh+='<div style="background:#F7F3EA;border-radius:10px;padding:12px"><div style="font-size:12px;color:#66717d">'+IP_FUNNEL_LABELS[k]+'</div><input id="ipf_'+k+'" type="number" min="0" value="'+(f[k]||0)+'" style="width:100%;box-sizing:border-box;margin-top:6px;padding:6px 8px;border:1px solid var(--border);border-radius:8px;font-size:15px;font-weight:700;color:#134B43"></div>';
+  });
+  fh+='</div><div style="display:flex;gap:10px;margin-top:12px;align-items:center;flex-wrap:wrap">';
+  rates.forEach(function(r){
+    var a=f[r[1]]||0,b=f[r[0]]||0,rate=a>0?Math.round(b/a*100):0;
+    fh+='<span style="background:#E8F0EA;color:#134B43;border-radius:16px;padding:5px 12px;font-size:12px;font-weight:600">'+IP_FUNNEL_LABELS[r[1]]+'→'+IP_FUNNEL_LABELS[r[0]]+'：<b style="color:#C89B52">'+rate+'%</b></span>';
+  });
+  fh+='<button onclick="saveIpFunnel()" style="padding:8px 18px;border-radius:10px;background:#134B43;color:#fff;font-size:13px;font-weight:700;border:none;cursor:pointer">保存数据</button></div>';
+  var cf=document.getElementById('ipFunnel'); if(cf)cf.innerHTML=fh;
+
+  var weeks=[
+    {n:'引流款 60%',d:'情绪共鸣 + 热点选题（雷达TOP5直接喂给视频号/抖音/小红书），负责涨粉'},
+    {n:'信任款 30%',d:'专业科普 + 脱敏案例复盘（第一人称：一个总在关系里讨好的人，咨询半年后发生了什么），负责建立「懂我」'},
+    {n:'转化款 10%',d:'咨询科普（什么情况该考虑咨询/怎么选咨询师/第一次咨询会发生什么/9.9测评解读），阅读量低但转化率最高'},
+    {n:'直播 每周1-2场',d:'视频号优先。见过真人、说过话的观众，咨询转化率是纯阅读的 5-10 倍'},
+    {n:'公众号 2-3篇/周',d:'质量优先于数量，个人号靠 1-2 篇代表作起号，不靠日更'}
+  ];
+  var wh='<div style="font-weight:700;font-size:15px;margin-bottom:12px">🗓️ 每周内容配比</div>';
+  weeks.forEach(function(w){
+    wh+='<div style="display:flex;gap:12px;padding:8px 12px;border-radius:10px;margin-bottom:6px;background:#F7F3EA"><b style="font-size:13px;min-width:120px;color:#134B43">'+w.n+'</b><span style="font-size:12px;color:#42665B;line-height:1.6">'+w.d+'</span></div>';
+  });
+  var cw=document.getElementById('ipWeekly'); if(cw)cw.innerHTML=wh;
+
+  var comp=['不承诺疗效、不做诊断性表述（「三步治愈焦虑」类标题禁用）','案例必须脱敏且取得知情同意','广告法禁用词：最专业 / 第一 / 包好','不贬低同行、不制造病理性焦虑来卖咨询'];
+  var ch='<div style="font-weight:700;font-size:15px;margin-bottom:12px;color:#b3541e">⚠️ 咨询师营销合规红线</div>';
+  comp.forEach(function(x){
+    ch+='<div style="font-size:12px;color:#42665B;line-height:1.7;padding:6px 10px;background:#FBF3EA;border-radius:8px;margin-bottom:6px">· '+x+'</div>';
+  });
+  var cc=document.getElementById('ipCompliance'); if(cc)cc.innerHTML=ch;
+}
+
 function switchView(viewName){
   document.querySelectorAll('.nav-item').forEach(function(n){n.classList.remove('active');});
   document.querySelectorAll('.view').forEach(function(v){v.classList.remove('active');});
@@ -1865,7 +1966,7 @@ document.querySelectorAll('.nav-item').forEach(item=>{
 });
 
 // ===== INIT =====
-renderTasks(); updateOverview(); renderRadar(); renderViral(); renderReview(); renderInsp(); renderShowcase(); renderArticlePlans(); renderReadyArticles(); renderTitleLab(); renderWeiboShort();
+renderTasks(); updateOverview(); renderRadar(); renderViral(); renderReview(); renderInsp(); renderShowcase(); renderArticlePlans(); renderReadyArticles(); renderTitleLab(); renderWeiboShort(); renderIpGrowth();
 </script>
 
 
