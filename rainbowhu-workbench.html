@@ -283,13 +283,10 @@
     </div>
     <nav class="nav" id="nav">
       <div class="nav-item active" data-view="plan"><div class="nav-icon">📋</div>每日计划</div>
-      <div class="nav-item" data-view="inspiration"><div class="nav-icon">💡</div>选题每日灵感</div>
       <div class="nav-item" data-view="viral"><div class="nav-icon">🔥</div>爆款热点视频/二创</div>
-      <div class="nav-item" data-view="review"><div class="nav-icon">📊</div>内容复盘</div>
       <div class="nav-item" data-view="showcase"><div class="nav-icon">✨</div>公众号小红书优质内容</div>
       <div class="nav-item" data-view="articleplan"><div class="nav-icon">📝</div>公众号选题排期</div>
       <div class="nav-item" data-view="ready"><div class="nav-icon">📄</div>今日成文</div>
-      <div class="nav-item" data-view="titlelab"><div class="nav-icon">🔬</div>爆款标题实验室</div>
       <div class="nav-item" data-view="weiboshort"><div class="nav-icon">✍️</div>微博短文创作</div>
       <div class="nav-item" data-view="shortvideo"><div class="nav-icon">🎬</div>短视频创作</div>
       <div class="nav-item" data-view="ipgrowth"><div class="nav-icon">🚀</div>咨询师IP起号</div>
@@ -351,27 +348,6 @@
           </div>
         </div>
 
-        <!-- ===== VIEW: 选题每日灵感 ===== -->
-        <div class="view" id="view-inspiration">
-          <div class="section">
-            <div class="section-head">
-              <div class="section-title"><span class="section-icon" style="background:var(--accent3)">⚡</span>选题每日灵感 · 雷达 TOP5</div>
-              <div class="section-more" id="inspDate">2026-08-29</div>
-            </div>
-            <div class="sec-sub">每日 08:00 自动入库，点击"查看完整报告"看爆款分析 / 3版标题 / 视觉方向</div>
-            <div class="output-grid" id="radarOutput"></div>
-            <a class="full-report" href="彩虹心理每日心理热点报告_2026-08-31.html">→ 查看今日完整报告</a>
-          </div>
-          <div class="section">
-            <div class="section-head">
-              <div class="section-title"><span class="section-icon" style="background:var(--blue)">💡</span>灵感来源库</div>
-              <div class="section-more">随雷达每日更新</div>
-            </div>
-            <div class="insp-grid" id="inspGrid"></div>
-            <div class="insp-box" style="margin-top:14px" id="inspSources"></div>
-          </div>
-        </div>
-
         <!-- ===== VIEW: 爆款热点视频/二创 ===== -->
         <div class="view" id="view-viral">
           <div class="section">
@@ -381,21 +357,6 @@
             </div>
             <div class="sec-sub">以下为基于今日 TOP5 选题生成的短视频/二创方向，可直接作为抖音/视频号脚本起点。</div>
             <div id="viralList"></div>
-          </div>
-        </div>
-
-        <!-- ===== VIEW: 内容复盘 ===== -->
-        <div class="view" id="view-review">
-          <div class="section">
-            <div class="section-head">
-              <div class="section-title"><span class="section-icon" style="background:var(--accent2)">↻</span>内容复盘中心</div>
-              <div class="section-more">每日 17:00</div>
-            </div>
-            <div class="sec-sub">复盘框架：每篇发布内容按 7 维度评估。发布后说"复盘这篇"即生成专属优化报告并追加。</div>
-            <div class="review-dims" id="reviewDims"></div>
-            <div style="font-size:13px;font-weight:700;margin-bottom:10px">今日复盘：彩虹心理每日心理热点报告_2026-08-29</div>
-            <div class="opt-list" id="optList"></div>
-            <div class="tip"><b>使用方式：</b>每次发布内容后，把文章链接/标题发给 rainbowhu，说"复盘这篇"，会按 7 维度生成专属优化报告并追加到此处。</div>
           </div>
         </div>
 
@@ -433,18 +394,7 @@
             </div>
             <div class="sec-sub">基于今日雷达 TOP3 热度，已直接写好 3 篇完整公众号文章（含场景代入/心理机制/觉察练习/转化钩子/二维码）。点击「预览」查看全文，「复制全文」粘贴到公众号编辑器发布。发布后点「标记已发布」更新状态。</div>
             <div id="readyArticles"></div>
-          </div>
-        </div>
-
-        <!-- ===== VIEW: 爆款标题实验室 ===== -->
-        <div class="view" id="view-titlelab">
-          <div class="section">
-            <div class="section-head">
-              <div class="section-title"><span class="section-icon" style="background:var(--accent2)">🔬</span>爆款标题实验室</div>
-              <div class="section-more" id="titleLabDate">2026-08-09</div>
-            </div>
-            <div class="sec-sub">每日 09:00 自动执行。基于雷达 TOP5 选题，每个生成 10 个标题共 50 个，按 5 维度评分（好奇 25 + 情绪 25 + 专业 15 + 传播 20 + 转化 15 = 100）筛选 TOP10。两个 Agent 配合：雷达负责发现选题，标题实验室负责批量生成和筛选标题。</div>
-            <div id="titleLabContent"></div>
+            <a class="full-report" href="彩虹心理每日心理热点报告_2026-08-31.html">→ 查看今日完整雷达报告</a>
           </div>
         </div>
 
@@ -521,21 +471,10 @@ const DEFAULT_TASKS = [
   {id:'t2',name:'英语练习 30分钟',cat:'personal',done:false,meta:['07:30-08:00','🎧 盲听练习'],fixed:true,link:'english-listening.html'},
   {id:'t3',name:'法考学习 3小时',cat:'personal',done:false,meta:['20:00-23:00'],fixed:true},
   {id:'t4',name:'每日心理热点选题雷达',cat:'work',done:true,meta:['自动 08:00','→ TOP5 选题+报告'],auto:true},
-  {id:'t4b',name:'爆款标题实验室',cat:'work',done:true,meta:['自动 09:00','→ 50标题+TOP10'],auto:true,viewTarget:'titlelab'},
   {id:'t4c',name:'微博短文创作',cat:'work',done:true,meta:['自动 20:00','→ 3篇短文+22:00发布'],auto:true,viewTarget:'weiboshort'},
   {id:'t4d',name:'短视频创作',cat:'work',done:false,meta:['自动 21:00','→ 3条抖音视频'],auto:true,viewTarget:'shortvideo'},
-  {id:'t5',name:'内容复盘与优化',cat:'work',done:false,meta:['17:00','复盘今日产出']},
   {id:'t6',name:'公众号选题确认 & 排期',cat:'work',done:false,meta:['09:00','3篇已写好待发布'],viewTarget:'ready'},
   {id:'t7',name:'小红书/抖音内容适配',cat:'work',done:false,meta:['14:00','图文/脚本二创']},
-  {id:'t8',name:'灵感来源库同步',cat:'work',done:true,meta:['随雷达','已同步'],auto:true},
-];
-
-const RADAR_TOP5 = [
-  {rank:1,title:'产后抑郁被当「矫情」：一个拥抱治不了病，但能接住她',score:95,tags:['身心健康','女性心理','社会热点'],hook:'微博热搜+重庆广电第1眼34秒视频81万播放+每5个产妇1个产后抑郁+激素断崖/睡眠剥夺/身份撕裂三重崩塌+家庭支持清单+新手妈妈自救4步法 → 产后情绪评估/女性心理咨询'},
-  {rank:2,title:'失望性情感隔离：你不是冷漠，是心死后的自我保护',score:94,tags:['原生家庭','亲密关系','心理防御'],hook:'社交平台热议+反复期待落空后的自我保护机制+习得性无助+假性独立+情感解冻三步法 → 情感隔离自测/依恋取向咨询'},
-  {rank:3,title:'课题分离：把别人的课题还回去，内耗就少了一大半',score:92,tags:['自我成长','精神内耗','人际边界'],hook:'阿德勒心理学+给内耗人的终极解药+78.6%成年人心理内耗+课题分离三步法+边界用语库 → 边界主题团体/个体咨询'},
-  {rank:4,title:'「只有你懂妈妈」：情感倒置如何养出过度拯救者',score:90,tags:['原生家庭','亲子关系','亲职化'],hook:'网易热文+亲职化(Parentification)+家庭序位破坏+角色归还练习+自我再养育 → 原生家庭议题咨询'},
-  {rank:5,title:'危险关系的迷人张力：为什么「错的人」更让人念念不忘',score:86,tags:['亲密关系','依恋焦虑','精神分析'],hook:'简单心理+禁忌效应+蔡格尼克效应+焦虑型依恋+危险关系信号清单 → 亲密关系模式评估'}
 ];
 
 const VIRAL_IDEAS = [
@@ -544,99 +483,6 @@ const VIRAL_IDEAS = [
   {n:3,title:'你的焦虑不是想太多，是把别人的课题背在身上',desc:'阿德勒课题分离引入→内耗根源：向内失守+向外越界→课题分离判定标准(谁承担后果就是谁的课题)→3个生活场景拆解(同事PPT/父母催婚/孩子作业)→边界用语库→课题分离三步法。方法论强、收藏率高、适合清单体。',platforms:['抖音','小红书','视频号'],color:'#48dbfb'},
   {n:4,title:'「只有你懂妈妈」：这句话压垮了多少孩子',desc:'亲职化/情感倒置引入→家庭序位破坏→孩子被迫成为父母的情绪配偶→成年后在关系中反复拯救「烂人」→角色归还练习+自我再养育→原生家庭创伤自评。情绪冲击强、原生家庭核心客群命中。',platforms:['抖音','视频号','小红书'],color:'#1dd1a1'},
   {n:5,title:'为什么「错的人」更让人上瘾？3个心理陷阱',desc:'危险关系吸引力引入→禁忌效应+蔡格尼克未完成效应+焦虑型依恋→把不稳定解读为深刻的爱→危险关系信号清单→安全型关系重建练习。亲密关系高转化话题，适合深夜档口播。',platforms:['抖音','视频号','小红书'],color:'#a55eea'}
-];
-
-const REVIEW_DIMS = [
-  {t:'标题吸引力',s:'好奇/共鸣/反常识'},{t:'开头3行',s:'抓人/场景代入'},
-  {t:'内容结构',s:'痛点→机制→方法'},{t:'情绪共鸣度',s:'"说的就是我"'},
-  {t:'转化钩子',s:'测评/咨询入口'},{t:'视觉呈现',s:'封面/配图/排版'},
-  {t:'数据表现',s:'阅读/点赞/收藏'},{t:'竞品对标',s:'同类账号对比'},
-];
-const OPTS = [
-  {t:'「产后抑郁」女性心理强转化',d:'TOP1 微博热搜+81万播放+每5个产妇1个产后抑郁，社会误读「矫情」痛点极强，激素/睡眠/身份三重机制可视化，家庭支持清单+新手妈妈自救4步法系统完整，产后情绪评估→女性心理咨询转化清晰。',f:'配套「产后情绪评估量表」+「新手妈妈支持指南」+「女性心理/家庭咨询入口」'},
-  {t:'「失望性情感隔离」原生家庭高转化',d:'TOP2 社交平台热议+命名感强，反复期待落空→习得性无助+情感隔离+假性独立机制清晰，6个信号对号入座感强，情感解冻三步法可实操，依恋取向咨询转化路径自然。',f:'配套「情感隔离程度自测」+「依恋取向个体咨询」+「情感解冻练习手册」'},
-  {t:'「课题分离」自我成长方法论爆款',d:'TOP3 阿德勒经典概念重新激活+给内耗人的终极解药话题标签，边界觉醒情绪契合2026趋势，课题分离三步法+边界用语库实操性强，收藏转发率高。',f:'配套「课题分离练习清单」+「人际边界评估」+「边界主题团体小组」'},
-  {t:'「情感倒置/亲职化」原生家庭系列延伸',d:'TOP4 网易热文+「只有你懂妈妈」金句传播力强，亲职化概念专业且可自测，成年后在关系中重复拯救模式的解释力强，原生家庭咨询转化清晰。',f:'配套「亲职化经历自测」+「角色归还练习」+「原生家庭深度咨询」'},
-  {t:'「危险关系」亲密关系深度话题',d:'TOP5 简单心理出品+禁忌效应/蔡格尼克效应/焦虑型依恋三重机制，满足用户对自我理解的深度需求，危险关系信号清单+安全型关系重建练习完整。',f:'配套「亲密关系模式评估」+「依恋类型测评」+「伴侣/个体咨询」'},
-  {t:'选题专业深度充足',d:'今日TOP5均具备扎实心理学理论支撑（生物-心理-社会模型/习得性无助/情感隔离/阿德勒课题分离/亲职化/依恋理论），专业解读空间大。',f:'每篇文章引用至少2个专业概念+1本参考书'},
-  {t:'转化钩子已细化',d:'5个选题均设置了自测入口和咨询转化路径，转化逻辑清晰。',f:'后续根据实际转化数据优化钩子设计'},
-  {t:'女性心理健康系列可延展',d:'TOP1产后抑郁可作为「女性心理健康」系列开篇，覆盖新手妈妈/职场妈妈/围产期情绪等多个人群。',f:'后续做产后焦虑/新手妈妈身份认同/伴侣共情/重返职场系列'},
-  {t:'原生家庭系列可延展',d:'TOP2失望性隔离+TOP4情感倒置均属原生家庭领域，可做成「原生家庭创伤修复」系列。',f:'后续做情感隔离/亲职化/再抚育/内在小孩/角色归还系列'},
-  {t:'自我成长系列可延展',d:'TOP3课题分离可作为「边界觉醒」系列开篇，结合精神内耗/讨好型人格/高敏感等议题。',f:'后续做课题分离/边界建立/讨好突围/情绪内耗系列'},
-  {t:'亲密关系系列可延展',d:'TOP5危险关系可作为「亲密关系模式」系列延伸，结合依恋类型/分手重建/情绪价值等议题。',f:'后续做危险关系/依恋焦虑/分手后重建/安全型关系系列'},
-  {t:'数据时效性说明',d:'本期检索覆盖2026年8月下旬至8月31日心理领域热文，产后抑郁视频为8月30日发布，多个话题仍在发酵期。',f:'后续接入平台API提升实时性'},
-  {t:'互动数据部分已获取',d:'81万视频播放/每5个产妇1个产后抑郁/10%-20%检出率/78.6%成年人心理内耗等数据已获取，部分精确点赞数未获取。',f:'抓取具体页面补数据'},
-  {t:'视觉方向待补',d:'改编建议缺具体参考图。',f:'补AI生图提示词或参考图'},
-  {t:'竞品对标不足',d:'未对比同类账号同期同主题数据。',f:'增加竞品对标维度'},
-  {t:'数据实时性不足',d:'近24h热搜未获取，用近期长尾内容代替。',f:'接入各平台热搜 API'},
-
-  {t:'「产后抑郁」女性心理强转化',d:'TOP1 微博热搜+81万播放+每5个产妇1个产后抑郁，社会误读「矫情」痛点极强，激素/睡眠/身份三重机制可视化，家庭支持清单+新手妈妈自救4步法系统完整，产后情绪评估→女性心理咨询转化清晰。',f:'配套「产后情绪评估量表」+「新手妈妈支持指南」+「女性心理/家庭咨询入口」'},
-  {t:'「失望性情感隔离」原生家庭高转化',d:'TOP2 社交平台热议+命名感强，反复期待落空→习得性无助+情感隔离+假性独立机制清晰，6个信号对号入座感强，情感解冻三步法可实操，依恋取向咨询转化路径自然。',f:'配套「情感隔离程度自测」+「依恋取向个体咨询」+「情感解冻练习手册」'},
-  {t:'「课题分离」自我成长方法论爆款',d:'TOP3 阿德勒经典概念重新激活+给内耗人的终极解药话题标签，边界觉醒情绪契合2026趋势，课题分离三步法+边界用语库实操性强，收藏转发率高。',f:'配套「课题分离练习清单」+「人际边界评估」+「边界主题团体小组」'},
-  {t:'「情感倒置/亲职化」原生家庭系列延伸',d:'TOP4 网易热文+「只有你懂妈妈」金句传播力强，亲职化概念专业且可自测，成年后在关系中重复拯救模式的解释力强，原生家庭咨询转化清晰。',f:'配套「亲职化经历自测」+「角色归还练习」+「原生家庭深度咨询」'},
-  {t:'「危险关系」亲密关系深度话题',d:'TOP5 简单心理出品+禁忌效应/蔡格尼克效应/焦虑型依恋三重机制，满足用户对自我理解的深度需求，危险关系信号清单+安全型关系重建练习完整。',f:'配套「亲密关系模式评估」+「依恋类型测评」+「伴侣/个体咨询」'},
-  {t:'选题专业深度充足',d:'今日TOP5均具备扎实心理学理论支撑（生物-心理-社会模型/习得性无助/情感隔离/阿德勒课题分离/亲职化/依恋理论），专业解读空间大。',f:'每篇文章引用至少2个专业概念+1本参考书'},
-  {t:'转化钩子已细化',d:'5个选题均设置了自测入口和咨询转化路径，转化逻辑清晰。',f:'后续根据实际转化数据优化钩子设计'},
-  {t:'女性心理健康系列可延展',d:'TOP1产后抑郁可作为「女性心理健康」系列开篇，覆盖新手妈妈/职场妈妈/围产期情绪等多个人群。',f:'后续做产后焦虑/新手妈妈身份认同/伴侣共情/重返职场系列'},
-  {t:'原生家庭系列可延展',d:'TOP2失望性隔离+TOP4情感倒置均属原生家庭领域，可做成「原生家庭创伤修复」系列。',f:'后续做情感隔离/亲职化/再抚育/内在小孩/角色归还系列'},
-  {t:'自我成长系列可延展',d:'TOP3课题分离可作为「边界觉醒」系列开篇，结合精神内耗/讨好型人格/高敏感等议题。',f:'后续做课题分离/边界建立/讨好突围/情绪内耗系列'},
-  {t:'亲密关系系列可延展',d:'TOP5危险关系可作为「亲密关系模式」系列延伸，结合依恋类型/分手重建/情绪价值等议题。',f:'后续做危险关系/依恋焦虑/分手后重建/安全型关系系列'},
-  {t:'数据时效性说明',d:'本期检索覆盖2026年8月下旬至8月31日心理领域热文，产后抑郁视频为8月30日发布，多个话题仍在发酵期。',f:'后续接入平台API提升实时性'},
-  {t:'互动数据部分已获取',d:'81万视频播放/每5个产妇1个产后抑郁/10%-20%检出率/78.6%成年人心理内耗等数据已获取，部分精确点赞数未获取。',f:'抓取具体页面补数据'},
-  {t:'视觉方向待补',d:'改编建议缺具体参考图。',f:'补AI生图提示词或参考图'},
-  {t:'竞品对标不足',d:'未对比同类账号同期同主题数据。',f:'增加竞品对标维度'},
-  {t:'数据实时性不足',d:'近24h热搜未获取，用近期长尾内容代替。',f:'接入各平台热搜 API'}
-];
-
-
-const INSP_BOXES = [
-  {h:'重点账号',chips:['武志红心理','壹心理','KnowYourself','简单心理','心理学空间','咨询师之家','知我心理学','此刻心理','中国心理卫生协会']},
-  {h:'本周热门话题',chips:['产后抑郁','失望性情感隔离','课题分离','情感倒置','亲职化','危险关系','原生家庭','女性心理','内耗解药','边界觉醒','过度拯救者','产后不是矫情','心死后自我保护','把别人课题还回去','只有你懂妈妈']},
-  {h:'爆款标题范式',chips:['数据冲击式(每5个妈妈就有1个)','命名感式(失望性情感隔离)','概念激活式(课题分离)','金句传播式(把别人的课题还回去)','情绪共鸣式(你不是冷漠只是失望太多次)','场景引入式(34秒视频81万播放)']},
-  {h:'爆款内容结构',chips:['真实场景/视频引入','数据锚点支撑','心理机制解释','落地练习方法','自测转化钩子','专业概念命名']}
-];
-const SRC_LINKS = [
-  'https://www.toutiao.com/w/1874776610571339','产后抑郁妻子被丈夫抱住痛哭：81万播放+每5个产妇1个产后抑郁（2026-08-30 今日头条/重庆广电）',
-  'https://www.cnbeibei.com/my/30196.html','产后抑郁症状表现：检出率10%-20%（2026-08 中国宝贝网）',
-  'https://mip.mfk.com/ask/20382810.shtml','产后抑郁症：全球发病率10%-15%（民福康/武汉大学人民医院）',
-  'https://k.sina.com.cn/article_7879848901_1d5acf3c506801wc7w.html','失望性情感隔离有哪些表现（2026-08 新浪心理疗愈室）',
-  'https://k.sina.cn/article_7879848901_1d5acf3c506801wc4y.html','失望性情感隔离不是冷漠是自我保护（2026-08 新浪看点）',
-  'https://www.sina.cn/news/detail/5337039404273667.html','失望性情感隔离的心理机制与表现（2026-08 新浪新闻）',
-  'https://new.qq.com/rain/a/20260831A04AIY00','爱胡思乱想一点小事就焦虑：课题分离是关键（2026-08-31 腾讯新闻）',
-  'https://k.sina.com.cn/article_7879848901_1d5acf3c506801wam4.html','课题分离真的能成为内耗人的终极解药吗（2026-08 新浪新闻）',
-  'https://k.sina.com.cn/article_7879848901_1d5acf3c506801wbua.html','内耗人如何用课题分离停止胡思乱想（2026-08 新浪新闻）',
-  'https://www.sohu.com/a/1069343443_122066679','你的焦虑不是想得太多而是把别人的课题背在身上（2026-08 搜狐）',
-  'https://www.163.com/dy/article/L5HORKBQ0556HX7O.html','情感倒置：「只有你懂妈妈」养出过度拯救者（2026-08-30 网易）',
-  'https://www.toutiao.com/article/7677490178356724233','我是妈妈唯一的依靠：亲职化压垮孩子（2026-08-25 今日头条）',
-  'https://www.toutiao.com/article/7679797227157717531','危险关系的迷人张力（2026-08-30 今日头条/简单心理）',
-  'https://m.sohu.com/a/1068609258_122066679','生活是一种体谅一种理解：2026年最治愈的成年人修行（2026-08 搜狐）',
-  'https://m.sohu.com/a/1066375867_122066679','人际关系心理学2026爆火真相：不讨好不内耗守住两条线（2026-08 搜狐）',
-  'https://news.qq.com/rain/a/20260827A0DPQF00','日子万般琐碎守住本心：阿德勒课题分离成全民解药（2026-08-27 腾讯新闻）',
-  'https://www.toutiao.com/article/7677674269672833587','讨好型人格的精神绑架与觉醒突围（2026-08-25 今日头条）',
-  'https://www.topnews.cn/news/145ED2E541B04470','你的讨好正在悄悄掀空你（2026-08 顶端新闻 100万+）',
-  'https://www.toutiao.com/article/7672794952132297260','你又不是人民币凭什么让所有人满意（2026-08-12 今日头条）',
-  'https://m.toutiao.com/article/7672115968784646679','你的懂事其实是最深的委屈（2026-08 今日头条）',
-  'https://new.qq.com/rain/a/20260822A068QZ00','当你不再恐惧原生家庭的烙印（2026-08-22 腾讯新闻）',
-  'https://k.sina.com.cn/article_7879848901_1d5acf3c506801udba.html','原生家庭心理创伤如何自愈（2026-08 新浪）',
-  'https://www.toutiao.com/article/7670486344598340119','原生家庭带来的伤不必用一生买单（2026-08-05 今日头条）',
-  'https://www.toutiao.com/a7677766541701546548','武志红：真正的成熟是长出主体性（2026-08 今日头条）',
-  'https://www.toutiao.com/article/7677131680204931607','你的痛苦90%源于没有边界感（2026-08-23 今日头条）',
-  'https://m.toutiao.com/article/7670889706154738186','内耗是自我PUA（2026-08 今日头条）',
-  'https://cj.sina.com.cn','开学前家书屋里学习跟情绪做朋友（2026-08-30 新浪/上观新闻）',
-  'https://www.163.com/dy/article/L5IVALLO0514CL9K.html','伙伴计划做情绪小主人（2026-08-30 网易/陕西公益）',
-  'https://www.sohu.com/a/1058041566_121203229','2026普通人顶级活法：戒掉精神内耗（2026-08 搜狐）',
-  'https://www.toutiao.com/article/7674074191557165614','善待自己才是后半生最重要的课题（2026-08-15 今日头条）',
-  'https://m.toutiao.com/article/7673060477215212032','成年人最好的自愈是守住边界（2026-08-13 今日头条）',
-  'https://m.toutiao.com/article/7665787468993528330','别被情绪价值绑架（2026-08 今日头条）',
-  'https://www.toutiao.com/article/7672187035767325207','别再无偿输出情绪价值（2026-08 今日头条）',
-  'https://www.sohu.com/a/1057748827_121956422','真正厉害的女人都懂课题分离与价值置换（2026-08 搜狐）',
-  'https://www.toutiao.com/article/7670421531637465627','别等别人来救赎你（2026-08 今日头条）',
-  'https://www.toutiao.com/article/7670798769869144619','停止精神内耗放过自己（2026-08-06 今日头条）',
-  'https://www.toutiao.com/article/7668822891584995850','原生家庭的伤害如何治愈（2026-08-01 今日头条）',
-  'https://so.html5.qq.com','原生家庭的伤不必靠原谅自愈（2026-08 腾讯浏览器）',
-  'https://kanjianxinli.com/articleDetail/13556','武志红：拖延内耗容易放弃关键在于认清（2026 武志红心理）',
-  'https://www.jintiankansha.com/column/XA66k3t7NW','KnowYourself公众号近30篇心理学文章汇总（2026-08）',
-  'https://m.toutiao.com/article/7671268517068554754','失恋后最难的不是放下他（2026-08 今日头条）'
 ];
 
 const SHOWCASE = [
@@ -762,183 +608,6 @@ const READY_ARTICLES = [
     keywords:'课题分离|阿德勒|精神内耗|人际边界|边界觉醒|自我成长|边界用语库|内耗解药'
   }
 ];
-
-// ===== TITLE LAB DATA =====
-const TITLE_LAB = {
-  date:'2026-08-31',
-  totalGenerated:50,
-  topCount:10,
-  topics:[
-    {n:1,name:'开学焦虑/假期戒断反应（距9.1仅1天·山东精卫中心300床满床）',score:96},
-    {n:2,name:'冉莹颖原生家庭重男轻女创伤（3次再婚·78岁患癌·没资格替母亲原谅）',score:95},
-    {n:3,name:'景甜原生家庭/父母常吵架（独生女·从小缺乏安全感）',score:92},
-    {n:4,name:'成年人「两个我」的分裂感（入秋情绪波动·理想我vs现实我）',score:91},
-    {n:5,name:'OECD青少年社会与情感福祉（1/3青少年与父母沟通障碍）',score:89}
-  ],
-  topTitles:[
-    {
-      rank:1,
-      title:'「哦，女儿」——三个字，毁掉了一个女孩的前半生',
-      score:94,
-      topic:'冉莹颖原生家庭重男轻女创伤（3次再婚·78岁患癌·没资格替母亲原谅）',
-      type:'情绪共鸣型',
-      typeColor:'#c62828',
-      platforms:["公众号","小红书","抖音"],
-      dims:{curiosity:23,emotion:25,cred:13,viral:20,conv:13},
-      analysis:'情绪共鸣型的「致命细节+身份命名+代际创伤」结构：「哦，女儿」三个字是冉莹颖父亲出生时的全部反应——极简却极具画面感，把重男轻女的冷漠浓缩成一个瞬间。标题用引号包裹原话，让读者仿佛听到那个转身的脚步声。「毁掉了一个女孩的前半生」把个体创伤升代际议题，精准命中所有曾在原生家庭中被忽视的女性读者。对应8月31日#冉莹颖爸爸再婚三次为生儿子#热搜、78岁父亲患癌17年求和解、母亲「我是收垃圾的吗」的拒绝。正文展开重男轻女创伤的代际传递机制+「被嫌弃的女儿」自我否定模式+不原谅的正当性。'
-    },
-    {
-      rank:2,
-      title:'不是冉莹颖不想原谅，是「没资格替母亲原谅」才是最清醒的认知',
-      score:94,
-      topic:'冉莹颖原生家庭重男轻女创伤（3次再婚·78岁患癌·没资格替母亲原谅）',
-      type:'反常识型',
-      typeColor:'#3f51b5',
-      platforms:["公众号","小红书","抖音"],
-      dims:{curiosity:23,emotion:24,cred:15,viral:19,conv:13},
-      analysis:'反常识型的「主体翻转+道德解构+代际正义」结构：默认叙事是「子女应该原谅病危父亲」；标题把主语从「冉莹颖」切到「没资格替母亲原谅」——瞬间颠覆「孝道绑架」的逻辑。这不是关于原谅与否，是关于「谁有权利代表受害者发言」。对应8月31日新浪/头条报道、邹市明私下约见岳父、母亲终身未再婚打三份工抚养女儿。「没资格替母亲原谅」是2026年原生家议题中最有力的句子之一，直接连接原生家庭创伤自评、代际边界咨询、女性成长工作坊。'
-    },
-    {
-      rank:3,
-      title:'父亲三次再婚只为生儿子，最后却只剩一个他不想要的女儿',
-      score:93,
-      topic:'冉莹颖原生家庭重男轻女创伤（3次再婚·78岁患癌·没资格替母亲原谅）',
-      type:'悬念型',
-      typeColor:'#00838f',
-      platforms:["公众号","小红书","抖音"],
-      dims:{curiosity:25,emotion:23,cred:13,viral:20,conv:12},
-      analysis:'悬念型的「因果反转+命运讽刺+道德追问」结构：「三次再婚只为生儿子」是执念的极致——数字「三」形成强烈的重复感；「最后却只剩一个他不想要的女儿」是命运的反讽，把重男轻女的荒谬性推向高潮。读者会不点开就想知道：这个父亲现在后悔了吗？对应8月31日《姐姐当家2》节目内容、冉莹颖父亲三次再婚求子均失败、78岁患癌想见女儿。正文展开重男轻女的心理机制（条件性爱+性别偏好）+创伤后成长+「重新养育自己」4步法。'
-    },
-    {
-      rank:4,
-      title:'山东省精神卫生中心300张床位全部满床，开学前发生了什么？',
-      score:93,
-      topic:'开学焦虑/假期戒断反应（距9.1仅1天·山东精卫中心300床满床）',
-      type:'悬念型',
-      typeColor:'#00838f',
-      platforms:["公众号","小红书","抖音"],
-      dims:{curiosity:25,emotion:23,cred:14,viral:20,conv:11},
-      analysis:'悬念型的「权威数据+场景震惊+时间紧迫」结构：「300张床位全部满床」是具象的危机信号——不是抽象的数字，而是「连医院都没位置了」的恐慌感。「开学前」锚定8月31日距9月1日仅1天的极致时效。对应8月31日搜狐报道、山东省精神卫生中心儿少医学中心就诊量增长40%、60%出现躯体化反应。正文展开假期戒断反应的神经机制（前额叶-杏仁核切换）+开学焦虑的5个信号+家长应对3步法。'
-    },
-    {
-      rank:5,
-      title:'不是离婚最伤孩子，是「不离婚但天天吵」更毁安全感',
-      score:92,
-      topic:'景甜原生家庭/父母常吵架（独生女·从小缺乏安全感）',
-      type:'反常识型',
-      typeColor:'#3f51b5',
-      platforms:["公众号","小红书","抖音"],
-      dims:{curiosity:23,emotion:23,cred:14,viral:19,conv:13},
-      analysis:'反常识型的「认知翻转+日常场景+依恋理论」结构：默认观念是「离婚对孩子伤害最大」；标题翻转——「不离婚但天天吵」才是更隐蔽的杀手。这切中中国家庭「为了孩子忍忍吧」的集体迷思，立刻召唤所有在争吵家庭中长大的读者。对应8月31日景甜微博谈及原生家庭、父母常吵架、独生女从小缺乏安全感。正文展开父母冲突对儿童依恋系统的破坏（从安全基地到警报状态）+「隐性创伤」识别+安全感重建3步法。'
-    },
-    {
-      rank:6,
-      title:'一个想浪迹天涯看晚霞，一个困在厨房算柴米油盐——这是你吗？',
-      score:92,
-      topic:'成年人「两个我」的分裂感（入秋情绪波动·理想我vs现实我）',
-      type:'情绪共鸣型',
-      typeColor:'#c62828',
-      platforms:["公众号","小红书","抖音"],
-      dims:{curiosity:23,emotion:24,cred:12,viral:20,conv:13},
-      analysis:'情绪共鸣型的「画面并置+身份确认+季节锚定」结构：「浪迹天涯看晚霞」vs「厨房算柴米油盐」是两个极端画面的碰撞——理想与现实的撕裂感瞬间可视化。「这是你吗？」用问句直接邀请读者对号入座。对应8月中下旬「两个我」讨论小高峰、入秋季节性情绪变化、成年人自我分化议题。正文展开季节性情绪失调（SAD）+自我分化理论+「理想我」与「现实我」的整合练习。'
-    },
-    {
-      rank:7,
-      title:'开学前72小时，60%的孩子会出现这5种躯体化反应',
-      score:92,
-      topic:'开学焦虑/假期戒断反应（距9.1仅1天·山东精卫中心300床满床）',
-      type:'数字承诺型',
-      typeColor:'#e67c22',
-      platforms:["公众号","小红书","抖音"],
-      dims:{curiosity:24,emotion:22,cred:14,viral:19,conv:13},
-      analysis:'数字承诺型的「时间锚定+群体规模+自检清单」结构：「72小时」制造紧迫感——距离开学只剩3天；「60%」来自山东省精卫中心数据——躯体化反应不是个别现象；「5种」给家长明确的自查清单。对应8月31日搜狐报道、60%出现躯体化反应（失眠/胸闷/头疼/肚子疼/手抖）。正文展开假期戒断反应的神经科学机制+5种躯体化信号识别+家长「接住情绪」3步法。'
-    },
-    {
-      rank:8,
-      title:'开学焦虑正在毁掉孩子，而家长还在说「就是懒」',
-      score:92,
-      topic:'开学焦虑/假期戒断反应（距9.1仅1天·山东精卫中心300床满床）',
-      type:'痛点直击型',
-      typeColor:'#c62828',
-      platforms:["公众号","小红书","抖音"],
-      dims:{curiosity:22,emotion:24,cred:13,viral:20,conv:13},
-      analysis:'痛点直击型的「残酷真相+代际错位+道德追问」结构：「正在毁掉孩子」是强烈的后果预警；「家长还在说就是懒」直接点名最常见的错误归因——把心理问题道德化。这对应8月31日头条报道、家长「催/收/断/骂」的传统管教方式、89.4%家长因用网问题与孩子冲突。正文展开开学焦虑vs懒的本质区别+青少年神经发育特点（前额叶未成熟/杏仁核过度活跃）+家长正确应对5步法。'
-    },
-    {
-      rank:9,
-      title:'不是孩子不想上学，是大脑还没从「假期模式」切换过来',
-      score:92,
-      topic:'开学焦虑/假期戒断反应（距9.1仅1天·山东精卫中心300床满床）',
-      type:'反常识型',
-      typeColor:'#3f51b5',
-      platforms:["公众号","小红书","抖音"],
-      dims:{curiosity:23,emotion:23,cred:14,viral:19,conv:13},
-      analysis:'反常识型的「归因翻转+神经科学+去道德化」结构：默认叙事是「孩子不想上学=懒惰/逃避」；标题翻转——不是态度问题，是大脑神经调节系统的切换失灵。把「 behavioral problem」重新定义为「neurobiological adaptation」。对应8月31日新浪报道、假期戒断反应2.3亿阅读、从低控制感到高控制感的切换对未成熟神经系统的压力。正文展开假期戒断反应的神经机制+HPA轴激活+前额叶-杏仁核切换+阶梯式收心法。'
-    },
-    {
-      rank:10,
-      title:'3次再婚、78岁、17年肠癌：一个重男轻女父亲的执念代价',
-      score:91,
-      topic:'冉莹颖原生家庭重男轻女创伤（3次再婚·78岁患癌·没资格替母亲原谅）',
-      type:'数字承诺型',
-      typeColor:'#e67c22',
-      platforms:["公众号","小红书","抖音"],
-      dims:{curiosity:24,emotion:22,cred:13,viral:19,conv:13},
-      analysis:'数字承诺型的「三重数据+命运算账+道德追问」结构：「3次再婚」是执念的重复；「78岁」是时间跨度；「17年肠癌」是身体代价。三个数字叠加出一个重男轻女父亲的人生总账——折腾一生，求子不得，孤独终老。对应8月31日头条/新浪报道、冉莹颖父亲三次再婚均失败、患癌17年做过七八次化疗。正文展开重男轻女的文化心理根源+执念的代价（关系断裂+健康损耗）+女性自我价值重建。'
-    }
-  ],
-  otherTitles:[
-    // ===== 选题1：开学焦虑/假期戒断反应（非TOP）=====
-    {title:'「我不想开学」——这句话背后，是300个孩子说不出口的情绪',score:90,topic:'开学焦虑/假期戒断反应（距9.1仅1天·山东精卫中心300床满床）',type:'情绪共鸣型'},
-    {title:'「别人家孩子都能上学，怎么就你不行？」——这句话伤了多少人',score:90,topic:'开学焦虑/假期戒断反应（距9.1仅1天·山东精卫中心300床满床）',type:'对话型'},
-    {title:'我16岁那年，开学前失眠了整整一周',score:83,topic:'开学焦虑/假期戒断反应（距9.1仅1天·山东精卫中心300床满床）',type:'第一人称型'},
-    {title:'假期戒断反应的神经科学：前额叶皮层与杏仁核的切换失灵',score:81,topic:'开学焦虑/假期戒断反应（距9.1仅1天·山东精卫中心300床满床）',type:'专业型'},
-    {title:'开学前的情绪低谷，是孩子在向你发送求助信号',score:88,topic:'开学焦虑/假期戒断反应（距9.1仅1天·山东精卫中心300床满床）',type:'治愈型'},
-    {title:'那些说「开学焦虑是矫情」的人，根本不懂孩子在经历什么',score:88,topic:'开学焦虑/假期戒断反应（距9.1仅1天·山东精卫中心300床满床）',type:'替人发声型'},
-
-    // ===== 选题2：冉莹颖原生家庭重男轻女创伤（非TOP）=====
-    {title:'那些劝你「毕竟是你爸」的人，从来不知道你经历了什么',score:88,topic:'冉莹颖原生家庭重男轻女创伤（3次再婚·78岁患癌·没资格替母亲原谅）',type:'替人发声型'},
-    {title:'「我是收垃圾的吗？」——一个母亲对前夫最狠的拒绝',score:90,topic:'冉莹颖原生家庭重男轻女创伤（3次再婚·78岁患癌·没资格替母亲原谅）',type:'对话型'},
-    {title:'我花了30年才明白，父亲的缺席不是我的错',score:85,topic:'冉莹颖原生家庭重男轻女创伤（3次再婚·78岁患癌·没资格替母亲原谅）',type:'第一人称型'},
-    {title:'重男轻女创伤的代际传递：从「被嫌弃的女儿」到「自我否定」',score:86,topic:'冉莹颖原生家庭重男轻女创伤（3次再婚·78岁患癌·没资格替母亲原谅）',type:'专业型'},
-    {title:'出生时被父亲嫌弃的女孩，后来都怎么样了？',score:90,topic:'冉莹颖原生家庭重男轻女创伤（3次再婚·78岁患癌·没资格替母亲原谅）',type:'悬念型'},
-    {title:'不原谅，也是一种体面',score:87,topic:'冉莹颖原生家庭重男轻女创伤（3次再婚·78岁患癌·没资格替母亲原谅）',type:'治愈型'},
-
-    // ===== 选题3：景甜原生家庭/父母常吵架（非TOP）=====
-    {title:'「父母常吵架」——这四个字，是我童年最重的阴影',score:89,topic:'景甜原生家庭/父母常吵架（独生女·从小缺乏安全感）',type:'情绪共鸣型'},
-    {title:'父母每吵一次架，孩子的大脑就经历一次「微创伤」',score:90,topic:'景甜原生家庭/父母常吵架（独生女·从小缺乏安全感）',type:'数字承诺型'},
-    {title:'那些说「为了孩子忍忍吧」的人，不知道孩子早就碎了',score:88,topic:'景甜原生家庭/父母常吵架（独生女·从小缺乏安全感）',type:'替人发声型'},
-    {title:'我从小学会的第一件事，是屏住呼吸听门外的争吵声',score:83,topic:'景甜原生家庭/父母常吵架（独生女·从小缺乏安全感）',type:'第一人称型'},
-    {title:'「我们没离婚，你怎么会没有安全感？」——父母最常犯的错',score:89,topic:'景甜原生家庭/父母常吵架（独生女·从小缺乏安全感）',type:'对话型'},
-    {title:'景甜谈原生家庭：父母常吵架，独生女从小没有安全感',score:88,topic:'景甜原生家庭/父母常吵架（独生女·从小缺乏安全感）',type:'悬念型'},
-    {title:'父母冲突对儿童依恋系统的破坏：从「安全基地」到「警报状态」',score:84,topic:'景甜原生家庭/父母常吵架（独生女·从小缺乏安全感）',type:'专业型'},
-    {title:'父母吵架时，孩子正在经历什么？',score:89,topic:'景甜原生家庭/父母常吵架（独生女·从小缺乏安全感）',type:'痛点直击型'},
-    {title:'安全感不是父母给的，是自己长大后重新建起来的',score:85,topic:'景甜原生家庭/父母常吵架（独生女·从小缺乏安全感）',type:'治愈型'},
-
-    // ===== 选题4：成年人「两个我」的分裂感（非TOP）=====
-    {title:'入秋后68%的成年人会经历「两个我」的情绪分裂',score:87,topic:'成年人「两个我」的分裂感（入秋情绪波动·理想我vs现实我）',type:'数字承诺型'},
-    {title:'不是你不安于现状，是秋天本身就会让人产生「分裂感」',score:89,topic:'成年人「两个我」的分裂感（入秋情绪波动·理想我vs现实我）',type:'反常识型'},
-    {title:'我们这一代人的崩溃，从不敢承认「两个我」开始',score:90,topic:'成年人「两个我」的分裂感（入秋情绪波动·理想我vs现实我）',type:'替人发声型'},
-    {title:'我今年35岁，一边想辞职看世界，一边怕房贷断供',score:83,topic:'成年人「两个我」的分裂感（入秋情绪波动·理想我vs现实我）',type:'第一人称型'},
-    {title:'「你不是过得挺好吗，怎么还不开心？」——因为有两个我在打架',score:87,topic:'成年人「两个我」的分裂感（入秋情绪波动·理想我vs现实我）',type:'对话型'},
-    {title:'每年入秋，为什么总有人突然觉得自己「活错了」？',score:90,topic:'成年人「两个我」的分裂感（入秋情绪波动·理想我vs现实我）',type:'悬念型'},
-    {title:'季节性情绪失调与自我分化：当「理想我」和「现实我」开始撕裂',score:82,topic:'成年人「两个我」的分裂感（入秋情绪波动·理想我vs现实我）',type:'专业型'},
-    {title:'成年人的崩溃，从「两个我」互相看不起开始',score:88,topic:'成年人「两个我」的分裂感（入秋情绪波动·理想我vs现实我）',type:'痛点直击型'},
-    {title:'承认「两个我」都存在，本身就是一种和解',score:85,topic:'成年人「两个我」的分裂感（入秋情绪波动·理想我vs现实我）',type:'治愈型'},
-
-    // ===== 选题5：OECD青少年社会与情感福祉（非TOP）=====
-    {title:'「我没法跟父母沟通」——1/3青少年的共同秘密',score:88,topic:'OECD青少年社会与情感福祉（1/3青少年与父母沟通障碍）',type:'情绪共鸣型'},
-    {title:'OECD报告：1/3青少年与父母存在沟通障碍，女生更严重',score:88,topic:'OECD青少年社会与情感福祉（1/3青少年与父母沟通障碍）',type:'数字承诺型'},
-    {title:'不是孩子叛逆，是父母的沟通方式还停留在20年前',score:90,topic:'OECD青少年社会与情感福祉（1/3青少年与父母沟通障碍）',type:'反常识型'},
-    {title:'那些说「现在孩子太脆弱」的人，没看过OECD这份报告',score:87,topic:'OECD青少年社会与情感福祉（1/3青少年与父母沟通障碍）',type:'替人发声型'},
-    {title:'我16岁，有话宁愿跟网友说，也不跟爸妈说',score:82,topic:'OECD青少年社会与情感福祉（1/3青少年与父母沟通障碍）',type:'第一人称型'},
-    {title:'「你有什么不能跟爸妈说的？」——这句话本身就是问题',score:87,topic:'OECD青少年社会与情感福祉（1/3青少年与父母沟通障碍）',type:'对话型'},
-    {title:'OECD罕见发声：青少年福祉危机，1/3家庭沟通已断裂',score:90,topic:'OECD青少年社会与情感福祉（1/3青少年与父母沟通障碍）',type:'悬念型'},
-    {title:'经合组织《提升青少年社会与情感福祉》：家庭沟通障碍的性别差异',score:80,topic:'OECD青少年社会与情感福祉（1/3青少年与父母沟通障碍）',type:'专业型'},
-    {title:'当1/3青少年说「和父母没法沟通」，问题出在哪？',score:88,topic:'OECD青少年社会与情感福祉（1/3青少年与父母沟通障碍）',type:'痛点直击型'},
-    {title:'改善亲子沟通，从父母学会「闭嘴听」开始',score:84,topic:'OECD青少年社会与情感福祉（1/3青少年与父母沟通障碍）',type:'治愈型'}
-  ]
-};
 
 // ===== WEIBO SHORT DATA =====
 const WEIBO_SHORT = {
@@ -1161,16 +830,7 @@ function updateOverview(){
   document.getElementById('ovRate').textContent = rate + '%';
 }
 
-function renderRadar(){
-  document.getElementById('radarOutput').innerHTML = RADAR_TOP5.map(r=>
-    '<div class="output-card"><div class="output-top">'+
-    '<div class="output-rank rank'+r.rank+'">'+r.rank+'</div>'+
-    '<div class="output-title">'+r.title+'</div>'+
-    '<div class="output-score">'+r.score+'</div></div>'+
-    '<div class="output-tags">'+r.tags.map((t,i)=>'<span class="otag ot'+(i+1)+'">'+t+'</span>').join('')+'</div>'+
-    '<div class="output-hook"><b>改编钩子：</b>'+r.hook+'</div></div>'
-  ).join('');
-}
+
 
 function renderViral(){
   document.getElementById('viralList').innerHTML = VIRAL_IDEAS.map(v=>
@@ -1181,25 +841,9 @@ function renderViral(){
   ).join('');
 }
 
-function renderReview(){
-  document.getElementById('reviewDims').innerHTML = REVIEW_DIMS.map(d=>
-    '<div class="rdim"><b>'+d.t+'</b><span>'+d.s+'</span></div>'
-  ).join('');
-  document.getElementById('optList').innerHTML = OPTS.map((o,i)=>
-    '<div class="opt"><div class="opt-n">'+(i+1)+'</div><div><b>'+o.t+'</b>：'+o.d+' <span class="fix">→ '+o.f+'</span></div></div>'
-  ).join('');
-}
 
-function renderInsp(){
-  document.getElementById('inspGrid').innerHTML = INSP_BOXES.map(b=>
-    '<div class="insp-box"><h5>'+b.h+'</h5>'+b.chips.map(c=>'<span class="chip">'+c+'</span>').join('')+'</div>'
-  ).join('');
-  let links='';
-  for(let i=0;i<SRC_LINKS.length;i+=2){
-    links+='<a class="src-link" href="'+SRC_LINKS[i]+'">· '+SRC_LINKS[i+1]+'</a>';
-  }
-  document.getElementById('inspSources').innerHTML = '<h5>今日素材来源（可点击溯源）</h5>'+links;
-}
+
+
 
 function renderShowcase(){
   document.getElementById('showcaseList').innerHTML = SHOWCASE.map(s=>
@@ -1596,68 +1240,7 @@ function togglePublish(idx){
   renderReadyArticles();
 }
 
-// ===== TITLE LAB =====
-function renderTitleLab(){
-  var data=TITLE_LAB;
-  document.getElementById('titleLabDate').textContent=data.date;
-  var avgScore=0;
-  for(var i=0;i<data.topTitles.length;i++){avgScore+=data.topTitles[i].score;}
-  avgScore=Math.round(avgScore/data.topTitles.length);
-  var rankColors=['#c0392b','#d98c3a','#8e44ad','#27ae60','#2980b9','#c0392b','#d98c3a','#8e44ad','#27ae60','#2980b9'];
-  var typeColors={'情绪共鸣型':'#fce4ec;color:#c62828','数字承诺型':'#fff3e0;color:#e67c22','反常识型':'#e8eaf6;color:#3f51b5','替人发声型':'#fce4ec;color:#c62828','第一人称型':'#e3f2fd;color:#1976d2','对话型':'#f3e5f5;color:#6b5b95','悬念型':'#e0f7fa;color:#00838f','专业型':'#e8f5e9;color:#2e7d32','痛点直击型':'#ffebee;color:#c62828','治愈型':'#f1f8e9;color:#558b2f'};
 
-  var statsHtml='<div class="tl-stats">'+
-    '<div class="tl-stat"><div class="num" style="color:var(--purple)">'+data.totalGenerated+'</div><div class="label">生成标题总数</div></div>'+
-    '<div class="tl-stat"><div class="num" style="color:var(--accent)">'+data.topCount+'</div><div class="label">精选 TOP</div></div>'+
-    '<div class="tl-stat"><div class="num" style="color:var(--accent2)">'+avgScore+'</div><div class="label">TOP10 均分</div></div>'+
-    '<div class="tl-stat"><div class="num" style="color:var(--accent3)">'+data.topTitles[0].score+'</div><div class="label">最高分</div></div>'+
-    '</div>';
-
-  var topicsHtml='<div style="margin-bottom:14px;font-size:12px;color:var(--ink3)">覆盖选题：';
-  for(var t=0;t<data.topics.length;t++){
-    topicsHtml+='<span class="chip" style="margin:0 4px">'+data.topics[t].name+' ('+data.topics[t].score+')</span>';
-  }
-  topicsHtml+='</div>';
-
-  var topHtml='<div class="tl-section-label"><span style="width:8px;height:8px;border-radius:50%;background:var(--accent)"></span>TOP 10 精选标题（含评分明细）</div>';
-  for(var i=0;i<data.topTitles.length;i++){
-    var tt=data.topTitles[i];
-    var tc=typeColors[tt.type]||'background:#f5f5f7;color:var(--ink2)';
-    topHtml+='<div class="tl-top-card">'+
-      '<div class="tl-top-header">'+
-      '<div class="tl-rank" style="background:'+rankColors[i]+'">'+tt.rank+'</div>'+
-      '<div class="tl-title-text">'+tt.title+'</div>'+
-      '<div class="tl-score">'+tt.score+'</div>'+
-      '</div>'+
-      '<div class="tl-meta">'+
-      '<span class="tl-type" style="background:'+tc.split(';')[0]+';color:'+tc.split(';')[1].split(':')[1]+'">'+tt.type+'</span>'+
-      '<span class="chip">来源：'+tt.topic+'</span>'+
-      tt.platforms.map(function(p){return '<span class="chip">'+p+'</span>';}).join('')+
-      '</div>'+
-      '<div class="tl-dims">'+
-      '<span class="tl-dim">好奇 <b>'+tt.dims.curiosity+'</b>/25</span>'+
-      '<span class="tl-dim">情绪 <b>'+tt.dims.emotion+'</b>/25</span>'+
-      '<span class="tl-dim">专业 <b>'+tt.dims.cred+'</b>/15</span>'+
-      '<span class="tl-dim">传播 <b>'+tt.dims.viral+'</b>/20</span>'+
-      '<span class="tl-dim">转化 <b>'+tt.dims.conv+'</b>/15</span>'+
-      '</div>'+
-      '<div class="tl-analysis">'+tt.analysis+'</div>'+
-      '</div>';
-  }
-
-  var compactHtml='<div class="tl-section-label"><span style="width:8px;height:8px;border-radius:50%;background:var(--ink3)"></span>其余 '+data.otherTitles.length+' 个标题</div>';
-  compactHtml+='<div class="tl-compact">';
-  for(var j=0;j<data.otherTitles.length;j++){
-    var ot=data.otherTitles[j];
-    compactHtml+='<div class="tl-compact-item" title="'+ot.title+' | '+ot.type+' | '+ot.topic+'">'+
-      '<span class="tl-compact-score">'+ot.score+'</span>'+
-      '<span class="tl-compact-title">'+ot.title+'</span>'+
-      '</div>';
-  }
-  compactHtml+='</div>';
-
-  document.getElementById('titleLabContent').innerHTML=statsHtml+topicsHtml+topHtml+compactHtml;
-}
 
 // ===== WEIBO SHORT =====
 function getWeiboPublishState(rank){
@@ -1966,7 +1549,7 @@ document.querySelectorAll('.nav-item').forEach(item=>{
 });
 
 // ===== INIT =====
-renderTasks(); updateOverview(); renderRadar(); renderViral(); renderReview(); renderInsp(); renderShowcase(); renderArticlePlans(); renderReadyArticles(); renderTitleLab(); renderWeiboShort(); renderIpGrowth();
+renderTasks(); updateOverview(); renderViral(); renderShowcase(); renderArticlePlans(); renderReadyArticles(); renderWeiboShort(); renderIpGrowth();
 </script>
 
 
