@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>彩虹心理图文成品报告 2026-09-01</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'PingFang SC','Microsoft YaHei',sans-serif;background:#F7F3EA;color:#1A1A1A;line-height:1.7;padding:32px 16px;}
+  .container{max-width:1080px;margin:0 auto;}
+  .hero{background:#134B43;color:#F7F3EA;border-radius:18px;padding:40px 48px;margin-bottom:32px;position:relative;overflow:hidden;}
+  .hero::before{content:"";position:absolute;top:0;left:0;right:0;height:14px;background:#C89B52;}
+  .hero .brand{font-size:13px;letter-spacing:3px;opacity:.85;margin-bottom:14px;color:#C89B52;}
+  .hero h1{font-size:32px;font-weight:700;margin-bottom:14px;letter-spacing:1px;}
+  .hero .sub{font-size:15.5px;opacity:.94;line-height:1.9;}
+  .hero .sub b{color:#C89B52;font-weight:700;}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:36px;}
+  .stat{background:#fff;border-radius:14px;padding:22px 26px;border:1px solid #E8E0CF;box-shadow:0 4px 12px rgba(19,75,67,.06);}
+  .stat .label{font-size:13px;color:#7a8694;letter-spacing:1.5px;margin-bottom:8px;}
+  .stat .num{font-size:30px;font-weight:700;color:#134B43;letter-spacing:1px;}
+  .stat .delta{font-size:12px;color:#C89B52;margin-top:4px;font-weight:600;}
+  .section-title{font-size:24px;color:#134B43;margin:40px 0 22px;padding-left:18px;border-left:6px solid #C89B52;font-weight:700;letter-spacing:1px;}
+  .design-note{background:#fff;border:1px solid #E8E0CF;border-radius:14px;padding:24px 30px;margin-bottom:32px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;}
+  .design-note h3{font-size:14px;color:#134B43;margin-bottom:8px;letter-spacing:1px;}
+  .design-note p{font-size:13px;color:#5a6573;line-height:1.8;}
+  .design-note .item{padding:14px 16px;border-radius:10px;background:#FAF6E8;height:fit-content;}
+  .card-block{background:#fff;border-radius:18px;padding:28px 32px;margin-bottom:28px;border:1px solid #E8E0CF;box-shadow:0 6px 20px rgba(19,75,67,.06);}
+  .card-head{display:flex;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:20px;padding-bottom:18px;border-bottom:1px dashed #E8E0CF;}
+  .rank-badge{background:#134B43;color:#F7F3EA;font-size:16px;font-weight:700;padding:8px 16px;border-radius:6px;letter-spacing:2px;}
+  .card-title{font-size:24px;font-weight:700;color:#134B43;flex:1;line-height:1.4;min-width:280px;}
+  .card-meta{display:flex;gap:18px;flex-wrap:wrap;font-size:13px;color:#7a8694;margin-bottom:18px;}
+  .card-meta b{color:#134B43;font-size:15px;}
+  .hooks-block{margin-bottom:20px;padding:14px 20px;background:#E8F0EA;border-left:6px solid #134B43;border-radius:0 8px 8px 0;}
+  .hooks-block .label{font-size:12px;color:#134B43;letter-spacing:2px;margin-bottom:4px;font-weight:700;}
+  .hooks-block .text{font-size:15px;color:#1A1A1A;line-height:1.7;font-style:italic;}
+  .images{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;}
+  .images .img-wrap{border-radius:10px;overflow:hidden;border:1px solid #E8E0CF;background:#F7F3EA;}
+  .images img{width:100%;height:auto;display:block;}
+  .images .caption{font-size:12px;color:#7a8694;text-align:center;padding:8px;letter-spacing:1px;}
+  .share-tip{margin-bottom:14px;padding:14px 18px;background:#FAF6E8;border-left:4px solid #C89B52;border-radius:0 8px 8px 0;}
+  .share-tip .label{font-size:12px;color:#C89B52;letter-spacing:2px;margin-bottom:6px;font-weight:700;}
+  .share-tip .text{font-size:13.5px;color:#5a3a14;line-height:1.85;}
+  .source{font-size:12px;color:#9aa5b1;}
+  .source a{color:#134B43;text-decoration:none;}
+  .source a:hover{text-decoration:underline;}
+  .guide{background:#fff;border:1px solid #E8E0CF;border-radius:18px;padding:30px 36px;margin-bottom:30px;}
+  .guide-step{display:flex;gap:18px;padding:18px 0;border-bottom:1px dashed #E8E0CF;align-items:flex-start;}
+  .guide-step:last-child{border-bottom:none;}
+  .guide-step .num{background:#C89B52;color:#fff;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0;}
+  .guide-step .body{flex:1;}
+  .guide-step h4{font-size:16px;color:#134B43;margin-bottom:8px;}
+  .guide-step p{font-size:13.5px;color:#5a6573;line-height:1.85;}
+  .guide-step code{background:#FAF6E8;padding:2px 8px;border-radius:4px;color:#134B43;font-size:12.5px;}
+  .guide-tabs{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+  .tipbox{background:#FAF6E8;border-left:5px solid #C89B52;padding:18px 22px;border-radius:0 10px 10px 0;font-size:13.5px;color:#5a3a14;line-height:1.85;margin-bottom:20px;}
+  .tipbox b{color:#134B43;}
+  .footer{padding:30px;text-align:center;color:#7a8694;font-size:13px;border-top:1px solid #E8E0CF;margin-top:30px;}
+  .footer .brand{color:#134B43;font-weight:700;letter-spacing:2px;}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="hero">
+    <div class="brand">彩虹心理 · IMAGE CARDS REPORT</div>
+    <h1>2026-09-01 周二 图文内容成品报告</h1>
+    <div class="sub">扫微博 100 位心理咨询师当日微博 → 按 <b>60% 赞 + 40% 转</b>综合排序取 TOP <b>5</b> → 每条精炼为 <b>5-12 字</b>标题 + <b>钩子句</b> + <b>4 个平行要点</b> → 生成 <b>10 张</b>1080×1440 朋友圈九宫格/抖音图文卡片。署名统一为「心理咨询胡老师」。</div>
+  </div>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="label">扫博主数</div>
+      <div class="num">100</div>
+      <div class="delta">粉丝≥1万 · 心理咨询师</div>
+    </div>
+    <div class="stat">
+      <div class="label">入选 TOP</div>
+      <div class="num">5</div>
+      <div class="delta">60% 赞 + 40% 转</div>
+    </div>
+    <div class="stat">
+      <div class="label">生成图数</div>
+      <div class="num">10</div>
+      <div class="delta">2 张 / 条（封面+正文）</div>
+    </div>
+    <div class="stat">
+      <div class="label">最佳发布时段</div>
+      <div class="num">12-14 / 19-21</div>
+      <div class="delta">朋友圈 / 抖音图文</div>
+    </div>
+  </div>
+
+  <h2 class="section-title">设计原则 · 极简品牌风 v3.0</h2>
+  <div class="design-note">
+    <div class="item">
+      <h3>平面设计 CRAP 法则</h3>
+      <p>对比：标题 100px vs 辅助 26px（近 4 倍）<br/>对齐：块居中、字左齐<br/>重复：顶部品牌条/暖金编号/浅绿金句框跨页重复<br/>亲密性：相关元素靠近成组</p>
+    </div>
+    <div class="item">
+      <h3>小红书爆款封面数据规律</h3>
+      <p>标题 5-12 字（&lt;5 信息量不足，&gt;12 阅读压力陡增）<br/>高饱和主色块点击率 +22%<br/>文字占封面 30-50%<br/>居中主体 + 留白边框 8.4%（最高）</p>
+    </div>
+    <div class="item">
+      <h3>4 色克制 · 视觉锤</h3>
+      <p>奶油杏 #F7F3EA 底<br/>品牌深绿 #134B43 主色<br/>暖金 #C89B52 编号 / 短线<br/>浅绿 #E8F0EA 金句框底<br/>无需 AI 渐变紫 / 楷体 / 印章</p>
+    </div>
+  </div>
+
+  <h2 class="section-title">TOP 5 图文卡片</h2>
+
+  <!-- TOP 1 -->
+  <div class="card-block">
+    <div class="card-head">
+      <div class="rank-badge">No.01</div>
+      <div class="card-title">你怕的从来不是结婚</div>
+    </div>
+    <div class="card-meta">
+      <span>作者 <b>心理咨询胡老师</b></span>
+      <span>赞 <b>4.3万</b></span>
+      <span>转 <b>5820</b></span>
+      <span>图 <b>1080 × 1440</b></span>
+    </div>
+    <div class="hooks-block">
+      <div class="label">钩子句 · HOOK</div>
+      <div class="text">她们不是被吓退的，是看清楚了。</div>
+    </div>
+    <div class="images">
+      <div class="img-wrap">
+        <img src="card-2026-09-01-01-1.png" alt="封面">
+        <div class="caption">封面 · card-2026-09-01-01-1.png</div>
+      </div>
+      <div class="img-wrap">
+        <img src="card-2026-09-01-01-2.png" alt="正文">
+        <div class="caption">正文 · card-2026-09-01-01-2.png</div>
+      </div>
+    </div>
+    <div class="share-tip">
+      <div class="label">朋友圈/抖音 配文建议</div>
+      <div class="text">她们拒绝的不是爱，是那种被默认的分配。妈妈那辈是困住的人，你这辈是从困住里走出来的人——看见本身，就是疗愈的开始。</div>
+    </div>
+    <div class="source">原文出处：网易号「来去自如的小章」2026-09-01 <a href="https://www.163.com/dy/article/L5NT28F30556NW8I.html" target="_blank">https://www.163.com/dy/article/L5NT28F30556NW8I.html</a></div>
+  </div>
+
+  <!-- TOP 2 -->
+  <div class="card-block">
+    <div class="card-head">
+      <div class="rank-badge">No.02</div>
+      <div class="card-title">亲密需要有间</div>
+    </div>
+    <div class="card-meta">
+      <span>作者 <b>心理咨询胡老师</b></span>
+      <span>赞 <b>3.1万</b></span>
+      <span>转 <b>4380</b></span>
+      <span>图 <b>1080 × 1440</b></span>
+    </div>
+    <div class="hooks-block">
+      <div class="label">钩子句 · HOOK</div>
+      <div class="text">关系越近，越需要留白。</div>
+    </div>
+    <div class="images">
+      <div class="img-wrap">
+        <img src="card-2026-09-01-02-1.png" alt="封面">
+        <div class="caption">封面 · card-2026-09-01-02-1.png</div>
+      </div>
+      <div class="img-wrap">
+        <img src="card-2026-09-01-02-2.png" alt="正文">
+        <div class="caption">正文 · card-2026-09-01-02-2.png</div>
+      </div>
+    </div>
+    <div class="share-tip">
+      <div class="label">朋友圈/抖音 配文建议</div>
+      <div class="text">好的关系不是亲密无间，是「根紧握在地下，叶相触在云里」——彼此独立，又彼此看见。</div>
+    </div>
+    <div class="source">原文出处：微博@赖巧珍（国家二级心理咨询师） <a href="https://weibo.com/3917937138/5338001779723914" target="_blank">https://weibo.com/3917937138/5338001779723914</a></div>
+  </div>
+
+  <!-- TOP 3 -->
+  <div class="card-block">
+    <div class="card-head">
+      <div class="rank-badge">No.03</div>
+      <div class="card-title">情绪上头时，叫一次自己名字</div>
+    </div>
+    <div class="card-meta">
+      <span>作者 <b>心理咨询胡老师</b></span>
+      <span>赞 <b>2.7万</b></span>
+      <span>转 <b>3120</b></span>
+      <span>图 <b>1080 × 1440</b></span>
+    </div>
+    <div class="hooks-block">
+      <div class="label">钩子句 · HOOK</div>
+      <div class="text">把「我好崩溃」换成「XX 现在有点着急」。</div>
+    </div>
+    <div class="images">
+      <div class="img-wrap">
+        <img src="card-2026-09-01-03-1.png" alt="封面">
+        <div class="caption">封面 · card-2026-09-01-03-1.png</div>
+      </div>
+      <div class="img-wrap">
+        <img src="card-2026-09-01-03-2.png" alt="正文">
+        <div class="caption">正文 · card-2026-09-01-03-2.png</div>
+      </div>
+    </div>
+    <div class="share-tip">
+      <div class="label">朋友圈/抖音 配文建议</div>
+      <div class="text">不用硬扛、不讲道理、强迫自己想开——只是轻轻从情绪剧本里抽身，坐到观众席看一会儿自己。</div>
+    </div>
+    <div class="source">原文出处：微博@壹点灵心理 <a href="https://weibo.com/1143605707/5338282212990964" target="_blank">https://weibo.com/1143605707/5338282212990964</a></div>
+  </div>
+
+  <!-- TOP 4 -->
+  <div class="card-block">
+    <div class="card-head">
+      <div class="rank-badge">No.04</div>
+      <div class="card-title">伴侣太顺从，反而要小心</div>
+    </div>
+    <div class="card-meta">
+      <span>作者 <b>心理咨询胡老师</b></span>
+      <span>赞 <b>2.1万</b></span>
+      <span>转 <b>2760</b></span>
+      <span>图 <b>1080 × 1440</b></span>
+    </div>
+    <div class="hooks-block">
+      <div class="label">钩子句 · HOOK</div>
+      <div class="text">从来不说「不」的人，可能在压抑自己。</div>
+    </div>
+    <div class="images">
+      <div class="img-wrap">
+        <img src="card-2026-09-01-04-1.png" alt="封面">
+        <div class="caption">封面 · card-2026-09-01-04-1.png</div>
+      </div>
+      <div class="img-wrap">
+        <img src="card-2026-09-01-04-2.png" alt="正文">
+        <div class="caption">正文 · card-2026-09-01-04-2.png</div>
+      </div>
+    </div>
+    <div class="share-tip">
+      <div class="label">朋友圈/抖音 配文建议</div>
+      <div class="text">你不必表演懂事。允许自己在关系里说「不」，可能是对彼此都最温柔的一步。</div>
+    </div>
+    <div class="source">原文出处：网易号「壹点灵心理」2026-09-01 <a href="https://dy.163.com/article/L5O0HHCI05422986.html" target="_blank">https://dy.163.com/article/L5O0HHCI05422986.html</a></div>
+  </div>
+
+  <!-- TOP 5 -->
+  <div class="card-block">
+    <div class="card-head">
+      <div class="rank-badge">No.05</div>
+      <div class="card-title">情绪不是故障，是你的报警器</div>
+    </div>
+    <div class="card-meta">
+      <span>作者 <b>心理咨询胡老师</b></span>
+      <span>赞 <b>1.8万</b></span>
+      <span>转 <b>2150</b></span>
+      <span>图 <b>1080 × 1440</b></span>
+    </div>
+    <div class="hooks-block">
+      <div class="label">钩子句 · HOOK</div>
+      <div class="text">情绪根本不是多余器官，是你的古老生存系统。</div>
+    </div>
+    <div class="images">
+      <div class="img-wrap">
+        <img src="card-2026-09-01-05-1.png" alt="封面">
+        <div class="caption">封面 · card-2026-09-01-05-1.png</div>
+      </div>
+      <div class="img-wrap">
+        <img src="card-2026-09-01-05-2.png" alt="正文">
+        <div class="caption">正文 · card-2026-09-01-05-2.png</div>
+      </div>
+    </div>
+    <div class="share-tip">
+      <div class="label">朋友圈/抖音 配文建议</div>
+      <div class="text">识别警报，但不照做——等理性赶上来，再决定如何回应。情绪稳定不是消灭波动，是会与波动共处。</div>
+    </div>
+    <div class="source">原文出处：网易号「极易之心」2026-09-01 <a href="https://www.163.com/dy/article/L5O3PUOT0552QS3R.html" target="_blank">https://www.163.com/dy/article/L5O3PUOT0552QS3R.html</a></div>
+  </div>
+
+  <h2 class="section-title">如何分享 · 朋友圈九宫格 + 抖音图文</h2>
+  <div class="guide">
+    <div class="tipbox">
+      <b>核心思路</b>：TOP 5 中挑 1-3 条最贴合当日心态的发。从 coverFile 命名规则 <code>card-YYYY-MM-DD-NN-1.png</code> 可按需下载，2 张一组 = 1 条内容。
+    </div>
+    <div class="guide-tabs">
+      <div>
+        <div class="guide-step">
+          <div class="num">1</div>
+          <div class="body">
+            <h4>下载图片</h4>
+            <p>在工作台「图文内容成品」视图，每条卡片下方有 <code>封面</code> / <code>正文</code> 两个下载按钮，点击即可保存到本地。</p>
+          </div>
+        </div>
+        <div class="guide-step">
+          <div class="num">2</div>
+          <div class="body">
+            <h4>朋友圈九宫格</h4>
+            <p>中午 12-14 时段。微信发表 → 选择「图片」→ 选 1 张封面 + 1 张正文 + 7 张往日已发图（凑九宫格）→ 输入配文（参考 shareTip 字段）+ <code>#彩虹心理</code>。</p>
+          </div>
+        </div>
+        <div class="guide-step">
+          <div class="num">3</div>
+          <div class="body">
+            <h4>朋友圈纯分享</h4>
+            <p>想只分享 1 条时：选 1 封面 + 1 正文 = 2 张，发「3+ 张图片」的轮播样式，配文可粘贴钩子句 + shareTip。</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="guide-step">
+          <div class="num">1</div>
+          <div class="body">
+            <h4>打开抖音</h4>
+            <p>点击下方「+」号 → 切换到「相册」/「图文」模式 → 从本地相册选 9 张图（4 张封面 + 5 张正文循环使用，或封面+正文循环 3 次 + 一些历史图片凑数）。</p>
+          </div>
+        </div>
+        <div class="guide-step">
+          <div class="num">2</div>
+          <div class="body">
+            <h4>填写文案</h4>
+            <p>晚上 19-21 时段。抖音图文标题 12-28 字，参考钩子句改造：<code>情绪上头时，叫一次自己名字</code> / <code>你怕的从来不是结婚</code>。描述区放 shareTip 完整段。</p>
+          </div>
+        </div>
+        <div class="guide-step">
+          <div class="num">3</div>
+          <div class="body">
+            <h4>发布设置</h4>
+            <p>添加话题：<code>#彩虹心理</code> <code>#亲密关系</code> <code>#原生家庭</code> <code>#情绪管理</code>。权限选「公开」，位置按需选同城（上海/北京/深圳效果最佳）。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="section-title">用法说明</h2>
+  <div class="guide">
+    <div class="guide-step">
+      <div class="num">①</div>
+      <div class="body">
+        <h4>为什么署名统一是「心理咨询胡老师」？</h4>
+        <p>「彩虹心理」自 2026-09-01 起转型为心理咨询师个人 IP 号。卡片是整合重写后的产物，不再沿用原微博博主昵称。make-image-cards.py 内置 <code>AUTHOR = "心理咨询胡老师"</code> 常量，JSON 传任何 author 都会被强制覆盖。</p>
+      </div>
+    </div>
+    <div class="guide-step">
+      <div class="num">②</div>
+      <div class="body">
+        <h4>不放公众号二维码</h4>
+        <p>卡片右下角的二维码是 brand-qrcode.jpg（公众号二维码），但本期作为涨粉引流内容，二维码放在视觉角落不强调；如果你希望暂时隐藏，下一期可以删 brand-qrcode.jpg 字段或换品牌符号占位。</p>
+      </div>
+    </div>
+    <div class="guide-step">
+      <div class="num">③</div>
+      <div class="body">
+        <h4>涨粉路径</h4>
+        <p>朋友圈 → 评论区互动 → 私信「自测」/「1v1」 → 公众号承接深度内容（雷达 08:00 / 微博短文 20:00）。视频号+抖音同步短视频（21:00）会进一步放大曝光。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="brand">彩虹心理</div>
+    <div style="margin-top:6px">心理咨询师个人 IP · 公众号「彩虹心理」 · 抖音同名</div>
+    <div style="margin-top:12px;font-size:12px;opacity:.7">本报告由「彩虹心理图文内容成品」Agent 于 2026-09-01 20:30 生成</div>
+  </div>
+
+</div>
+</body>
+</html>
