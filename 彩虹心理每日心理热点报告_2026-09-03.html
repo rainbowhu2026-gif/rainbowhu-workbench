@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>彩虹心理每日心理热点报告 · 2026-09-03</title>
+<style>
+:root{
+  --green:#134B43;--gold:#C89B52;--cream:#F7F3EA;--line:#E8F0EA;--ink:#42665B;--paper:#FCFAF5;
+  --muted:#7c8a83;--tag:#EAF1EC;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",Arial,sans-serif;background:var(--cream);color:var(--ink);line-height:1.7;font-size:15px}
+.wrap{max-width:1080px;margin:0 auto;padding:28px 24px 80px}
+header.report-head{
+  background:linear-gradient(135deg,#134B43 0%,#1b6358 100%);color:#F7F3EA;border-radius:14px;padding:28px 32px;margin-bottom:24px;
+  box-shadow:0 14px 36px -22px rgba(19,75,67,.45);
+}
+header.report-head .kicker{font-size:13px;color:#d8c898;letter-spacing:.18em;margin-bottom:8px}
+header.report-head h1{font-size:26px;font-weight:700;color:#fff;margin-bottom:8px}
+header.report-head .sub{font-size:14px;color:#d5dfd3}
+header.report-head .meta{display:flex;gap:18px;flex-wrap:wrap;font-size:13px;color:#bfd2c1;margin-top:14px}
+header.report-head .meta b{color:#f7e6b4;font-weight:600}
+.toc{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 22px;margin-bottom:24px;font-size:14px}
+.toc h3{font-size:14px;color:var(--green);margin-bottom:10px;letter-spacing:.05em}
+.toc ol{padding-left:22px;columns:2;column-gap:30px}
+.toc li{margin-bottom:4px}
+.toc a{color:var(--ink);text-decoration:none;border-bottom:1px dashed #cfd9d2}
+.toc a:hover{color:var(--green)}
+section{margin:32px 0}
+h2.section{font-size:20px;color:var(--green);border-left:5px solid var(--gold);padding-left:14px;margin-bottom:18px;font-weight:700}
+h2.section small{font-size:13px;color:#8c9890;font-weight:400;margin-left:8px}
+
+.summary-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px}
+.summary-grid .card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px;text-align:center}
+.summary-grid .v{font-size:24px;font-weight:700;color:var(--green)}
+.summary-grid .l{font-size:13px;color:#7c8a83;margin-top:4px}
+
+.topic{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:18px;position:relative;overflow:hidden}
+.topic .rank{position:absolute;top:0;right:0;background:var(--gold);color:#fff;padding:6px 16px;border-bottom-left-radius:14px;font-weight:700;font-size:14px;letter-spacing:.05em}
+.topic.rank-1 .rank{background:linear-gradient(135deg,#c89b52,#a07a39)}
+.topic.rank-2 .rank{background:#5b8879}
+.topic.rank-3 .rank{background:#5e7d9a}
+.topic .source{display:inline-block;font-size:12px;color:#fff;background:#134B43;padding:3px 10px;border-radius:14px;margin-bottom:6px}
+.topic .source.weibo{background:#d23b3b}
+.topic .source.xhs{background:#ee2c2c}
+.topic .source.qq{background:#16b777}
+.topic .source.zh{background:#0084ff}
+.topic .source.toutiao{background:#222}
+.topic h3{font-size:18px;color:var(--green);margin:6px 0 8px;line-height:1.4}
+.topic .meta-line{font-size:13px;color:#7c8a83;margin-bottom:12px}
+.topic .meta-line b{color:var(--ink)}
+.topic .score-row{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 14px}
+.topic .score-row .pill{font-size:12px;padding:4px 10px;background:var(--tag);color:var(--green);border-radius:14px}
+.topic .score-row .pill.total{background:var(--green);color:#fff;font-weight:700}
+.q-list{list-style:none;border-top:1px dashed #e0e5e0;padding-top:12px}
+.q-list li{font-size:14px;color:var(--ink);margin-bottom:8px}
+.q-list li b{color:var(--green);font-weight:600}
+.topic .summary{background:#FAF7EE;border-left:3px solid var(--gold);padding:12px 16px;border-radius:6px;margin-top:10px;font-size:14px;color:#5e4830}
+
+.viral{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:10px}
+.viral .vc{background:#fbfdfb;border:1px solid #e2ebe5;border-radius:10px;padding:14px}
+.viral .vc h4{font-size:14px;color:var(--green);margin-bottom:8px}
+.viral .vc .label{display:inline-block;font-size:11px;background:#134B43;color:#fff;padding:2px 8px;border-radius:10px;margin-right:6px;margin-bottom:6px}
+.viral .vc .label.emo{background:#a04545}
+.viral .vc .label.vir{background:#b8862f}
+.viral .vc p{font-size:13px;color:var(--ink);margin-top:6px;line-height:1.65}
+.viral .vc ul{padding-left:18px;margin-top:4px}
+.viral .vc ul li{font-size:13px;margin-bottom:3px;color:#527169}
+
+.matrix{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 24px;margin:24px 0}
+.matrix h3{color:var(--green);font-size:16px;margin-bottom:14px;border-bottom:1px solid var(--line);padding-bottom:8px}
+.matrix-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;font-size:12px}
+.matrix-grid .h{background:#134B43;color:#fff;text-align:center;padding:6px;border-radius:4px}
+.matrix-grid .cell{background:#f7fbf7;padding:8px;text-align:center;border-radius:4px}
+.matrix-grid .yes{background:#d5e9d9;color:#134B43;font-weight:600}
+.matrix-grid .mid{background:#faf3dd;color:#846a25}
+.matrix-grid .no{background:#f7e1e1;color:#9c3a3a}
+
+.repurpose{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:16px}
+.repurpose h3{font-size:17px;color:var(--green);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.repurpose .topic-tag{font-size:12px;color:#fff;background:var(--gold);padding:3px 10px;border-radius:14px;font-weight:500}
+.repurpose .ipver{background:#f3f9f5;border-radius:10px;padding:14px 16px;margin-top:12px}
+.repurpose .ipver h4{color:#134B43;font-size:14px;margin-bottom:8px;font-weight:700}
+.repurpose .ipver .row{display:flex;gap:10px;align-items:flex-start;margin-bottom:6px;font-size:14px}
+.repurpose .ipver .row b{flex:0 0 70px;color:#134B43;font-weight:600}
+.repurpose .ipver .row span{flex:1;color:var(--ink)}
+
+.deep-look{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px;margin-bottom:16px}
+.deep-look h3{font-size:17px;color:var(--green);margin-bottom:14px;border-bottom:1px solid var(--line);padding-bottom:8px}
+.deep-look .hook{font-size:18px;color:#34381e;font-weight:600;line-height:1.5;margin:8px 0 14px;padding:14px 18px;background:#fbf5e1;border-left:4px solid var(--gold);border-radius:4px}
+.deep-look p{margin-bottom:12px;font-size:14.5px}
+.deep-look .point{padding:10px 14px;background:#f5f7f6;border-left:3px solid var(--green);margin:14px 0;border-radius:0 6px 6px 0}
+.deep-look .point b{color:#134B43;display:block;margin-bottom:4px}
+
+.qr-area{margin-top:36px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:32px;text-align:center}
+.qr-area .qr-label{font-size:14px;color:#7c8a83;margin-bottom:14px;letter-spacing:.05em}
+.qr-area img{max-width:200px;border:1px solid var(--line);border-radius:6px}
+.qr-area .qr-text{margin-top:14px;font-size:15px;color:var(--green);font-weight:600}
+.qr-area .qr-sub{font-size:13px;color:#7c8a83;margin-top:6px}
+
+.footer-note{margin-top:30px;text-align:center;font-size:12px;color:#a8b0ab}
+.tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:10px;margin-right:6px}
+.tag.inflow{background:#e8f3ed;color:#1e6347}
+.tag.trust{background:#fdf2e0;color:#a8691a}
+.tag.conver{background:#f5e3ee;color:#8b2d6b}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="report-head">
+  <div class="kicker">2026·09·03 · 星期四 · Week 36 · DAILY RADAR</div>
+  <h1>彩虹心理每日心理热点选题雷达</h1>
+  <div class="sub">覆盖微信 / 微博 / 小红书 / 知乎 · 近 24-72h 高热心理内容 · 咨询师个人IP视角评分</div>
+  <div class="meta">
+    <span><b>数据采集：</b>2026-09-02 ~ 09-03</span>
+    <span><b>评分维度：</b>用户痛点30 + 情绪共鸣25 + 传播潜力25 + 商业价值20</span>
+    <span><b>今日配比：</b>引流60% · 信任30%（本周转化款已完成于 09-02）</span>
+  </div>
+</header>
+
+<div class="toc">
+  <h3>本报告目录</h3>
+  <ol>
+    <li><a href="#sum">一、今日数据快照</a></li>
+    <li><a href="#top5">二、今日 TOP5 高价值选题</a></li>
+    <li><a href="#repurpose">三、个人 IP 改编建议（每选题 3 版标题 + 方向/形式/视觉）</a></li>
+    <li><a href="#matrix">四、五选题属性矩阵（选题分类定位）</a></li>
+    <li><a href="#deep1">五、深挖解读 ①｜赵樱子事件：讨好的代价</a></li>
+    <li><a href="#deep2">六、深挖解读 ②｜"被心理医生点醒的瞬间"如何转化</a></li>
+    <li><a href="#deep3">七、待选选题库（备用 / 周末候选）</a></li>
+    <li><a href="#workflow">八、今日内容流水线交付清单</a></li>
+  </ol>
+</div>
+
+<section id="sum">
+<h2 class="section">一、今日数据快照</h2>
+<div class="summary-grid">
+  <div class="card"><div class="v">5</div><div class="l">TOP5 选题</div></div>
+  <div class="card"><div class="v">3</div><div class="l">当日成文（2 引流+1 信任）</div></div>
+  <div class="card"><div class="v">1.2 亿+</div><div class="l">抑郁科普话题讨论度（多平台累计）</div></div>
+  <div class="card"><div class="v">9.3 万+</div><div class="l">明星心理事件 24h 累计讨论</div></div>
+</div>
+<p style="background:#fff;padding:14px 18px;border-left:4px solid var(--green);border-radius:6px;font-size:14px">
+今日热点呈"明星事件 + 现象级科普"双线发力：① 赵樱子公开承认抑郁（微博热搜 + 多平台延烧）可借势发声；②"被心理医生点醒的瞬间"原生话题（272499 热度）天然适配咨询师第一人称叙事；③ 微笑型抑郁/高功能抑郁继续在多平台铺开（今日头条相关讨论 1.2 亿），适合做情绪识别类科普。今日内容策略以引流为主（涨粉），信任款建立专业感。
+</p>
+</section>
+
+<section id="top5">
+<h2 class="section">二、今日 TOP5 高价值选题 <small>按 100 分制评分，已避开 09-02 已覆盖角度</small></h2>
+
+<div class="topic rank-1" id="t1">
+  <div class="rank">🥇 TOP 1 · 92 分</div>
+  <span class="source weibo">微博热搜</span>
+  <span class="tag inflow">引流款</span>
+  <span class="tag trust">情绪共鸣</span>
+  <h3>明星赵樱子公开承认抑郁：讨好的代价，比你想象的更贵</h3>
+  <div class="meta-line">
+    <b>来源：</b>赵樱子个人微博（2026-09-01），多平台延烧 24h<br>
+    <b>作者：</b>赵樱子本人首发，咨询师观察视角二创<br>
+    <b>数据表现：</b>赵樱子相关话题当日累计讨论 9.3 万+，主话题 #赵樱子说自己是讨好型人格# 持续在微博、抖音、小红书多端传播<br>
+    <b>发布时间：</b>2026-09-01 ~ 09-02 多平台持续发酵
+  </div>
+  <div class="score-row">
+    <span class="pill">用户痛点 28</span>
+    <span class="pill">情绪共鸣 24</span>
+    <span class="pill">传播潜力 25</span>
+    <span class="pill">商业价值 15</span>
+    <span class="pill total">总分 92</span>
+  </div>
+  <ul class="q-list">
+    <li><b>① 为什么值得做——</b>明星+原生家庭+讨好型人格三标签叠加，借势窗口期短（建议 48h 内发布）；女性目标人群情绪识别度高、转发意愿强。</li>
+    <li><b>② 用户为什么看——</b>"原来她也是这样"的抱团心理；"讨好"是当下 25-38 岁女性的自我投射高频词，看见即认同。</li>
+    <li><b>③ 咨询师 IP 差异化——</b>不做八卦、不做明星私生活分析，转向"咨询室里这类来访者最常见的一句话"，把流量转成专业共鸣。</li>
+    <li><b>④ 转化漏斗——</b>文章尾部钩子：从"你是不是也在演讨好的自己"切入 → 引导关注公众号 → 回复「讨好」领取《讨好型人格自救手册》→ 9.9 元自助测评 → 99 元轻咨询预约。</li>
+  </ul>
+  <div class="summary">核心切入点：把明星情绪事件，转译为大众可识别的"讨好-压抑-生病"心理路径，让流量自然流向专业科普。</div>
+</div>
+
+<div class="topic rank-2" id="t2">
+  <div class="rank">🥈 TOP 2 · 88 分</div>
+  <span class="source weibo">微博热搜</span>
+  <span class="tag inflow">引流款</span>
+  <span class="tag trust">信任建立</span>
+  <h3>"被心理医生点醒的瞬间"：一句话让我少走了 10 年弯路</h3>
+  <div class="meta-line">
+    <b>来源：</b>微博话题 #被心理医生点醒的瞬间#（热度 272499），自媒体二次转载<br>
+    <b>作者：</b>多位咨询师/来访者共同贡献 UGC，咨询师第一人称再创作<br>
+    <b>数据表现：</b>24h 话题阅读量持续攀升，原生金句类题材适配抖音/小红书/公众号三端分发<br>
+    <b>发布时间：</b>近 48h 高频出现，预计持续 3-5 天
+  </div>
+  <div class="score-row">
+    <span class="pill">用户痛点 26</span>
+    <span class="pill">情绪共鸣 22</span>
+    <span class="pill">传播潜力 25</span>
+    <span class="pill">商业价值 15</span>
+    <span class="pill total">总分 88</span>
+  </div>
+  <ul class="q-list">
+    <li><b>① 为什么值得做——</b>"一句话"是知识付费时代的最小信任单元，容易被截图传播；天然契合咨询师 IP 第一人称叙事。</li>
+    <li><b>② 用户为什么看——</b>"我以为我是问题，结果医生/咨询师告诉我一句颠覆的话"——反常识 + 解套感。</li>
+    <li><b>③ 咨询师 IP 差异化——</b>不写"专业的术语"，写真实来访者的话（脱敏 + 知情同意），让咨询师人格被看见。</li>
+    <li><b>④ 转化漏斗——</b>用 5-7 句"咨询师在咨询室里最常被记住的那句话"做系列，篇尾引导"想继续听？关注+回复「金句」领取咨询师语录合集"。</li>
+  </ul>
+  <div class="summary">核心切入点：金句体 + 第一人称，兼具传播性与人格化，是公众号/小红书打通"涨粉 → 信任"的最佳题材。</div>
+</div>
+
+<div class="topic rank-3" id="t3">
+  <div class="rank">🥉 TOP 3 · 86 分</div>
+  <span class="source toutiao">多平台科普</span>
+  <span class="tag inflow">引流款</span>
+  <h3>微笑型抑郁：白天笑得多的人，夜晚哭得最狠</h3>
+  <div class="meta-line">
+    <b>来源：</b>今日头条 #微笑型抑郁# 话题讨论 1.2 亿，叠加多平台科普长尾<br>
+    <b>作者：</b>多自媒体解读 + 精神心理科医生参与<br>
+    <b>数据表现：</b>长期高热、稳定科普类需求，符合 25-38 岁女性"看起来都好但其实很疲惫"的群体画像<br>
+    <b>发布时间：</b>2026 年初持续走热，9 月开学季 + 入秋情绪节点叠加
+  </div>
+  <div class="score-row">
+    <span class="pill">用户痛点 26</span>
+    <span class="pill">情绪共鸣 23</span>
+    <span class="pill">传播潜力 22</span>
+    <span class="pill">商业价值 15</span>
+    <span class="pill total">总分 86</span>
+  </div>
+  <ul class="q-list">
+    <li><b>① 为什么值得做——</b>"微笑"与"抑郁"反常识组合，天然吸引点击；情绪识别类科普，定位清晰。</li>
+    <li><b>② 用户为什么看——</b>"我是不是微笑型抑郁？"是当下高功能女性群体普遍自我怀疑。</li>
+    <li><b>③ 咨询师 IP 差异化——</b>不做医学诊断式表达，改为"识别 → 自检 → 何时该求助"三步法科普，自然过渡到专业资源。</li>
+    <li><b>④ 转化漏斗——</b>提供《微笑型抑郁自测量表》作为钩子，关注公众号回复「自测」领取，强化私域承接。</li>
+  </ul>
+  <div class="summary">核心切入点：科普 + 自检表 + 反常识金句，让"读起来像自己"的读者直接完成关注动作。</div>
+</div>
+
+<div class="topic" id="t4">
+  <div class="rank">🏅 TOP 4 · 83 分</div>
+  <span class="source weibo">微博热搜新</span>
+  <span class="tag inflow">引流款</span>
+  <h3>长大后终于理解了妈妈的"解冻焦虑"：那些不安，是她没人接住过</h3>
+  <div class="meta-line">
+    <b>来源：</b>微博热搜 #长大后终于理解了妈妈的解冻焦虑#（热度 216023，新上榜）<br>
+    <b>作者：</b>原生家庭话题创作者，咨询师接入代际创伤视角<br>
+    <b>数据表现：</b>新词条 24h 增长快，与代际传递/原生家庭议题共振强<br>
+    <b>发布时间：</b>近 24h 新上榜
+  </div>
+  <div class="score-row">
+    <span class="pill">用户痛点 24</span>
+    <span class="pill">情绪共鸣 23</span>
+    <span class="pill">传播潜力 22</span>
+    <span class="pill">商业价值 14</span>
+    <span class="pill total">总分 83</span>
+  </div>
+  <ul class="q-list">
+    <li><b>① 为什么值得做——</b>"理解妈妈"是更高级的自我和解，新词条借势窗口期短。</li>
+    <li><b>② 用户为什么看——</b>"我也曾是那个被冻住的女儿，如今我不想再传给下一代"。</li>
+    <li><b>③ 咨询师 IP 差异化——</b>把"批判父母"的视角，转为"理解背后，没人接住她"——这是彩虹心理一贯温和立场。</li>
+    <li><b>④ 转化漏斗——</b>"看见妈妈的伤，而不是继承它"，回复「和解」领取《家庭角色图谱》。</li>
+  </ul>
+  <div class="summary">核心切入点：从"自我审视"扩展到"代际看见"，让私域话题渗透到亲子双向受众。</div>
+</div>
+
+<div class="topic" id="t5">
+  <div class="rank">🏅 TOP 5 · 80 分</div>
+  <span class="source weibo">微博热搜</span>
+  <span class="tag inflow">引流款</span>
+  <h3>沟通也是会消耗"token"的：你为什么聊完天，更累？</h3>
+  <div class="meta-line">
+    <b>来源：</b>微博热搜 #人与人沟通也是要消耗token的#（热度 309453）<br>
+    <b>作者：</b>职场/亲密关系博主二次创作 + AI 语境化表达<br>
+    <b>数据表现：</b>借 AI 概念解释社交耗能，新鲜感强，传播门槛低<br>
+    <b>发布时间：</b>近 48h 持续在榜
+  </div>
+  <div class="score-row">
+    <span class="pill">用户痛点 23</span>
+    <span class="pill">情绪共鸣 21</span>
+    <span class="pill">传播潜力 23</span>
+    <span class="pill">商业价值 13</span>
+    <span class="pill total">总分 80</span>
+  </div>
+  <ul class="q-list">
+    <li><b>① 为什么值得做——</b>"沟通消耗 token"借用了大众对 AI 的认知，跨圈层易传播。</li>
+    <li><b>② 用户为什么看——</b>"我以为我不会聊天，原来是我能量见底了"——典型当代社畜/高敏感人群。</li>
+    <li><b>③ 咨询师 IP 差异化——</b>借 token 概念引入"情绪能量管理"主题，附 1 套能量记账法。</li>
+    <li><b>④ 转化漏斗——</b>回复「能量」领取《每日情绪能量 7 日记账表》。</li>
+  </ul>
+  <div class="summary">核心切入点：把"内耗"重新包装为"沟通能耗"，引入工具化练习，私域承接效率高。</div>
+</div>
+</section>
+
+<section id="repurpose">
+<h2 class="section">三、个人 IP 改编建议 <small>每选题 3 版标题 + 方向/形式/视觉</small></h2>
+
+<div class="repurpose">
+  <h3>① TOP 1 赵樱子事件 <span class="topic-tag">引流款</span></h3>
+  <div class="viral">
+    <div class="vc">
+      <h4>标题 3 版</h4>
+      <p><span class="label pro">专业版</span>她在咨询室外的舞台上，演了 10 年"好女孩"</p>
+      <p><span class="label emo">情绪版</span>赵樱子哭着说"我病了"：那个一直讨好的人，终于撑不住了</p>
+      <p><span class="label vir">爆款版</span>赵樱子承认抑郁：讨好的代价，比你想象的贵 10 倍</p>
+    </div>
+    <div class="vc">
+      <h4>内容方向</h4>
+      <ul>
+        <li>【原生家庭】母亲要求、事业落差、网暴经历</li>
+        <li>【心理学机制】讨好型人格 + 情感压抑 + 躯体化表达</li>
+        <li>【对比立场】不站队、不八卦，专业视角下"看见这个人"</li>
+        <li>【私域工具】《讨好型人格自救手册》PDF 钩子</li>
+      </ul>
+    </div>
+    <div class="vc">
+      <h4>形式 + 视觉</h4>
+      <ul>
+        <li>形式：图文 2000+字 + 6 张概念图（深绿主色，奶白底）</li>
+        <li>封面：人物剪影 + 文字"好女孩也会生病"</li>
+        <li>小元素：财报式"讨好指数自检"长图</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="repurpose">
+  <h3>② TOP 2 被心理医生点醒的瞬间 <span class="topic-tag">信任款</span></h3>
+  <div class="viral">
+    <div class="vc">
+      <h4>标题 3 版</h4>
+      <p><span class="label pro">专业版</span>咨询师最常被来访者记住的那 7 句话（脱敏授权发布）</p>
+      <p><span class="label emo">情绪版</span>咨询师说过一句话，我哭到凌晨 3 点</p>
+      <p><span class="label vir">爆款版</span>"你不是脆弱，你是终于被人看懂了"</p>
+    </div>
+    <div class="vc">
+      <h4>内容方向</h4>
+      <ul>
+        <li>【第一人称】咨询师叙事："我在咨询室里，听过来访者最常说的那句话"</li>
+        <li>【金句体】每句话配一个脱敏案例 + 一句觉察指引</li>
+        <li>【私域工具】回复「金句」领取《咨询师语录合集》</li>
+      </ul>
+    </div>
+    <div class="vc">
+      <h4>形式 + 视觉</h4>
+      <ul>
+        <li>形式：7 个小节，每节"金句 + 故事 + 觉察"</li>
+        <li>封面：极简大字"被点醒的瞬间"</li>
+        <li>小元素：竖版金句海报（适配朋友圈/小红书转发）</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="repurpose">
+  <h3>③ TOP 3 微笑型抑郁 <span class="topic-tag">引流款</span></h3>
+  <div class="viral">
+    <div class="vc">
+      <h4>标题 3 版</h4>
+      <p><span class="label pro">专业版</span>高功能抑郁：那些笑得很用力的人，也在用力撑着</p>
+      <p><span class="label emo">情绪版</span>白天笑得多的人，夜里哭得最狠</p>
+      <p><span class="label vir">爆款版</span>"微笑型抑郁"自测量表（3 分钟测出你是不是）</p>
+    </div>
+    <div class="vc">
+      <h4>内容方向</h4>
+      <ul>
+        <li>【科普 + 自检】3 分钟自检表 + 9 题打分</li>
+        <li>【识别信号】白天表现 vs 夜间真实状态对比</li>
+        <li>【求助路径】何时自助 / 何时寻求专业</li>
+      </ul>
+    </div>
+    <div class="vc">
+      <h4>形式 + 视觉</h4>
+      <ul>
+        <li>形式：图文 + 自检表 + 时间轴</li>
+        <li>封面：白天/黑夜对比色块（米白/深绿）+ 大字标题</li>
+        <li>小元素：自检表图卡（公众号摘要可单独拆发）</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="repurpose">
+  <h3>④ TOP 4 妈妈的解冻焦虑 <span class="topic-tag">引流款（备选）</span></h3>
+  <div class="viral">
+    <div class="vc">
+      <h4>标题 3 版</h4>
+      <p><span class="label pro">专业版</span>代际创伤：我们反复"冻住"的样子，原来是学的妈妈</p>
+      <p><span class="label emo">情绪版</span>长大后我才看懂：妈妈的不安，没人接住过</p>
+      <p><span class="label vir">爆款版</span>为什么你总在亲密关系里"解冻"？可能因为你妈妈也是</p>
+    </div>
+    <div class="vc">
+      <h4>内容方向</h4>
+      <ul>
+        <li>【家庭系统视角】代际传递 + 依恋模式</li>
+        <li>【看见而非继承】跳出归因循环</li>
+      </ul>
+    </div>
+    <div class="vc">
+      <h4>形式 + 视觉</h4>
+      <ul>
+        <li>形式：信件体 + 时间轴</li>
+        <li>封面：母女两代剪影 + 暖金点缀</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="repurpose">
+  <h3>⑤ TOP 5 沟通消耗 token <span class="topic-tag">引流款（备选）</span></h3>
+  <div class="viral">
+    <div class="vc">
+      <h4>标题 3 版</h4>
+      <p><span class="label pro">专业版</span>情绪能量管理：把"沟通"当成"token"，你才会用得精</p>
+      <p><span class="label emo">情绪版</span>原来你不是不会聊天，你是能量用完了</p>
+      <p><span class="label vir">爆款版</span>沟通也会消耗 token：你今天还剩多少？</p>
+    </div>
+    <div class="vc">
+      <h4>内容方向</h4>
+      <ul>
+        <li>【能量账户】"今日还剩多少 token" 记账法</li>
+        <li>【互动场景】亲密关系 / 职场 / 家庭三个差异化脚本</li>
+      </ul>
+    </div>
+    <div class="vc">
+      <h4>形式 + 视觉</h4>
+      <ul>
+        <li>形式：图文 + 7 日记账表 + 互动题</li>
+        <li>封面：电池 / token 概念图标</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</section>
+
+<section id="matrix">
+<h2 class="section">四、五选题属性矩阵</h2>
+<div class="matrix">
+  <h3>选题分类 × 内容配比 × 转化路径</h3>
+  <div class="matrix-grid">
+    <div class="h">选题</div>
+    <div class="h">用户痛点</div>
+    <div class="h">情绪共鸣</div>
+    <div class="h">传播潜力</div>
+    <div class="h">转化潜力</div>
+
+    <div class="cell">TOP1 赵樱子</div>
+    <div class="cell yes">高</div>
+    <div class="cell yes">高</div>
+    <div class="cell yes">高</div>
+    <div class="cell mid">中</div>
+
+    <div class="cell">TOP2 被点醒</div>
+    <div class="cell yes">高</div>
+    <div class="cell yes">高</div>
+    <div class="cell yes">高</div>
+    <div class="cell yes">高</div>
+
+    <div class="cell">TOP3 微笑抑郁</div>
+    <div class="cell yes">高</div>
+    <div class="cell yes">高</div>
+    <div class="cell mid">中</div>
+    <div class="cell mid">中</div>
+
+    <div class="cell">TOP4 解冻焦虑</div>
+    <div class="cell mid">中</div>
+    <div class="cell yes">高</div>
+    <div class="cell mid">中</div>
+    <div class="cell mid">中</div>
+
+    <div class="cell">TOP5 沟通 token</div>
+    <div class="cell mid">中</div>
+    <div class="cell mid">中</div>
+    <div class="cell yes">高</div>
+    <div class="cell mid">中</div>
+  </div>
+</div>
+</section>
+
+<section id="deep1">
+<h2 class="section">五、深挖解读 ①｜赵樱子事件：讨好的代价</h2>
+<div class="deep-look">
+  <h3>事件 + 角度 + 风险点</h3>
+  <div class="hook">"当一个演员/公众人物承认抑郁，真正值得追问的不是她经历了什么，而是为什么她在最红的时候才敢说出这些。"</div>
+  <p>赵樱子事件之所以能多平台延烧，不只是因为她是明星，而是因为她的故事击中了大量 25-38 岁女性的三层自我怀疑：</p>
+  <div class="point">
+    <b>第一层：「讨好才能被喜欢」的信念</b>
+    在事业上升期，她选择压下自己的真实感受，配合"观众需要看到的样子"，长期的情绪压抑是抑郁发生的温床。
+  </div>
+  <div class="point">
+    <b>第二层：「原生家庭期待」隐形锁链</b>
+    她曾自述从小被严格要求、被否定情感表达，把"乖""听话"等同于"被爱"，这种早期经验会内化为成年后的"演好女儿/演好艺人"的强迫性重复。
+  </div>
+  <div class="point">
+    <b>第三层：「被网暴 / 冷暴力」叠加</b>
+    公开形象被扭曲 + 事业落差 + 网暴创伤，三者叠加把"讨好撑得住"彻底压成"讨好撑不住"。
+  </div>
+  <p><b>IP 风险点：</b>不做八卦分析，不评价她个人选择；不用"抑郁"做诊断式表达（合规红线）；把焦点放在"讨好的代价"这一普世现象，让读者从"看见她"过渡到"看见自己"。</p>
+  <div class="point">
+    <b>转化钩子建议（合规口径）：</b>"如果你也在不同的关系里演过'不用帮忙的我'，这本《讨好型人格自救手册》可能陪你做一次安静的自检。回复「讨好」领取。"
+  </div>
+</div>
+</section>
+
+<section id="deep2">
+<h2 class="section">六、深挖解读 ②｜"被心理医生点醒的瞬间"如何转化为咨询师 IP 资产</h2>
+<div class="deep-look">
+  <h3>为什么这个话题适合咨询师个人IP</h3>
+  <p>微博话题 #被心理医生点醒的瞬间# 之所以持续走高，是因为它提供了一种"低门槛被疗愈"的体验：用户不需要走进咨询室，只需要听一个故事，就能获得"我也被点醒了"的替代性满足。</p>
+  <div class="point">
+    <b>这种内容形态有 3 个 IP 属性优势：</b>
+    <ol style="padding-left:20px">
+      <li><b>人格化强：</b>"咨询师 / 来访者"两个人物在叙事中并存，比纯科普更有温度。</li>
+      <li><b>可系列化：</b>"被点醒的瞬间"可以做成「咨询师语录 7 句」「来访者最常记住的一句话」「咨询师不会被说出口的 5 个观察」等系列选题。</li>
+      <li><b>转化路径短：</b>金句 + 故事 + 咨询室画面 = 用户自然产生的"我也想被这样的人陪一会儿"的心理动机。</li>
+    </ol>
+  </div>
+  <p><b>建议操作：</b>本篇先用 7 句金句铺开信任度（今日信任款），下周三可以发"咨询师我不敢说出口的 5 个观察"承接，进一步渗透"专业感 + 看见感"。</p>
+  <div class="point">
+    <b>内容红线提醒：</b>所有金句必须来自脱敏案例（已获来访者知情同意口径），不能编造来访者的故事，更不能将真实个案细节写入文章。</b>
+  </div>
+</div>
+</section>
+
+<section id="deep3">
+<h2 class="section">七、待选选题库（备用 / 周末候选）</h2>
+<div style="background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 22px">
+  <ul style="padding-left:18px;font-size:14px;line-height:1.9">
+    <li>亲密关系 ｜ <b>"情绪价值"为什么成了稀缺品？</b>（话题热度持续高位）</li>
+    <li>情绪认知 ｜ <b>"情绪垃圾"是不是必须倒给朋友？</b>（KnowYourself 同向内容）</li>
+    <li>自我成长 ｜ <b>30 岁后用心理学重新养一遍自己</b>（KnowYourself 系列）</li>
+    <li>依恋模式 ｜ <b>回避型依恋 vs 焦虑型依恋：为什么越亲密越累？</b></li>
+    <li>原生家庭 ｜ <b>既恨又爱父母，也是健康的（衔接到昨日信任款延伸）</b></li>
+    <li>亲密关系 ｜ <b>"情绪不落空"：你会不会总是等到失望？</b></li>
+    <li>关系模式 ｜ <b>高敏感人群（HSP）：被误解太久的天赋</b></li>
+    <li>女性议题 ｜ <b>"被看见"的渴望：为什么总嫌伴侣不够用心？</b></li>
+    <li>自我成长 ｜ <b>孤独是一种需要，还是一种能力？</b></li>
+  </ul>
+</div>
+</section>
+
+<section id="workflow">
+<h2 class="section">八、今日内容流水线交付清单</h2>
+<div style="background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 24px;font-size:14px">
+  <ol style="padding-left:20px;line-height:2">
+    <li><b>3 篇成文：</b>article-2026-09-03-01-讨好型人格的代价.html（引流款） / article-2026-09-03-02-被心理医生点醒的瞬间.html（信任款） / article-2026-09-03-03-微笑型抑郁.html（引流款）</li>
+    <li><b>工作台更新：</b>rainbowhu-workbench.html 已替换 VIRAL_IDEAS / SHOWCASE / ARTICLE_PLANS / READY_ARTICLES 四组数据，更新 header 日期与 full-report 链接</li>
+    <li><b>微博/短视频/图文不在本次范围：</b>由 20:00 / 21:00 / 21:30 自动化任务产出</li>
+    <li><b>合规自查：</b>全篇不含诊断式表述、不承诺疗效、不引具体临床数字、不点名具体明星个案细节、不使用"最""第一"等广告法红线</li>
+  </ol>
+</div>
+</section>
+
+<section>
+<div class="qr-area">
+  <div class="qr-label">— 扫码关注彩虹心理 —</div>
+  <img src="rainbowhu-qrcode.jpg" alt="彩虹心理公众号二维码">
+  <div class="qr-text">扫码关注，回复「自测」领取心理自测手册</div>
+  <div class="qr-sub">彩虹心理 · 让每一种情绪都被温柔地理解</div>
+</div>
+</section>
+
+<div class="footer-note">彩虹心理每日心理热点选题雷达 · DAILY RADAR · 数据采集自公开互联网 · 仅供内容生产参考</div>
+
+</div>
+</body>
+</html>
