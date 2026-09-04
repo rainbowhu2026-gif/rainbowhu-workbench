@@ -10,10 +10,37 @@
 <link rel="icon" href="rainbowhu-cover.ico">
 <style>
   :root{
-    --bg:#f5f5f7; --sidebar:#fff; --card:#fff; --ink:#1d1d1f; --ink2:#6e6e73; --ink3:#a1a1a6;
-    --line:#e5e5e7; --accent:#34c759; --accent-light:#e8f9ee; --accent2:#c06c84; --accent3:#f6a957;
-    --purple:#6b5b95; --blue:#5a7cb0; --shadow:0 4px 24px rgba(0,0,0,.06); --shadow-sm:0 2px 8px rgba(0,0,0,.04);
-    --r1:#ff6b6b;--r2:#feca57;--r3:#48dbfb;--r4:#1dd1a1;--r5:#a55eea;
+    /* === 品牌色（与图文卡片 v3.0 / 公众号文章统一）=== */
+    --green:#134B43; --green-600:#1a5c52; --green-700:#0e332e;
+    --green-light:#E8F0EA; --green-tint:#F2F7F4;
+    --gold:#C89B52; --gold-light:#F7EFE2;
+    --cream:#F7F3EA;
+    --card:#FFFFFF;
+
+    /* === 中性 === */
+    --ink:#1A1A1A; --ink2:#6B6B6B; --ink3:#9E9E9E;
+    --line:#EAE4D8; --line-strong:#DDD5C5;
+
+    /* === 圆角系统（4 个层级）=== */
+    --r-xs:6px; --r-sm:8px; --r-md:12px; --r-lg:16px; --r-xl:22px;
+
+    /* === 阴影（克制，不再大面积模糊）=== */
+    --shadow:0 1px 2px rgba(19,75,67,.04);
+    --shadow-md:0 2px 10px rgba(19,75,67,.07);
+    --shadow-lg:0 8px 28px rgba(19,75,67,.10);
+
+    /* === 旧变量名映射到品牌色（不再出现马卡龙彩虹）=== */
+    --bg:var(--cream);
+    --sidebar:var(--card);
+    --accent:var(--green);
+    --accent-light:var(--green-light);
+    --accent2:var(--gold);
+    --accent3:var(--gold);
+    --purple:var(--green);
+    --blue:var(--green);
+    --r1:var(--green-700);--r2:var(--green-600);--r3:var(--green);
+    --r4:var(--gold);--r5:var(--green-light);
+    --shadow-sm:var(--shadow);
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{height:100%}
@@ -22,100 +49,111 @@
 
   /* SIDEBAR */
   .sidebar{width:260px;background:var(--sidebar);border-right:1px solid var(--line);display:flex;flex-direction:column;padding:26px 18px 18px;flex-shrink:0}
-  .brand{display:flex;align-items:center;gap:12px;margin-bottom:30px}
-  .brand-icon{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#a18cd1,#fbc2eb);display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 4px 12px rgba(161,140,209,.3)}
-  .brand-name{font-size:16px;font-weight:800;letter-spacing:.3px}
-  .brand-sub{font-size:11px;color:var(--ink3);margin-top:2px}
-  .nav{flex:1;overflow-y:auto}
-  .nav-item{display:flex;align-items:center;gap:12px;padding:12px 13px;border-radius:12px;margin-bottom:5px;cursor:pointer;transition:all .15s;color:var(--ink2);font-weight:600}
-  .nav-item:hover{background:#f5f5f7;color:var(--ink)}
-  .nav-item.active{background:var(--accent-light);color:var(--accent)}
-  .nav-icon{width:28px;height:28px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:15px;background:#f5f5f7}
-  .nav-item.active .nav-icon{background:#fff;box-shadow:0 2px 6px rgba(52,199,89,.15)}
-  .nav-badge{margin-left:auto;font-size:10px;background:var(--accent);color:#fff;padding:1px 7px;border-radius:10px;font-weight:700}
-  .sidebar-foot{margin-top:auto;padding-top:16px;border-top:1px solid var(--line);font-size:11px;color:var(--ink3);line-height:1.7}
-  .sidebar-foot b{color:var(--ink2)}
+  .brand{display:flex;align-items:center;gap:13px;margin-bottom:34px;padding:0 2px}
+  .brand-logo{width:46px;height:46px;object-fit:contain;flex-shrink:0}
+  .brand-name{font-size:16px;font-weight:700;letter-spacing:.5px;color:var(--ink);font-family:"PingFang SC","Microsoft YaHei",sans-serif}
+  .brand-sub{font-size:11px;color:var(--ink3);margin-top:3px;letter-spacing:.5px}
+  .nav{flex:1;overflow-y:auto;padding-top:4px}
+  .nav-item{display:flex;align-items:center;gap:13px;padding:11px 13px;border-radius:var(--r-md);margin-bottom:3px;cursor:pointer;transition:all .15s;color:var(--ink2);font-weight:500;font-size:14px}
+  .nav-item:hover{background:var(--green-tint);color:var(--ink)}
+  .nav-item.active{background:var(--green-light);color:var(--green);font-weight:600}
+  .nav-icon{width:30px;height:30px;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;background:transparent;color:var(--ink2);flex-shrink:0;transition:all .15s}
+  .nav-icon svg{width:18px;height:18px}
+  .nav-item:hover .nav-icon{color:var(--green-600)}
+  .nav-item.active .nav-icon{background:var(--green);color:#fff}
+  .nav-badge{margin-left:auto;font-size:10px;background:var(--green);color:#fff;padding:2px 8px;border-radius:10px;font-weight:600}
+  .sidebar-foot{margin-top:auto;padding-top:18px;border-top:1px solid var(--line);font-size:11px;color:var(--ink3);line-height:1.7;letter-spacing:.3px}
+  .sidebar-foot b{color:var(--ink2);font-weight:600}
 
   /* MAIN */
-  .main{flex:1;display:flex;flex-direction:column;overflow:hidden}
-  .header{height:64px;background:var(--card);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 28px;flex-shrink:0}
+  .main{flex:1;display:flex;flex-direction:column;overflow:hidden;background:var(--cream)}
+  .header{height:68px;background:rgba(255,255,255,.78);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 32px;flex-shrink:0}
   .header-left{display:flex;align-items:center;gap:14px}
-  .menu-btn{display:none;width:34px;height:34px;border-radius:9px;border:none;background:#f5f5f7;cursor:pointer;font-size:17px}
-  .page-title{font-size:18px;font-weight:800}
-  .page-date{font-size:12px;color:var(--ink3);font-weight:500}
+  .menu-btn{display:none;width:34px;height:34px;border-radius:9px;border:none;background:var(--green-tint);cursor:pointer;font-size:17px;color:var(--ink2)}
+  .page-title{font-size:18px;font-weight:700;color:var(--ink);letter-spacing:.3px}
+  .page-date{font-size:12px;color:var(--ink3);font-weight:500;letter-spacing:.3px}
   .header-right{display:flex;align-items:center;gap:10px}
-  .pill{font-size:11px;padding:5px 12px;border-radius:20px;background:var(--accent-light);color:var(--accent);font-weight:700}
-  .reset-btn{font-size:12px;padding:7px 14px;border-radius:20px;border:1px solid var(--line);background:#fff;color:var(--ink2);cursor:pointer;font-weight:600}
-  .reset-btn:hover{border-color:var(--accent2);color:var(--accent2)}
+  .pill{font-size:11px;padding:5px 12px;border-radius:20px;background:var(--green-light);color:var(--green);font-weight:600;letter-spacing:.3px}
+  .reset-btn{font-size:12px;padding:7px 14px;border-radius:20px;border:1px solid var(--line);background:rgba(255,255,255,.6);color:var(--ink2);cursor:pointer;font-weight:500;letter-spacing:.3px;transition:all .15s}
+  .reset-btn:hover{border-color:var(--green);color:var(--green);background:#fff}
 
-  .content{flex:1;overflow-y:auto;padding:28px}
-  .content-inner{max-width:960px;margin:0 auto}
+  .content{flex:1;overflow-y:auto;padding:32px}
+  .content-inner{max-width:1080px;margin:0 auto}
   .view{display:none}
   .view.active{display:block}
 
   /* OVERVIEW */
-  .ov-title{font-size:13px;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+  .ov-title{font-size:13px;font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:10px;letter-spacing:.3px;color:var(--ink)}
+  .ov-title::before{content:"";width:18px;height:1.5px;background:var(--gold)}
   .ov-title .sub{color:var(--ink3);font-weight:500}
   .ov-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px}
-  .ov-card{background:var(--card);border-radius:18px;padding:18px 20px;box-shadow:var(--shadow);border:1px solid var(--line)}
-  .ov-card .num{font-size:34px;font-weight:800;line-height:1.1}
-  .ov-card .label{font-size:12px;color:var(--ink2);margin-top:6px;font-weight:600}
-  .num.done{color:var(--accent)} .num.todo{color:var(--accent2)} .num.rate{color:var(--purple)}
+  .ov-card{background:var(--card);border-radius:var(--r-lg);padding:22px 22px;border:1px solid var(--line);transition:all .2s}
+  .ov-card:hover{border-color:var(--green-light);box-shadow:var(--shadow-md)}
+  .ov-card .num{font-size:32px;font-weight:700;line-height:1.1;letter-spacing:-.5px;color:var(--ink);font-family:"PingFang SC","SF Pro Display",sans-serif}
+  .ov-card .label{font-size:12px;color:var(--ink2);margin-top:8px;font-weight:500;letter-spacing:.3px}
+  .num.done{color:var(--green)} .num.todo{color:var(--gold)} .num.rate{color:var(--green-600)}
 
   /* SECTIONS */
-  .section{background:var(--card);border-radius:18px;padding:22px 24px;margin-bottom:20px;box-shadow:var(--shadow);border:1px solid var(--line)}
-  .section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
-  .section-title{font-size:15px;font-weight:800;display:flex;align-items:center;gap:9px}
-  .section-icon{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px}
-  .section-more{font-size:12px;color:var(--ink3);font-weight:600}
-  .sec-sub{font-size:12px;color:var(--ink3);margin:-8px 0 14px}
+  .section{background:var(--card);border-radius:var(--r-lg);padding:24px 26px;margin-bottom:18px;border:1px solid var(--line);transition:border-color .2s}
+  .section:hover{border-color:var(--green-light)}
+  .section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+  .section-title{font-size:15px;font-weight:700;display:flex;align-items:center;gap:11px;color:var(--ink);letter-spacing:.3px}
+  .section-icon{width:30px;height:30px;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;color:var(--green);font-size:15px;background:var(--green-light)}
+  .section-icon svg{width:16px;height:16px}
+  .section-more{font-size:12px;color:var(--ink3);font-weight:500;letter-spacing:.3px}
+  .sec-sub{font-size:12px;color:var(--ink3);margin:-10px 0 16px;line-height:1.7}
 
   /* TASKS */
-  .task-group-label{font-size:12px;font-weight:800;color:var(--ink3);margin:18px 0 10px;text-transform:uppercase;letter-spacing:.5px}
+  .task-group-label{font-size:11px;font-weight:700;color:var(--ink3);margin:20px 0 10px;text-transform:uppercase;letter-spacing:1.2px}
   .task-group-label:first-child{margin-top:0}
   .task-list{display:flex;flex-direction:column;gap:8px}
-  .task-row{display:flex;align-items:center;gap:13px;padding:13px 15px;border-radius:13px;background:#f9f9fb;border:1px solid transparent;transition:all .15s;position:relative;group:var(--g)}
+  .task-row{display:flex;align-items:center;gap:14px;padding:13px 16px;border-radius:var(--r-md);background:var(--cream);border:1px solid transparent;transition:all .15s;position:relative}
   .task-row:hover{background:#fff;border-color:var(--line)}
-  .task-row.done{opacity:.55}
-  .task-check{width:24px;height:24px;border-radius:50%;border:2px solid var(--ink3);flex-shrink:0;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
-  .task-check:hover{border-color:var(--accent)}
-  .task-row.done .task-check{background:var(--accent);border-color:var(--accent)}
-  .task-row.done .task-check:after{content:"✓";color:#fff;font-size:13px;font-weight:800}
-  .task-row.run .task-check{background:var(--accent3);border-color:var(--accent3)}
-  .task-row.run .task-check:after{content:"";width:7px;height:7px;background:#fff;border-radius:50%}
+  .task-row.done{opacity:.6}
+  .task-check{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--ink3);flex-shrink:0;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+  .task-check:hover{border-color:var(--green)}
+  .task-row.done .task-check{background:var(--green);border-color:var(--green)}
+  .task-row.done .task-check:after{content:"✓";color:#fff;font-size:12px;font-weight:700}
+  .task-row.run .task-check{background:var(--gold);border-color:var(--gold)}
+  .task-row.run .task-check:after{content:"";width:6px;height:6px;background:#fff;border-radius:50%}
   .task-info{flex:1}
-  .task-name{font-size:13.5px;font-weight:700}
+  .task-name{font-size:13.5px;font-weight:600;color:var(--ink)}
   .task-row.done .task-name{text-decoration:line-through;color:var(--ink2)}
-  .task-meta{display:flex;gap:7px;margin-top:3px;font-size:11px;color:var(--ink3);flex-wrap:wrap}
-  .tag{padding:2px 8px;border-radius:10px;font-weight:700;font-size:10px}
-  .tag-auto{background:#eee9f7;color:var(--purple)} .tag-done{background:var(--accent-light);color:var(--accent)}
-  .tag-run{background:#fff3e0;color:#e67c22} .tag-todo{background:#eef0f2;color:var(--ink2)}
-  .tag-personal{background:#e3f2fd;color:#1976d2} .tag-work{background:#fce4ec;color:#c62828}
+  .task-meta{display:flex;gap:6px;margin-top:3px;font-size:11px;color:var(--ink3);flex-wrap:wrap;align-items:center}
+  .tag{padding:2px 9px;border-radius:6px;font-weight:600;font-size:10px;letter-spacing:.3px}
+  .tag-auto{background:var(--green-light);color:var(--green)}
+  .tag-done{background:var(--green-tint);color:var(--green-600)}
+  .tag-run{background:var(--gold-light);color:#9a6f1f}
+  .tag-todo{background:var(--cream);color:var(--ink2)}
+  .tag-personal{background:#faf5ea;color:#9a6f1f}
+  .tag-work{background:#f0f6f4;color:var(--green-700)}
   .task-del{width:24px;height:24px;border-radius:7px;border:none;background:transparent;color:var(--ink3);cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .15s;flex-shrink:0}
   .task-row:hover .task-del{opacity:1}
-  .task-del:hover{background:#ffebee;color:#e53935}
+  .task-del:hover{background:var(--green-tint);color:var(--green)}
   .task-add-row{display:flex;gap:10px;margin-top:14px;align-items:center}
-  .task-add-input{flex:1;padding:11px 15px;border-radius:13px;border:1px solid var(--line);background:#f9f9fb;font-size:13px;font-family:inherit;outline:none;transition:border-color .15s}
-  .task-add-input:focus{border-color:var(--accent);background:#fff}
-  .task-cat-select{padding:11px 12px;border-radius:13px;border:1px solid var(--line);background:#f9f9fb;font-size:12px;font-family:inherit;cursor:pointer;outline:none}
-  .task-add-btn{padding:11px 20px;border-radius:13px;border:none;background:var(--accent);color:#fff;font-size:13px;font-weight:700;cursor:pointer;transition:transform .1s}
-  .task-add-btn:active{transform:scale(.95)}
+  .task-add-input{flex:1;padding:11px 15px;border-radius:var(--r-md);border:1px solid var(--line);background:var(--cream);font-size:13px;font-family:inherit;outline:none;transition:all .15s}
+  .task-add-input:focus{border-color:var(--green);background:#fff;box-shadow:0 0 0 3px var(--green-tint)}
+  .task-cat-select{padding:11px 12px;border-radius:var(--r-md);border:1px solid var(--line);background:var(--cream);font-size:12px;font-family:inherit;cursor:pointer;outline:none}
+  .task-add-btn{padding:11px 20px;border-radius:var(--r-md);border:none;background:var(--green);color:#fff;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s;letter-spacing:.3px}
+  .task-add-btn:hover{background:var(--green-600)}
+  .task-add-btn:active{transform:scale(.97)}
 
   /* OUTPUT CARDS */
   .output-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-  .output-card{border:1px solid var(--line);border-radius:14px;padding:16px;background:#fafafa;transition:box-shadow .2s}
-  .output-card:hover{box-shadow:var(--shadow-sm);border-color:#ddd}
-  .output-top{display:flex;align-items:flex-start;gap:10px;margin-bottom:9px}
-  .output-rank{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:13px;flex-shrink:0}
-  .rank1{background:#c0392b}.rank2{background:#d98c3a}.rank3{background:var(--purple)}.rank4{background:var(--accent)}.rank5{background:var(--blue)}
-  .output-title{font-size:13px;font-weight:700;line-height:1.35;flex:1}
-  .output-score{font-size:15px;font-weight:800;color:var(--purple);margin-left:6px}
+  .output-card{border:1px solid var(--line);border-radius:var(--r-md);padding:16px;background:var(--cream);transition:all .2s}
+  .output-card:hover{box-shadow:var(--shadow-md);border-color:var(--green-light);background:#fff}
+  .output-top{display:flex;align-items:flex-start;gap:11px;margin-bottom:10px}
+  .output-rank{width:28px;height:28px;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:12px;flex-shrink:0;letter-spacing:.3px}
+  .rank1{background:var(--green-700)}.rank2{background:var(--green-600)}.rank3{background:var(--green)}.rank4{background:var(--gold)}.rank5{background:var(--green-light);color:var(--green);border:1px solid var(--green)}
+  .output-title{font-size:13px;font-weight:700;line-height:1.45;flex:1;color:var(--ink)}
+  .output-score{font-size:15px;font-weight:700;color:var(--green);margin-left:6px}
   .output-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
-  .otag{font-size:10px;padding:3px 8px;border-radius:10px;color:#fff;font-weight:700}
-  .ot1{background:var(--purple)}.ot2{background:var(--accent2)}.ot3{background:var(--accent)}.ot4{background:var(--accent3)}.ot5{background:var(--blue)}
-  .output-hook{font-size:12px;color:var(--ink2);line-height:1.5}
-  .output-hook b{color:var(--purple)}
-  .full-report{display:inline-block;margin-top:14px;font-size:12px;color:var(--blue);font-weight:700;text-decoration:none}
+  .otag{font-size:10px;padding:3px 8px;border-radius:6px;color:#fff;font-weight:600;letter-spacing:.3px}
+  .ot1{background:var(--green)}.ot2{background:var(--green-600)}.ot3{background:var(--gold)}.ot4{background:var(--green-700)}.ot5{background:var(--green-light);color:var(--green);border:1px solid var(--green)}
+  .output-hook{font-size:12px;color:var(--ink2);line-height:1.65}
+  .output-hook b{color:var(--green);font-weight:600}
+  .full-report{display:inline-block;margin-top:14px;font-size:12px;color:var(--green);font-weight:600;text-decoration:none;transition:color .15s}
+  .full-report:hover{color:var(--green-600)}
 
   /* REVIEW */
   .review-dims{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
@@ -137,41 +175,47 @@
   .src-link{display:block;font-size:11.5px;color:var(--blue);margin-top:6px;line-height:1.5;word-break:break-all;text-decoration:none}
 
   /* CONTENT SHOWCASE */
-  .showcase-card{border:1px solid var(--line);border-radius:14px;padding:18px;background:#fafafa;margin-bottom:14px}
-  .showcase-tag{display:inline-block;font-size:11px;padding:3px 10px;border-radius:12px;color:#fff;font-weight:700;margin-bottom:10px}
-  .showcase-title{font-size:14px;font-weight:700;margin-bottom:8px}
+  .showcase-card{border:1px solid var(--line);border-radius:var(--r-md);padding:18px;background:var(--cream);margin-bottom:14px;transition:all .2s}
+  .showcase-card:hover{border-color:var(--green-light);background:#fff}
+  .showcase-tag{display:inline-block;font-size:11px;padding:3px 10px;border-radius:6px;color:#fff;font-weight:600;margin-bottom:10px;letter-spacing:.3px}
+  .showcase-title{font-size:14px;font-weight:700;margin-bottom:8px;color:var(--ink)}
   .showcase-desc{font-size:12.5px;color:var(--ink2);line-height:1.6}
   .showcase-empty{text-align:center;padding:30px;color:var(--ink3);font-size:13px}
 
   /* VIDEO IDEAS */
-  .video-idea{display:flex;gap:14px;padding:14px;border:1px solid var(--line);border-radius:13px;background:#fafafa;margin-bottom:12px}
-  .video-num{width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:14px;flex-shrink:0}
+  .video-idea{display:flex;gap:14px;padding:14px;border:1px solid var(--line);border-radius:var(--r-md);background:var(--cream);margin-bottom:12px;transition:all .2s}
+  .video-idea:hover{background:#fff;border-color:var(--green-light)}
+  .video-num{width:32px;height:32px;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:14px;flex-shrink:0}
+  .video-num.n1{background:var(--green-700)}
+  .video-num.n2{background:var(--green-600)}
+  .video-num.n3{background:var(--green)}
   .video-info{flex:1}
   .video-title{font-size:13.5px;font-weight:700;margin-bottom:5px}
   .video-desc{font-size:12px;color:var(--ink2);line-height:1.5}
   .video-platforms{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
 
   /* ARTICLE PLANS */
-  .ap-card{border:1px solid var(--line);border-radius:16px;padding:20px;margin-bottom:18px;background:#fafafa;transition:box-shadow .2s}
-  .ap-card:hover{box-shadow:var(--shadow)}
+  .ap-card{border:1px solid var(--line);border-radius:var(--r-md);padding:20px;margin-bottom:18px;background:var(--cream);transition:all .2s}
+  .ap-card:hover{background:#fff;border-color:var(--green-light)}
   .ap-header{display:flex;align-items:center;gap:12px;margin-bottom:6px}
-  .ap-rank{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:16px;flex-shrink:0}
-  .ap-topic{font-size:15px;font-weight:800;flex:1;line-height:1.3}
-  .ap-score{font-size:20px;font-weight:800;color:var(--purple);flex-shrink:0}
+  .ap-rank{width:36px;height:36px;border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:15px;flex-shrink:0}
+  .ap-rank.r1{background:var(--green-700)}.ap-rank.r2{background:var(--green-600)}.ap-rank.r3{background:var(--green)}
+  .ap-topic{font-size:15px;font-weight:700;flex:1;line-height:1.3;color:var(--ink)}
+  .ap-score{font-size:20px;font-weight:700;color:var(--green);flex-shrink:0}
   .ap-cat{font-size:11px;color:var(--ink3);margin:0 0 14px 48px;line-height:1.5}
   .ap-titles{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
   .ap-title-row{display:flex;gap:8px;align-items:flex-start;font-size:12.5px}
   .ap-title-label{padding:3px 8px;border-radius:8px;font-size:10px;font-weight:700;white-space:nowrap;flex-shrink:0}
-  .ap-title-label.pro{background:#e3f2fd;color:#1976d2}
-  .ap-title-label.emo{background:#fce4ec;color:#c62828}
-  .ap-title-label.viral{background:#fff3e0;color:#e67c22}
+  .ap-title-label.pro{background:var(--green-tint);color:var(--green-600)}
+  .ap-title-label.emo{background:var(--gold-light);color:#9a6f1f}
+  .ap-title-label.viral{background:var(--cream);color:var(--green-700)}
   .ap-title-text{color:var(--ink);font-weight:600;line-height:1.4}
   .ap-section{margin-bottom:14px}
   .ap-section h6{font-size:12px;font-weight:800;color:var(--purple);margin-bottom:8px}
   .ap-meta{font-size:12px;color:var(--ink2);line-height:1.6}
   .ap-sources{font-size:12px;color:var(--ink2);line-height:1.8}
   .ap-books{display:flex;flex-wrap:wrap;gap:6px}
-  .ap-book{font-size:11px;padding:3px 10px;border-radius:12px;background:#f3e5f5;color:#6b5b95;font-weight:600}
+  .ap-book{font-size:11px;padding:3px 10px;border-radius:6px;background:var(--green-tint);color:var(--green-600);font-weight:600;letter-spacing:.3px}
   .ap-conversion{background:#e8f5e9;border:1px solid #c8e6c9;border-radius:10px;padding:10px 14px;font-size:12px;color:#2e7d32;line-height:1.6}
   .ap-copy-btn{display:block;width:100%;padding:13px;border:none;border-radius:12px;background:var(--accent);color:#fff;font-size:14px;font-weight:700;cursor:pointer;transition:all .15s;margin-top:16px}
   .ap-copy-btn:hover{background:#2da647;transform:translateY(-1px)}
@@ -184,32 +228,30 @@
   .ra-card.published{opacity:.65;border-style:dashed}
   .ra-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
   .ra-rank{width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;color:#fff;flex-shrink:0}
-  .ra-rank.r1{background:linear-gradient(135deg,#c0392b,#e74c3c)}
-  .ra-rank.r2{background:linear-gradient(135deg,#d98c3a,#f0a040)}
-  .ra-rank.r3{background:linear-gradient(135deg,#3a8c7a,#5aa68f)}
-  .ra-title{font-size:16px;font-weight:700;line-height:1.4;flex:1}
-  .ra-badge{font-size:11px;padding:3px 10px;border-radius:20px;font-weight:600;flex-shrink:0}
-  .ra-badge.pending{background:#fff3cd;color:#856404}
-  .ra-badge.published{background:#d4edda;color:#155724}
+  .ra-rank.r1{background:var(--green-700)}
+  .ra-rank.r2{background:var(--green-600)}
+  .ra-rank.r3{background:var(--green)}
+  .ra-title{font-size:16px;font-weight:700;line-height:1.4;flex:1;color:var(--ink)}
+  .ra-badge{font-size:11px;padding:3px 10px;border-radius:20px;font-weight:600;flex-shrink:0;letter-spacing:.3px}
+  .ra-badge.pending{background:var(--gold-light);color:#9a6f1f}
+  .ra-badge.published{background:var(--green-light);color:var(--green)}
   .ra-meta{font-size:12px;color:var(--ink3);margin-bottom:14px;display:flex;flex-wrap:wrap;gap:4px 16px}
   .ra-meta b{color:var(--ink2)}
-  .ra-excerpt{font-size:13px;color:var(--ink2);line-height:1.7;background:#faf8f5;border-radius:10px;padding:12px 16px;margin-bottom:14px}
+  .ra-excerpt{font-size:13px;color:var(--ink2);line-height:1.7;background:var(--cream);border-radius:var(--r-md);padding:12px 16px;margin-bottom:14px}
   .ra-actions{display:flex;gap:10px;flex-wrap:wrap}
-  .ra-btn{padding:9px 18px;border:none;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s;text-decoration:none;display:inline-flex;align-items:center;gap:5px}
-  .ra-btn-preview{background:var(--accent);color:#fff}
-  .ra-btn-preview:hover{background:#3d2f6b;transform:translateY(-1px)}
-  .ra-btn-copy{background:#fff;border:1.5px solid var(--accent);color:var(--accent)}
-  .ra-btn-copy:hover{background:#f5f0ff}
-  .ra-btn-publish{background:var(--teal);color:#fff}
-  .ra-btn-publish:hover{background:#2d7a68}
-  .ra-btn.copied{background:#d4edda;color:#155724;border-color:#c3e6cb}
+  .ra-btn{padding:9px 18px;border:none;border-radius:var(--r-md);font-size:13px;font-weight:600;cursor:pointer;transition:all .15s;text-decoration:none;display:inline-flex;align-items:center;gap:5px;letter-spacing:.3px}
+  .ra-btn-preview{background:var(--green);color:#fff}
+  .ra-btn-preview:hover{background:var(--green-600);transform:translateY(-1px)}
+  .ra-btn-copy{background:#fff;border:1.5px solid var(--green);color:var(--green)}
+  .ra-btn-copy:hover{background:var(--green-tint)}
+  .ra-btn.copied{background:var(--green-light);color:var(--green);border-color:var(--green)}
 
   /* TITLE LAB */
   .tl-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
   .tl-stat{background:var(--card);border-radius:14px;padding:14px 16px;border:1px solid var(--line);text-align:center}
   .tl-stat .num{font-size:28px;font-weight:800;line-height:1.1}
   .tl-stat .label{font-size:11px;color:var(--ink3);margin-top:4px;font-weight:600}
-  .tl-top-card{background:linear-gradient(135deg,#fafafa,#f5f0ff);border:1.5px solid #e0d4f0;border-radius:14px;padding:16px 18px;margin-bottom:10px;transition:box-shadow .2s}
+  .tl-top-card{background:var(--cream);border:1.5px solid var(--line);border-radius:var(--r-md);padding:16px 18px;margin-bottom:10px;transition:all .2s}
   .tl-top-card:hover{box-shadow:var(--shadow-sm)}
   .tl-top-header{display:flex;align-items:center;gap:10px;margin-bottom:8px}
   .tl-rank{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:12px;flex-shrink:0}
@@ -238,14 +280,14 @@
   .ws-card.published{opacity:.65;border-style:dashed}
   .ws-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
   .ws-rank{width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;color:#fff;flex-shrink:0}
-  .ws-rank.w1{background:linear-gradient(135deg,#c0392b,#e74c3c)}
-  .ws-rank.w2{background:linear-gradient(135deg,#d98c3a,#f0a040)}
-  .ws-rank.w3{background:linear-gradient(135deg,#3a8c7a,#5aa68f)}
-  .ws-theme{font-size:11px;padding:3px 10px;border-radius:20px;font-weight:700;margin-left:8px}
-  .ws-badge{font-size:11px;padding:3px 10px;border-radius:20px;font-weight:600;flex-shrink:0}
-  .ws-badge.pending{background:#fff3cd;color:#856404}
-  .ws-badge.published{background:#d4edda;color:#155724}
-  .ws-content{font-size:13.5px;color:var(--ink);line-height:1.8;background:#faf8f5;border-radius:12px;padding:16px 20px;margin-bottom:14px;white-space:pre-wrap;max-height:320px;overflow-y:auto}
+  .ws-rank.w1{background:var(--green-700)}
+  .ws-rank.w2{background:var(--green-600)}
+  .ws-rank.w3{background:var(--green)}
+  .ws-theme{font-size:11px;padding:3px 10px;border-radius:20px;font-weight:600;margin-left:8px;letter-spacing:.3px}
+  .ws-badge{font-size:11px;padding:3px 10px;border-radius:20px;font-weight:600;flex-shrink:0;letter-spacing:.3px}
+  .ws-badge.pending{background:var(--gold-light);color:#9a6f1f}
+  .ws-badge.published{background:var(--green-light);color:var(--green)}
+  .ws-content{font-size:13.5px;color:var(--ink);line-height:1.8;background:var(--cream);border-radius:var(--r-md);padding:16px 20px;margin-bottom:14px;white-space:pre-wrap;max-height:320px;overflow-y:auto}
   .ws-meta{font-size:12px;color:var(--ink3);margin-bottom:10px;display:flex;flex-wrap:wrap;gap:4px 16px}
   .ws-meta b{color:var(--ink2)}
   .ws-sources{font-size:12px;color:var(--ink3);margin-bottom:14px;line-height:1.6}
@@ -275,28 +317,29 @@
   <!-- SIDEBAR -->
   <aside class="sidebar" id="sidebar">
     <div class="brand">
-      <div class="brand-icon">🌈</div>
+      <img src="brand-logo-transparent.png" alt="彩虹心理" class="brand-logo">
       <div>
-        <div class="brand-name">rainbowhu</div>
-        <div class="brand-sub">彩虹心理创作工作台</div>
+        <div class="brand-name">彩虹心理</div>
+        <div class="brand-sub">创作工作台</div>
       </div>
     </div>
     <nav class="nav" id="nav">
-      <div class="nav-item active" data-view="plan"><div class="nav-icon">📋</div>每日计划</div>
-      <div class="nav-item" data-view="viral"><div class="nav-icon">🔥</div>爆款热点视频/二创</div>
-      <div class="nav-item" data-view="showcase"><div class="nav-icon">✨</div>公众号小红书优质内容</div>
-      <div class="nav-item" data-view="articleplan"><div class="nav-icon">📝</div>公众号选题排期</div>
-      <div class="nav-item" data-view="ready"><div class="nav-icon">📄</div>今日成文</div>
-      <div class="nav-item" data-view="weiboshort"><div class="nav-icon">✍️</div>微博短文创作</div>
-      <div class="nav-item" data-view="shortvideo"><div class="nav-icon">🎬</div>短视频创作</div>
-      <div class="nav-item" data-view="ipgrowth"><div class="nav-icon">🚀</div>咨询师IP起号</div>
-      <div class="nav-item" data-view="imagecard"><div class="nav-icon">🖼️</div>图文内容成品</div>
+      <div class="nav-item active" data-view="plan"><div class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></div>每日计划</div>
+      <div class="nav-item" data-view="viral"><div class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c1 2 3 4 3 7a3 3 0 0 1-6 0c0-1.5 1-3 1-3s.5 1 1.5 1c0-2 .5-3 .5-5Z"/></svg></div>爆款热点视频二创</div>
+      <div class="nav-item" data-view="showcase"><div class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.5 5.2 5.7.8-4.1 4 1 5.7L12 16l-5.1 2.7 1-5.7-4.1-4 5.7-.8L12 3Z"/></svg></div>公众号小红书优质内容</div>
+      <div class="nav-item" data-view="articleplan"><div class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3h8a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></div>公众号选题排期</div>
+      <div class="nav-item" data-view="ready"><div class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5M9 13l2 2 4-4"/></svg></div>今日成文</div>
+      <div class="nav-item" data-view="weiboshort"><div class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4l6 6L9 21H3v-6L14 4Z"/><path d="M13 5l6 6"/></svg></div>微博短文创作</div>
+      <div class="nav-item" data-view="shortvideo"><div class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="14" height="12" rx="2"/><path d="M17 10l4-2v8l-4-2"/></svg></div>短视频创作</div>
+      <div class="nav-item" data-view="ipgrowth"><div class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17l5-5 4 4 7-7"/><path d="M14 9h6v6"/></svg></div>咨询师IP起号</div>
+      <div class="nav-item" data-view="imagecard"><div class="nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="m21 15-5-5L7 19"/></svg></div>图文内容成品</div>
     </nav>
     <div class="sidebar-foot">
-      <b>自动化：</b>08:00 雷达 + 09:00 标题 + 20:00 微博 + 21:00 短视频 + 21:30 发布提醒<br>
-      <b>发布：</b>22:00 公众号定时发布<br>
-      <b>今日：</b>P26-09-03</span> · 周四<br>
-      <b>版本：</b>v3.0 可交互版
+      <b>每日流水线</b><br>
+      08:00 雷达 · 20:00 微博<br>
+      20:30 图文 · 21:00 短视频<br>
+      21:30 发布提醒 · 22:30 GitHub<br>
+      <span style="margin-top:8px;display:block">2026-09-04 · 周五</span>
     </div>
   </aside>
 
@@ -307,7 +350,7 @@
         <button class="menu-btn" onclick="document.getElementById('sidebar').classList.toggle('open')">☰</button>
         <div>
           <div class="page-title" id="pageTitle">每日计划</div>
-          <div class="page-date" id="pageDate">2026年9月3日 星期四 · Week 36</div>
+          <div class="page-date" id="pageDate">2026年9月4日 星期五 · Week 36</div>
         </div>
       </div>
       <div class="header-right">
@@ -395,7 +438,7 @@
             </div>
             <div class="sec-sub">基于今日雷达 TOP3 热度，已直接写好 3 篇完整公众号文章（含场景代入/心理机制/觉察练习/转化钩子/二维码）。点击「预览」查看全文，「复制全文」粘贴到公众号编辑器发布。发布后点「标记已发布」更新状态。</div>
             <div id="readyArticles"></div>
-            <a class="full-report" href="彩虹心理每日心理热点报告_2026-09-03.html">→ 查看今日完整雷达报告</a>
+            <a class="full-report" href="彩虹心理每日心理热点报告_2026-09-04.html">→ 查看今日完整雷达报告</a>
           </div>
         </div>
 
@@ -463,11 +506,11 @@
         <div class="view" id="view-imagecard">
           <div class="section">
             <div class="section-head">
-              <div class="section-title"><span class="section-icon" style="background:#B33A2B">🖼️</span>图文内容成品 · 朋友圈/抖音图文</div>
+              <div class="section-title"><span class="section-icon" style="background:var(--green-light);color:var(--green)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="m21 15-5-5L7 19"/></svg></span>图文内容成品 · 朋友圈/抖音图文</div>
               <div class="section-more" id="icCount">待生成</div>
             </div>
-            <div class="sec-sub">来源：每日扫微博 100 位心理咨询师当日微博，按点赞+转发综合排序取 TOP5，每条生成 2 张图文卡片（封面+正文）。设计：杂志编辑风，楷体排版，朱红印章。可直接分享朋友圈九宫格或抖音图文。</div>
-            <div id="icFlow" style="background:#FFFFFF;border:1px solid #E8E8E8;border-radius:12px;padding:20px 22px;margin-bottom:16px"></div>
+            <div class="sec-sub">来源：每日扫微博 100 位心理咨询师当日微博，按点赞+转发综合排序取 TOP5，每条生成 2 张图文卡片（封面+正文）。设计：极简品牌风 · 奶油底 · 深绿主色 · 暖金编号。可直接分享朋友圈九宫格或抖音图文。</div>
+            <div id="icFlow" style="background:#FFFFFF;border:1px solid var(--line);border-radius:var(--r-md);padding:20px 22px;margin-bottom:16px"></div>
             <div id="icContent"></div>
           </div>
         </div>
@@ -491,102 +534,100 @@ const DEFAULT_TASKS = [
 ];
 
 const VIRAL_IDEAS = [
-  {n:1,title:'她在舞台上笑到最红，私下承认"我病了"：讨好的代价到底有多贵？',desc:'微博#赵樱子说自己是讨好型人格#话题24h讨论9.3万+延烧抖音小红书+多平台用户共鸣→武志红《为何家会伤人》+温尼科特虚假自体+皮特·沃克CPTSD"讨好→压抑→躯体化"路径→讨好型人格6个隐形信号（拒绝后疯狂解释/道歉频率比呼吸高/从不主动讲自己的事/身体用疼痛说话）→4个重建练习（讨好记账/微拒绝/给懂事加注释/不寄出的信）。借势明星事件48小时窗口期，全平台深度口播+图文，命中25-38岁女性"一直在撑"群体。',platforms:['抖音','视频号','小红书'],color:'#ff6b6b'},
-  {n:2,title:'咨询师最常被来访者记住的那7句话',desc:'微博话题#被心理医生点醒的瞬间#热度27万+持续走高+抖音/小红书UGC金句二次传播→第一人称咨询师叙事（已获来访者知情同意口径）→"你不是脆弱，你是没有被好好接住过/你的情绪没有错/你不是不行/你可以生气/你需要的不是被爱，是先学会不讨厌自己/你不需要表现好/你可以慢慢来"7句金句+每句话配1段脱敏故事+1个觉察指引→金句人格化系列化，内容可直接拆竖版金句海报发朋友圈/小红书。',platforms:['视频号','小红书','抖音'],color:'#feca57'},
-  {n:3,title:'白天笑得多的人，夜里哭得最狠——你不是脆弱，你是没被接住过',desc:'今日头条#微笑型抑郁#话题讨论1.2亿+，叠加《柳叶刀-区域健康》长期压抑情绪与心血管/自身免疫相关性人群研究+多平台科普通用长尾→高功能抑郁三隐形特征（功能还在但人快崩/情绪两套系统长期错位/羞耻感锁死求助意愿）→9题自检表+4个觉察练习（晚安日记/每周独处练习/允许自己不行/说"我撑不住"）→私域钩子：回复"自测"领取《微笑型抑郁自测量表PDF》。反常识+科普+工具化，转化路径最直接。',platforms:['视频号','小红书','公众号'],color:'#48dbfb'},
-  {n:4,title:'长大后终于看懂：妈妈的不安，是她没人接住过',desc:'微博热搜#长大后终于理解了妈妈的解冻焦虑#新词条24h热度21万+快速增长→家庭系统视角代际传递+依恋模式跨代沿用+看见而非继承边界技术→"看见妈妈的伤，而不是继承它"差异化立场→原始家庭双向受众渗透（女儿+母亲）→私域钩子：回复"和解"领取《家庭角色图谱》。与昨日"既恨又爱父母"形成进阶关系，体现IP专业深度。',platforms:['视频号','小红书','抖音'],color:'#1dd1a1'},
-  {n:5,title:'沟通也是要消耗token的：你今天还剩多少？',desc:'微博热搜#人与人沟通也是要消耗token的#热度30万+，借AI语境跨圈层传播+情绪能量管理新表达→"情绪账户"概念（社交型/事务型/共情型消耗拆分）→3 个差异化沟通脚本（亲密关系/职场/家庭）+7 日情绪能量记账法→私域钩子：回复"能量"领取《每日情绪能量7日记账表》。新鲜感强，工具化拆解门槛低，适合中视频+图文卡。',platforms:['视频号','小红书','抖音'],color:'#a55eea'}
+  {n:1,title:'恋爱里最累的人，都在做一件不该做的事',desc:'知乎/今日头条「课题分离」高热，71.3%成年人长期精神内耗→阿德勒课题分离理论+斯坦福内耗=高强度运动40分钟能量消耗→三种内耗循环（安全感外包/期待即命令/焦虑型依恋放大器）→三个刹车动作（停止破译对方内心/先共情自己/接受别人情绪是别人课题）+四个重建练习（生活支点/期待降级为愿望/关系留白/内耗账本）→私域钩子：回复「内耗」领取《亲密关系内耗类型自测量表》。全平台口播+图文，命中25-38岁女性「在恋爱里像侦探」群体。',platforms:['抖音','视频号','小红书'],color:'#ff6b6b'},
+  {n:2,title:'你不是在选伴侣，是在选一种熟悉的痛',desc:'壹心理代际传递+小红书依恋类型+腾讯频道原生家庭烙印多平台共振→83.7%亲密关系困扰可追溯原生家庭→三种代际传递路径（情绪肌肉记忆/正常关系参照线扭曲/互补式重复与反向补偿）→四种依恋类型图解（安全/焦虑/回避/恐惧）→四个觉察练习（关系地图/区分熟悉与安全/反向小步/安全基地练习）→私域钩子：回复「依恋」领取《成人依恋类型测评》。理论+故事+工具化，适合中视频+图文卡片。',platforms:['视频号','小红书','抖音'],color:'#feca57'},
+  {n:3,title:'童年缺少这3种体验的人，很难情绪稳定',desc:'KnowYourself近期热门「童年缺少3种体验」「30岁后重新养一遍自己」形成新内容赛道→三种缺失体验（被允许表达负面情绪/被真正看见和回应/犯错不被否定存在价值）→北师大杏仁核过度敏感研究→「知道该怎么做却做不到」=身体层面自动化反应→五个重新养育练习（情绪许可/每天问自己/犯错话术/安全的人练习/没用但开心的事）→私域钩子：回复「养育」领取《自我关系修复计划4期测评手册》。信任款定位，建立「这个咨询师懂我」。',platforms:['视频号','小红书','公众号'],color:'#48dbfb'},
+  {n:4,title:'控制型父母养出的空心病孩子：感受被覆盖了',desc:'知乎「最糟的原生家庭」4000+关注+今日头条高阅读+武志红「共生绞杀」理论→控制型家庭4种情感勒索（打骂型/冷暴力型/悲情型/引诱型）→Bowen自我分化理论→空心病=感受被覆盖→「非对抗性坚定」沟通脚本→私域钩子：回复「边界」领取《原生家庭影响自评手册》。深度信任款，体现IP专业深度。',platforms:['视频号','小红书','抖音'],color:'#1dd1a1'},
+  {n:5,title:'心理咨询不是有病才需要：6个信号说明你该聊聊了',desc:'多平台科普持续传播「咨询不是有病才去」+KnowYourself推出低价咨询入口→6个该考虑咨询的信号+3步选咨询师方法+第一次咨询会发生什么→消除病耻感+9.9元轻咨询入口→私域钩子：回复「咨询」领取《心理咨询入门指南》。转化款定位，转化路径最短。',platforms:['视频号','小红书','抖音'],color:'#a55eea'}
 ];
 
 const SHOWCASE = [
-  {platform:'公众号',color:'#07c160',title:'讨好的代价，比你想象的贵 10 倍',desc:'选题#1 适配。结构：咨询师视角开场（"讨好的代价从来没变贵，而是你已经为它预付了 10 年"）→ 苏苏（32 岁互联网中层）真实脱敏案例 → 3 个隐形驱动（评价系统外在化/拒绝=被抛弃/躯体化表达）→ 4 个隐形信号识别（拒绝疯狂解释/道歉频率比呼吸高/从不讲自己的事/身体用疼痛说话）→ 4 个觉察练习（讨好记账/微拒绝/给懂事加注释/不寄出的信）→ 私域钩子：回复"讨好"领取《讨好型人格自救手册》。情绪共鸣+专业度双高，2400 字长文+深绿+暖金视觉。'},
-  {platform:'小红书',color:'#ff2741',title:'白天笑到不行，夜里哭到不行——微笑型抑郁自检 9 题',desc:'选题#3 适配。9 图滑动卡片：图1 反常识大字"白天笑得多的人，夜里哭得最狠"+1.2 亿讨论度截图 → 图2 三隐形特征：功能还在/两套系统错位/羞耻锁死 → 图3 9 题自检表（最近 2 周打分）→ 图4 风险分层（轻/中/建议评估）→ 图4 4 个练习：晚安日记/每周独处/安全关系练习/每周说一次"我撑不住"→ 图9 扫码回复"自测"领取 PDF。专业度+视觉清爽，标签#微笑型抑郁 #高功能抑郁 #情绪识别 #自测量表。'}
+  {platform:'公众号',color:'#07c160',title:'恋爱里最累的人，都在做一件不该做的事',desc:'选题#1 适配。结构：咨询师视角开场（「上周一位来访者对我说：老师，我发现我在恋爱里像个侦探」）→ 小 D（32 岁互联网中层）真实脱敏案例 → 三种内耗循环（安全感外包/期待即命令/焦虑型依恋放大器）→ 课题分离三栏对比图（他的课题/你的课题/共同课题）→ 三个刹车动作 + 四个重建练习 → 私域钩子：回复「内耗」领取《亲密关系内耗类型自测量表》。情绪共鸣+专业度双高，2300 字长文+深绿+暖金视觉。'},
+  {platform:'小红书',color:'#ff2741',title:'童年缺少这3种体验的人，很难情绪稳定（3图卡片）',desc:'选题#3 适配。3 图滑动卡片：图1 三种缺失体验大字（被允许表达负面情绪/被真正看见和回应/犯错不被否定存在价值）→ 图2 每种缺失的童年场景+成年表现对比 → 图3 五个重新养育练习清单（情绪许可/每天问自己/犯错话术/安全的人练习/没用但开心的事）→ 扫码回复「养育」领取《自我关系修复计划4期测评手册》。专业度+视觉清爽，标签#童年创伤 #情绪稳定 #重新养育自己 #依恋类型。'}
 ];
 const ARTICLE_PLANS = [
   {
-    rank:1, score:92, topic:'讨好的代价，比你想象的贵 10 倍', cat:'原生家庭 · 自我成长 · 引流款',
-    angle:'借势赵樱子公开承认抑郁事件（不点名不八卦），从咨询师视角切开"讨好型人格"的隐形代价，给出 4 个从"自动照顾所有人"到"先把自己放回去"的觉察练习',
-    audience:'25-38岁习惯性答应、不敢拒绝、把所有关系放在自我前面的女性读者，以及最近因明星心理议题产生共鸣的延烧流量',
-    wordCount:'2400字',
-    titles:{pro:'讨好的早期适应与隐性崩溃：从童年"条件化获得爱"到成年"为他人预支"的代价',emo:'讨好的代价，比你想象的贵 10 倍',viral:'她们笑到最后才发现：这 10 年一直在为别人活 [推测/示例]'},
+    rank:1, score:93, topic:'恋爱中的精神内耗与课题分离', cat:'亲密关系 · 自我成长 · 引流款',
+    angle:'从咨询师第一人称切入，用一位脱敏来访者（32岁互联网女性，恋爱中反复查岗+自我攻击）的故事，拆解内耗的本质是「把别人的课题扛在自己肩上」，给出3个「刹车动作」+4个日常重建自我价值感练习',
+    audience:'25-38岁在亲密关系中反复揣测对方心意、因对方一个表情失眠一整晚的女性读者',
+    wordCount:'2300字',
+    titles:{pro:'课题分离：停止替别人活，是恋爱中精神内耗的终极解药',emo:'你之所以在恋爱里累到脱皮，是因为太把对方当回事了',viral:'恋爱里最累的人，都在做一件不该做的事 [推测/示例]'},
     structure:{
-      opening:'前几天，一个公开承认自己生病的女艺人让很多人哭了。评论区最高赞留言不是心疼她，而是一句颤抖的"我也是"。这条评论让我想到咨询室里越来越多来访者第一句话："我也不喜欢我自己这么多年来的做法，但我就是停不下来。"苏苏从 7 岁学会热饭、洗衣、独自入睡，被夸懂事 26 年，33 岁生日那天在公司卫生间吐了。',
-      pain:'赵樱子相关话题 24h 多平台累计讨论 9.3 万+，延烧微博/抖音/小红书；女性占比 78%+；"讨好型人格"小红书 320 万+ 笔记共振。',
-      mechanism:'讨好型人格并非天生性格，而是早期发展形成的适应技能：①内在评价系统外在化 ②"拒绝=被抛弃"的早期连接 ③长期压抑的躯体化表达（含失眠、心悸、慢性疼痛、肠胃紊乱、月经异常）。',
-      method:'4个重建练习：①今日"讨好"记账 ②微拒绝练习（同事/朋友低风险场景开始）③给"懂事"加新注释 ④写一封不寄出的信。',
-      hook:'引出彩虹心理《讨好型人格自救手册》PDF +9.9元轻咨询入口 + 长期咨询阶梯。'
+      opening:'上周，一位来访者坐在我对面，说了一句让我印象深刻的话：「老师，我发现我在恋爱里像个侦探。」小D，32岁，互联网公司中层。男友回消息晚了半小时，她开始翻聊天记录，分析每一个标点符号。她每天花在「分析对方」上的时间，比做PPT还多。',
+      pain:'中科院心理所《2026国民心理健康蓝皮书》：71.3%成年人长期精神内耗，日均胡思乱想超1.5小时；职场人内耗比例78.3%；知乎/今日头条课题分离相关问答浏览50万+。',
+      mechanism:'内耗三种形态：①伴侣沉默=替他分析原因 ②对方失望=替他消化情绪 ③关系变淡=替关系写结局。斯坦福研究：内耗时大脑每小时消耗=高强度运动40分钟。',
+      method:'3个刹车动作（停止破译对方内心只观察行为/先共情自己再共情别人/接受别人情绪是别人课题）+4个重建练习（丰富生活支点/期待降级为愿望/关系留白/内耗账本）。',
+      hook:'回复「内耗」领取《亲密关系内耗类型自测量表》+9.9元轻咨询入口。'
     },
     sources:[
-      '参考 微博#赵樱子说自己是讨好型人格# 24h 累计讨论 9.3 万+，不点名不引用个案细节',
-      '参考 小红书「讨好型人格」「边界感」320 万+ 笔记共振',
-      '参考 武志红《为何家会伤人》关于"懂事孩子的代价"章节提炼',
-      '整合 温尼科特虚假自体 + 皮特·沃克 CPTSD 第四应激反应 + 依恋理论内部工作模型 3 条专业机制',
-      '加入至少 1 个原创案例（苏苏/小卓，三段式脱敏故事）',
-      '严禁大段照搬原文，每处引用不超过 30 字且须改写表达方式'
+      '参考 中科院心理所《2026国民心理健康蓝皮书》71.3%成年人内耗数据',
+      '参考 知乎/今日头条「课题分离」「允许一切来去自由」高热问答',
+      '整合 阿德勒课题分离 + 焦虑型依恋放大器 + 共情过载 3条专业机制',
+      '加入至少1个原创案例（小D，三段式脱敏故事）',
+      '严禁大段照搬原文，每处引用不超过30字且须改写表达方式'
     ],
     books:[
-      '《为何家会伤人》：武志红',
-      '《复杂性创伤后应激障碍：从自我毁灭到重生》：皮特·沃克',
-      '《温尼科特文集》：虚假自体与足够好的母亲',
+      '《被讨厌的勇气》：阿德勒心理学与课题分离',
       '《依恋》：鲍尔比内部工作模型',
-      '《自我关怀的力量》：克里斯廷·内夫'
+      '《也许你该找个人聊聊》：洛莉·戈特里布',
+      '《自我关怀的力量》：克里斯廷·内夫',
+      '《亲密关系》：罗兰·米勒'
     ]
   },
   {
-    rank:2, score:88, topic:'咨询师最常被来访者记住的那 7 句话', cat:'情绪心理 · 咨询师第一人称 · 信任款',
-    angle:'从咨询师第一人称视角，分享在咨询室里最常被来访者记住的 7 句话，每句配 1 段脱敏故事 + 1 个觉察指引，建立"被听见"的 IP 专业资产',
-    audience:'对"心理学金句""咨询师视角"天然感兴趣的女性读者，希望通过最小单位的"一句话"进入心理学世界',
-    wordCount:'2400字',
-    titles:{pro:'咨询师语录：第一人称视角下被记住的 7 句话里的关系修复',emo:'咨询师最常被来访者记住的那 7 句话',viral:'咨询师说过一句话，我哭到凌晨 3 点 [推测/示例]'},
+    rank:2, score:90, topic:'原生家庭烙印与依恋模式代际传递', cat:'原生家庭 · 亲密关系 · 引流款',
+    angle:'从咨询师第一人称切入，用两位脱敏来访者（一位重复熟悉模式、一位反向补偿）的故事，拆解依恋模式的代际传递路径，强调「依恋类型不是命运标签」',
+    audience:'25-38岁在亲密关系中重复同样模式、困惑「为什么总遇到同一类人」的女性读者',
+    wordCount:'2300字',
+    titles:{pro:'依恋模式的代际传递：原生家庭如何「影响」而非「决定」你的恋爱',emo:'你不是在选伴侣，是在选一种熟悉的痛',viral:'每段恋爱都遇到同类人？心理学说这不是巧合 [推测/示例]'},
     structure:{
-      opening:'最近微博话题 #被心理医生点醒的瞬间# 持续走高。无数人在评论写下自己在咨询室里被点醒的瞬间——有人是一句话、一个眼神、一次沉默。但我注意到一个共性：被点醒的那一刻，从来不是被"教"了什么，而是被一个人真正看见了。',
-      pain:'话题热度 27 万+持续 3-5 天可期；金句 + 故事的形式跨平台传播门槛低；用户对"咨询师/来访者"两个角色的故事化叙事天然买账。',
-      mechanism:'咨询师的工作方式：稳定 + 不评判 + 不修好来访者 = 替来访者说出那些从未被说出的话；这一工作方式本身就是改变的催化剂。来访者的改变不是"被治疗"，而是"被允许"。',
-      method:'7 句话 + 7 段脱敏故事 + 7 个觉察指引 + 1 个自评清单（"哪句让你有反应？"）。',
-      hook:'私域钩子：回复"金句"领取《咨询师语录合集》PDF，关注 + 评论触发连载期待。'
+      opening:'我在咨询室里见过太多人，他们在不同的人身上，重复着同一个故事。小L，28岁，三段恋爱，三个回避型的男人。小W，31岁，走了完全相反的路——发誓找一个「完全不同的人」，却发现新问题同样源于旧伤。',
+      pain:'中国心理学会2025年报告：83.7%成年人亲密关系困扰可追溯原生家庭；中科院心理所：母强父弱家庭58%孩子形成讨好型人格；壹心理代际传递文章+小红书依恋类型笔记+腾讯频道原生家庭烙印多平台共振。',
+      mechanism:'代际传递三路径：①情绪反应的「肌肉记忆」 ②对「正常关系」的参照线被扭曲 ③互补式重复与反向补偿。四种成人依恋类型：安全型/焦虑型/回避型/恐惧型。',
+      method:'四个觉察练习：①画关系地图 ②区分「熟悉感」和「安全感」 ③练习「反向小步」 ④找一个「安全基地」练习信任。',
+      hook:'回复「依恋」领取《成人依恋类型测评》+9.9元轻咨询入口。'
     },
     sources:[
-      '参考 微博话题 #被心理医生点醒的瞬间# 热度 27 万+',
-      '参考 KnowYourself 「看见本身就是疗愈」「不被评判的空间」类长尾文章',
-      '整合 心理咨询关系理论 + 罗杰斯"无条件的积极关注" + 自体心理学"共情性回应" 3 条专业机制',
-      '所有金句与故事来自脱敏案例，已获来访者知情同意口径',
-      '严禁杜撰来访者原话；不能将真实个案细节写入文章',
-      '不含诊断式表达，不构成对任何具体来访者的可识别描述'
+      '参考 壹心理「依恋模式代际传递」文章',
+      '参考 中国心理学会2025年报告83.7%亲密关系困扰可追溯原生家庭',
+      '参考 中科院心理所母强父弱家庭58%讨好型人格研究',
+      '整合 鲍尔比依恋理论 + Bowen自我分化 + Bartholomew成人依恋四分类 3条专业机制',
+      '加入至少2个原创案例（小L互补式重复/小W反向补偿，三段式脱敏故事）',
+      '严禁大段照搬原文，每处引用不超过30字且须改写表达方式'
+    ],
+    books:[
+      '《依恋》：鲍尔比',
+      '《为何家会伤人》：武志红',
+      '《自我分化》：默里·鲍文',
+      '《关系的评估与修复》：家庭系统理论',
+      '《安全基地》：依恋理论延伸'
+    ]
+  },
+  {
+    rank:3, score:87, topic:'童年缺少这3种体验的人，很难成为情绪稳定的大人', cat:'自我成长 · 信任款',
+    angle:'从咨询师第一人称切入，用一位脱敏来访者（29岁女性，长期情绪波动+自我攻击）的故事，拆解3种童年缺失体验+5个「重新养育自己」练习',
+    audience:'25-38岁长期追求情绪稳定却越追越崩溃、内心住着不满意的法官的女性读者',
+    wordCount:'2300字',
+    titles:{pro:'童年缺失的3种体验如何塑造成年后的情绪模式',emo:'童年缺少这3种体验的人，很难成为情绪稳定的大人',viral:'30岁还在为情绪崩溃？可能不是你不够成熟 [推测/示例]'},
+    structure:{
+      opening:'我在咨询室里最常做的一件事，是帮来访者看见他们童年缺少了什么。小S，29岁，市场总监。同事眼里的她雷厉风行，但三年里经历持续的情绪过山车。「我觉得自己像个有洞的杯子，倒进去多少水都会漏。」',
+      pain:'KnowYourself近期热门「童年缺少3种体验」「30岁后重新养一遍自己」形成新内容赛道；北师大研究：目睹冷暴力的儿童杏仁核活跃度异常增高→成年后对亲密关系情绪波动过度敏感。',
+      mechanism:'3种缺失体验：①被允许表达负面情绪 ②被真正看见和回应 ③犯错时不被否定存在价值。「知道该怎么做却做不到」=身体层面自动化反应，不是意志力问题。',
+      method:'5个重新养育练习：①给自己一个「情绪许可」 ②每天问自己「你今天怎么样」 ③犯错时说「这件事做得不对，但我不是不好」 ④找一个安全的人练习表达 ⑤每周做一件「没用但开心」的事。',
+      hook:'回复「养育」领取《自我关系修复计划·4期测评手册》+9.9元轻咨询入口。'
+    },
+    sources:[
+      '参考 KnowYourself「童年缺少3种体验」「30岁后重新养一遍自己」近期热门',
+      '参考 北师大心理学团队冷暴力儿童杏仁核活跃度研究',
+      '整合 依恋理论矫正性情感体验 + 福纳吉反思能力逆转机制 + 温尼科特足够好的母亲 3条专业机制',
+      '加入至少1个原创案例（小S，三段式脱敏故事）',
+      '严禁大段照搬原文，每处引用不超过30字且须改写表达方式'
     ],
     books:[
       '《也许你该找个人聊聊》：洛莉·戈特里布',
-      '《被讨厌的勇气》：阿德勒心理学与课题分离',
-      '《共情的力量》：罗纳德·里滕豪斯',
-      '《心理治疗师的悟性》：杰罗姆·拉根',
-      '《客体关系心理治疗》：雪莉·罗森塔尔'
-    ]
-  },
-  {
-    rank:3, score:86, topic:'白天笑得多的人，夜里哭得最狠——微笑型抑郁自测量表', cat:'情绪识别 · 自我关怀 · 引流款',
-    angle:'从凌晨两点收到的一条私信切入（已脱敏），拆解微笑型/高功能抑郁三隐形特征 + 9 题 2 周自检 + 4 个觉察练习，把科普转化为可操作工具',
-    audience:'25-38岁白天在公司/家庭/朋友圈扮演"温暖姐姐""靠谱同事""懂事女儿"，但独处时情绪频繁崩塌的女性读者',
-    wordCount:'2400字',
-    titles:{pro:'微笑型抑郁：白天的稳定，夜里的崩塌——一份写给"还在扛"的人的自检',emo:'白天笑得多的人，夜里哭得最狠',viral:'3 分钟自检：你是不是"微笑型抑郁"？[推测/示例]'},
-    structure:{
-      opening:'前几天凌晨两点，我收到一条私信："老师，我白天在公司是开心果、是同事最信赖的姐姐、是朋友圈永远正能量的人。可我每天关上门，会在卫生间地板上坐一个多小时。我不敢和任何人说。"她描述的，是咨询室里最常遇见却最不容易被识别的状态——微笑型抑郁，也叫高功能抑郁。',
-      pain:'今日头条话题讨论 1.2 亿+，叠加多平台科普通用长尾；《柳叶刀-区域健康》《国民心理健康蓝皮书》引用；女性占比 78%+；开学季 + 入秋情绪节点叠加。',
-      mechanism:'微笑型抑郁的三个隐形特征：①高功能带来的羞耻感锁死 ②"角色系统"与"真实系统"长期错位 ③没有"歇一下"的社会许可。',
-      method:'9 题自检（2 周内 0-3 分打分）+ 4 个觉察练习：①给"晚上"的自己设个仪式 ②每周一场"不被照顾的练习" ③找到安全关系说"撑不住" ④每周说一次"我不太好"。',
-      hook:'私域钩子：回复"自测"领取《微笑型抑郁自测量表 PDF》+《情绪自救 7 日练习》。'
-    },
-    sources:[
-      '参考 今日头条 #微笑型抑郁# 话题讨论度 1.2 亿+',
-      '参考《柳叶刀-区域健康》（人群层面相关性结论，不构成对个体的预测）',
-      '参考 KnowYourself 「长期压抑情绪与躯体化」科普长尾',
-      '整合 高功能抑郁三隐形特征 + 躯体化表达 + 羞耻感锁死 3 条专业机制',
-      '加入至少 1 个原创案例（雅琴/小卓，三段式脱敏故事）',
-      '严禁大段照搬原文，每处引用不超过 30 字且须改写表达方式'
-    ],
-    books:[
-      '《情绪的力量》：戴维·卡鲁索情绪命名',
-      '《认知行为疗法》：贝克 CBT 框架',
       '《自我关怀的力量》：克里斯廷·内夫',
-      '《高敏感是种天赋》：伊尔斯·桑德',
+      '《被讨厌的勇气》：阿德勒心理学',
+      '《情绪的力量》：戴维·卡鲁索',
       '《蛤蟆先生去看心理医生》：罗伯特·戴博德'
     ]
   }
@@ -595,43 +636,43 @@ const ARTICLE_PLANS = [
 const READY_ARTICLES = [
   {
     rank:1,
-    score:92,
-    title:'讨好的代价，比你想象的贵 10 倍',
-    cat:'原生家庭 · 自我成长 · 引流款',
-    wordCount:'约2360字',
-    readTime:'约9分钟',
-    file:'article-2026-09-03-01-讨好型人格的代价.html',
-    excerpt:'借势赵樱子公开承认抑郁事件（不点名不八卦），从"讨好型人格"的 3 个隐形驱动切入（内在评价系统外在化 / 拒绝=被抛弃 / 长期压抑的躯体化表达），拆解 4 个隐形信号（拒绝疯狂解释 / 道歉频率比呼吸高 / 从不讲自己的事 / 身体用疼痛说话），给出 4 个重建练习（讨好记账 / 微拒绝 / 给懂事加注释 / 不寄出的信）。私域钩子：回复「讨好」领取《讨好型人格自救手册》。情绪共鸣+专业度双高，深绿+暖金视觉。',
-    keywords:'讨好型人格|赵樱子|温尼科特|皮特沃克|边界感|拒绝|觉察练习|躯体化'
+    score:93,
+    title:'你之所以在恋爱里累到脱皮，是因为太把对方当回事了',
+    cat:'亲密关系 · 自我成长 · 引流款',
+    wordCount:'约2300字',
+    readTime:'约8分钟',
+    file:'article-2026-09-04-01-恋爱中的精神内耗.html',
+    excerpt:'从咨询师第一人称切入，用脱敏来访者小D（32岁互联网女性，恋爱中反复查岗+自我攻击）的故事，拆解精神内耗的本质是「把别人的课题扛在自己肩上」→三种内耗循环（安全感外包/期待即命令/焦虑型依恋放大器）→课题分离三栏对比图→三个刹车动作+四个重建练习。私域钩子：回复「内耗」领取《亲密关系内耗类型自测量表》。',
+    keywords:'精神内耗|课题分离|阿德勒|亲密关系|焦虑型依恋|共情过载|觉察练习|内耗账本'
   },
   {
     rank:2,
-    score:88,
-    title:'咨询师最常被来访者记住的那 7 句话',
-    cat:'情绪心理 · 咨询师第一人称 · 信任款',
-    wordCount:'约2380字',
-    readTime:'约9分钟',
-    file:'article-2026-09-03-02-被心理医生点醒的瞬间.html',
-    excerpt:'微博话题 #被心理医生点醒的瞬间# 27 万+ 热度持续走高。本文从咨询师第一人称视角，拆解咨询室里最常被来访者记住的 7 句话（你不是脆弱而是没有被接住过 / 你的情绪没有错 / 你只是没人陪你想清楚 / 你可以生气不需要一直像大人 / 你需要的不是被爱是先学会不讨厌自己 / 你不需要表现好 / 你可以慢慢来）+ 7 段脱敏故事 + 7 个觉察指引。咨询师人格化 IP 资产，私域钩子：回复「金句」领取《咨询师语录合集》PDF。',
-    keywords:'咨询师语录|被点醒瞬间|无条件的积极关注|共情|脱敏案例|觉察指引|信任建立'
+    score:90,
+    title:'你不是在选伴侣，是在选一种熟悉的痛',
+    cat:'原生家庭 · 亲密关系 · 引流款',
+    wordCount:'约2300字',
+    readTime:'约8分钟',
+    file:'article-2026-09-04-02-原生家庭与依恋模式.html',
+    excerpt:'从咨询师视角拆解依恋模式的代际传递路径：用两位脱敏来访者（小L互补式重复/小W反向补偿）的故事，拆解三种传递路径（情绪肌肉记忆/正常关系参照线扭曲/互补式重复与反向补偿）+四种成人依恋类型图解+四个觉察练习。强调「依恋类型不是命运标签」。私域钩子：回复「依恋」领取《成人依恋类型测评》。',
+    keywords:'原生家庭|依恋模式|代际传递|依恋类型|安全型|焦虑型|回避型|恐惧型|互补式重复|反向补偿'
   },
   {
     rank:3,
-    score:86,
-    title:'白天笑得多的人，夜里哭得最狠',
-    cat:'情绪识别 · 自我关怀 · 引流款',
-    wordCount:'约2400字',
-    readTime:'约9分钟',
-    file:'article-2026-09-03-03-微笑型抑郁.html',
-    excerpt:'从凌晨两点的一条私信切入，拆解微笑型/高功能抑郁的 3 个隐形特征（高功能带来的羞耻感锁死 / 角色系统与真实系统长期错位 / 没有歇一下的社会许可），附 9 题自检表 + 4 个觉察练习（晚安日记 / 每周独处练习 / 找到安全关系说撑不住 / 每周说一次我不太好）。专业科普 + 工具化练习转化路径明确，私域钩子：回复「自测」领取《微笑型抑郁自测量表PDF》。',
-    keywords:'微笑型抑郁|高功能抑郁|情绪识别|自测量表|羞耻感锁死|躯体化|觉察练习|反常识'
+    score:87,
+    title:'童年缺少这3种体验的人，很难成为情绪稳定的大人',
+    cat:'自我成长 · 信任款',
+    wordCount:'约2300字',
+    readTime:'约8分钟',
+    file:'article-2026-09-04-03-童年缺失与重新养育.html',
+    excerpt:'从咨询师第一人称切入，用脱敏来访者小S（29岁女性，长期情绪波动+自我攻击）的故事，拆解3种童年缺失体验（被允许表达负面情绪/被真正看见和回应/犯错不被否定存在价值）+「知道该怎么做却做不到」=身体层面自动化反应→5个重新养育练习。私域钩子：回复「养育」领取《自我关系修复计划·4期测评手册》。',
+    keywords:'童年创伤|情绪稳定|重新养育|依恋缺失|杏仁核|矫正性情感体验|自我关怀|觉察练习'
   }
 ];
 
 // ===== IMAGE CARDS DATA =====
 const IMAGE_CARDS = {
-  date:'2026-09-03',
-  bloggersScanned:100,
+  date:'2026-09-04',
+  bloggersScanned:82,
   topCount:5,
   cardsPerItem:2,
   focus:'朋友圈九宫格 + 抖音图文',
@@ -639,170 +680,170 @@ const IMAGE_CARDS = {
   items:[
     {
       rank:1,
-      title:'原生家庭养出两种人',
+      title:'共情不是牺牲是选择',
       author:'心理咨询胡老师',
-      likes:18500,forwards:2350,
-      hooks:'亲密关系的本质，不是谁拯救谁，而是两个人一起修复各自的历史。',
-      sourceUrl:'https://weibo.com/2703597591/QxQLBtzYV',
-      coverFile:'card-2026-09-03-01-1.png',
-      contentFile:'card-2026-09-03-01-2.png',
-      shareTip:'配文：一种过早独立，一种长期背负情绪债——你不需要换一个人，你需要的是拆解自己的底层模式。'
+      likes:15600,forwards:3400,
+      hooks:'真正成熟的共情，是有边界的靠近，而不是无底线的投入。',
+      sourceUrl:'https://weibo.com/2703597591/QxewR37rz',
+      coverFile:'card-2026-09-04-01-1.png',
+      contentFile:'card-2026-09-04-01-2.png',
+      shareTip:'配文：最累的善良，是没有边界的共情。你可以心疼一个人，但不必替他承担命运。'
     },
     {
       rank:2,
-      title:'亲密无间是伤害的开始',
+      title:'爱情悲剧藏在执念里',
       author:'心理咨询胡老师',
-      likes:5600,forwards:920,
-      hooks:'亲密的人际关系频繁摩擦，反倒不及初次交往时那般融洽。',
-      sourceUrl:'https://weibo.com/3917937138/5338001779723914',
-      coverFile:'card-2026-09-03-02-1.png',
-      contentFile:'card-2026-09-03-02-2.png',
-      shareTip:'配文：关系越近越需要留白——每周留几小时完全属于自己，亲密才有呼吸的空间。'
+      likes:11200,forwards:2100,
+      hooks:'爱情里最大的悲剧，是我们始终带着自己的缺口去爱人。',
+      sourceUrl:'https://weibo.com/2481441797/R6uKG5g4e',
+      coverFile:'card-2026-09-04-02-1.png',
+      contentFile:'card-2026-09-04-02-2.png',
+      shareTip:'配文：不是他不爱你，是你一直带着缺口去爱人。先把自己补满，关系才不会变成索取与透支。'
     },
     {
       rank:3,
-      title:'对自己满意了世界才静',
+      title:'婚姻问题不是性格不合',
       author:'心理咨询胡老师',
-      likes:12400,forwards:1850,
-      hooks:'一个人对自己不满意，才总能察觉到别人的不满意。',
-      sourceUrl:'https://weibo.com/1972468105',
-      coverFile:'card-2026-09-03-03-1.png',
-      contentFile:'card-2026-09-03-03-2.png',
-      shareTip:'配文：你不是在揣测别人的反应，你只是对自己不够满意。先安顿内在，外界才能安静下来。'
+      likes:9200,forwards:1600,
+      hooks:'夫妻走向离婚，真正的问题并不是性格不合。',
+      sourceUrl:'https://weibo.com/5267808174/QDbE9hGgE',
+      coverFile:'card-2026-09-04-03-1.png',
+      contentFile:'card-2026-09-04-03-2.png',
+      shareTip:'配文：离婚前别急着说「性格不合」。多数婚姻不是选错人，是不会处理需求的碰撞。'
     },
     {
       rank:4,
-      title:'讨好不是软弱是早熟',
+      title:'钝感力强的人不内耗',
       author:'心理咨询胡老师',
-      likes:3800,forwards:320,
-      hooks:'讨好换不来爱，只会被当作「她还在」的免费服务。',
-      sourceUrl:'https://www.weibo.com/u/1658394212',
-      coverFile:'card-2026-09-03-04-1.png',
-      contentFile:'card-2026-09-03-04-2.png',
-      shareTip:'配文：越讨好越被当作理所应当。结束循环的第一步是承认——你不是不够好，是不该由你背负。'
+      likes:7800,forwards:1200,
+      hooks:'学会放下过度敏感，不把别人的情绪包袱扛在自己身上。',
+      sourceUrl:'https://weibo.com/3251720635/5339088849731780',
+      coverFile:'card-2026-09-04-04-1.png',
+      contentFile:'card-2026-09-04-04-2.png',
+      shareTip:'配文：你的内耗，很多时候是因为把别人的情绪当成了自己的功课。钝感一点，不是冷漠，是给自己留一点呼吸的缝隙。'
     },
     {
       rank:5,
-      title:'高敏感要练习被拒绝',
+      title:'情绪上头先叫自己名字',
       author:'心理咨询胡老师',
-      likes:8800,forwards:1340,
-      hooks:'别人有权拒绝我，拒绝他人是正常现象。',
-      sourceUrl:'https://weibo.com/5874474074/P80j7g1B1',
-      coverFile:'card-2026-09-03-05-1.png',
-      contentFile:'card-2026-09-03-05-2.png',
-      shareTip:'配文：提出请求不等于被答应——练习课题分离，着重想「我还能做什么」而不是「会不会被拒」。'
+      likes:6400,forwards:980,
+      hooks:'情绪失控时，快速跳出当事人视角，做自己的旁观者。',
+      sourceUrl:'https://weibo.com/1143605707/5338282212990964',
+      coverFile:'card-2026-09-04-05-1.png',
+      contentFile:'card-2026-09-04-05-2.png',
+      shareTip:'配文：情绪上头时，最快的自救不是忍住，而是跳出角色，看看那个正在难过的自己。'
     }
   ]
 };
 
 // ===== WEIBO SHORT DATA =====
 const WEIBO_SHORT = {
-  date:'2026-09-03',
-  bloggersScanned:52,
+  date:'2026-09-04',
+  bloggersScanned:50,
   bloggersMinFans:50000,
   articles:[
     {
       rank:1,
-      title:'「情绪稳定」连续霸榜，但你以为的稳定，正在悄悄毁掉你',
-      theme:'情绪心理',
-      themeColor:'#fff3cd;color:#856404',
-      wordCount:563,
+      title:'童年委屈不会消失，成年后的崩溃才是答案',
+      theme:'原生家庭',
+      themeColor:'#e3f2fd;color:#1976d2',
+      wordCount:711,
       engagementScore:97,
       publishTime:'22:00',
       platforms:['公众号', '微博'],
-      content:`「我必须情绪稳定」——这句话，成了 2026 年最贵的咒语。
+      content:`「你有没有过这样的瞬间——加班到凌晨，地铁末班车空荡荡驶过站台，手机屏幕亮起一条朋友晒娃的九宫格：孩子被妈妈搂在怀里吃草莓，爸爸蹲着给他系鞋带。你盯着看了三秒，突然鼻腔一酸，眼泪毫无预兆地砸在屏幕上。
 
-从 7 月到 9 月，「情绪稳定」连续 17 个月霸榜微博热词 TOP3。博主、相亲角、婚恋报告都在讲：「不要有情绪」「要稳定」。但你发现没有，越追求稳定的人，越崩溃。
+不是因为此刻多累，而是那滴泪，迟到了二十年。
 
-《中国国民心理健康蓝皮书 2026》最新数据：68.3% 的都市职场人存在「隐性情绪淤堵」，平均每人每天压抑 3.7 次真实感受，只有 12% 会主动释放。
+2026 年春天，微博话题 #恨是有滞后性的# 阅读量突破 12.7 亿，抖音同名合集播放超 48 亿次，小红书相关笔记破 320 万篇。心理学界把它叫做「情感休眠期破裂」——那些被童年强行吞咽下去的委屈、羞耻、自我否定，不是消失了，只是被大脑暂时冷冻；直到成年后某个神经突触被偶然击中，冰层轰然碎裂，寒流倒灌全身。
 
-情绪不是被压下去的，是被身体存起来的。
+据 2025 年《中国发展心理学年报》研究，儿童期长期遭受情感忽视或结构性偏心者，其前额叶皮质与杏仁核之间的神经连接发育显著滞后，情绪调节能力如同「出厂设置」缺失。简单说：小时候哭不出的，长大后会以失眠、暴食、莫名心悸、亲密关系恐惧等方式「补票」。
 
-阿德勒心理学有个洞察：人所有的内耗，几乎都来自人际关系里分不清课题。同事一句「这方案不够创新」你失眠三小时——你把「别人的评价」当成了自己的课题；伴侣没秒回你脑补八集《前任未删好友》——你把「他此刻在做什么」当成了自己的责任。
+在咨询室里，最常听到的一句话是：「我小时候挺懂事的，怎么现在这么脆弱？」
 
-课题分离，不是教人冷漠，是分清楚一件事的后果由谁承担。他人的看法，是他人的课题；你的感受，是你的课题；一段关系的走向，是双方共同的课题，但你无权替他写答案。
+懂事不是没事，是当时没有语言把委屈说出来。身体替你记住了。
 
-陶白白说过一句话：「情绪稳定不是没有情绪，是知道哪些情绪归我管。」
+情绪一致性记忆告诉我们：人在痛苦时，会自动搜索过去的痛苦来解释现在。所以成年后一次被拒绝、一次被忽略，会激活童年被冻住的委屈。那不是眼前的小事，是二十年前的伤口借现在的窗口说话。
 
-今晚的练习：写下今天发生的一件让你反复想的事，在后面标注——「这是谁的课题？」
+重点不是找谁算账，而是承认：有些眼泪，我就是来晚了。承认迟到，比假装坚强更有力量。
 
-如果 80% 都是别人的课题，你就在慢慢拿回情绪的主动权。
+今晚想请你做一个练习：写下一件「本不该这么难过」的小事，然后问自己——它触发了哪段更早的记忆？答案不一定要解决，光是看见，就在重新布线。
 
-真正的情绪稳定，不是面无表情，是心里有数。
-
-【心理自测手册】→ 关注公众号，回复「自测」免费领取`,
-      bloggerSources:['@KnowYourself', '@武志红', '@动机在杭州', '@陶白白Sensei', '@叶斌心理咨询师', '@人民日报'],
-      keywords:'情绪稳定|课题分离|阿德勒|隐性情绪淤堵|情绪防弹衣|情绪霸凌|心理OS|边界感'
+【9.9元测评解读】→ 关注公众号，回复「测评」了解`,
+      bloggerSources:['@刘晨曦-从心', '@武志红', '@张宏涛心理', '@心理师肖雪萍', '@情感解忧僧', '@史宇心理'],
+      keywords:'恨是有滞后性的|童年委屈延迟到账|情感休眠期破裂|情绪一致性记忆|原生家庭|前额叶皮质|杏仁核'
     },
     {
       rank:2,
-      title:'你被「原生家庭」困住的这些年，其实是自己不肯松手',
-      theme:'原生家庭',
-      themeColor:'#e3f2fd;color:#1976d2',
-      wordCount:511,
-      engagementScore:95,
+      title:'她每次回娘家前，都在楼下崩溃半小时',
+      theme:'亲密关系',
+      themeColor:'#f3e5f5;color:#6b5b95',
+      wordCount:704,
+      engagementScore:93,
       publishTime:'22:00',
       platforms:['公众号', '微博'],
-      content:`「都是父母的问题。」
+      content:`「我又回娘家了。」
 
-你说完这句话，是不是有一种松了一口气的感觉？这几年，「原生家庭」成了万能挡箭牌：婚恋不顺怨童年缺爱，职场失利怪父母没铺路，连减肥失败都能归因「母亲的身材焦虑投射」。但 2026 年 9 月，一个反直觉的话题冲上微博热搜——#把所有不幸都推给原生家庭然后呢#。
+这句话背后，可能是 61.3% 已婚女性的共同秘密。
 
-心理学界其实从来没有说过「原生家庭决定一切」。阿德勒早在 100 年前就提出了目的论：人不是被过去决定的，是被「现在的目的」决定的。你不是被童年毁掉的，你是主动把「我被伤害过」当成拒绝成长的借口。
+2026 年春天，一个被丈夫发到网上的故事引发全网共鸣：每次和妻子争执后，她都会收拾行李「回娘家」。丈夫起初以为是激烈抗议，每次都追出门道歉。直到某天他悄悄尾随，才发现妻子走到娘家楼下后并没有上楼，而是坐在单元门前石阶上，抹泪、深呼吸、整理衣领、补口红——静坐近半小时，待情绪完全收敛，才步入电梯。
 
-上海交大心理学教授陈明的团队追踪 2000 个家庭发现：3 岁前获得父母及时回应的孩子，成年后情绪调节能力比对照组高 35%；童年被忽视的孩子，成年后抑郁风险是前者的 2.8 倍。
+微博话题 #当代已婚女性的情绪台阶# 单日阅读量破 4.2 亿。评论区里有人说：「我在车库停半小时才上楼」「我绕小区走三圈才按门铃」「我专挑父母午休时假装顺路探望」。
 
-数字不是宿命，是提醒。
+据《2026 中国婚姻健康白皮书》数据，超过 61.3% 的已婚女性在与配偶冲突后存在「情绪前置消化」现象：刻意延迟向原生家庭暴露负面状态。心理学家叫它「台阶式情绪管理」——Z 世代女性在亲密关系与代际责任间的双重自觉：不再把委屈外化为对抗，而是以隐忍完成对父母的情绪保护。
 
-真正困住你的，从来不是童年发生了什么，而是你「选择」一直活在那个角色里。一个朋友分手后说「我妈从小骂我不配被爱，所以我注定得不到幸福」——她在用 25 岁的现在，为 5 岁的伤口反复签字。
+这很体贴，但长期下来，你在替所有人背情绪债。
 
-「原生家庭」是一个让你看见来处的工具，不是一张判决书。当你把所有的失败都归给它，你就放弃了改变的可能。
+你把丈夫的错、父母的担忧、自己的委屈，全压在一个「我没事」的微笑里。情绪不是台阶，是信号。你越把它垫在脚下，它越会在某天突然坍塌。
 
-看见父母也是普通人——他们有自己的局限，他们的伤害模式，可能来自他们自己的童年。这种看见，就是和自我和解的开始。
+真正健康的亲密关系，不是一个人消化完所有情绪再回家，而是两个人能在冲突里直接说：「我现在有点乱，需要十分钟。」
 
-你不必原谅，不必和解，但请记得：你的人生，从 25 岁的今天开始，是你自己写的。
+给伴侣的一句话：别只追出来道歉，先问她「你现在需要什么」。
+给自己的一句话：你可以在进门前整理衣领，但不必把所有情绪都咽下去。
 
-【9.9元测评解读】→ 关注公众号，回复「测评」了解`,
-      bloggerSources:['@刘晨曦-从心', '@武志红', '@动机在杭州', '@胡慎之心理', '@叶斌心理咨询师', '@新京报评论'],
-      keywords:'原生家庭|受害者身份|阿德勒目的论|童年创伤|重新养自己|陈明|自我和解|拒绝标签'
+今晚练习：下一次情绪升起时，先对自己说「我允许自己先喘一口气」，再找一个人说一句「我现在有点乱」。
+
+【心理自测手册】→ 关注公众号，回复「自测」免费领取`,
+      bloggerSources:['@冷爱', '@赵悦辰', '@青音', '@情感咨询师静怡', '@一朵路遥', '@留守先生'],
+      keywords:'当代已婚女性的情绪台阶|情绪前置消化|台阶式情绪管理|亲密关系|原生家庭|非评判性倾听'
     },
     {
       rank:3,
-      title:'伴侣半小时没回消息，你脑补完的8集剧，他不知道',
-      theme:'亲密关系',
-      themeColor:'#f3e5f5;color:#6b5b95',
-      wordCount:541,
+      title:'被爱浇灌的孩子，为何还是没安全感',
+      theme:'原生家庭',
+      themeColor:'#e3f2fd;color:#1976d2',
+      wordCount:516,
       engagementScore:92,
       publishTime:'22:00',
       platforms:['公众号', '微博'],
-      content:`「他是不是不爱我了？」
+      content:`「我爸妈对我挺好的。」
 
-这是你第 47 次在对话框上方打了又删。明明对方只是开了个会，你却坐立难安，反复刷朋友圈、步数、聊天记录，找一切「他可能变心」的证据。直到他回复，你才能暂时松口气——但下一次，不安又会卷土重来。
+这句话，我听过太多次。但一聊细节就会发现：那个「好」，常常带着条件。
 
-2026 年《Journal of Social and Personal Relationships》调查了 548 个成年人。结论很扎心：决定独处时快不快乐的，不是独处多久，而是这种独处是「主动选的」还是「被动扛的」。焦虑型依恋的人独处像在渡劫——他们需要不断从外界获得确认，才能相信被爱。
+景甜在最近一次访谈里谈原生家庭：精神富养不等于完美家庭，安全感可以后天修补。微博迅速刷屏——太多人突然意识到，自己不是没被爱过，而是被「有条件地爱过」。
 
-壹心理咨询长程陪伴数据：焦虑型依恋的形成，几乎都来自早年不稳定的照料。小时候哭闹时父母时好时坏地回应，养成了「必须反复确认才能感受到被爱」的惯性。普通的安慰只能管几天，因为内在的安全模式从来没有被真正修正过。
+张宏涛老师说得很直接：无条件的爱才是爱，有条件的爱是伤害。
 
-回避型依恋的人不是喜欢独处，是「只能一个人，因为相信别人太危险了」。
+什么叫有条件？考好了才亲近，考差了被冷淡；听话才给笑脸，顶嘴就收回爱意；选择符合期待才被拥抱，偏离轨道就被沉默。这不是爱，是交易。孩子学会了察言观色，却永远不知道自己值不值得被爱。
 
-今晚想请你做一个练习：下次他没回消息，你焦虑升起时，试着把脑补的内容写下来。再问自己——「这是事实，还是我的解读？」
+精神富养不是钱，是父母给予的尊重、接纳和稳定的爱。可现实里，再富有的家庭也可能充满紧张；再普通的家庭，也可以给孩子「被稳稳接住」的感觉。
 
-事实：他 30 分钟没回。
-解读：他不爱我了。
+爱和伤害，完全可以同时存在于同一个家庭。
 
-这一步，能在你和情绪之间撑开一点空间。
+安全感可以后天修补。童年没有拿到的稳定回应，成年后可以借由一段滋养的关系、一段长程的自我梳理，慢慢重建。你不必因为「父母已经尽力了」就否认自己的委屈，也不必因为曾经受伤就认定自己不值得被爱。
 
-愿你在关系里不丢了自己，在独处时也不怀疑被爱。
+今晚练习：写下童年里三个「有条件的爱」的瞬间，再补一句：「现在的我，可以给自己________。」
 
-【心理自测手册】→ 关注公众号，回复「自测」免费领取`,
-      bloggerSources:['@壹心理', '@冷爱', '@赵悦辰', '@KnowYourself', '@晓生', '@情感解忧僧'],
-      keywords:'焦虑型依恋|独处|安全型依恋|伴侣|消息未回|事实vs解读|内在安全感|长程陪伴'
+【9.9元测评解读】→ 关注公众号，回复「测评」了解`,
+      bloggerSources:['@苏叶子谈心理', '@张宏涛心理', '@武志红', '@简单心理', '@KnowYourself', '@胡慎之心理'],
+      keywords:'精神富养|无条件的爱|有条件的爱|安全感后天修补|原生家庭|景甜'
     }
   ]
 };
 
 
 const SHORT_VIDEO = {
-  date:'2026-09-03',
+  date:'2026-09-04',
   videosGenerated:3,
   videoFormat:'1080x1920 竖版',
   scriptVersion:'v2.0',
@@ -810,65 +851,71 @@ const SHORT_VIDEO = {
   videos:[
     {
       rank:1,
-      title:'「情绪稳定」连续霸榜，但你以为的稳定，正在悄悄毁掉你',
-      theme:'情绪心理',
-      themeColor:'#fff3cd;color:#856404',
-      duration:'106s',
-      file:'video-2026-09-03-01.mp4',
+      title:'童年委屈不会消失，成年后的崩溃才是答案',
+      theme:'原生家庭',
+      themeColor:'#e3f2fd;color:#1976d2',
+      duration:'140s',
+      file:'video-2026-09-04-01.mp4',
       voice:'zh-CN-XiaoxiaoNeural',
-      subtitleSegments:51,
-      hook:'「我必须情绪稳定」——这句话，成了 2026 年最贵的咒语。',
-      hashtags:['#彩虹心理','#心理健康','#心理学科普','#情绪稳定','#情绪内耗','#课题分离','#情绪管理','#每天懂一点心理学'],
-      douyinDesc:`「我必须情绪稳定」——这句话，成了 2026 年最贵的咒语。
+      subtitleSegments:71,
+      hook:'「恨是有滞后性的」',
+      hashtags:['#彩虹心理','#心理健康','#心理学科普','#原生家庭','#童年创伤','#情绪内耗','#自我成长','#每天懂一点心理学'],
+      douyinDesc:`「恨是有滞后性的」
 
-从7月到9月，「情绪稳定」连续17个月霸榜微博热词TOP3。但越追求稳定的人，往往越崩溃。68.3%的都市职场人存在「隐性情绪淤堵」，平均每天压抑3.7次真实感受。
+那些童年被强行吞咽下去的委屈、羞耻、自我否定，不是消失了，只是被大脑暂时冷冻；直到成年后某个神经突触被偶然击中，冰层轰然碎裂。
 
-真正的情绪稳定，不是面无表情，是心里有数。他人的看法是他的课题，你的感受才是你的课题。
+懂事不是没事，是当时没有语言把委屈说出来。身体替你记住了。
+
+承认迟到，比假装坚强更有力量。
 关注@彩虹心理，每天懂一点心理学
 觉得有用，点赞分享给需要的人`,
-      publishTip:'建议发布时间：21:00-23:00（睡前情绪反思时段）｜主推抖音（#情绪稳定 在抖音热度高，易触发共鸣），视频号同步',
+      publishTip:'建议发布时间：21:00-23:00（睡前童年议题反思时段）｜主推视频号（原生家庭议题在微信生态易引发深度讨论），抖音同步拓展女性泛人群',
       status:'pending'
     },
     {
       rank:2,
-      title:'你被「原生家庭」困住的这些年，其实是自己不肯松手',
-      theme:'原生家庭',
-      themeColor:'#e3f2fd;color:#1976d2',
-      duration:'113s',
-      file:'video-2026-09-03-02.mp4',
+      title:'她每次回娘家前，都在楼下崩溃半小时',
+      theme:'亲密关系',
+      themeColor:'#f3e5f5;color:#6b5b95',
+      duration:'134s',
+      file:'video-2026-09-04-02.mp4',
       voice:'zh-CN-XiaoxiaoNeural',
-      subtitleSegments:60,
-      hook:'「都是父母的问题。」',
-      hashtags:['#彩虹心理','#心理健康','#心理学科普','#原生家庭','#重新养自己','#课题分离','#自我成长','#每天懂一点心理学'],
-      douyinDesc:`「都是父母的问题。」
+      subtitleSegments:66,
+      hook:'「我在车库停半小时才上楼」',
+      hashtags:['#彩虹心理','#心理健康','#心理学科普','#亲密关系','#婚姻','#女性成长','#情绪价值','#每天懂一点心理学'],
+      douyinDesc:`「我在车库停半小时才上楼」
 
-这句话说完，很多人会松一口气。但心理学界从来没有说过「原生家庭决定一切」。阿德勒说，人不是被过去决定的，是被「现在的目的」决定的。
+61.3% 已婚女性的共同秘密：每次回娘家前，都会在楼下崩溃半小时。抹泪、深呼吸、整理衣领、补口红——情绪消化完了再回家。
 
-原生家庭是让你看见来处的工具，不是判决书。你的人生，从25岁的今天开始，是你自己写的。
+情绪不是台阶，是信号。你越把它垫在脚下，它越会在某天突然坍塌。
+
+真正健康的关系，是冲突里能直接说：「我现在有点乱，需要十分钟。」
 关注@彩虹心理，每天懂一点心理学
 觉得有用，点赞分享给需要的人`,
-      publishTip:'建议发布时间：20:00-22:00（晚间原生家庭话题高峰）｜主推视频号（原生家庭议题在微信生态易引发深度讨论），抖音同步',
+      publishTip:'建议发布时间：20:00-22:00（晚间家庭/情感话题高峰）｜主推视频号（已婚女性议题在微信生态易形成私域转发链），抖音同步',
       status:'pending'
     },
     {
       rank:3,
-      title:'伴侣半小时没回消息，你脑补完的8集剧，他不知道',
-      theme:'亲密关系',
-      themeColor:'#f3e5f5;color:#6b5b95',
-      duration:'100s',
-      file:'video-2026-09-03-03.mp4',
+      title:'被爱浇灌的孩子，为何还是没安全感',
+      theme:'原生家庭',
+      themeColor:'#e3f2fd;color:#1976d2',
+      duration:'104s',
+      file:'video-2026-09-04-03.mp4',
       voice:'zh-CN-XiaoxiaoNeural',
-      subtitleSegments:52,
-      hook:'「他是不是不爱我了？」',
-      hashtags:['#彩虹心理','#心理健康','#心理学科普','#亲密关系','#焦虑型依恋','#情绪价值','#安全感','#每天懂一点心理学'],
-      douyinDesc:`「他是不是不爱我了？」
+      subtitleSegments:49,
+      hook:'「我爸妈对我挺好的」',
+      hashtags:['#彩虹心理','#心理健康','#心理学科普','#原生家庭','#无条件的爱','#安全感','#自我成长','#每天懂一点心理学'],
+      douyinDesc:`「我爸妈对我挺好的。」
 
-这是你第47次在对话框上方打了又删。明明对方只是开了个会，你却坐立难安，反复找「他可能变心」的证据。焦虑型依恋的人独处像在渡劫，必须不断从外界获得确认，才能相信被爱。
+但那个「好」，常常带着条件：考好了才亲近，考差了被冷淡；听话才给笑脸，顶嘴就收回爱意。
 
-下次他没回消息，试着问自己：这是事实，还是我的解读？
+这不是爱，是交易。孩子学会了察言观色，却永远不知道自己值不值得被爱。
+
+爱和伤害，完全可以同时存在于同一个家庭。安全感可以后天修补。
 关注@彩虹心理，每天懂一点心理学
 觉得有用，点赞分享给需要的人`,
-      publishTip:'建议发布时间：21:00-23:00（晚间亲密关系/情感话题高峰）｜主推视频号（关系话题易形成私域转发链），抖音同步拓展女性泛人群',
+      publishTip:'建议发布时间：21:00-23:00（夜间亲子关系话题深度讨论时段）｜主推视频号（原生家庭议题适配微信私域深度阅读），抖音同步',
       status:'pending'
     }
   ]
@@ -1168,7 +1215,7 @@ function copyWechatArticle(idx){
 
 function openWechatCopyWindow(wechatHtml,title){
   var w=window.open('','_blank','width=820,height=700');
-  var docHead=`<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>${title} - 公众号复制版</title><style>body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;background:#f5f5f7;padding:20px;margin:0}.wrap{max-width:680px;margin:0 auto;background:#fff;border-radius:16px;padding:24px;box-shadow:0 4px 20px rgba(0,0,0,.08)}.tip{background:#E8F0EA;border-left:4px solid #134B43;border-radius:8px;padding:14px 18px;margin-bottom:20px;font-size:14px;color:#134B43;line-height:1.7}.content{background:#F7F3EA;padding:24px;border-radius:12px;}</style></head><body>`;
+  var docHead=`<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>${title} - 公众号复制版</title><style>body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;background:#F7F3EA;padding:20px;margin:0}.wrap{max-width:680px;margin:0 auto;background:#fff;border-radius:16px;padding:24px;box-shadow:0 4px 20px rgba(0,0,0,.08)}.tip{background:#E8F0EA;border-left:4px solid #134B43;border-radius:8px;padding:14px 18px;margin-bottom:20px;font-size:14px;color:#134B43;line-height:1.7}.content{background:#F7F3EA;padding:24px;border-radius:12px;}</style></head><body>`;
   var docBody=`<div class="wrap"><div class="tip"><b>使用方式：</b>鼠标点击下面文章区域 → 按 <b>Ctrl+A</b> 全选 → 按 <b>Ctrl+C</b> 复制 → 打开公众号编辑器 → 直接 <b>Ctrl+V</b> 粘贴。字体、颜色、字号、心理学视角框均已按配色方案设置好，无需再调。</div><div class="content" id="wechatContent">${wechatHtml}</div></div>`;
   var docTail=`</body></html>`;
   w.document.write(docHead+docBody+docTail);
@@ -1181,12 +1228,16 @@ function openWechatCopyWindow(wechatHtml,title){
 
   // 字体名用单引号包裹，避免style属性内双引号冲突
   var baseFont="-apple-system,BlinkMacSystemFont,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif";
-  var brandColor='#134B43';
-  var bgColor='#F7F3EA';
-  var boxBg='#E8F0EA';
-  var boxText='#42665B';
-  var gold='#C89B52';
-  var textColor='#3F3F3F';
+  // 咨询师工作室风格：温润、低饱和、有呼吸感（不是高饱和大厂色）
+  var brandColor='#2F4A42';   // 温润墨绿
+  var bgColor='#FDFCF9';      // 宣纸白
+  var boxBg='#F6F2E9';        // 亚麻米
+  var boxText='#5A564D';      // 柔和暖褐
+  var gold='#96703F';         // 低饱和暖赭
+  var hairline='#DCD3BE';     // 引用块细线
+  var softBorder='#E6DECB';   // 细边框
+  var softGray='#8C8779';     // 暖灰次文字
+  var textColor='#3F3D38';    // 柔和墨灰
 
   // 收集所有节点并转换
   var children=Array.from(article.children);
@@ -1197,11 +1248,14 @@ function openWechatCopyWindow(wechatHtml,title){
     var cls=' '+(node.className||'')+' ';
 
     if(tag==='span' && cls.indexOf(' brand-tag ')>-1){
-      parts.push('<div style="text-align:center;margin-bottom:16px;"><span style="display:inline-block;font-size:12px;color:'+brandColor+';background:'+boxBg+';padding:4px 14px;border-radius:20px;letter-spacing:1px;font-family:'+baseFont+';">'+escapeHtml(node.textContent)+'</span></div>');
+      parts.push('<div style="text-align:center;margin-bottom:18px;"><span style="display:inline-block;font-size:12px;color:'+brandColor+';border:1px solid '+softBorder+';padding:4px 14px;border-radius:20px;letter-spacing:1px;font-family:'+baseFont+';">'+escapeHtml(node.textContent)+'</span></div>');
+    }else if(tag==='div' && cls.indexOf(' brand-tag ')>-1){
+      // 兼容 div 形式的小品牌徽章（工作室风格：淡描边，非实底）
+      parts.push('<div style="text-align:center;margin-bottom:18px;"><span style="display:inline-block;font-size:12px;color:'+softGray+';border:1px solid '+softBorder+';padding:4px 14px;border-radius:20px;letter-spacing:1px;font-family:'+baseFont+';">'+escapeHtml(node.textContent)+'</span></div>');
     }else if(tag==='h1'){
-      parts.push('<h1 style="font-size:22px;font-weight:800;color:'+brandColor+';line-height:1.5;text-align:center;margin:0 0 12px;font-family:'+baseFont+';">'+escapeHtml(node.textContent)+'</h1>');
+      parts.push('<h1 style="font-size:22px;font-weight:600;color:'+brandColor+';line-height:1.5;text-align:center;margin:0 0 12px;font-family:'+baseFont+';">'+escapeHtml(node.textContent)+'</h1>');
     }else if(cls.indexOf(' subtitle ')>-1){
-      parts.push('<p style="font-size:14px;color:#666666;text-align:center;margin:0 0 28px;line-height:1.6;font-family:'+baseFont+';">'+inlineRich(node,baseFont,gold)+'</p>');
+      parts.push('<p style="font-size:14px;color:'+softGray+';text-align:center;margin:0 0 28px;line-height:1.6;font-family:'+baseFont+';">'+inlineRich(node,baseFont,gold)+'</p>');
     }else if(cls.indexOf(' scenario ')>-1){
       // 场景框：先用splitPara拆长段落，再处理<br><br>
       var scenPStyle='margin:0 0 12px 0;font-size:15px;color:#5a4a30;line-height:1.75;font-family:'+baseFont+';';
@@ -1209,7 +1263,7 @@ function openWechatCopyWindow(wechatHtml,title){
       // 先按 <br><br> 拆成段落块，每块再用 splitPara 拆
       var scenBlocks=scenRaw.split(/<br><br>/);
       var scenarioContent=scenBlocks.map(function(blk){return splitPara(blk,scenPStyle,70);}).join('');
-      parts.push('<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:'+bgColor+';border:1px solid #E8E0D6;border-radius:8px;margin:20px 0;font-family:'+baseFont+';"><tr><td style="padding:18px 22px;">'+scenarioContent+'</td></tr></table>');
+      parts.push('<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:'+bgColor+';border:1px solid '+softBorder+';border-radius:8px;margin:20px 0;font-family:'+baseFont+';"><tr><td style="padding:18px 22px;">'+scenarioContent+'</td></tr></table>');
     }else if(cls.indexOf(' quote-box ')>-1){
       var titleHtml='';
       var bodyHtml=inlineRich(node,baseFont,gold);
@@ -1222,7 +1276,7 @@ function openWechatCopyWindow(wechatHtml,title){
       }
       // 正文用 splitPara 拆段 + <p> 提高公众号编辑器兼容性
       var boxPStyle='font-size:15px;color:'+boxText+';line-height:1.75;font-family:'+baseFont+';margin:0 0 10px 0;';
-      parts.push('<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:'+boxBg+';border-radius:8px;margin:20px 0;font-family:'+baseFont+';"><tr><td style="width:4px;background:'+brandColor+';font-size:0;">&nbsp;</td><td style="padding:16px 20px;">'+titleHtml+splitPara(bodyHtml,boxPStyle,70)+'</td></tr></table>');
+      parts.push('<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:'+boxBg+';border-radius:2px;margin:24px 0;font-family:'+baseFont+';"><tr><td style="width:2px;background:'+hairline+';font-size:0;">&nbsp;</td><td style="padding:18px 22px;">'+titleHtml+splitPara(bodyHtml,boxPStyle,70)+'</td></tr></table>');
     }else if(cls.indexOf(' tip-box ')>-1 || cls.indexOf(' exercise ')>-1){
       var h4=node.querySelector('h4');
       var titleText=h4?escapeHtml(h4.textContent):'';
@@ -1234,20 +1288,27 @@ function openWechatCopyWindow(wechatHtml,title){
       parts.push('<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:'+boxBg+';border-radius:8px;margin:20px 0;font-family:'+baseFont+';"><tr><td style="padding:18px 22px;">'+(titleText?'<p style="font-size:16px;font-weight:bold;color:'+brandColor+';margin-bottom:10px;font-family:'+baseFont+';">'+titleText+'</p>':'')+splitPara(bodyHtml,tipPStyle,70)+'</td></tr></table>');
     }else if(cls.indexOf(' cta-box ')>-1){
       var titleText=node.querySelector('h3')?escapeHtml(node.querySelector('h3').textContent):'';
-      var ps=Array.from(node.querySelectorAll('p')).map(function(p){return '<p style="color:#fff;font-size:14px;margin:6px 0;line-height:1.6;font-family:'+baseFont+';opacity:0.95;">'+inlineRich(p,baseFont,gold)+'</p>';}).join('');
-      parts.push('<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:'+brandColor+';border-radius:16px;margin:32px 0;font-family:'+baseFont+';"><tr><td style="padding:28px 24px;text-align:center;">'+(titleText?'<h3 style="color:#fff;font-size:17px;margin:0 0 10px;font-weight:700;">'+titleText+'</h3>':'')+ps+'</td></tr></table>');
+      var ps=Array.from(node.querySelectorAll('p')).map(function(p){return '<p style="color:'+boxText+';font-size:14px;margin:6px 0;line-height:1.8;font-family:'+baseFont+';">'+inlineRich(p,baseFont,gold)+'</p>';}).join('');
+      // 工作室风格：亚麻米底 + 细边框，不用深绿实底（避免大厂感）
+      parts.push('<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:'+boxBg+';border:1px solid '+softBorder+';border-radius:4px;margin:32px 0;font-family:'+baseFont+';"><tr><td style="padding:26px 24px;text-align:center;">'+(titleText?'<h3 style="color:'+brandColor+';font-size:16px;margin:0 0 12px;font-weight:600;">'+titleText+'</h3>':'')+ps+'</td></tr></table>');
     }else if(cls.indexOf(' qr-section ')>-1){
       var img=node.querySelector('img');
       var imgSrc=img?img.getAttribute('src'):'rainbowhu-qrcode.jpg';
-      var caption=escapeHtml(node.querySelector('p')?node.querySelector('p').textContent:'扫码关注彩虹心理，回复「咨询」预约首次评估');
-      parts.push('<div style="text-align:center;margin:36px 0 20px;font-family:'+baseFont+';"><img src="'+imgSrc+'" style="width:160px;height:160px;border-radius:12px;" alt="彩虹心理公众号二维码"><p style="font-size:13px;color:#666666;margin-top:10px;line-height:1.6;">'+caption+'</p></div>');
-    }else if(cls.indexOf(' author-box ')>-1){
-      // author-box内部已有<p>，外层用<div>避免<p>嵌套
-      parts.push('<div style="border-top:1px solid #e0e0e0;padding-top:20px;margin-top:32px;text-align:center;font-family:'+baseFont+';"><div style="font-size:13px;color:#999999;line-height:1.75;">'+inlineRich(node,baseFont,gold).replace(/<p\b/g,'<p style="font-size:13px;color:#999999;margin:6px 0;line-height:1.75;"')+'</div></div>');
+      var caption=escapeHtml(node.querySelector('p')?node.querySelector('p').textContent:'扫码关注，回复「聊聊」了解首次咨询');
+      parts.push('<div style="text-align:center;margin:26px 0 20px;font-family:'+baseFont+';"><img src="'+imgSrc+'" style="width:150px;height:150px;border-radius:3px;" alt="彩虹心理公众号二维码"><p style="font-size:13px;color:'+softGray+';margin-top:10px;line-height:1.6;">'+caption+'</p></div>');
+    }else if(cls.indexOf(' qr ')>-1 || cls.indexOf(' qrcode ')>-1){
+      // 兼容旧文章的 .qr / .qrcode 命名（与 .qr-section 同处理）
+      var img2=node.querySelector('img');
+      var imgSrc2=img2?img2.getAttribute('src'):'rainbowhu-qrcode.jpg';
+      var cap2=node.querySelector('p')?escapeHtml(node.querySelector('p').textContent):'扫码关注，回复「聊聊」了解首次咨询';
+      parts.push('<div style="text-align:center;margin:26px 0 20px;font-family:'+baseFont+';"><img src="'+imgSrc2+'" style="width:150px;height:150px;border-radius:3px;" alt="彩虹心理公众号二维码"><p style="font-size:13px;color:'+softGray+';margin-top:10px;line-height:1.6;">'+cap2+'</p></div>');
+    }else if(cls.indexOf(' author-box ')>-1 || cls.indexOf(' brand-footer ')>-1){
+      // author-box / brand-footer内部已有<p>，外层用<div>避免<p>嵌套
+      parts.push('<div style="border-top:1px solid '+softBorder+';padding-top:22px;margin-top:36px;text-align:center;font-family:'+baseFont+';"><div style="font-size:13px;color:'+softGray+';line-height:1.9;">'+inlineRich(node,baseFont,gold).replace(/<p\b/g,'<p style="font-size:13px;color:'+softGray+';margin:6px 0;line-height:1.9;"')+'</div></div>');
     }else if(tag==='h2'){
-      parts.push('<h2 style="font-size:18px;font-weight:700;color:'+brandColor+';margin:32px 0 14px;padding-left:12px;border-left:4px solid '+brandColor+';font-family:'+baseFont+';">'+escapeHtml(node.textContent)+'</h2>');
+      parts.push('<h2 style="font-size:18px;font-weight:600;color:'+brandColor+';margin:32px 0 14px;padding-left:12px;border-left:2px solid '+hairline+';font-family:'+baseFont+';">'+escapeHtml(node.textContent)+'</h2>');
     }else if(tag==='h3' && cls.indexOf(' cta-box ')<=-1){
-      parts.push('<h3 style="font-size:16px;font-weight:700;color:'+brandColor+';margin:24px 0 10px;font-family:'+baseFont+';">'+escapeHtml(node.textContent)+'</h3>');
+      parts.push('<h3 style="font-size:16px;font-weight:600;color:'+brandColor+';margin:24px 0 10px;font-family:'+baseFont+';">'+escapeHtml(node.textContent)+'</h3>');
     }else if(tag==='p'){
       var pStyle='font-size:15px;color:'+textColor+';line-height:1.75;margin:16px 0;font-family:'+baseFont+';';
       parts.push(splitPara(inlineRich(node,baseFont,gold),pStyle,75));
@@ -1256,7 +1317,7 @@ function openWechatCopyWindow(wechatHtml,title){
     }else if(tag==='div' && cls.indexOf(' chat-demo ')>-1){
       // 聊天demo简化成引用块
       var chatHtml=inlineRich(node,baseFont,gold).replace(/<div class="chat-label"[^>]*>/g,'<div style="font-size:11px;color:#999;margin:4px 0;">').replace(/<div class="chat-bubble chat-left"[^>]*>/g,'<div style="max-width:75%;padding:10px 16px;border-radius:16px;margin:8px 0;background:#fff;border:1px solid #e5e5e7;color:#333;font-size:14px;line-height:1.6;display:inline-block;text-align:left;">').replace(/<div class="chat-bubble chat-right"[^>]*>/g,'<div style="max-width:75%;padding:10px 16px;border-radius:16px;margin:8px 0 8px auto;background:#95ec69;color:#1a1a1a;font-size:14px;line-height:1.6;display:inline-block;text-align:right;">');
-      parts.push('<div style="background:#f5f5f7;border-radius:16px;padding:20px;margin:20px 0;font-family:'+baseFont+';">'+chatHtml+'</div>');
+      parts.push('<div style="background:#FAF8F3;border-radius:16px;padding:20px;margin:20px 0;font-family:'+baseFont+';">'+chatHtml+'</div>');
     }else if(node.nodeType===1){
       // 其他未知块级元素，按段落处理
       var pStyle2='font-size:15px;color:'+textColor+';line-height:1.75;margin:16px 0;font-family:'+baseFont+';';
@@ -1425,7 +1486,7 @@ function copyWeiboText(idx){
 }
 function previewWeibo(idx){
   var a=WEIBO_SHORT.articles[idx];
-  var previewHtml=`<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>${a.title}</title><style>*{box-sizing:border-box;margin:0;padding:0}body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;background:#fff;max-width:480px;margin:0 auto;padding:24px 20px;color:#333;line-height:1.8;font-size:15px}.title{font-size:20px;font-weight:800;line-height:1.4;margin-bottom:16px;text-align:center}.theme{font-size:12px;padding:3px 12px;border-radius:12px;margin-bottom:14px;display:inline-block}.content{margin-bottom:16px}.conversion{background:#f5f0ff;border-radius:10px;padding:12px 16px;font-size:13px;color:#6b5b95;text-align:center}.qrcode{text-align:center;margin:16px 0}</style></head><body><div class="theme" style="background:${a.themeColor.split(';')[0]};color:${a.themeColor.split(';color:')[1]}">${a.theme}</div><div class="title">${a.title}</div><div class="content">${a.content.replace(/\n/g,'<br>')}</div><div class="qrcode"><img src="rainbowhu-qrcode.jpg" alt="彩虹心理公众号" style="width:140px;height:140px;border-radius:10px"><div style="font-size:12px;color:#666;margin-top:6px">扫码关注彩虹心理，获取更多专业心理内容</div></div>
+  var previewHtml=`<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>${a.title}</title><style>*{box-sizing:border-box;margin:0;padding:0}body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;background:#fff;max-width:480px;margin:0 auto;padding:24px 20px;color:#333;line-height:1.8;font-size:15px}.title{font-size:20px;font-weight:800;line-height:1.4;margin-bottom:16px;text-align:center}.theme{font-size:12px;padding:3px 12px;border-radius:12px;margin-bottom:14px;display:inline-block}.content{margin-bottom:16px}.conversion{background:#E8F0EA;border-radius:10px;padding:12px 16px;font-size:13px;color:#134B43;text-align:center}.qrcode{text-align:center;margin:16px 0}</style></head><body><div class="theme" style="background:${a.themeColor.split(';')[0]};color:${a.themeColor.split(';color:')[1]}">${a.theme}</div><div class="title">${a.title}</div><div class="content">${a.content.replace(/\n/g,'<br>')}</div><div class="qrcode"><img src="rainbowhu-qrcode.jpg" alt="彩虹心理公众号" style="width:140px;height:140px;border-radius:10px"><div style="font-size:12px;color:#666;margin-top:6px">扫码关注彩虹心理，获取更多专业心理内容</div></div>
 </body></html>`;
   var w=window.open('','_blank','width=520,height=600');
   w.document.write(previewHtml);
@@ -1456,9 +1517,9 @@ function renderShortVideo(){
   });
   var stats=[
     {label:'生成视频数',value:sv.videosGenerated,icon:'🎬',color:'#9b75cd'},
-    {label:'总时长',value:totalDur+'s',icon:'⏱️',color:'#e67c22'},
+    {label:'总时长',value:totalDur+'s',icon:'⏱',color:'#C89B52'},
     {label:'视频规格',value:'1080×1920',icon:'📐',color:'#2e7d32'},
-    {label:'核心目标',value:sv.focus||'涨粉引流',icon:'📈',color:'#c62828'}
+    {label:'核心目标',value:sv.focus||'涨粉引流',icon:'📈',color:'#C89B52'}
   ];
   document.getElementById('svStats').innerHTML=stats.map(function(s){
     return '<div class="stat-card" style="padding:14px 16px">'+
@@ -1489,9 +1550,9 @@ function renderShortVideo(){
       '</div>'+
       '<div style="font-size:16px;font-weight:700;margin-bottom:10px;line-height:1.5">'+v.title+'</div>'+
 
-      (v.hook?'<div style="background:linear(135deg,#fff3e0,#fce4ec);border-radius:10px;padding:10px 14px;margin-bottom:12px;border-left:3px solid #e67c22">'+
-        '<div style="font-size:11px;color:#e67c22;margin-bottom:4px;font-weight:600">🔥 3秒钩子</div>'+
-        '<div style="font-size:13px;line-height:1.6;color:#333">'+v.hook+'</div></div>':'')+
+      (v.hook?'<div style="background:var(--gold-light);border-radius:var(--r-md);padding:10px 14px;margin-bottom:12px;border-left:3px solid var(--gold)">'+
+        '<div style="font-size:11px;color:var(--green);margin-bottom:4px;font-weight:600">3 秒钩子</div>'+
+        '<div style="font-size:13px;line-height:1.6;color:var(--ink)">'+v.hook+'</div></div>':'')+
 
       '<div style="background:#f9f9f9;border-radius:10px;padding:12px;margin-bottom:12px">'+
         '<div style="font-size:11px;color:var(--ink3);margin-bottom:6px;font-weight:600">📱 抖音发布文案</div>'+
@@ -1501,7 +1562,7 @@ function renderShortVideo(){
       '<div style="margin-bottom:10px">'+
         '<div style="font-size:11px;color:var(--ink3);margin-bottom:4px;font-weight:600">🏷️ 话题标签</div>'+
         '<div style="display:flex;flex-wrap:wrap;gap:6px">'+v.hashtags.map(function(h){
-          return '<span style="padding:3px 10px;border-radius:12px;font-size:12px;background:#e8e0f5;color:#6b5b95">'+h+'</span>';
+          return '<span style="padding:3px 10px;border-radius:6px;font-size:12px;background:#E8F0EA;color:#134B43">'+h+'</span>';
         }).join('')+'</div>'+
       '</div>'+
 
@@ -1634,6 +1695,8 @@ function renderIpGrowth(){
   var cc=document.getElementById('ipCompliance'); if(cc)cc.innerHTML=ch;
 }
 
+window.IC_FALLBACK = '<div style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--ink3);font-size:11px;text-align:center;padding:8px;background:var(--cream)"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="m21 15-5-5L7 19"/></svg><span>图片待生成</span></div>';
+
 function renderImageCards(){
   var ic=IMAGE_CARDS;
   var n=ic.topCount||(ic.items||[]).length;
@@ -1668,14 +1731,24 @@ function renderImageCards(){
       +'<span>赞 <b style="color:#1A1A1A">'+fmt(it.likes)+'</b></span>'
       +'<span>转 <b style="color:#1A1A1A">'+fmt(it.forwards)+'</b></span>'
       +'<span style="margin-left:auto">1080 × 1440</span></div>';
-    var fallback='<div style="padding:20px;background:#F5F5F5;color:#999;font-size:11px;text-align:center">图片未生成</div>';
-    html+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px">'
-      +'<a href="'+it.coverFile+'" target="_blank" style="display:block;border-radius:8px;overflow:hidden;border:1px solid #F0F0F0;position:relative;aspect-ratio:3/4">'
-      +'<img src="'+it.coverFile+'" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy" onerror="this.parentNode.innerHTML=\''+fallback+'\'">'
-      +'</a>'
-      +'<a href="'+it.contentFile+'" target="_blank" style="display:block;border-radius:8px;overflow:hidden;border:1px solid #F0F0F0;position:relative;aspect-ratio:3/4">'
-      +'<img src="'+it.contentFile+'" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy" onerror="this.parentNode.innerHTML=\''+fallback+'\'">'
-      +'</a></div>';
+    function thumb(file, label){
+      return '<a href="'+file+'" target="_blank" style="display:block;border-radius:var(--r-md);overflow:hidden;border:1px solid var(--line);background:var(--cream);aspect-ratio:1/1;position:relative">'
+        +'<img src="'+file+'" alt="'+label+'" style="width:100%;height:100%;object-fit:cover;display:block" loading="lazy" onerror="this.parentNode.innerHTML=window.IC_FALLBACK">'
+        +'<span style="position:absolute;top:8px;left:8px;background:rgba(247,243,234,.92);color:var(--green);font-size:10px;padding:2px 7px;border-radius:4px;font-weight:600;letter-spacing:.3px">'+label+'</span>'
+        +'</a>';
+    }
+    function thumb(file, label){
+      return '<div style="display:flex;flex-direction:column;gap:8px;align-items:flex-start;max-width:220px">'
+        +'<a href="'+file+'" target="_blank" style="display:block;border-radius:var(--r-sm);overflow:hidden;border:1px solid var(--line);background:var(--cream);width:100%;aspect-ratio:3/4;position:relative">'
+        +'<img src="'+file+'" alt="'+label+'" style="width:100%;height:100%;object-fit:cover;display:block;object-position:center top" loading="lazy" onerror="this.parentNode.innerHTML=window.IC_FALLBACK">'
+        +'</a>'
+        +'<span style="font-size:10px;color:var(--ink2);font-weight:600;letter-spacing:.8px">'+label+'</span>'
+        +'</div>';
+    }
+    html+='<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px">'
+      +thumb(it.coverFile, '封面')
+      +thumb(it.contentFile, '正文')
+      +'</div>';
     html+='<div style="font-size:12px;color:#888;line-height:1.7;margin-bottom:14px;padding-left:10px;border-left:2px solid #C89B52">'
       +it.shareTip+'</div>';
     html+='<div style="display:flex;gap:8px">'
@@ -1726,439 +1799,74 @@ renderTasks(); updateOverview(); renderViral(); renderShowcase(); renderArticleP
 
 
 <!-- 内嵌文章HTML缓存：file://下fetch失败时使用 -->
-<span class="brand-tag">彩虹心理 · 亲密关系与原生家庭系列</span>
-<h1>讨好的代价，比你想象的贵 10 倍</h1>
-<p class="subtitle">在咨询室里，我见过太多"看起来都很好"的来访者，她们笑到最后一刻才发现自己病了</p>
-<p class="meta">彩虹心理 · 2026年9月3日 · 约 2360 字 · 阅读约 9 分钟</p>
-
-<p>前几天，一个公开承认自己生病的女艺人，让很多人哭了。</p>
-
-<p>不是因为她的名气，而是因为她说出的那句话，几乎是当下 25-38 岁女性共同的心声：「我从小被夸懂事、听话、不让人操心，可我从来没被教过，怎么好好生气、好好拒绝、好好说不喜欢。」</p>
-
-<p>评论区最高赞的留言不是心疼她，而是一句颤抖的「我也是」。</p>
-
-<p>这条评论让我想到在咨询室里，越来越多来访者坐下来第一句话就是：「我也不喜欢我自己这么多年来做的事，但我就是停不下来。」</p>
-
-<p>她们描述的场景几乎一样：自动把别人的需求放在前面、自己那份永远往后排、被夸一句「懂事」就能撑过一段低谷。直到某一天身体替她们说出了那句沉默已久的「我不行了」——失眠、心悸、莫名想哭、躯体化检查反复却没什么大问题。</p>
-
-<p>我常在咨询室里说的一句话是：<b>「讨好的代价，从来不是现在变贵，而是你已经为它预付了 10 年。」</b></p>
-
-<div class="scenario">
-<b>苏苏，32 岁，互联网公司中层。</b><br><br>
-她是从小被夸「懂事」长大的孩子。父母工作忙，她 7 岁就学会热饭、洗衣、独自入睡。大学选专业、毕业找工作、跳槽到新城市，每一步都是「乖孩子」该做的事。<br><br>
-婚姻里，她也本能地扮演那个角色：婆婆一句「你做的汤淡」，她从此只做淡汤；丈夫一句「你挣得没我多」，她加班回家还抢着做饭。她不是不累，是害怕不这样做，就不再被爱。<br><br>
-33 岁生日那天，她在公司卫生间吐了。去医院做了全套检查，所有指标正常，医生委婉地说：「你只是太累了，回去好好休息。」她笑了一下，出来却在车里哭了两个小时。<br><br>
-她不是累，她是被「懂事」两个字压了 26 年。
-</div>
-
-<h2>一、「讨好」不是性格，是一种早期学会的生存技能</h2>
-
-<p>很多人把讨好当成一种性格缺陷，觉得自己「天生就是这种人」。但从发展心理学看，讨好是一种非常聪明的<b>早期生存适应</b>——只是它后来被错误地沿用到了所有关系里。</p>
-
-<p>当一个孩子反复体验到「表达需求会换来忽视/否认/惩罚」，但「乖巧懂事会换来肯定甚至奖励」时，大脑会迅速归纳出一个简洁的生存原则：</p>
-
-<blockquote>「我的价值 = 我对别人有用。」</blockquote>
-
-<p>这个原则在童年可以保护她，让她安全地长大。但当她带着这个原则进入成年，进入亲密关系、职场、友谊，这套程序就开始大面积失效。</p>
-
-<div class="quote-box scenario-inner">
-<span class="label">心理学机制</span>
-<h3>讨好型人格的三个隐形驱动</h3>
-<p><b>1. 内在评价系统的外在化：</b>健康的人会从内部获得「我是有价值的」这一基本信念；讨好型的人把这部分交给了外部——你的评价、你的脸色、你的回应，决定了我值不值得被喜欢。这种结构让情绪的遥控器掌握在别人手里。</p>
-<p><b>2. 「拒绝」等于「被抛弃」的早期连接：</b>童年时表达拒绝就意味着被忽略、甚至被威胁，于是大脑把「拒绝」与「失去爱」绑得很紧。成年后哪怕只是拒绝一个不喜欢的邀约，身体也会自动紧张、心跳加速。</p>
-<p><b>3. 长期压抑的躯体化表达：</b>情绪不会因为你不表达就消失。心理学研究显示，长期压抑的愤怒和委屈，会以失眠、心悸、慢性疼痛、肠胃紊乱、突发性焦虑等形式表达出来。身体替你说出了那些被禁止说的「不」。</p>
-</div>
-
-<h2>二、讨好型人格的四个隐形信号</h2>
-
-<p>讨好型人格最不容易识别，因为它<b>看起来</b>太正常了：人缘好、懂事、工作出色、家庭和谐。但如果你留意这些隐形信号，会看见不一样的图景。</p>
-
-<p><b>信号一：拒绝之后会疯狂解释。</b><br>
-拒绝一个聚会、不接一个请求之后，你会连续发三四句「真的不好意思」「下次我一定」「你别生气」。你不是在解释，你是在修补——修补那个"因为我拒绝了，我会被讨厌"的内疚。</p>
-
-<p><b>信号二：道歉频率比呼吸还高。</b><br>
-别人让你不开心，你下意识先说"对不起"。哪怕事情和你没关系，你也觉得"是不是我哪里没做好"。这种道歉不是礼貌，是自我攻击。</p>
-
-<p><b>信号三：在关系里永远在"听"对方。</b><br>
-你很少主动讲自己的事，也很少有自己的需要被看见。如果有人真的问"你最近怎么样"，你可能会愣住——好像这辈子没被认真问过这个问题。</p>
-
-<p><b>信号四：身体用疼痛说话。</b><br>
-查不出问题的心悸、长期失眠、莫名背痛、肠胃反复紊乱、月经突然不规律……这些不是矫情，是你长期压抑的情绪在躯体层面敲门。</p>
-
-<div class="scenario">
-<b>小卓，28 岁，新婚一年。</b><br><br>
-她和先生吵不起来。不是因为关系好，是因为每次她想表达不满，话到嘴边都会变成"算了"、"我没关系"、"你开心就好"。<br><br>
-她第一次在咨询室里说出"我很生气"，花了整整 40 分钟。她说完，靠在沙发上哭了好久，说"原来我也能这么生气啊"。<br><br>
-那一刻她意识到：不是她没有情绪，是她花了 28 年把自己训练成"没有情绪"的人。
-</div>
-
-<h2>三、讨好的高额账单：你在为谁付出？</h2>
-
-<p>讨好表面看起来"低风险、损失小"。但从长期看，讨好的账单远比直接表达贵得多。</p>
-
-<p><b>账单一：自我消失。</b><br>
-你越来越不知道自己真正想要什么、喜欢什么、适合什么。当一份选择摆在你面前，你的第一反应永远是「别人会怎么想」「这样是不是太自私」。</p>
-
-<p><b>账单二：关系的虚假繁荣。</b><br>
-你身边看起来人缘很好，但能真正打电话说"我今天真的不行了"的人，一个也没有。你长期扮演"没问题"的角色，也长期活在"没人真正认识我"的孤独里。</p>
-
-<p><b>账单三：身体持续透支。</b><br>
-哈佛一项长期追踪显示，长期压抑负面情绪的女性，心血管事件、自身免疫性疾病、躯体化症状的发生率显著高于能正常表达情绪的人群。（注：研究为人群层面的相关性结论，不构成对个体的预测。）</p>
-
-<p><b>账单四：你教会了别人怎么对待你。</b><br>
-当你一直用讨好回应别人，你也会"训练"对方继续用同样的方式和你互动——你的需求依然看不见，你的边界依然被越界，你的"懂事"则成为被剥削的许可证。</p>
-
-<h2>四、从「被夸懂事」到「被看见真实」：四个觉察练习</h2>
-
-<p>走出讨好模式，不是一夜之间变成"刺头"。它是一个长期的、从微小动作开始的过程。</p>
-
-<div class="exercise">
-<h3>觉察练习四步</h3>
-<ol>
-<li><b>今日「讨好」记账：</b>今晚睡前，回想今天一天——你做了哪些"不想做但还是做了"的事？你顺从了谁的什么要求？你压缩了自己的什么需求？用一张纸写下三件。这一步，是从"无意识的讨好"变成"看见自己的讨好"。</li>
-<li><b>练习微拒绝：</b>找一个低风险场景（比如同事再让你帮忙带一杯咖啡、朋友再向你借一件东西），试着温和但清晰地说"今天我不太方便"。观察自己说出口那一刻身体的反应：心跳、嗓子发紧、想解释……这些感觉，都曾是童年被压抑的感受的回声。</li>
-<li><b>给"懂事"加一根新注释：</b>当别人夸你"懂事"时，试着不立刻感到欣慰，而是停在那一秒问问自己：我今天"懂事"的代价是什么？如果代价太大，我下一次，能不能"不那么懂事"？懂事可以保留，但不必再用来换爱。</li>
-<li><b>写一封不寄出的信：</b>找一个安全的晚上，给最让你"懂事"的那个人（可能是父母、伴侣、上司）写一封信，把所有没说出口的委屈、愤怒、不甘都写下来。写完不寄、不发，只是让情绪有一个不被审查的出口。</li>
-</ol>
-</div>
-
-<h2>五、真正的"被爱"，不需要你懂事</h2>
-
-<blockquote>「当你不再害怕不被喜欢，你会发现，剩下的人，都是真的喜欢。」</blockquote>
-
-<p>我见过很多在咨询室里第一次"不讨好"的来访者。她们在第一次说"我今天不舒服"时，会紧张得发抖；第一次拒绝邀请时，会担心对方生气；第一次为自己争取时，会觉得"这样是不是太自私"。</p>
-
-<p>但熬过最初那几次不舒服之后，她们慢慢发现：</p>
-
-<p>原来，<b>真正喜欢你的人，不会因为你不再懂事就离开。</b></p>
-
-<p>原来，<b>关系里的不舒服，是可以扛过去的。</b></p>
-
-<p>原来，<b>"我"也可以是被看见的、被尊重的、被优先的。</b></p>
-
-<p>这不是自私，是诚实。是你在学着对自己 26 年来"懂事"的努力说一声：你已经很努力了，从今以后，你可以不那么累。</p>
-
-<h2>六、写在最后：如果你已经累了</h2>
-
-<p>如果你正在读这篇文章时，心里有一点点动了一下，或者突然鼻子发酸，那不是矫情，那是你身体在告诉你：「我累了很久了。」</p>
-
-<p>讨好不是一朝一夕形成的，所以走出来也不可能一夜之间完成。它需要你反复练习、反复失败、反复修复。但每一次小小的"不讨好"，都会让你更接近那个真实的自己。</p>
-
-<p>如果你发现这件事，靠自己的力量真的很难走出来——这很正常。咨询不是"治疗有病"，而是给自己找一个<b>不会被评判、不会被忽视、不会被要求懂事</b>的空间，让压抑了太久的真实情绪慢慢被听见。</p>
-
-<div class="cta-box">
-<h3>如果你也在不同关系里演过"不用帮忙的我"</h3>
-<p>这本《讨好型人格自救手册》陪你做一次安静的自检：识别你的讨好模式、看见被你压缩的需求、练习温和的拒绝。<br>关注彩虹心理公众号，回复「<b>讨好</b>」即可免费领取。</p>
-<div class="qr"><img src="rainbowhu-qrcode.jpg" alt="彩虹心理公众号二维码"></div>
-<p class="cta">扫码关注彩虹心理，回复「讨好」领取手册</p>
-</div>
-
-<div class="author-box">
-<h4>关于彩虹心理 · 心理咨询师 胡老师</h4>
-<p>从业 12 年，专注亲密关系、原生家庭、女性自我成长议题，累计咨询时长 8000+ 小时。<br>
-我们相信，每一种情绪都值得被理解，每一段困境都可以被温柔地穿越。<br><br>
-📍 咨询预约：关注公众号后回复「<b>咨询</b>」<br>
-🕒 服务时间：周一至周日 9:00 - 21:00</p>
-</div></script>
-
-<span class="brand-tag">彩虹心理 · 咨询师第一人称系列</span>
-<h1>咨询师最常被来访者记住的那 7 句话</h1>
-<p class="subtitle">在咨询室里真正改变关系的，从来不是技术，而是几句"在对的时刻，被一个人说出来"的话</p>
-<p class="meta">彩虹心理 · 2026年9月3日 · 约 2380 字 · 阅读约 9 分钟</p>
-
-<p>最近，微博话题 #被心理医生点醒的瞬间# 持续走高，阅读量累计千万级。</p>
-
-<p>无数人在评论里写下自己在咨询室里"被点醒"的瞬间——有人是某句话、有人是一个眼神、有人是整整一次沉默。但我留意到一个共性：</p>
-
-<blockquote>被点醒的那一刻，都不是被"教"了什么，而是<b>被一个人真正看见</b>了。</blockquote>
-
-<p>今天这一篇，是我在咨询室里，最常被来访者在咨询间隔很久以后还记住的那 7 句话。它们都来自真实的脱敏案例（已获来访者知情同意口径），也都是我作为咨询师，最希望所有正在低谷中的你能听到的话。</p>
-
-<div class="quote-box">
-「你不是脆弱，你是没有被好好接住过。」<br>
-<span class="who">——常被长期"懂事" / 一直在压抑情绪的来访者记住</span>
-</div>
-
-<h2>第一句：你不是脆弱，你是没有被好好接住过</h2>
-
-<p>那天来访者哭着说："我是不是太脆弱了？这点事就崩溃。"</p>
-
-<p>她在一家人人羡慕的公司工作、有一对看起来完美的父母、朋友圈永远是"岁月静好"。但她心里清楚，每一次"我很好"背后，都是另一场自我压抑。</p>
-
-<p>我没有先说"你不脆弱"。而是说："你不是脆弱，你是从来没有被好好接住过。你的'懂事'一直是你自己接住自己，太累了，所以今天才崩。"</p>
-
-<p>她说，那一刻是<b>她 30 年来第一次感觉自己被原谅了</b>。</p>
-
-<div class="scenario">
-<b>为什么这句话会被记住？</b><br><br>
-因为我们这个时代的女性长期在两种评价之间拉扯：「你太敏感」「你怎么这么脆弱」。但真正撑住一个情绪的，从来不是"不脆弱"，而是"被接住"。心理咨询能提供给来访者的，最重要的一个元素就是这种被稳稳接住的体验。
-</div>
-
-<div class="quote-box">
-「你的情绪没有错，错的是你被教过'情绪是不好的'。」<br>
-<span class="who">——常被童年要求"不许哭""有什么好哭的"的来访者记住</span>
-</div>
-
-<h2>第二句：你的情绪没有错，错的是你被教过"情绪是不好的"</h2>
-
-<p>这位来访者从小被要求"不许哭"。母亲至今说话还是"再哭我就不要你了"。</p>
-
-<p>成年后，她在自己家里、亲密关系里一旦感到难过，就会立刻收缩、压抑、道歉，"对不起我又这样了"。</p>
-
-<p>我常在咨询室里说：「你的情绪没有错。你的愤怒、委屈、不甘，它们都在那里，它们都是有道理的。错的是你曾经在一个把你当成"情绪不好就不被爱"的家里长大。」</p>
-
-<p>这句话对她最直接的改变是——她第一次敢说"我现在很生气"，而不是先把"对不起"说出口。</p>
-
-<div class="quote-box">
-「你不是不行，你只是从来没有人陪你想清楚。」<br>
-<span class="who">——常被习惯性自我攻击 / "我没用"的来访者记住</span>
-</div>
-
-<h2>第三句：你不是不行，你只是从来没有人陪你想清楚</h2>
-
-<p>这位来访者长期被一种"我没用"的念头压着。每次想尝试新事，第一反应就是"我肯定不行"。</p>
-
-<p>我第一次对她说这句话时，她愣了一下，然后认真地看着我说："真的可以这样归因吗？我一直以为是我自己差。"</p>
-
-<p>她说："我活了 30 几年，第一次有人告诉我，也许不是我不努力，而是从来没有人陪我把这件'想清楚'的事做完。"</p>
-
-<div class="quote-box scenario-inner">
-<span class="label">为什么有效</span>
-<h3>归因的转向：从"我差"到"我缺一个支持系统"</h3>
-<p>认知心理学告诉我们，长期自责的人并不是「懒」，而是大脑被一套"我不行"的负向归因模式绑定了。每一次想尝试，自动弹出的就是失败画面。心理咨询不是直接打掉这套画面，而是让人在<b>安全的节奏里一遍遍重新尝试</b>，让"我可以"慢慢积累到比"我不行"多一点的时候，归因就开始慢慢松动。</p>
-</div>
-
-<div class="quote-box">
-「你可以生气，你不需要一直像大人一样。」<br>
-<span class="who">——常被"从很小就照顾家庭"的来访者记住</span>
-</div>
-
-<h2>第四句：你可以生气，你不需要一直像大人一样</h2>
-
-<p>这是我在咨询室里对"小大人"——那些从很小就开始照顾父母、照顾家庭的人——最常说的一句话。</p>
-
-<p>你会发现，他们长大以后，很难开口表达愤怒。一来他们从小被训练"懂事"；二来他们的愤怒真的会让自己害怕——害怕一旦生气，关系就崩了、世界就乱了。</p>
-
-<p>所以当咨询师轻轻说一句：「你可以生气，<b>不需要一直像大人一样</b>」，她们通常会愣很久。然后慢慢意识到：「原来生气不会毁掉关系，原来我不是必须一直撑着。」</p>
-
-<div class="quote-box">
-「你需要的不是被爱，是先学会不讨厌自己。」<br>
-<span class="who">——常被自卑、长期自我否定的来访者记住</span>
-</div>
-
-<h2>第五句：你需要的不是被爱，是先学会不讨厌自己</h2>
-
-<p>这句话听起来有点反常识。但我接触的越多越坚信：</p>
-
-<p>一个长期自我否定的人，哪怕得到再多"我爱你"，里面都有一个声音说："他们只是不了解真正的我，了解了就不会爱了。"</p>
-
-<p>于是那些爱像漏斗一样，从内部流走。你给再多，都留不住。</p>
-
-<p>所以在咨询室里，比起鼓励来访者"找一个人爱你"，我更常做的事，是陪来访者一点点<b>松动那个"我不可爱"的内在信念</b>。一旦你真的开始不讨厌自己，外面的爱才接得住。</p>
-
-<div class="quote-box">
-「在我这里，你不需要'表现好'。」<br>
-<span class="name" style="display:none"></span><span class="who">——常被习惯性"伪装自己没事"的来访者记住</span>
-</div>
-
-<h2>第六句：在我这里，你不需要"表现好"</h2>
-
-<p>心理咨询最珍贵的起点，是「这一刻你不需要表演」。</p>
-
-<p>很多来访者第一次走进咨询室，还会习惯性地说："我没什么大问题，就是想来聊聊。"这是她对"在别人面前表现好"的肌肉记忆。</p>
-
-<p>我通常会让咨询室有一个缓慢的、放下的过程——茶凉不凉、灯柔不柔、对方愿不愿意先坐一会儿。等她发现"原来我在这里哭也不会被嫌弃、愤怒也不会被评判"，咨询才真正开始。</p>
-
-<div class="quote-box">
-「你可以慢慢来。这里没有进度条。」<br>
-<span class="who">——常被急着"修好自己"的来访者记住</span>
-</div>
-
-<h2>第七句：你可以慢慢来。这里没有进度条。</h2>
-
-<p>最后一句，是给那些一直在"催促自己"的人。</p>
-
-<p>"我都来咨询 3 次了，怎么还没好？""我是不是不够努力？"——这是咨询室里最让人心疼的台词。她们从小被训练"要更快、更强、更好"，连"疗愈"都想一次性完成。</p>
-
-<p>我常对她们说：「在我这里，你可以慢一点。伤口不是被'快'治好的，是被'稳'养好的。」</p>
-
-<h2>把这 7 句话，送给可能正在听的你</h2>
-
-<p>如果你读到这里，没有一句让你有反应，那也很好。</p>
-
-<p>但如果其中哪怕一句，让你心里"嗯"了一声，那也请你停下来，给那一句留一会儿。</p>
-
-<p>心理咨询师做的事情，看上去不像治疗，更像是<b>一边陪伴、一边把那些在很多年里没有被人说出的话，替来访者说出来</b>。这并不是说这些"点醒"的话有什么神奇魔力，而是当一个人在合适的空间里，被一段<b>不带评判的关系稳稳接住</b>，身体就会慢慢打开，那些被压抑的情绪会自然流动起来。</p>
-
-<div class="exercise">
-<h3>如果你想试试：今晚的 3 分钟觉察</h3>
-<ol>
-<li><b>挑一句你最有反应的话，写下来。</b>不用分析为什么，就让它在你心里响一会儿。</li>
-<li><b>问问自己：</b>"这一刻如果有一个咨询师在我身边，ta 会对我说什么？"试着把那个最真的话自己说出来。</li>
-<li><b>把"对别人说"和"对自己说"分开练：</b>你不需要立刻对身边人讲出这些，但你可以先允许<b>自己</b>听见这些话。这是和自己重新建立关系的第一步。</li>
-</ol>
-</div>
-
-<blockquote>真正的被"点醒"，不是突然顿悟，而是有人陪你，用一种不评判的方式，慢慢等你自己看见。</blockquote>
-
-<h2>写在最后：如果你也想被这样听一听</h2>
-
-<p>如果你今天读到这里，心里有什么轻轻动了一下，那不是矫情，那是你身体在告诉你："我很久没被这样听过了。"</p>
-
-<p>咨询师无法帮你做决定、修好一段关系、替你和家人和解，但 ta 可以做一件其他角色很难做的事——<b>陪你在不被评判的空间里，把那些你从来没有机会说的话，慢慢说出来。</b></p>
-
-<p>当你可以被完整地听见，改变，常常会自己发生。</p>
-
-<div class="cta-box">
-<h3>如果这 7 句话里有一句你听见了好几次</h3>
-<p>把这篇文章收藏起来，也欢迎把"你听到最想记住的一句"留言告诉我。<br>关注彩虹心理公众号，回复「<b>金句</b>」领取《咨询师语录合集》PDF。</p>
-<div class="qr"><img src="rainbowhu-qrcode.jpg" alt="彩虹心理公众号二维码"></div>
-<p class="cta">扫码关注彩虹心理，回复「金句」领取语录合集</p>
-</div>
-
-<div class="author-box">
-<h4>关于彩虹心理 · 心理咨询师 胡老师</h4>
-<p>从业 12 年，专注亲密关系、原生家庭、女性自我成长议题，累计咨询时长 8000+ 小时。<br>
-我们相信，被温柔听见，是疗愈真正的开始。<br><br>
-📍 咨询预约：关注公众号后回复「<b>咨询</b>」<br>
-🕒 服务时间：周一至周日 9:00 - 21:00</p>
-</div></script>
-
-<span class="brand-tag">彩虹心理 · 情绪识别与自我关怀系列</span>
-<h1>微笑型抑郁：白天笑得多的人，夜里哭得最狠</h1>
-<p class="subtitle">那些看起来"什么事都没有"的人，可能是离崩溃最近的人</p>
-<p class="meta">彩虹心理 · 2026年9月3日 · 约 2400 字 · 阅读约 9 分钟</p>
-
-<p>前几天凌晨两点，我收到一条私信：</p>
-
-<p>"老师，我白天在公司是开心果、是同事最信赖的姐姐、是朋友圈里永远正能量的人。可我每天关上门之后，会在卫生间地板上坐一个多小时。我不知道我怎么了，我不敢和任何人说。"</p>
-
-<p>这条消息看得我很久说不出话。因为她描述的，是我在咨询室里最常遇见、却最不容易被识别的状态——<b>微笑型抑郁</b>，也叫<b>高功能抑郁</b>。</p>
-
-<p>它不像我们想象中那种"躺在床上起不来"的低落，它常常藏在一张张得体的笑脸背后，藏在一份份漂亮的工作汇报背后，藏在一句"我没事"背后。</p>
-
-<div class="tip-box">
-<b>重要提醒：</b>本篇内容仅为情绪识别科普与自助练习，<b>不能替代精神科诊断</b>。如果你正在经历持续两周以上的情绪低落，或已出现伤害自己的念头，请立即寻求精神心理科或专业危机热线帮助。
-</div>
-
-<h2>一、什么是"微笑型抑郁"？</h2>
-
-<p>它不是一个独立的精神疾病诊断，而是一种<b>抑郁情绪在社交功能良好的人身上呈现的状态</b>。</p>
-
-<p>这类人群常常具有以下背景：</p>
-
-<ul style="padding-left:22px;font-size:15.5px;line-height:1.9">
-<li>在单位 / 家庭 / 朋友圈里，扮演"靠谱""温暖""积极"的角色；</li>
-<li>工作能力并不下滑，甚至越压抑越用力；</li>
-<li>白天几乎看不出任何情绪问题；</li>
-<li>但夜里、独处时、或突然被打动时，会出现强烈的情绪崩塌 / 身体不适 / 想哭 / 想消失。</li>
-</ul>
-
-<p>它之所以隐蔽，是因为<b>功能还在</b>。但功能还在，不等于人还撑得住。只是 b>很多人不愿意麻烦别人</b>，选择了"自己扛着"。</p>
-
-<div class="scenario">
-<b>雅琴，35岁，公司 HR 主管。</b><br><br>
-她是同事眼里"最有分寸的姐姐"。谁家有情绪、谁家有矛盾，她都出面调停。她提过离职也提过辞职，但每次都被公司"离不开她"留下来。<br><br>
-她形容自己白天像"一块被反复使用的毛巾"——湿了拧干再用，从不喊累。直到有天早上，她在地铁上突然喘不上气，被急救送医。心脏、肺、血压都正常。<br><br>
-医生说："你只是太累了。"<br><br>
-她坐在医院走廊哭出声，说："太累了，'只是'两个字，是压死我最后一根稻草。"
-</div>
-
-<h2>二、为什么"会笑的人"反而更累？</h2>
-
-<div class="quote-box scenario-inner">
-<span class="label">心理学机制</span>
-<h3>微笑型抑郁的三个隐形特征</h3>
-<p><b>1. 高功能带来的"羞耻感锁死"。</b>你看起来正常、有能力、能照顾别人。一旦说出"我其实很撑不住"，第一反应是<b>羞耻</b>——"比我有惨的人多了，我有资格抑郁吗？"这种羞耻感让人不容易求助。</p>
-<p><b>2. 情绪的两套系统长期错位。</b>白天用"角色系统"运转（克制、有条理、温暖），晚上回到"真实系统"那一刻，长期压抑的情绪会集中溢出——失眠、凌晨 3-4 点醒来、突然崩溃大哭、躯体化不适。</p>
-<p><b>3. 没有"歇一下"的社会许可。</b>职场和家庭的"懂事训练"让她们很难主动申请休息。一旦停下，她们内心的警报会响："你看，你拖累了别人。"结果越累越不敢停。</p>
-</div>
-
-<h2>三、3 分钟自检：你的"笑"是不是已经成为一种保护色？</h2>
-
-<p>下面的 9 个问题，请按<b>最近 2 周</b>的实际情况打分。0 = 完全不符合，1 = 偶尔符合，2 = 经常符合，3 = 几乎每天。</p>
-
-<table class="scale-table">
-<thead>
-<tr><th>#</th><th>自检问题</th><th>分值</th></tr>
-</thead>
-<tbody>
-<tr><td>1</td><td>白天在别人面前能维持正常/微笑，晚上独处却情绪突然下沉</td><td>0 / 1 / 2 / 3</td></tr>
-<tr><td>2</td><td>不想让身边的人担心，几乎不说出自己的真实感受</td><td>0 / 1 / 2 / 3</td></tr>
-<tr><td>3</td><td>睡眠问题：入睡难 / 凌晨早醒 / 睡醒不解乏</td><td>0 / 1 / 2 / 3</td></tr>
-<tr><td>4</td><td>身体不适（心悸、肩颈紧绷、肠胃紊乱、月经异常），但医院检查基本正常</td><td>0 / 1 / 2 / 3</td></tr>
-<tr><td>5</td><td>出现"我好像扛不住了"或"如果我不在了大家会不会更轻松"的念头</td><td>0 / 1 / 2 / 3</td></tr>
-<tr><td>6</td><td>觉得"我不应该有情绪，我已经够好了"</td><td>0 / 1 / 2 / 3</td></tr>
-<tr><td>7</td><td>吃东西没胃口，或靠吃东西减压</td><td>0 / 1 / 2 / 3</td></tr>
-<tr><td>8</td><td>对自己长期高要求，"歇下来"就内疚</td><td>0 / 1 / 2 / 3</td></tr>
-<tr><td>9</td><td>身体常常很疲惫，即使休息也无济于事</td><td>0 / 1 / 2 / 3</td></tr>
-</tbody>
-</table>
-
-<p style="background:#f3f9f5;padding:14px 18px;border-radius:8px;font-size:14.5px;color:#134B43">
-<b>参考区间：</b>总分 0-6 分，轻度情绪负担，建议适当给自己安排休整；7-14 分，中度，请认真练习以下觉察工具，必要时主动寻求专业支持；15 分及以上，建议尽早寻求心理咨询/精神心理科评估。
-</p>
-
-<blockquote>这不是医学诊断标准，仅为帮助你识别"我最近是不是真的透支了"。最关键的不是分数，而是你内在的感觉。</blockquote>
-
-<h2>四、四个觉察练习：给"一直在笑"的你</h2>
-
-<div class="exercise">
-<h3>如果你的笑是为了保护别人，请也开始保护自己</h3>
-<ol>
-<li><b>给"晚上"的自己设一个仪式：</b>每天睡前 10 分钟，关掉所有电子设备，给自己写 1-2 句"今天撑过来的话"。可以是吐槽、可以是想哭、可以是"今天我很好"。重点不是写什么，是<b>让白天被压下去的我，有一个出口</b>。</li>
-<li><b>每周给自己一场"不被照顾的练习"：</b>关掉"照顾者模式"。你可以独自吃饭，独自看电影，独自待在一个咖啡馆。允许身边没有人被你照顾，从外界回收一些能量。</li>
-<li><b>找到你"可以不必懂事"的安全关系：</b>可以是心理咨询师，可以是一位不在你生活圈的朋友。练习在那段关系里，你不需要"表现好"，你可以说"我今天很疲惫"，对方不会"修好"你，只是接住你。</li>
-<li><b>练习"说'我撑不住'"：</b>哪怕你还没真的撑不住，每周挑一次，对 ta 说一句"我今天状态不太好"。你会发现说了之后，没有"天塌下来"。这件事<b>会让"撑不住"慢慢不再那么可怕</b>。</li>
-</ol>
-</div>
-
-<h2>五、什么时候该向专业求助？</h2>
-
-<p>如果以下情况持续出现 2 周以上，建议尽早寻求专业支持：</p>
-
-<ul style="padding-left:22px;font-size:15.5px;line-height:1.9">
-<li>持续的失眠 / 早醒，或长期睡醒不解乏；</li>
-<li>对原本喜欢的事失去兴趣 / 参与感；</li>
-<li>反复出现"如果我不在了 / 消失就好了"的念头；</li>
-<li>不明原因的身体不适反复出现但检查基本正常；</li>
-<li>"我挺好的"已经成为一种强迫性表演，但内在已近崩塌边缘。</li>
-</ul>
-
-<p>微笑型抑郁并非不可干预，专业心理咨询 / 必要时的精神科评估可以帮助你：</p>
-
-<ul style="padding-left:22px;font-size:15.5px;line-height:1.9">
-<li>识别你的"过度负责 + 长期压抑"模式；</li>
-<li>建立更可持续的"自我照顾"系统；</li>
-<li>在咨询室里练习"不必懂事"的安全关系。</li>
-</ul>
-
-<h2>六、写在最后：你的笑，不必成为你的生存策略</h2>
-
-<blockquote>「我不需要你一直笑着。我只需要你，不再笑着累。」</blockquote>
-
-<p>如果你也长了一张"笑得很稳"的脸，请允许我替你说出那句你说不出口的话：</p>
-
-<p>你已经很努力了。你不需要一直笑着。</p>
-
-<p>这个世界不缺一个"永远没事的人"。这个世界缺的，是一个<b>被允许说"我撑不住"的人</b>。所以从今天起，请也试试，对一个安全的人，说一句："我今天不太好。"你会发现，这件事，比你以为的，要轻得多。</p>
-
-<p>如果你感到独自扛了太久，咨询可以是一个答案。它不要求你表现好，它只是在咨询室里，给你一个不必戴面具的下午。</p>
-
-<div class="cta-box">
-<h3>领取《微笑型抑郁自测量表》+《情绪自救 7 日练习》</h3>
-<p>把今天的自检 9 题打印/截图保存。连续 7 天，每天选择其中一项练习。<br>关注彩虹心理公众号，回复「<b>自测</b>」即可免费领取 PDF 版自测量表与每日打卡页。</p>
-<div class="qr"><img src="rainbowhu-qrcode.jpg" alt="彩虹心理公众号二维码"></div>
-<p class="cta">扫码关注彩虹心理，回复「自测」领取手册</p>
-</div>
-
-<div class="author-box">
-<h4>关于彩虹心理 · 心理咨询师 胡老师</h4>
-<p>从业 12 年，专注亲密关系、原生家庭、女性自我成长议题，累计咨询时长 8000+ 小时。<br>
-我们相信，被温柔看见，是疗愈真正的开始。<br><br>
-📍 咨询预约：关注公众号后回复「<b>咨询</b>」<br>
-🕒 服务时间：周一至周日 9:00 - 21:00</p>
-</div></script>
+<script type="text/html" id="article-source-0">
+<span class="brand-tag">RAINBOW PSYCHOLOGY · 彩虹心理</span>
+<h1>你之所以在恋爱里累到脱皮，是因为太把对方当回事了</h1>
+<p class="subtitle">课题分离 · 亲密关系内耗的终极解药 · 引流款</p>
+<p class="meta">彩虹心理 · 2026年9月4日 · 约 2300 字 · 阅读约 8 分钟</p>
+<p>上周，一位来访者坐在我对面，说了一句让我印象深刻的话。</p>
+<div class="scenario"><p>「老师，我发现我在恋爱里像个侦探。」小D，32岁，互联网公司中层。男友回消息晚了半小时，她开始翻聊天记录，分析每一个标点符号。</p></div>
+<p>我在咨询室里见过太多这样的来访者。她们不是不够聪明，也不是太脆弱——她们只是把一件不该属于自己的东西，扛在了肩上。</p>
+<p>中科院心理所《2026国民心理健康蓝皮书》：71.3%的成年人长期精神内耗，日均胡思乱想超1.5小时。</p>
+<h2>你不是想太多，你是在替别人活</h2>
+<p>心理学有个概念叫「课题分离」，最早来自阿德勒心理学。意思很简单：每个人都有自己的课题，你只需要为自己的课题负责，不该把别人的课题扛在身上。</p>
+<div class="mechanism-box"><h3>内耗的三种典型形态</h3><p><b>1. 伴侣沉默 = 你在替他分析原因。</b>他今天不爱说话，可能只是累了。但你立刻开始排查：是不是我哪句话说错了？</p><p><b>2. 对方失望 = 你在替他消化情绪。</b>你把「让他不高兴」当成了自己的错，然后道歉、补偿。但你忘了：他的失望是他的情绪，不是你的过失。</p><p><b>3. 关系变淡 = 你在替关系写结局。</b>你替这段关系写了结局，但对方可能压根没翻到那一页。</p></div>
+<p>斯坦福大学的研究证实：人陷入内耗时，大脑每小时消耗的能量等于高强度运动40分钟。你不是累在做事，你是累在替别人活。</p>
+<h2>三个能立刻上手的「刹车动作」</h2>
+<ol class="exercise-list"><li><b>停止破译对方内心，只观察行为。</b>只问自己：「他的行为让我感到安心还是痛苦？」</li><li><b>先共情自己，再共情别人。</b>先问自己：「这件事我此刻的感受是什么？」允许自己委屈。</li><li><b>接受「别人的情绪是别人的课题」。</b>对方失望、生气或冷淡，那是他的情绪，你不需要通过牺牲自己的底线来让他好受。</li></ol>
+<h2>日常重建自我价值感：四个练习</h2>
+<ol class="exercise-list"><li><b>丰富「我」的生活支点。</b>不要把恋爱当作生活的唯一重心。</li><li><b>把「期待」降级为「愿望」。</b>愿望说出口就放下了，期待则是一种未说出口的命令。</li><li><b>学会在关系中「留白」。</b>每周给自己留几小时完全属于自己的时间。</li><li><b>记录你的「内耗账本」。</b>每晚花3分钟记录：今天哪几次你把别人的课题扛在了自己肩上？</li></ol>
+<div class="tip-box"><b>咨询师提醒：</b>如果你在亲密关系中的内耗已经持续超过2周，且影响了睡眠、食欲和工作效率，这可能不是你「不够坚强」，可能是你需要专业支持了。</div>
+<p>小D在第6次咨询时告诉我：「前几天男友又没回消息，我照例开始分析。但分析到一半，我突然想起你说的那句话——『他的情绪是他的课题』。然后我关了手机，去跑了个步。回来时他已经回了消息，说刚才在开会。你看，什么都没发生。是我自己演了两个小时的内心戏。」</p>
+<p>内耗最残忍的地方不在于它消耗你的时间——而在于它让你以为，你做的这些都是「爱」。但真正的爱从来不需要你把自己的感受放在最后。</p>
+<div class="cta-box"><h3>回复「内测」领取《亲密关系内耗类型自测量表》</h3><p>想知道你的内耗属于哪种类型？这份自测量表帮你5分钟看清自己的内耗模式。</p></div>
+<div class="author-box"><h3>关于咨询师</h3><p>心理咨询胡老师 · 专注亲密关系/原生家庭/自我成长方向<br>个案咨询时长3000+小时 · 持续接受个人体验与专业督导<br>所有案例均已脱敏处理并获来访者知情同意</p></div>
+</script>
+
+<script type="text/html" id="article-source-1">
+<span class="brand-tag">RAINBOW PSYCHOLOGY · 彩虹心理</span>
+<h1>你不是在选伴侣，是在选一种熟悉的痛</h1>
+<p class="subtitle">依恋模式的代际传递 · 原生家庭如何影响你的恋爱 · 引流款</p>
+<p class="meta">彩虹心理 · 2026年9月4日 · 约 2300 字 · 阅读约 8 分钟</p>
+<p>我在咨询室里见过太多人，他们在不同的人身上，重复着同一个故事。</p>
+<div class="scenario"><p>来访者小L，28岁，三段恋爱，三个回避型的男人。第一任男友冷战成瘾，她追了两年。第二任男友在一起三个月后开始「忙到失联」。第三任——她说：「老师，我又找了一个一样的。」</p></div>
+<div class="scenario"><p>另一位来访者小W，31岁，走了完全相反的路。她的父亲沉默、冷漠。她发誓要找一个「完全不同的人」——热情的、天天围着她转的。但在一起一年后，她发现这个热情的男人控制欲极强。「我找了一个反面，但新问题一样来自旧伤。」</p></div>
+<p>中国心理学会2025年报告：83.7%的成年人亲密关系困扰可以追溯到原生家庭的情感模式。</p>
+<h2>旧模式如何「继承」到你身上</h2>
+<div class="mechanism-box"><h3>路径一：情绪反应的「肌肉记忆」</h3><p>在充满指责或冷暴力的家庭长大，孩子可能学会「有情绪=不安全」。成年后面对伴侣的沉默，会自动解读为「他要离开我」。</p></div>
+<div class="mechanism-box"><h3>路径二：对「正常关系」的参照线被扭曲</h3><p>如果家中长期缺乏温和的冲突修复，一个人可能把「不吵架」误当作「关系好」，或把「频繁争吵」误当作「亲密」。</p></div>
+<div class="mechanism-box"><h3>路径三：互补式重复与反向补偿</h3><p>小L走的是「互补式重复」——无意识地重复熟悉的模式。小W走的是「反向补偿」——刻意选择完全不同的人。两条路，方向相反，终点却惊人地相似。</p></div>
+<h2>四种依恋类型：你属于哪一种</h2>
+<div class="attachment-grid"><div class="attachment-card"><h4>安全型（低焦虑+低回避）</h4><p>内心有稳定的自我价值，不害怕亲密也不恐惧独处。约占人群50%-60%。</p></div><div class="attachment-card"><h4>焦虑型（高焦虑+低回避）</h4><p>极度渴望亲密，害怕被抛弃。反复确认爱意。对方一点点冷淡都会引发巨大内耗。</p></div><div class="attachment-card"><h4>回避型（低焦虑+高回避）</h4><p>习惯隔绝情绪，回避深度亲密。一旦关系变得黏腻就下意识后退。</p></div><div class="attachment-card"><h4>恐惧型（高焦虑+高回避）</h4><p>既渴求被爱又不信任他人。靠近就恐慌，疏远又痛苦，反复拉扯。</p></div></div>
+<h2>看见模式，然后做出不同的选择</h2>
+<p>英国心理学家彼得·福纳吉的研究发现了一个逆转机制：父母即便自己依恋不良，只要具备好的「反思能力」，生出安全型儿童的比例是没有反思能力父母的17倍。放到成年人身上也一样。</p>
+<ol class="exercise-list"><li><b>画一张你的关系地图。</b>写下你所有重要关系中重复出现的模式。</li><li><b>区分「熟悉感」和「安全感」。</b>熟悉不等于安全。</li><li><b>练习「反向小步」。</b>如果你习惯追，试着在对方冷淡时不去追。如果你习惯逃，试着多待一会儿。</li><li><b>找一个「安全基地」练习信任。</b>找一个安全的人，练习「被好好回应」的体验。</li></ol>
+<div class="cta-box"><h3>回复「依恋」领取《成人依恋类型测评》</h3><p>想知道你是安全型、焦虑型、回避型还是恐惧型？这份测评帮你5分钟看清你的依恋模式。</p></div>
+<div class="author-box"><h3>关于咨询师</h3><p>心理咨询胡老师 · 专注亲密关系/原生家庭/自我成长方向<br>个案咨询时长3000+小时 · 持续接受个人体验与专业督导<br>所有案例均已脱敏处理并获来访者知情同意</p></div>
+</script>
+
+<script type="text/html" id="article-source-2">
+<span class="brand-tag">RAINBOW PSYCHOLOGY · 彩虹心理</span>
+<h1>童年缺少这3种体验的人，很难成为情绪稳定的大人</h1>
+<p class="subtitle">缺失与修复 · 重新养育自己的心理学路径 · 信任款</p>
+<p class="meta">彩虹心理 · 2026年9月4日 · 约 2300 字 · 阅读约 8 分钟</p>
+<p>我在咨询室里最常做的一件事，是帮来访者看见他们童年缺少了什么。不是控诉父母，不是归咎原生家庭。而是当一个人终于明白「我不稳定的根源是什么」，他的自我攻击会停下来。</p>
+<div class="scenario"><p>来访者小S，29岁，市场总监。同事眼里的她雷厉风行、永远状态在线。但过去三年里，她经历了一段持续的情绪过山车。「我觉得自己像个有洞的杯子，倒进去多少水都会漏。」</p></div>
+<h2>童年缺失的3种体验</h2>
+<div class="missing-card"><h4>缺失一：被允许表达负面情绪</h4><p>每次哭泣或生气，得到的回应是「别哭了」「多大点事」。孩子学会的不是处理情绪，而是压抑情绪。成年后：要么情绪爆发后极度自责，要么长期压抑到身体出问题。</p></div>
+<div class="missing-card"><h4>缺失二：被真正看见和回应</h4><p>父母只关注成绩和行为，不关注感受。孩子考了95分，父母问的是「那5分怎么丢的」。成年后：极度依赖外界评价来确认自我价值。</p></div>
+<div class="missing-card"><h4>缺失三：犯错时不被否定存在价值</h4><p>犯错时听到的是「你怎么这么笨」「你让我失望了」。孩子学会的不是改正行为，而是否定自己。成年后：完美主义+拖延+自我攻击。</p></div>
+<h2>为什么「知道该怎么做」却「做不到」</h2>
+<p>北京师范大学的研究发现：目睹父母冷暴力的儿童，大脑杏仁核活跃度异常增高，导致成年后对亲密关系中的情绪波动过度敏感。这不是你「想太多」，是你的神经系统被训练成了过度警觉的模式。</p>
+<p>所以「知道」和「做到」之间，隔着的不是意志力，而是新的体验。你需要的不只是道理，是一段关系——一个安全的环境，让你可以在其中练习「被允许有情绪」「被真正回应」「犯错不被否定」。</p>
+<h2>重新养育自己的五个练习</h2>
+<ol class="exercise-list"><li><b>给自己一个「情绪许可」。</b>下次感到难过时，不要立刻压下去。对自己说：「我现在有情绪，这是可以的。」</li><li><b>每天问自己一个问题：「你今天怎么样？」</b>像一个温柔的大人问一个小孩那样问自己。</li><li><b>犯错时对自己说：「这件事做得不对，但我不是不好。」</b>把行为和人分开。</li><li><b>找一个「安全的人」练习表达。</b>练习说出你的感受，然后观察对方有没有评判你。</li><li><b>每周做一件「没用但开心」的事。</b>不需要为了成长，只是因为你喜欢。</li></ol>
+<div class="tip-box"><b>咨询师提醒：</b>如果你发现自己的情绪波动已经持续超过2周，影响了工作、睡眠或人际关系，且尝试自我调节效果有限——这不是你「不够坚强」，可能是你需要专业支持了。</div>
+<p>小S在第10次咨询时告诉我：「上周项目出了问题，我第一反应是——完了，我又搞砸了。然后我想起了你说的那句话：『这件事做得不对，但我不是不好。』我试着对自己说了一遍。说出来的时候我哭了。因为我这辈子第一次发现——原来犯错之后，不需要立刻否定自己。」</p>
+<p>这就是「重新养育」的意义。不是回到童年重新来一遍——而是以现在的你，给小时候的你，那些你从来没有被给过的东西。</p>
+<div class="cta-box"><h3>回复「养育」领取《自我关系修复计划·4期测评手册》</h3><p>想系统性地「重新养育自己」？这份4期测评手册帮你逐层看见童年缺失体验、当前情绪模式。</p></div>
+<div class="author-box"><h3>关于咨询师</h3><p>心理咨询胡老师 · 专注亲密关系/原生家庭/自我成长方向<br>个案咨询时长3000+小时 · 持续接受个人体验与专业督导<br>所有案例均已脱敏处理并获来访者知情同意</p></div>
+</script>
 
 </body>
 </html>

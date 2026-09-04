@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>彩虹心理短视频报告 · 2026-09-04</title>
+<style>
+  :root {
+    --green: #134B43;
+    --gold: #C89B52;
+    --green-soft: #E8F0EA;
+    --cream: #F7F3EA;
+    --ink: #1F2A26;
+    --ink2: #42665B;
+    --ink3: #7C8B85;
+    --line: #D9E2DD;
+    --shadow: 0 1px 2px rgba(19,75,67,0.06);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--cream);color:var(--ink);line-height:1.65;padding:32px 16px 80px;}
+  .wrap{max-width:1080px;margin:0 auto;}
+  header{text-align:center;padding:32px 24px;background:linear-gradient(135deg,var(--green) 0%,#1A5C52 100%);color:#fff;border-radius:16px;margin-bottom:32px;box-shadow:var(--shadow);}
+  header h1{font-size:24px;font-weight:600;letter-spacing:0.5px;margin-bottom:8px;}
+  header .sub{font-size:14px;opacity:0.85;}
+  .meta-row{display:flex;justify-content:center;gap:18px;margin-top:18px;flex-wrap:wrap;}
+  .meta-pill{background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);padding:6px 14px;border-radius:999px;font-size:12px;}
+  .meta-pill b{color:var(--gold);}
+  .grid{display:grid;gap:24px;}
+  .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:var(--shadow);}
+  .video-card{position:relative;}
+  .video-card .rank-badge{position:absolute;top:18px;right:18px;background:var(--green);color:#fff;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:14px;}
+  .video-head{display:flex;align-items:flex-start;gap:16px;margin-bottom:18px;}
+  .theme-tag{padding:4px 10px;border-radius:6px;font-size:12px;font-weight:500;flex-shrink:0;margin-top:4px;}
+  .video-head h2{font-size:18px;color:var(--green);font-weight:600;line-height:1.4;}
+  .video-meta{display:flex;gap:18px;flex-wrap:wrap;margin:12px 0 18px;padding:14px;background:var(--green-soft);border-radius:10px;font-size:13px;}
+  .video-meta div{display:flex;align-items:center;gap:6px;color:var(--ink2);}
+  .video-meta b{color:var(--green);font-weight:600;}
+  .player{width:100%;max-width:320px;margin:0 auto 20px;border-radius:12px;overflow:hidden;background:#000;box-shadow:0 4px 12px rgba(0,0,0,0.08);}
+  .player video{width:100%;display:block;}
+  .section-title{font-size:13px;font-weight:600;color:var(--green);margin:18px 0 8px;display:flex;align-items:center;gap:6px;text-transform:uppercase;letter-spacing:0.5px;}
+  .section-title::before{content:"";width:3px;height:14px;background:var(--gold);border-radius:2px;}
+  .hook-box{background:linear-gradient(135deg,var(--green) 0%,#1A5C52 100%);color:#fff;padding:18px 20px;border-radius:10px;font-size:15px;font-weight:500;line-height:1.6;margin-bottom:14px;}
+  .hook-box .label{font-size:11px;color:var(--gold);margin-bottom:4px;letter-spacing:1px;}
+  .desc-box{background:#FAFAF7;border:1px solid var(--line);border-radius:10px;padding:16px 18px;font-size:14px;line-height:1.75;white-space:pre-wrap;color:var(--ink2);margin-bottom:14px;word-break:break-word;}
+  .tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;}
+  .tag{background:var(--green-soft);color:var(--green);padding:5px 11px;border-radius:6px;font-size:12px;font-weight:500;}
+  .tag.brand{background:var(--green);color:#fff;}
+  .publish-tip{background:#FFFBF2;border-left:3px solid var(--gold);padding:12px 16px;border-radius:6px;font-size:13px;color:var(--ink2);line-height:1.7;}
+  .copy-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;}
+  .btn{padding:8px 16px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:500;transition:all 0.15s;font-family:inherit;}
+  .btn-primary{background:var(--green);color:#fff;}
+  .btn-primary:hover{background:#1A5C52;}
+  .btn-gold{background:var(--gold);color:#fff;}
+  .btn-gold:hover{background:#B5863F;}
+  .btn-outline{background:transparent;color:var(--green);border:1px solid var(--green);}
+  .btn-outline:hover{background:var(--green-soft);}
+  .toolbar{position:sticky;top:0;background:var(--cream);padding:14px 0;margin-bottom:20px;z-index:10;border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+  .toolbar .spacer{flex:1;}
+  .toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:var(--green);color:#fff;padding:12px 24px;border-radius:8px;font-size:14px;box-shadow:0 4px 12px rgba(0,0,0,0.15);opacity:0;transition:opacity 0.3s;z-index:100;pointer-events:none;}
+  .toast.show{opacity:1;}
+  .section-divider{height:1px;background:var(--line);margin:32px 0;}
+  footer{text-align:center;margin-top:48px;padding:24px;color:var(--ink3);font-size:12px;}
+  .highlight{background:linear-gradient(transparent 60%,rgba(200,155,82,0.25) 60%);font-weight:500;}
+  .stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-bottom:32px;}
+  .stat-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px;text-align:center;}
+  .stat-card .num{font-size:24px;font-weight:600;color:var(--green);margin-bottom:4px;}
+  .stat-card .label{font-size:12px;color:var(--ink3);}
+  .progress-bar{height:4px;background:var(--line);border-radius:2px;margin-top:8px;overflow:hidden;}
+  .progress-bar .fill{height:100%;background:var(--green);transition:width 0.3s;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>彩虹心理 · 短视频报告</h1>
+    <div class="sub">2026-09-04 · 视频号 + 抖音双平台分发</div>
+    <div class="meta-row">
+      <span class="meta-pill">视频数量 <b>3</b></span>
+      <span class="meta-pill">总时长 <b>378s</b></span>
+      <span class="meta-pill">脚本版本 <b>v2.0</b></span>
+      <span class="meta-pill">核心目标 <b>涨粉引流</b></span>
+    </div>
+  </header>
+
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="num">3</div>
+      <div class="label">视频条数</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">11.4 MB</div>
+      <div class="label">总文件大小</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">186</div>
+      <div class="label">字幕段合计</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">3/3</div>
+      <div class="label">已就绪待发布</div>
+      <div class="progress-bar"><div class="fill" style="width:100%"></div></div>
+    </div>
+  </div>
+
+  <div class="toolbar">
+    <button class="btn btn-gold" onclick="copyAll()">📋 一键复制全部3条</button>
+    <button class="btn btn-outline" onclick="markAllPublished()">✅ 标记全部已发布</button>
+    <div class="spacer"></div>
+    <span style="font-size:12px;color:var(--ink3);">本地视频路径：<code style="background:var(--green-soft);padding:2px 6px;border-radius:4px;">D:\workbuddy\2026-07-26-17-33-36\</code></span>
+  </div>
+
+  <div class="grid">
+
+    <!-- Video 1 -->
+    <div class="card video-card" data-rank="1" data-title="童年委屈不会消失，成年后的崩溃才是答案">
+      <div class="rank-badge">1</div>
+      <div class="video-head">
+        <span class="theme-tag" style="background:#e3f2fd;color:#1976d2;">原生家庭</span>
+        <h2>童年委屈不会消失，成年后的崩溃才是答案</h2>
+      </div>
+
+      <div class="player">
+        <video controls preload="metadata" src="video-2026-09-04-01.mp4"></video>
+      </div>
+
+      <div class="video-meta">
+        <div>📁 <b>video-2026-09-04-01.mp4</b></div>
+        <div>⏱️ <b>140s</b></div>
+        <div>🎙️ 晓晓女声</div>
+        <div>💬 71 段字幕</div>
+        <div>🎨 暖色主题</div>
+        <div>📦 4.19 MB</div>
+      </div>
+
+      <div class="section-title">3秒钩子句</div>
+      <div class="hook-box">
+        <div class="label">HOOK · 前2.5s大字</div>
+        「恨是有滞后性的」
+      </div>
+
+      <div class="section-title">发布文案（视频号 + 抖音通用）</div>
+      <div class="desc-box" id="desc-1">「恨是有滞后性的」
+
+那些童年被强行吞咽下去的委屈、羞耻、自我否定，不是消失了，只是被大脑暂时冷冻；直到成年后某个神经突触被偶然击中，冰层轰然碎裂。
+
+懂事不是没事，是当时没有语言把委屈说出来。身体替你记住了。
+
+承认迟到，比假装坚强更有力量。
+关注@彩虹心理，每天懂一点心理学
+觉得有用，点赞分享给需要的人</div>
+
+      <div class="section-title">话题标签（8个）</div>
+      <div class="tags">
+        <span class="tag brand">#彩虹心理</span>
+        <span class="tag">#心理健康</span>
+        <span class="tag">#心理学科普</span>
+        <span class="tag">#原生家庭</span>
+        <span class="tag">#童年创伤</span>
+        <span class="tag">#情绪内耗</span>
+        <span class="tag">#自我成长</span>
+        <span class="tag">#每天懂一点心理学</span>
+      </div>
+
+      <div class="section-title">发布时间 & 分发平台</div>
+      <div class="publish-tip">建议发布时间：<b>21:00-23:00</b>（睡前童年议题反思时段）｜主推<b>视频号</b>（原生家庭议题在微信生态易引发深度讨论），抖音同步拓展女性泛人群</div>
+
+      <div class="copy-row">
+        <button class="btn btn-primary" onclick="copyDesc(1)">📋 复制文案</button>
+        <button class="btn btn-outline" onclick="copyTags(1)">🏷️ 复制话题</button>
+        <button class="btn btn-outline" onclick="markPublished(1)">✅ 标记已发布</button>
+      </div>
+      <div style="margin-top:12px;font-size:12px;color:var(--ink3);" id="pub-status-1">📍 发布状态：<b>待发布</b></div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- Video 2 -->
+    <div class="card video-card" data-rank="2" data-title="她每次回娘家前，都在楼下崩溃半小时">
+      <div class="rank-badge">2</div>
+      <div class="video-head">
+        <span class="theme-tag" style="background:#f3e5f5;color:#6b5b95;">亲密关系</span>
+        <h2>她每次回娘家前，都在楼下崩溃半小时</h2>
+      </div>
+
+      <div class="player">
+        <video controls preload="metadata" src="video-2026-09-04-02.mp4"></video>
+      </div>
+
+      <div class="video-meta">
+        <div>📁 <b>video-2026-09-04-02.mp4</b></div>
+        <div>⏱️ <b>134s</b></div>
+        <div>🎙️ 晓晓女声</div>
+        <div>💬 66 段字幕</div>
+        <div>🎨 冷色主题</div>
+        <div>📦 4.05 MB</div>
+      </div>
+
+      <div class="section-title">3秒钩子句</div>
+      <div class="hook-box">
+        <div class="label">HOOK · 前2.5s大字</div>
+        「我在车库停半小时才上楼」
+      </div>
+
+      <div class="section-title">发布文案（视频号 + 抖音通用）</div>
+      <div class="desc-box" id="desc-2">「我在车库停半小时才上楼」
+
+61.3% 已婚女性的共同秘密：每次回娘家前，都会在楼下崩溃半小时。抹泪、深呼吸、整理衣领、补口红——情绪消化完了再回家。
+
+情绪不是台阶，是信号。你越把它垫在脚下，它越会在某天突然坍塌。
+
+真正健康的关系，是冲突里能直接说：「我现在有点乱，需要十分钟。」
+关注@彩虹心理，每天懂一点心理学
+觉得有用，点赞分享给需要的人</div>
+
+      <div class="section-title">话题标签（8个）</div>
+      <div class="tags">
+        <span class="tag brand">#彩虹心理</span>
+        <span class="tag">#心理健康</span>
+        <span class="tag">#心理学科普</span>
+        <span class="tag">#亲密关系</span>
+        <span class="tag">#婚姻</span>
+        <span class="tag">#女性成长</span>
+        <span class="tag">#情绪价值</span>
+        <span class="tag">#每天懂一点心理学</span>
+      </div>
+
+      <div class="section-title">发布时间 & 分发平台</div>
+      <div class="publish-tip">建议发布时间：<b>20:00-22:00</b>（晚间家庭/情感话题高峰）｜主推<b>视频号</b>（已婚女性议题在微信生态易形成私域转发链），抖音同步</div>
+
+      <div class="copy-row">
+        <button class="btn btn-primary" onclick="copyDesc(2)">📋 复制文案</button>
+        <button class="btn btn-outline" onclick="copyTags(2)">🏷️ 复制话题</button>
+        <button class="btn btn-outline" onclick="markPublished(2)">✅ 标记已发布</button>
+      </div>
+      <div style="margin-top:12px;font-size:12px;color:var(--ink3);" id="pub-status-2">📍 发布状态：<b>待发布</b></div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- Video 3 -->
+    <div class="card video-card" data-rank="3" data-title="被爱浇灌的孩子，为何还是没安全感">
+      <div class="rank-badge">3</div>
+      <div class="video-head">
+        <span class="theme-tag" style="background:#e3f2fd;color:#1976d2;">原生家庭</span>
+        <h2>被爱浇灌的孩子，为何还是没安全感</h2>
+      </div>
+
+      <div class="player">
+        <video controls preload="metadata" src="video-2026-09-04-03.mp4"></video>
+      </div>
+
+      <div class="video-meta">
+        <div>📁 <b>video-2026-09-04-03.mp4</b></div>
+        <div>⏱️ <b>104s</b></div>
+        <div>🎙️ 晓晓女声</div>
+        <div>💬 49 段字幕</div>
+        <div>🎨 紫色主题</div>
+        <div>📦 2.95 MB</div>
+      </div>
+
+      <div class="section-title">3秒钩子句</div>
+      <div class="hook-box">
+        <div class="label">HOOK · 前2.5s大字</div>
+        「我爸妈对我挺好的」
+      </div>
+
+      <div class="section-title">发布文案（视频号 + 抖音通用）</div>
+      <div class="desc-box" id="desc-3">「我爸妈对我挺好的。」
+
+但那个「好」，常常带着条件：考好了才亲近，考差了被冷淡；听话才给笑脸，顶嘴就收回爱意。
+
+这不是爱，是交易。孩子学会了察言观色，却永远不知道自己值不值得被爱。
+
+爱和伤害，完全可以同时存在于同一个家庭。安全感可以后天修补。
+关注@彩虹心理，每天懂一点心理学
+觉得有用，点赞分享给需要的人</div>
+
+      <div class="section-title">话题标签（8个）</div>
+      <div class="tags">
+        <span class="tag brand">#彩虹心理</span>
+        <span class="tag">#心理健康</span>
+        <span class="tag">#心理学科普</span>
+        <span class="tag">#原生家庭</span>
+        <span class="tag">#无条件的爱</span>
+        <span class="tag">#安全感</span>
+        <span class="tag">#自我成长</span>
+        <span class="tag">#每天懂一点心理学</span>
+      </div>
+
+      <div class="section-title">发布时间 & 分发平台</div>
+      <div class="publish-tip">建议发布时间：<b>21:00-23:00</b>（夜间亲子关系话题深度讨论时段）｜主推<b>视频号</b>（原生家庭议题适配微信私域深度阅读），抖音同步</div>
+
+      <div class="copy-row">
+        <button class="btn btn-primary" onclick="copyDesc(3)">📋 复制文案</button>
+        <button class="btn btn-outline" onclick="copyTags(3)">🏷️ 复制话题</button>
+        <button class="btn btn-outline" onclick="markPublished(3)">✅ 标记已发布</button>
+      </div>
+      <div style="margin-top:12px;font-size:12px;color:var(--ink3);" id="pub-status-3">📍 发布状态：<b>待发布</b></div>
+    </div>
+
+  </div>
+
+  <footer>
+    彩虹心理 · 短视频自动化流水线 · 22:00 后由人工上传至视频号 / 抖音<br>
+    视频文件位于 <code>D:\workbuddy\2026-07-26-17-33-36\</code>，总文件大小 11.4 MB
+  </footer>
+
+</div>
+
+<div class="toast" id="toast">已复制</div>
+
+<script>
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),1500);
+}
+function copyDesc(rank){
+  const txt=document.getElementById('desc-'+rank).textContent;
+  navigator.clipboard.writeText(txt).then(()=>showToast('✅ 文案已复制（视频'+rank+'）'));
+}
+function copyTags(rank){
+  const card=document.querySelector('[data-rank="'+rank+'"]');
+  const tags=Array.from(card.querySelectorAll('.tag')).map(t=>t.textContent).join(' ');
+  navigator.clipboard.writeText(tags).then(()=>showToast('✅ 话题已复制（视频'+rank+'）'));
+}
+function markPublished(rank){
+  const el=document.getElementById('pub-status-'+rank);
+  el.innerHTML='📍 发布状态：<b style="color:var(--green)">✅ 已发布</b>';
+  try{localStorage.setItem('rh_sv_pub_2026-09-04_'+rank,'1');}catch(e){}
+  showToast('已标记视频'+rank+'为已发布');
+}
+function markAllPublished(){
+  for(let i=1;i<=3;i++){markPublished(i);}
+  showToast('全部3条已标记为已发布');
+}
+function copyAll(){
+  let all='';
+  for(let i=1;i<=3;i++){
+    const card=document.querySelector('[data-rank="'+i+'"]');
+    const title=card.getAttribute('data-title');
+    const desc=document.getElementById('desc-'+i).textContent;
+    const tags=Array.from(card.querySelectorAll('.tag')).map(t=>t.textContent).join(' ');
+    all+='【视频'+i+'】'+title+'\n\n'+desc+'\n\n'+tags+'\n\n---\n\n';
+  }
+  navigator.clipboard.writeText(all).then(()=>showToast('✅ 3条文案+标签已全部复制'));
+}
+// Restore publish state
+(function(){
+  for(let i=1;i<=3;i++){
+    try{
+      if(localStorage.getItem('rh_sv_pub_2026-09-04_'+i)==='1'){
+        const el=document.getElementById('pub-status-'+i);
+        if(el) el.innerHTML='📍 发布状态：<b style="color:var(--green)">✅ 已发布</b>';
+      }
+    }catch(e){}
+  }
+})();
+</script>
+
+</body>
+</html>
